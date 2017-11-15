@@ -70,7 +70,7 @@ The `create_aws.yml` playbook goal is to create EC2 instances.
 
 Example: Create 3 x `t2.micro` EC2 instances
 
-One `t2.micro` for the database, one for Bonita and one for a bench tool (not usable for the moment in this alpha version).
+One `t2.micro` for the database, one for Bonita.
 ```shell
 $ bcd -s scenarios/uswest_performance.yml create
 ```
@@ -98,7 +98,7 @@ This command will read the `scenarios/perf-host_cluster.yml` configuration file 
 
 #### Vagrant
 
-We provide 2 sample Vagrant layouts - `1-machine` and `3-machines` - which you can find in the `vagrant` directory.
+We provide 2 sample Vagrant layouts - `1-machine` and `2-machines` - which you can find in the `vagrant` directory.
 
 1. Create the machine infrastructure with `vagrant up`.
 1. Start provisioning by invoking the `bcd` CLI.
@@ -107,7 +107,7 @@ Examples:
 ```shell
 $ bcd -s scenarios/vagrant_performance.yml deploy
 $ bcd -s scenarios/vagrant_cluster.yml deploy
-$ bcd -s scenarios/vagrant_performance.yml -e "bcd_inventory=inventory/vagrant/3-machines/inventory" deploy
+$ bcd -s scenarios/vagrant_performance.yml -e "bcd_inventory=inventory/vagrant/2-machines/inventory" deploy
 # The latter syntax allows to override the bcd_inventory variable from the command line.
 ```
 

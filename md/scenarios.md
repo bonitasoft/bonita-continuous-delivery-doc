@@ -16,9 +16,8 @@ Some parameters are mandatory for general provisioning and test description.
 
 |Name |Mandatory|Default|Description|Sample|
 |-|-|-|-|-|
-|test_name|N|tests_{{ bonita_version }}|Name of the test. Used for test results export directory|test|
 |test_userid|Y| |Id of the test. Used for tests identification and test results export directory|jenkins-test|
-|configuration|Y | |Configuration filename. Initialize main variables. Choose between bonita_vars_aws_generic, vagrant_vars, perf-host_vars|bonita_vars_aws_generic|
+|configuration|Y | |Configuration filename. Initialize main variables. Choose between aws_vars, vagrant_vars|aws_vars|
 |ansible_ssh_user|N|ubuntu|SSH user|ubuntu|
 |ansible_private_key_file|Y |-|Path for the private SSH key.|~/.ssh/jenkins_ansible_us-west-2.pem|
 
@@ -29,7 +28,7 @@ In case of Vagrant scenario, for testing purposes. The configuration file value 
 In case of on-premises scenario. An inventory with all the corresponding machines should be used. A configuration file similar to ```vagrant_vars``` can be used.
 
 ### AWS Cloud scenarios
-In case of AWS deployments. The configuration file value should be  ```bonita_vars_aws_generic``` in this case.
+In case of AWS deployments. The configuration file value should be  ```aws_vars``` in this case.
 
 |Name |Mandatory|Default|Description|Sample|
 |-|-|-|-|-|
@@ -49,7 +48,6 @@ The following figure describes for each tier the important variables.
 |aws_database_instance_type|Y | |Instance type for the database instance |t2.micro|
 |aws_bonita_instance_type|Y | |Instance type for the Bonita instance |t2.micro|
 |aws_load_balancer_instance_type|Y | |Instance type for the load balancer instance |t2.micro|
-|aws_benchmark_instance_type|Y | |Instance type for the bench tool instance |t2.micro|
 
 ## Bonita
 Some parameters should be precised for Bonita. The corresponding Docker tar files should be present in ```docker``` directory.
@@ -67,16 +65,6 @@ Some parameters should be precised for Bonita. The corresponding Docker tar file
 |bonita_db_admin_user|N|postgres|Admin user on database instance|root|
 |bonita_db_admin_pass|N|mysecretpassword|Admin password on database instance|password|
 
-## Performance tool
-The performance tool permits to inject processes for testing purposes. It is not supported for the current version.
-
-|Name |Mandatory| Default|Description|Sample|
-|-|-|-|-|-|
-|perf_nb_launch|N  |3000 |Number of launches|3000|
-|perf_duration_minutes|N  |999|Duration of the test|
-|nb_parallel|N | 10 |Number of parallel users for the test|20|
-|perf_tests_default|N|standardProcess|Business process used for the tests|vacationRequestProcess|
-
 ## Email notification
 An email can be sent automatically with Bonita stack details at the end of the deployment phase. This feature uses [Ansible mail module](http://docs.ansible.com/ansible/latest/mail_module.html).
 
@@ -89,10 +77,3 @@ An email can be sent automatically with Bonita stack details at the end of the d
 |mail_password|N|-|The SMTP password.|SomePassword|
 |mail_from|N|-|The email-address the mail is sent from. May contain address and phrase.|john.doe<i>@</i>acme.com (John Doe)|
 |mail_to|N|-|The email-address(es) the mail is being sent to. This is a comma-separated list, which may contain address and phrase portions.|John Doe &lt;john.doe<i>@</i>acme.com&gt;, Suzie Something &lt;sue<i>@</i>example.com&gt;|
-
-## Other
-
-|Name |Mandatory| Default|Description|Sample|
-|-|-|-|-|-|
-|database_save|N |false |Makes a dump of the database (only for Postgres) |false
-|docker_stats|N |true |Activates Docker stats. Those are saved in the results directory if the bench tool is used. |true|

@@ -12,14 +12,21 @@
   const winston = require('winston');
   const argv = require('yargs').argv;
   const variables = require('./variables.json');
-  let version = argv.v || argv._[0];
-   if (!version) {
-     version = variables.varVersion;
-     if (!version) {
-       winston.warn('usage convertMd2Html [-v] version or set a "varVersion" key in scripts/variables.json');
-       return;
-     }
-   }
+  let application= argv.a || argv._[0];
+  if(application){
+    application = application + '/';
+  }else{
+    application = '';
+  }
+
+  let version = argv.v || argv._[1];
+  if (!version) {
+    version = variables.varVersion;
+    if (!version) {
+      winston.warn('usage convertMd2Html [-v] version or set a "varVersion" key in scripts/variables.json');
+      return;
+    }
+  }
 
   const readdirPromise = denodeify(fs.readdir);
   const writeFilePromise = denodeify(fs.writeFile);
@@ -39,7 +46,7 @@
       const hrefIndex = tokens[idx].attrIndex('href');
       if (hrefIndex >= 0 && !tokens[idx].attrs[hrefIndex][1].match(/^http/)) {
         if (hrefIndex >= 0 && tokens[idx].attrs[hrefIndex][1].match(/^images\//)) {
-          tokens[idx].attrs[hrefIndex][1] = tokens[idx].attrs[hrefIndex][1].replace(/^images\//gi, `images/${version}/`);
+          tokens[idx].attrs[hrefIndex][1] = tokens[idx].attrs[hrefIndex][1].replace(/^images\//gi, `${application}images/${version}/`);
           tokens[idx].attrPush([ 'target', '_blank' ]);
         } else {
           const pageAndHash = tokens[idx].attrs[hrefIndex][1].split('#', 2);
@@ -55,7 +62,7 @@
     .use(mdInline, 'site_compatible_images', 'image', (tokens, idx) => {
       const srcIndex = tokens[idx].attrIndex('src');
       if (srcIndex >= 0) {
-        tokens[idx].attrs[srcIndex][1] = tokens[idx].attrs[srcIndex][1].replace(/^images\//gi, `images/${version}/`);
+        tokens[idx].attrs[srcIndex][1] = tokens[idx].attrs[srcIndex][1].replace(/^images\//gi, `${application}images/${version}/`);
       }
       const altIndex = tokens[idx].attrIndex('alt');
       if (altIndex < 0) {

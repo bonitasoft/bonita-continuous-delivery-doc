@@ -4,7 +4,7 @@ With scenarios, you can define your infrastructure, Bonita installation and pote
 
 The format is flat as shows this sample :
 ```yaml
-test_userid: vagrant
+bcd_stack_id: vagrant
 configuration: vagrant_vars
 bonita_cluster_mode: false
 bonita_cluster_qty: 1
@@ -16,7 +16,7 @@ Some parameters are mandatory for general provisioning and test description.
 
 |Name |Mandatory|Default|Description|Sample|
 |-|-|-|-|-|
-|test_userid|Y| |Id of the test. Used for tests identification and test results export directory|jenkins-test|
+|bcd_stack_id|Y| |Id of the test. Used for tests identification and test results export directory|jenkins-test|
 |configuration|Y | |Configuration filename. Initialize main variables. Choose between aws_vars, vagrant_vars|aws_vars|
 |ansible_ssh_user|N|ubuntu|SSH user|ubuntu|
 |ansible_private_key_file|Y |-|Path for the private SSH key.|~/.ssh/jenkins_ansible_us-west-2.pem|

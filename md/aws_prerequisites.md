@@ -73,9 +73,17 @@ The following steps are required to set up AWS credentials for Ansible automatio
 Therefore a [default VPC and default subnets](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html) should already be available.
 1. [Create an EC2 Security Group](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#creating-security-group)
     - **Security group name**: sg_bonita-provisioning
-    - Add an Inbound rule - **Type**: All Traffic, **Source**: &lt;security_group_id_of_sg_bonita-provisioning&gt;
-    - Add an Inbound rule - **Type**: SSH, **Source**: My IP
-    - Add an Inbound rule - **Type**: Custom TCP Rule, **Port Range**: 8081, **Source**: My IP
+    - Add an Inbound rule to allow communication between Bonita stack components
+      - **Type**: All Traffic, **Source**: &lt;security_group_id_of_sg_bonita-provisioning&gt;
+    - Add an Inbound rule to allow Ansible to connect via SSH
+      - **Type**: SSH, **Source**: My IP
+    - Add an Inbound rule to allow remote connection to Bonita Tomcat via HTTP
+      - **Type**: Custom TCP Rule, **Port Range**: 8081, **Source**: My IP
+    - Add an Inbound rule to allow remote connection to Bonita databases
+      - **Type**: Custom TCP Rule, **Source**: My IP
+        - with `bonita_db_vendor: postgres` - **Port Range**: 5432
+        - with `bonita_db_vendor: mysql` - **Port Range**: 3306
+        - with `bonita_db_vendor: oracle` - **Port Range**: 1521
 1. [Create an EC2 Key Pair](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
     - _Note: A key pair is linked to an AWS region_
     - Download the `.pem` private key file

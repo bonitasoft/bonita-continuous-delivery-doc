@@ -123,7 +123,6 @@ Commands:
   status     Show the platform status
   create     Create AWS instances
   deploy     Deploy Bonita stack
-  run-tests  Run Bonita performance tests
   undeploy   Undeploy Bonita stack
   destroy    Destroy AWS machines (EC2 instances)
 ```

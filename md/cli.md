@@ -38,7 +38,6 @@ Commands:
   status     Show the platform status
   create     Create AWS instances
   deploy     Deploy Bonita stack
-  run-tests  Run Bonita performance tests
   undeploy   Undeploy Bonita stack
   destroy    Destroy AWS machines (EC2 instances)
 ```
@@ -59,5 +58,5 @@ The BCD CLI allows to invoke more than one command in one go. This is useful to 
 
 For example:
 ```
-$ bcd -s scenarios/uswest2_cluster.yml -y create deploy run-tests destroy
+$ bcd -s scenarios/uswest2_cluster.yml -y create deploy
 ```

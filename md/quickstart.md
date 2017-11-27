@@ -96,7 +96,7 @@ bonita@control_machine:~/ansible$
 
 ## Use Bonita Continuous Delivery solution
 
-We provide a [BCD Command Line Interface](../docker/cli/README.md) (CLI) to execute Bonita Continuous Delivery commands.
+We provide a [BCD Command Line Interface](cli.md) (CLI) to execute Bonita Continuous Delivery commands.
 
 The BCD CLI is directly available as a `bcd` command when using the `bonitasoft/bcd-controller` Docker image.
 

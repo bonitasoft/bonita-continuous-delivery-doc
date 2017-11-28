@@ -61,7 +61,7 @@ $ bcd -s scenarios/uswest_performance.yml --yes deploy
 $ bcd -s scenarios/uswest_performance.yml destroy --dry-run
 $ bcd -s scenarios/vagrant_cluster.yml deploy
 $ bcd -s scenarios/vagrant_cluster.yml --yes undeploy
-$ bcd -s scenarios/uswest2_cluster.yml -y create deploy run-tests destroy
+$ bcd -s scenarios/uswest2_cluster.yml -y create deploy
 ```
 
 ### EC2 instances creation

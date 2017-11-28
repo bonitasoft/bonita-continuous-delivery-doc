@@ -16,7 +16,7 @@ Some parameters are mandatory for general provisioning and test description.
 
 |Name |Mandatory|Default|Description|Sample|
 |-|-|-|-|-|
-|bcd_stack_id|Y| |Id of the test. Used for tests identification and test results export directory|jenkins-test|
+|bcd_stack_id|Y| |Id of the test. Used for tests identification and test results export directory. For AWS deployments the characters allowed are limited to letters, numbers and underscore.|jenkins-test|
 |configuration|Y | |Configuration filename. Initialize main variables. Choose between aws_vars, vagrant_vars|aws_vars|
 |ansible_ssh_user|N|ubuntu|SSH user|ubuntu|
 |ansible_private_key_file|Y |-|Path for the private SSH key.|~/.ssh/jenkins_ansible_us-west-2.pem|

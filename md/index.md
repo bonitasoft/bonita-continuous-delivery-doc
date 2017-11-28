@@ -44,7 +44,7 @@ The classic usage at this very moment is:
 - Bonita platform deployment in EC2 or on premises
 - (Optional) Amazon EC2 instance deletion
 
-The user must specify the `test_userid` variable **for each command** in order to identify its infrastructure. Multiple tests with different `test_userid` can be used simultaneously even on AWS. The `test_userid` variable should contain only letters, digits or underscore characters (see https://github.com/ansible/ansible/blob/v2.3.1.0-1/contrib/inventory/ec2.py#L1555).
+The user must specify the `bcd_stack_id` variable **for each command** in order to identify its infrastructure. Multiple tests with different `bcd_stack_id` can be used simultaneously even on AWS. The `bcd_stack_id` variable should contain only letters, digits or underscore characters (see https://github.com/ansible/ansible/blob/v2.3.1.0-1/contrib/inventory/ec2.py#L1555).
 
 In order to describe a new infrastructure and software configuration (aka. _scenario_), you need to prepare the following files:
 - **scenarios/&lt;scenario_name&gt;.yml**: this YAML file should gather all relevant variables which describe the scenario
@@ -131,7 +131,7 @@ Ansible facts are local variables registered in hosts. It is possible to save th
 ```
 $ ansible all -vv -i inventory/ec2/ec2_wrapper.sh -m setup -u ubuntu --tree tmp_facts/
 ```
-This command will identify every EC2 instance (regardless of `test_userid`) and put its facts into the `tmp_facts` directory.
+This command will identify every EC2 instance (regardless of `bcd_stack_id`) and put its facts into the `tmp_facts` directory.
 
 ### Dive into the scenarios
 For further details see [this section](scenarios.md)

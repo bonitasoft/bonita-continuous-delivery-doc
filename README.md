@@ -8,7 +8,9 @@ It uses [Markdown](https://help.github.com/categories/writing-on-github/) to cre
 
 Using the [Github Markdown Format](https://help.github.com/categories/writing-on-github/) allows to check the documentation directly on the GitHub repository website.
 
-So a simple way to view documentation content is to browse the `md` folder on [GitHub website](https://github.com/bonitasoft/bonita-continuous-delivery-doc/).
+Hence a simple way to view documentation content is to browse the `md` folder on [GitHub website](md).
+
+This [Table of contents](md/taxonomy.md) is also provided to ease your navigation.
 
 ## Build project
 

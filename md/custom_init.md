@@ -181,3 +181,34 @@ ${BONITA_SETUP_SH} pull
 cp /opt/custom-init.d/bonita-tenant-sp-custom.xml ${BONITA_PATH}/Bonita*Subscription-${BONITA_VERSION}-Tomcat-${TOMCAT_VERSION}/setup/platform_conf/current/tenant_template_engine/
 ${BONITA_SETUP_SH} push
 ```
+
+### add-javamelody.sh
+
+This sample script deploys the [JavaMelody monitoring tool](https://github.com/javamelody/javamelody/wiki) to Bonita web application. This example shows how to download external jars and include them to Bonita WAR.
+
+```bash
+#!/bin/bash
+
+set -euxo pipefail
+
+BONITA_PATH=${BONITA_PATH:-/opt/bonita}
+BONITA_FILES=${BONITA_FILES:-/opt/files}
+
+
+war_path=$(find "${BONITA_PATH}/Bonita"*"Subscription-${BONITA_VERSION}-Tomcat-${TOMCAT_VERSION}/server/webapps" -name bonita.war)
+workdir="${BONITA_FILES}/add-javamelody"
+
+rm -rf ${workdir} && mkdir -p ${workdir}
+
+pushd ${workdir}
+
+# download javamelody jars
+mkdir -p WEB-INF/lib
+pushd WEB-INF/lib
+curl -sSLOJ https://github.com/javamelody/javamelody/releases/download/javamelody-core-1.70.0/javamelody-core-1.70.0.jar
+curl -sSLOJ https://repo1.maven.org/maven2/org/jrobin/jrobin/1.5.9/jrobin-1.5.9.jar
+popd
+
+# repackage war
+zip -r "${war_path}" WEB-INF/lib
+```

@@ -22,7 +22,7 @@ roles
 
 ## When are custom initialization scripts invoked?
 
-Custom initialization scripts are invoked once the database has been initialized and the Tomcat server has been configured with [Bonita Platform setup tool](https://documentation.bonitasoft.com/?page=BonitaBPM_platform_setup).
+Custom initialization scripts are invoked once the database has been initialized and the Tomcat server has been configured with [Bonita Platform setup tool](https://documentation.bonitasoft.com/bonita/7.6/BonitaBPM_platform_setup).
 
 Hence the Bonita Docker image startup sequence can be described as follows:
 
@@ -64,7 +64,7 @@ More precisely scripts are executed in the order returned by this command: `ls -
 ### config-workers.sh
 
 Ths `config-workers.sh` script is provided as part of BCD's core scripts.
-In particular it shows how to further configure the server using [Bonita Platform setup tool](https://documentation.bonitasoft.com/?page=BonitaBPM_platform_setup).
+In particular it shows how to further configure the server using [Bonita Platform setup tool](https://documentation.bonitasoft.com/bonita/7.6/BonitaBPM_platform_setup).
 
 ### replace-logo.sh
 
@@ -116,7 +116,7 @@ touch ${indicator_path}
 
 ### activate-all-dynamic-checks.sh
 
-This sample script activates all standard [REST API dynamic authorization rules](https://documentation.bonitasoft.com/?page=rest-api-authorization) to further secure Bonita REST API. These rules are meant to cover the most frequent cases.
+This sample script activates all standard [REST API dynamic authorization rules](https://documentation.bonitasoft.com/bonita/7.6/rest-api-authorization) to further secure Bonita REST API. These rules are meant to cover the most frequent cases.
 
 ```bash
 #!/bin/bash
@@ -139,7 +139,7 @@ ${BONITA_SETUP_SH} push
 
 ### register-event-handler.sh
 
-This sample script deploys and registers a Bonita engine Event handler as described in [Event handlers Documentation](https://documentation.bonitasoft.com/?page=event-handlers).
+This sample script deploys and registers a Bonita engine Event handler as described in [Event handlers Documentation](https://documentation.bonitasoft.com/bonita/7.6/event-handlers).
 
 Assuming the following files:
 

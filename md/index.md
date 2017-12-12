@@ -2,12 +2,12 @@
 
 ![Bonita BCD](images/BCD.png)
 
-This module provides a solution to use _Continuous Delivery_ practice for your Bonita Living Application development.
+This add-on provides a solution to use _Continuous Delivery_ practice for your Bonita Living Application development.
 It is composed of two main parts:
-* First a framework for continuous integration of Living Application.
-* Second a solution for Cloud environment provisioning.  
+* First a solution for Bonita stack provisioning on Cloud or on-premise.  
+* Second a framework for continuous integration of Living Application. _this CI framework will be delivered in future versions of the add-on_
 
-This documentation focus on the second part: the solution and tooling for provisioning of a Bonita stack.
+![Bonita BCD](images/BCD_logo.png) This documentation focus on the first part: the solution and tooling for provisioning of a Bonita stack.
 The tool is composed of a set of scripts to deploy Bonita platform automatically (database and Bonita Tomcat application server).
 
 This toolkit is compatible with Amazon EC2 cloud platform, on premises servers and local virtual machines via [Vagrant](https://www.vagrantup.com/).

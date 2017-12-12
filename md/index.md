@@ -1,6 +1,6 @@
 # Bonita Continuous Delivery module
 
-![Bonita BCD](images/bcd_overview.png)
+![Bonita BCD](images/BCD.png)
 
 This module provides a solution to use _Continuous Delivery_ practice for your Bonita Living Application development.
 It is composed of two main parts:
@@ -18,7 +18,7 @@ These scripts are powered by [Ansible](http://www.ansible.com). Short note from 
 
 The Bonita Continuous Delivery (BCD) tooling is provided through a Docker container called _BCD Controller_. In this controller you’ll find all useful tooling to manage your provisioning of Bonita platform and more. This controller should be installed on your local machine.
 
-![Bonita Provisioning](images/bonita_provisioning.png)
+![Bonita Provisioning](images/Bonita_Platform_Stack.png)
 
 * A “Host” can be an EC2 instance or a dedicated server.
 * Files organization on the local machine:

@@ -5,7 +5,7 @@
 This add-on provides a solution to use _Continuous Delivery_ practice for your Bonita Living Application development and deployment.
 It is composed of two main parts:
 * First a solution for Bonita stack provisioning on Cloud or on-premise.  
-* Second a framework for continuous integration of Living Application. _this CI framework will be delivered in future versions of the add-on_
+* Second a framework for continuous integration of Living Application. _This CI framework will be delivered in future versions of the add-on_
 
 This documentation focus on the first part: the solution and tooling for provisioning of a Bonita stack.
 The tool is composed of a set of scripts to deploy a full Bonita stack automatically (database and Bonita Tomcat application server).
@@ -14,7 +14,9 @@ This toolkit is compatible with Amazon EC2 cloud platform (AWS), on premises ser
 
 These scripts are powered by [Ansible](http://www.ansible.com). Short note from Wikipedia:
 
->Ansible is a free software platform for configuring and managing computers. It combines multi-node software deployment, ad hoc task execution, and configuration management. It manages nodes over SSH or PowerShell and requires Python (2.4 or later) to be installed on them. Modules work over JSON and standard output and can be written in any programming language. The system uses YAML to express reusable descriptions of systems.
+::: info
+Ansible is a free software platform for configuring and managing computers. It combines multi-node software deployment, ad hoc task execution, and configuration management. It manages nodes over SSH or PowerShell and requires Python (2.4 or later) to be installed on them. Modules work over JSON and standard output and can be written in any programming language. The system uses YAML to express reusable descriptions of systems.
+:::
 
 The Bonita Continuous Delivery (BCD) tooling is provided through a Docker container called _BCD Controller_. In this controller you’ll find all useful tooling to manage your provisioning of Bonita platform and more. This controller should be installed on your local machine.
 

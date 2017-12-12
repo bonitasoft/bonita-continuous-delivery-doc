@@ -5,7 +5,7 @@
 This add-on provides a solution to use _Continuous Delivery_ practice for your Bonita Living Application development and deployment.
 It is composed of two main parts:
 * First a solution for Bonita stack provisioning on Cloud or on-premise.  
-* Second a framework for continuous integration of Living Application. _This CI framework will be delivered in future versions of the add-on_
+* Second a framework for continuous integration of Living Application. _This CI framework will be delivered in future versions of the add-on._
 
 This documentation focus on the first part: the solution and tooling for provisioning of a Bonita stack.
 The tool is composed of a set of scripts to deploy a full Bonita stack automatically (database and Bonita Tomcat application server).

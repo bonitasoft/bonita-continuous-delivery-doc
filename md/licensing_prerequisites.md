@@ -1,6 +1,6 @@
 # Licensing Prerequisites
 
-In order that your deployment retrieves a license for Bonita BPM automatically, you need to set the following variables in your scenario:
+In order that your deployment retrieves a license for  Bonita automatically, you need to set the following variables in your scenario:
 
 |Name|Description|Sample|
 |-|-|-|

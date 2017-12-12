@@ -1,24 +1,26 @@
-# Bonita Continuous Delivery module
+# Bonita Continuous Delivery Add-on
 
-![Bonita BCD](images/bcd_overview.png)
+![Bonita Continuous Delivery Add-on](images/bcd.png)
 
-This module provides a solution to use _Continuous Delivery_ practice for your Bonita Living Application development.
+This add-on provides a solution to use _Continuous Delivery_ practice for your Bonita Living Application development and deployment.
 It is composed of two main parts:
-* First a framework for continuous integration of Living Application.
-* Second a solution for Cloud environment provisioning.  
+* First a solution for Bonita stack provisioning on Cloud or on-premise.  
+* Second a framework for continuous integration of Living Application. _This CI framework will be delivered in future versions of the add-on._
 
-This documentation focus on the second part: the solution and tooling for provisioning of a Bonita stack.
-The tool is composed of a set of scripts to deploy Bonita platform automatically (database and Bonita Tomcat application server).
+This documentation focus on the first part: the solution and tooling for provisioning of a Bonita stack.
+The tool is composed of a set of scripts to deploy a full Bonita stack automatically (database and Bonita Tomcat application server).
 
-This toolkit is compatible with Amazon EC2 cloud platform, on premises servers and local virtual machines via [Vagrant](https://www.vagrantup.com/).
+This toolkit is compatible with Amazon EC2 cloud platform (AWS), on premises servers and local virtual machines via [Vagrant](https://www.vagrantup.com/).
 
 These scripts are powered by [Ansible](http://www.ansible.com). Short note from Wikipedia:
 
->Ansible is a free software platform for configuring and managing computers. It combines multi-node software deployment, ad hoc task execution, and configuration management. It manages nodes over SSH or PowerShell and requires Python (2.4 or later) to be installed on them. Modules work over JSON and standard output and can be written in any programming language. The system uses YAML to express reusable descriptions of systems.
+::: info
+Ansible is a free software platform for configuring and managing computers. It combines multi-node software deployment, ad hoc task execution, and configuration management. It manages nodes over SSH or PowerShell and requires Python (2.4 or later) to be installed on them. Modules work over JSON and standard output and can be written in any programming language. The system uses YAML to express reusable descriptions of systems.
+:::
 
 The Bonita Continuous Delivery (BCD) tooling is provided through a Docker container called _BCD Controller_. In this controller you’ll find all useful tooling to manage your provisioning of Bonita platform and more. This controller should be installed on your local machine.
 
-![Bonita Provisioning](images/bonita_provisioning.png)
+![Bonita Provisioning](images/bonita_platform_stack.png)
 
 * A “Host” can be an EC2 instance or a dedicated server.
 * Files organization on the local machine:

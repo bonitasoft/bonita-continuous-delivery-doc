@@ -125,7 +125,9 @@ $ bcd -s scenarios/uswest_performance.yml --yes destroy
 
 ### Installing a custom BCD Controller
 
-To use this tool without the BCD Controller Docker image you can directly follow the setup described inside the [Dockerfile](./docker/Dockerfile) in order to setup your own environment
+In order to setup your own environment without the [BCD Controller Docker image](docker.md), you can follow the installation procedure described in its Dockerfile.
+
+The BCD controller Dockerfile is provided with BCD deliverable in the `ansible_<version>/docker` directory.
 
 ### Debugging Facts
 
@@ -136,7 +138,9 @@ $ ansible all -vv -i inventory/ec2/ec2_wrapper.sh -m setup -u ubuntu --tree tmp_
 This command will identify every EC2 instance (regardless of `bcd_stack_id`) and put its facts into the `tmp_facts` directory.
 
 ### Dive into the scenarios
-For further details see [this section](scenarios.md)
+
+For further details see [this section](scenarios.md).
 
 ## Known issues
-For further details see [this section](known_issues.md)
+
+For further details see [this section](known_issues.md).

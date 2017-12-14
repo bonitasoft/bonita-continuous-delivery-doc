@@ -8,16 +8,16 @@ This feature relies on the ability to extend the [Bonita Docker image](https://h
 
 Custom initialization scripts must be placed in BCD's `roles/bonita/files/custom-init.d` folder. Each script to execute must have a `.sh` extension.
 
-Here's the directory layout for a `replace-logo.sh` custom script:
+Here's the directory layout for a `register-event-handler.sh` custom script:
 ```
 roles
 ├── bonita
 │   ├── files
 │   │   ├── custom-init.d
+│   │   │   ├── bonita-tenant-sp-custom.xml
 │   │   │   ├── config-workers.sh
-│   │   │   ├── login-logo.png
-│   │   │   ├── logo.png
-│   │   │   └── replace-logo.sh
+│   │   │   ├── event-handler-example-1.0.0-SNAPSHOT.jar
+│   │   │   └── register-event-handler.sh
 ```
 
 ## When are custom initialization scripts invoked?
@@ -66,85 +66,14 @@ More precisely scripts are executed in the order returned by this command: `ls -
 Ths `config-workers.sh` script is provided as part of BCD's core scripts.
 In particular it shows how to further configure the server using [Bonita Platform setup tool](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/BonitaBPM_platform_setup).
 
-### replace-logo.sh
-
-This sample script replaces the default logo images (login and header logos) in Bonita Portal.
-
-Assuming the following custom logo files:
-
-- roles/bonita/files/custom-init.d/login-logo.png
-- roles/bonita/files/custom-init.d/logo.png
-
-Here's a sample `replace-logo.sh` script:
-
-```bash
-#!/bin/bash
-
-set -euxo pipefail
-
-indicator_path=/opt/$(basename $BASH_ARGV)-executed
-if [ -f ${indicator_path} ]; then
-  echo "Custom script already executed" && return 0
-fi
-
-BONITA_PATH=${BONITA_PATH:-/opt/bonita}
-BONITA_FILES=${BONITA_FILES:-/opt/files}
-
-war_path=$(find "${BONITA_PATH}/Bonita"*"Subscription-${BONITA_VERSION}-Tomcat-${TOMCAT_VERSION}/server/webapps" -name bonita.war)
-script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-workdir="${BONITA_FILES}/replace-logo"
-rm -rf ${workdir} && mkdir -p ${workdir}
-
-pushd ${workdir}
-
-# extract themes from war
-mkdir -p WEB-INF/classes
-unzip -j "${war_path}" "WEB-INF/classes/bonita-portal-theme*.zip" -d WEB-INF/classes
-
-# prepare logo images
-mkdir -p skin/images
-cp ${script_dir}/login-logo.png ${script_dir}/logo.png skin/images/
-
-# replace logo images in themes
-ls -1 WEB-INF/classes/bonita-portal-theme*.zip | xargs -I {} -n1 zip -r {} skin
-
-# repackage war
-zip -r "${war_path}" "WEB-INF/classes/bonita-portal-theme*.zip"
-
-touch ${indicator_path}
-```
-
-### activate-all-dynamic-checks.sh
-
-This sample script activates all standard [REST API dynamic authorization rules](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization) to further secure Bonita REST API. These rules are meant to cover the most frequent cases.
-
-```bash
-#!/bin/bash
-
-set -euxo pipefail
-
-BONITA_PATH=${BONITA_PATH:-/opt/bonita}
-BONITA_SETUP_SH=$(find "${BONITA_PATH}/Bonita"*"-${BONITA_VERSION}-Tomcat-${TOMCAT_VERSION}/setup" -name setup.sh)
-
-# Pull current configuration
-${BONITA_SETUP_SH} pull
-
-# Uncomment all default rules
-find ${BONITA_PATH}/Bonita*-${BONITA_VERSION}-Tomcat-${TOMCAT_VERSION}/setup/platform_conf/current -name "dynamic-permissions-checks-custom.properties" | xargs -I{} -n10 \
-  sed -i "s/^#\(GET|\|POST|\|PUT|\|DELETE|\)/\1/g"
-
-# Update configuration
-${BONITA_SETUP_SH} push
-```
-
 ### register-event-handler.sh
 
 This sample script deploys and registers a Bonita engine Event handler as described in [Event handlers Documentation](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/event-handlers).
 
 Assuming the following files:
 
-- roles/bonita/files/custom-init.d/event-handler-example-1.0.0-SNAPSHOT.jar (event handler JAR file)
-- roles/bonita/files/custom-init.d/bonita-tenant-sp-custom.xml (tenant configuration file where the event handler is registered)
+- `roles/bonita/files/custom-init.d/event-handler-example-1.0.0-SNAPSHOT.jar` (event handler JAR file)
+- `roles/bonita/files/custom-init.d/bonita-tenant-sp-custom.xml` (tenant configuration file where the event handler is registered)
 
 Here's a sample `register-event-handler.sh` script:
 
@@ -185,6 +114,8 @@ ${BONITA_SETUP_SH} push
 ### add-javamelody.sh
 
 This sample script deploys the [JavaMelody monitoring tool](https://github.com/javamelody/javamelody/wiki) to Bonita web application. This example shows how to download external jars and include them to Bonita WAR.
+
+With this example, JavaMelody will be available at this URL: `http://<bonita_host>:8081/bonita/monitoring`.
 
 ```bash
 #!/bin/bash

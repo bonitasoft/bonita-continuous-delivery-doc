@@ -6,11 +6,11 @@ This Docker image provides a ready-to-use environment to launch Bonita Continuou
 
 ### From pre-built image
 
-A pre-built BCD controller image is provided with BCD deliverable as a `bcd-controller_<version>.tar.gz` archive. It is located in the `ansible_<version>/docker` directory.
+A pre-built BCD controller image is provided with BCD deliverable as a `bcd-controller_<version>.tar.gz` archive. It is located in the `bonita-continuous-delivery_<version>/docker` directory.
 
 Load this image into Docker engine as follows:
 ```
-$ cd ansible_<version>/docker
+$ cd bonita-continuous-delivery_<version>/docker
 $ gunzip -c bcd-controller_<version>.tar.gz | docker load
 Loaded image: bonitasoft/bcd-controller:<version>
 Loaded image: bonitasoft/bcd-controller:latest
@@ -18,11 +18,11 @@ Loaded image: bonitasoft/bcd-controller:latest
 
 ### From source
 
-You can also build the image from source. Its Dockerfile is provided with BCD deliverable in the `ansible_<version>/docker` directory.
+You can also build the image from source. Its Dockerfile is provided with BCD deliverable in the `bonita-continuous-delivery_<version>/docker` directory.
 
 Build the image as follows:
 ```
-$ cd ansible_<version>/docker
+$ cd bonita-continuous-delivery_<version>/docker
 $ docker build -t bonitasoft/bcd-controller .
 ```
 
@@ -45,8 +45,8 @@ aws_secret_access_key = <YOUR_AWS_SECRET_ACCESS_KEY>
 ```
 $ docker run --rm -t -i --name bcd-controller \
     -v <local_path_to_.boto>:/home/bonita/.boto \
-    -v <local_path_to_ansible_folder>:/home/bonita/ansible \
+    -v <local_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
     -v <local_path_to_ssh_private_key>:/home/bonita/.ssh/<ssh_private_key> \
     bonitasoft/bcd-controller /bin/bash
-$ cd /home/bonita/ansible
+$ cd /home/bonita/bonita-continuous-delivery
 ```

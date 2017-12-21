@@ -19,13 +19,13 @@ Follow these installation steps on your workstation.
     ```
     $ tar xzf bonita-continuous-delivery_<version>.tar.gz
     ```
-    This step creates a `ansible_<version>` directory which contains:
+    This step creates a `bonita-continuous-delivery_<version>` directory which contains:
     - Bonita Continuous Delivery Ansible playbooks and roles.
-    - A pre-built Docker image for the Control Machine. This Docker image is provided as a `bcd-controller_<version>.tar.gz` archive located in the `ansible_<version>/docker` directory.
+    - A pre-built Docker image for the Control Machine. This Docker image is provided as a `bcd-controller_<version>.tar.gz` archive located in the `bonita-continuous-delivery_<version>/docker` directory.
 
 1. Load the `bcd-controller_<version>.tar.gz` Docker image:
     ```
-    $ cd ansible_<version>/docker
+    $ cd bonita-continuous-delivery_<version>/docker
     $ gunzip -c bcd-controller_<version>.tar.gz | docker load
     Loaded image: bonitasoft/bcd-controller:<version>
     Loaded image: bonitasoft/bcd-controller:latest
@@ -38,13 +38,13 @@ Follow these installation steps on your workstation.
         aws_secret_access_key = <YOUR_AWS_SECRET_ACCESS_KEY>
         ```
     - **`ssh_private_key`** (mounted as `/home/bonita/.ssh/ssh_private_key`) - The `ssh_private_key` file is the SSH private key used to connect to your target machines. For AWS, this is the private part of your [EC2 key pair](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html). This file should only be accessible from your user (`chmod 600 ~/.ssh/ssh_private_key`).
-    - **`/local/path/to/ansible_<version>`** (mounted as `/home/bonita/ansible`) - The provided `ansible` directory contains Ansible playbooks for Bonita Continuous Delivery.
+    - **`/local/path/to/bonita-continuous-delivery_<version>`** (mounted as `/home/bonita/bonita-continuous-delivery`) - The provided `bonita-continuous-delivery` directory contains Ansible playbooks for Bonita Continuous Delivery.
 
 1. Start a Docker container for the Control Machine:
     ```
     $ docker run --rm -ti --hostname control_machine --name bcd-controller \
         -v <local_path_to_.boto_file>:/home/bonita/.boto \
-        -v <local_path_to_ansible_directory>:/home/bonita/ansible \
+        -v <local_path_to_bonita-continuous-delivery_directory>:/home/bonita/bonita-continuous-delivery \
         -v <local_path_to_ssh_private_key_file>:/home/bonita/.ssh/<ssh_private_key> \
         bonitasoft/bcd-controller /bin/bash
     ```
@@ -55,25 +55,25 @@ Here is a complete example of how to install the Control Machine Docker image fo
 
 **Warning**: This example uses *fake* AWS credentials and SSH private key... :-)
 
-Assuming you have a `bonita-continuous-delivery_0.1.0.tar.gz` archive in your `$HOME` directory:
+Assuming you have a `bonita-continuous-delivery_1.0.0.tar.gz` archive in your `$HOME` directory:
 
 ```
 $ cd $HOME
-$ tar xzf bonita-continuous-delivery_0.1.0.tar.gz
+$ tar xzf bonita-continuous-delivery_1.0.0.tar.gz
 
-$ cd ansible_0.1.0/docker
+$ cd bonita-continuous-delivery_1.0.0/docker
 
-$ gunzip -c bcd-controller_0.1.0.tar.gz | docker load
+$ gunzip -c bcd-controller_1.0.0.tar.gz | docker load
 [...]
-Loaded image: bonitasoft/bcd-controller:0.1.0
+Loaded image: bonitasoft/bcd-controller:1.0.0
 Loaded image: bonitasoft/bcd-controller:latest
 
 $ cd $HOME
 
 $ ls -nh
 total 418M
-drwxrwxr-x 12 1000 1000 4,0K juil.  6 11:34 ansible_0.1.0
--rw-rw-r--  1 1000 1000 418M juil.  6 11:34 bonita-continuous-delivery_0.1.0.tar.gz
+drwxrwxr-x 12 1000 1000 4,0K juil.  6 11:34 bonita-continuous-delivery_1.0.0
+-rw-rw-r--  1 1000 1000 418M juil.  6 11:34 bonita-continuous-delivery_1.0.0.tar.gz
 
 $ cat ~/.boto
 [Credentials]
@@ -85,12 +85,12 @@ $ ls -n ~/.ssh/bonita_us-west-2.pem
 
 $ docker run --rm -ti --hostname control_machine --name bcd-controller \
         -v ~/.boto:/home/bonita/.boto \
-        -v ~/ansible_0.1.0:/home/bonita/ansible \
+        -v ~/bonita-continuous-delivery_1.0.0:/home/bonita/bonita-continuous-delivery \
         -v ~/.ssh/bonita_us-west-2.pem:/home/bonita/.ssh/bonita_us-west-2.pem \
         bonitasoft/bcd-controller /bin/bash
 bonita@control_machine:~$
-bonita@control_machine:~$ cd ansible
-bonita@control_machine:~/ansible$
+bonita@control_machine:~$ cd bonita-continuous-delivery
+bonita@control_machine:~/bonita-continuous-delivery$
 ```
 
 
@@ -100,13 +100,13 @@ We provide a [BCD Command Line Interface](cli.md) (CLI) to execute Bonita Contin
 
 The BCD CLI is directly available as a `bcd` command when using the `bonitasoft/bcd-controller` Docker image.
 
-The `bcd` command must be launched from the `ansible` directory where Bonita Continuous Delivery Ansible playbooks are located.
+The `bcd` command must be launched from the `bonita-continuous-delivery` directory where Bonita Continuous Delivery Ansible playbooks are located.
 
 You can call the `bcd` command with the `--help` option to get available options and commands:
 ```
 bonita@control_machine:~$
-bonita@control_machine:~$ cd ansible
-bonita@control_machine:~/ansible$ bcd --help
+bonita@control_machine:~$ cd bonita-continuous-delivery
+bonita@control_machine:~/bonita-continuous-delivery$ bcd --help
 Usage: bcd [OPTIONS] COMMAND1 [ARGS]... [COMMAND2 [ARGS]...]...
 
   Bonita Continuous Delivery CLI.

@@ -25,7 +25,7 @@ The Bonita Continuous Delivery (BCD) tooling is provided through a Docker contai
 * A “Host” can be an EC2 instance or a dedicated server.
 * Files organization on the local machine:
    * ~/.boto = should contains all credential to your AWS account (if any)
-   * ~/ansible = used as a work directory for the scripts.
+   * ~/bonita-continuous-delivery = used as a work directory for the scripts.
    * ~/.ssh/private_key = used to allow access to hosts
 
 ## AWS Prerequisites
@@ -127,7 +127,7 @@ $ bcd -s scenarios/uswest_performance.yml --yes destroy
 
 In order to setup your own environment without the [BCD Controller Docker image](docker.md), you can follow the installation procedure described in its Dockerfile.
 
-The BCD controller Dockerfile is provided with BCD deliverable in the `ansible_<version>/docker` directory.
+The BCD controller Dockerfile is provided with BCD deliverable in the `bonita-continuous-delivery_<version>/docker` directory.
 
 ### Debugging Facts
 

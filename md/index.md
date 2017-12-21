@@ -41,7 +41,7 @@ If you have fulfilled all the prerequisites then you can follow the [Quickstart 
 
 ## How to use
 
-The classic usage at this very moment is:
+The nominal usage of BCD can de described as the following workflow:
 - (Optional) Amazon EC2 instance creation
 - Bonita platform deployment in EC2 or on premises
 - (Optional) Amazon EC2 instance deletion

@@ -146,7 +146,7 @@ touch ${indicator_path}
 
 This sample script deploys [PSI Probe](https://github.com/psi-probe/psi-probe/wiki) (an _Advanced manager and monitor for Apache Tomcat_) along with Bonita in the Tomcat bundle.
 
-In particular, it shows how to reference BCD variables in custom initialization files. All custom referenced variables ca be defined at [BCD scenario](scenarios.md) level.
+In particular, it shows how to reference BCD variables in custom initialization files. All custom referenced variables can be defined at [BCD scenario](scenarios.md) level.
 
 With this example, PSI Probe will be available at this URL: `http://<bonita_host>:8081/probe`. To connect to PSI Probe, use the credentials defined with the `custom_manager_username` and `custom_manager_password` variables. By default: `custom_manager_username=admin` and `custom_manager_password=t0psecret`.
 

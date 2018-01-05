@@ -1,6 +1,4 @@
-# Amazon EC2 Provisioning Set Up
-
-## AWS prerequisite
+# AWS prerequisites
 
 In order to use Amazon EC2 instances, some configuration steps need to be performed as a prerequisite.
 The following steps are required to set up AWS credentials for Ansible automation.
@@ -25,7 +23,7 @@ The following steps are required to set up AWS credentials for Ansible automatio
         ]
     }
     ```
-1. Create an IAM Policy to allow to describe DB instances (mandatory for dynamic inventory script).
+1. Create an IAM Policy to allow to describe DB instances and list tags (mandatory for dynamic inventory script).
     - **Policy name**: RDSDescribeDBInstances
     - **Policy document**:
     ```json
@@ -36,7 +34,8 @@ The following steps are required to set up AWS credentials for Ansible automatio
                 "Sid": "Stmt1498730873000",
                 "Effect": "Allow",
                 "Action": [
-                    "rds:DescribeDBInstances"
+                    "rds:DescribeDBInstances",
+                    "rds:ListTagsForResource"
                 ],
                 "Resource": [
                     "*"

@@ -1,6 +1,6 @@
 * [Bonita Continuous Delivery overview](index.md)
 * [Tutorials](_tutorials.md)
-    * [Amazon AWS prerequisites](aws_prerequisites.md)
+    * [AWS prerequisites](aws_prerequisites.md)
     * [Licensing prerequisites](licensing_prerequisites.md)
     * [Quick start](quickstart.md)
     * [Bonita container custom initialization](custom_init.md)

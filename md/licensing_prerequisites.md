@@ -12,4 +12,4 @@ In order that your deployment retrieves a license for Bonita automatically, you 
 |lic_type|Type of license in [production\|development\|qualification\|trial].|trial|
 |lic_name|Full name of the licensee. This field can only contain alphanumeric characters, dashes, underscores and spaces.|John Doe|
 |lic_company|Company name.|ACME Inc|
-|lic_email|Email address where the license is to send.|john.doe@acme.com|
+|lic_email|Email address where the license will be sent.|john.doe@acme.com|

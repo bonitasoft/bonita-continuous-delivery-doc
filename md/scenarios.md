@@ -37,6 +37,7 @@ In case of AWS deployments. The configuration file value should be  ```aws_vars`
 |ec2_security_group_name|Y | |Security group name for the target instances |default|
 |ec2_subnet_ids|Y | |Subnet id for the target instances |subnet-aa14e0cf|
 |ec2_keypair|Y | |Key pair name for the target instances. Linked to ansible_private_key_file. |jenkins_ansible_us-west-2|
+|ec2_iam_role|N| |The role name to apply through a profile instance to ec2 instances of a cluster in order to permit ec2 autodiscovery|ClusterBCD|
 |boto_path|N|~/.boto|Path to the Boto file with the AWS credentials.||
 |rds|N|false|Precises if we use RDS for the Bonita BPM databases or if we use a Docker container deployed in an EC2 instance instead (default)|true|
 
@@ -48,6 +49,8 @@ The following figure describes for each tier the important variables.
 |aws_database_instance_type|Y | |Instance type for the database instance |t2.micro|
 |aws_bonita_instance_type|Y | |Instance type for the Bonita instance |t2.micro|
 |aws_load_balancer_instance_type|Y | |Instance type for the load balancer instance |t2.micro|
+|aws_iam_role|N| |Set this parameter if you want to assume a specific role while deploying. It's useful in an AWS organization with IAM users and multiple AWS accounts. See [AWS Organizations](aws_organizations.md)|arn:aws:iam::123456789012:role/BCD|
+|aws_sso|N| |Set this parameter if you want to use [Gsuite SSO](aws_sso_using_gsuite.md)|gsuite|
 
 ## Bonita
 Some parameters should be precised for Bonita. The corresponding Docker tar files should be present in ```docker``` directory.

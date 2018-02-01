@@ -9,3 +9,4 @@
 * [BCD Controller Docker image](_docker.md)
     * [Docker image overview](docker.md)
     * [BCD Command Line Interface](cli.md)
+* [Release notes](release_notes.md)

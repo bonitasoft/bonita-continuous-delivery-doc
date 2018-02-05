@@ -1,3 +1,4 @@
+* [Release notes](release_notes.md)
 * [Bonita Continuous Delivery overview](index.md)
 * [Tutorials](_tutorials.md)
     * [AWS prerequisites](aws_prerequisites.md)
@@ -9,4 +10,3 @@
 * [BCD Controller Docker image](_docker.md)
     * [Docker image overview](docker.md)
     * [BCD Command Line Interface](cli.md)
-* [Release notes](release_notes.md)

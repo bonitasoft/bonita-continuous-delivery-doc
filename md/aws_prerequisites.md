@@ -11,7 +11,7 @@ In order to use Amazon EC2 instances, some configuration steps need to be perfor
 The following steps are the basic requirements to set up AWS credentials for Ansible automation.
 More details are available regarding:
 * [AWS Organizations](aws_organizations.md)
-* [Single Sign-On to AWS Using G Suite](aws_sso_using_gsuite.md)
+* [Single Sign-On](aws_sso.md)
 
 1. [Create an IAM Policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html) to grant full access to Amazon EC2 on a specific region (eg. us-west-2)
     - **Policy name**: EC2FullAccess_us-west-2
@@ -71,22 +71,15 @@ More details are available regarding:
         ]
     }
     ```
-1. Create an IAM Policy to grant access on [Instance Profile](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html) management
-    - **Policy name**: IAMInstanceProfileAccess
+1. Create an IAM Policy to give [PassRole](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html) permission in order to be able to associate a specific role with the EC2 instances of a cluster.
+    - **Policy name**: IAMPassRole
     - **Policy document**:
     ```json
     {
         "Version": "2012-10-17",
         "Statement": [
             {
-                "Action": [
-                    "iam:CreateInstanceProfile",
-                    "iam:GetInstanceProfile",
-                    "iam:AddRoleToInstanceProfile",
-                    "iam:PassRole",
-                    "iam:RemoveRoleFromInstanceProfile",
-                    "iam:DeleteInstanceProfile"
-                ],
+                "Action": "iam:PassRole",
                 "Effect": "Allow",
                 "Resource": "*"
             }
@@ -117,6 +110,7 @@ More details are available regarding:
         ]
     }
     ```
+Pay attention that for security reasons, pushing AWS user credentials to EC2 instances, as done with BCD 1.0.x, are no longer supported.
 1. [Create an IAM Role for an AWS service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html)
     - Select EC2 to "Allows EC2 instances to call AWS services on your behalf."
     - Select the IAM Policy created previously (ClusterBCD_us-west-2)

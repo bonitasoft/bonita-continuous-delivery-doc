@@ -106,6 +106,7 @@ More details are available regarding:
                     "StringEquals": {
                         "ec2:Region": "us-west-2"
                     }
+                }
             }
         ]
     }

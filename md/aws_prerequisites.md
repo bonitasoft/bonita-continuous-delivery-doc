@@ -1,5 +1,7 @@
 # AWS prerequisites
 
+_If it's not already the case, [signup for an AWS account](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#sign-up-for-aws) first._
+
 In order to use Amazon EC2 instances, some configuration steps need to be performed as a prerequisite.
 The following steps are required to set up AWS credentials for Ansible automation.
 

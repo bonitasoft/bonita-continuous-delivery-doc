@@ -47,7 +47,7 @@ Commands:
 ```
 $ bcd -s scenarios/uswest2_cluster.yml create
 
-$ bcd -s scenarios/vagrant_single.yml -e lic_request=no -y deploy
+$ bcd -s scenarios/vagrant_single.yml -e mail_notification=no -y deploy
 
 $ bcd -s scenarios/uswest2_performance.yml destroy --dry-run
 ```

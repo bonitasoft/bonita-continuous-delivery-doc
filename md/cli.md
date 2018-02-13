@@ -30,16 +30,17 @@ Options:
   -s, --scenario PATH    YAML scenario file (required)
   -y, --yes              Execute action without confirmation prompt
   -v, --verbose          Enable Ansible verbose mode
+  --nocolor              Turn output colorization off
   -e, --extra-vars TEXT  Extra vars for Ansible (multiple) - Variables are
                          passed using the key=value syntax.
   -h, --help             Show this help message
 
 Commands:
-  status     Show the platform status
-  create     Create AWS instances
-  deploy     Deploy Bonita stack
-  undeploy   Undeploy Bonita stack
-  destroy    Destroy AWS machines (EC2 instances)
+  status    Show the platform status
+  create    Create AWS instances
+  deploy    Deploy Bonita stack
+  undeploy  Undeploy Bonita stack
+  destroy   Destroy AWS machines (EC2 instances)
 ```
 
 ### Examples
@@ -47,7 +48,7 @@ Commands:
 ```
 $ bcd -s scenarios/uswest2_cluster.yml create
 
-$ bcd -s scenarios/vagrant_single.yml -e lic_request=no -y deploy
+$ bcd -s scenarios/vagrant_single.yml -e mail_notification=no -y deploy
 
 $ bcd -s scenarios/uswest2_performance.yml destroy --dry-run
 ```

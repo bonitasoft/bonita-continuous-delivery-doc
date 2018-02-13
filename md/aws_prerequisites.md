@@ -1,6 +1,13 @@
 # AWS prerequisites
 
-In order to use Amazon EC2 instances, some configuration steps need to be performed as a prerequisite.
+## Sign Up for AWS
+
+If you do not have an Amazon Web Services (AWS) account yet, first sign up as described in this AWS user guide: [Sign Up for AWS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#sign-up-for-aws).
+
+
+## AWS Setup for BCD
+
+In order to use Amazon EC2 instances, some configuration steps need to be performed as a prerequisite.  
 The following steps are required to set up AWS credentials for Ansible automation.
 
 1. [Create an IAM Policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html) to grant full access to Amazon EC2 on a specific region (eg. us-west-2)
@@ -91,8 +98,14 @@ Therefore a [default VPC and default subnets](http://docs.aws.amazon.com/AmazonV
 Bonita Provisioning solution uses official Ubuntu cloud images as EC2 AMI (Amazon Machine Images).
 Use the [Amazon EC2 AMI Locator](https://cloud-images.ubuntu.com/locator/ec2/) tools to identify IDs of such images.
 
-## Configuration related to the location of your BCD Controller
 
-The `ec2_wrapper.sh` inventory script can be further configured in `templates/ec2.ini.j2`.
-For instance the `vpc_destination_variable` parameter can be set to `public_dns_name` (in order to use Ansible from outside EC2) through the Ansible variable named `ec2_vpc_destination_variable`.
-More information can be found in this [blog post](https://aws.amazon.com/blogs/apn/getting-started-with-ansible-and-dynamic-amazon-ec2-inventory-management/).
+## Dynamic EC2 inventory configuration
+
+When deploying to AWS, BCD uses [dynamic Amazon EC2 inventory](http://docs.ansible.com/ansible/latest/intro_dynamic_inventory.html#example-aws-ec2-external-inventory-script) with a `ec2_wrapper.sh` script.
+
+This `ec2_wrapper.sh` script can be further configured with the `ec2.ini.j2` template.
+
+For instance, if you are running the BCD controller **from outside EC2**, the `vpc_destination_variable` parameter should be set to `ip_address`. If you are running the BCD controller **from within EC2**, the `vpc_destination_variable` parameter should be set to `private_ip_address`.  
+This parameter is managed by the `ec2_vpc_destination_variable` BCD variable.
+
+More information on dynamic EC2 inventory management can be found in [this blog post](https://aws.amazon.com/blogs/apn/getting-started-with-ansible-and-dynamic-amazon-ec2-inventory-management/).

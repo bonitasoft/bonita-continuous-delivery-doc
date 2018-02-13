@@ -7,8 +7,11 @@ If you do not have an Amazon Web Services (AWS) account yet, first sign up as de
 
 ## AWS Setup for BCD
 
-In order to use Amazon EC2 instances, some configuration steps need to be performed as a prerequisite.  
-The following steps are required to set up AWS credentials for Ansible automation.
+In order to use Amazon EC2 instances, some configuration steps need to be performed as a prerequisite.
+The following steps are the basic requirements to set up AWS credentials for Ansible automation.
+More details are available regarding:
+* [AWS Organizations](aws_organizations.md)
+* [Single Sign-On](aws_sso.md)
 
 1. [Create an IAM Policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html) to grant full access to Amazon EC2 on a specific region (eg. us-west-2)
     - **Policy name**: EC2FullAccess_us-west-2
@@ -67,10 +70,52 @@ The following steps are required to set up AWS credentials for Ansible automatio
             }
         ]
     }
+    ```
+1. Create an IAM Policy to give [PassRole](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html) permission in order to be able to associate a specific role with the EC2 instances of a cluster.
+    - **Policy name**: IAMPassRole
+    - **Policy document**:
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Action": "iam:PassRole",
+                "Effect": "Allow",
+                "Resource": "*"
+            }
+        ]
+    }
     ```    
 1. [Create an IAM Group](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_create.html)
     - **Group name**: bonita-provisioning
     - Select the IAM Policies created previously
+1. Create an IAM Policy to allow ec2 instances of a cluster to autodiscover themselves on a specific region (eg. us-west-2).
+    - **Policy name**: ClusterBCD_us-west-2
+    - **Policy document**:
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Action": [
+                    "ec2:DescribeInstances"
+                ],
+                "Effect": "Allow",
+                "Resource": "*",
+                "Condition": {
+                    "StringEquals": {
+                        "ec2:Region": "us-west-2"
+                    }
+                }
+            }
+        ]
+    }
+    ```
+Pay attention that for security reasons, pushing AWS user credentials to EC2 instances, as done with BCD 1.0.x, are no longer supported.
+1. [Create an IAM Role for an AWS service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html)
+    - Select EC2 to "Allows EC2 instances to call AWS services on your behalf."
+    - Select the IAM Policy created previously (ClusterBCD_us-west-2)
+    - **Role name**: ClusterBCD
 1. [Create an IAM User](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)
     - **Access type**: Programmatic access
     - Add user to the IAM group created previously

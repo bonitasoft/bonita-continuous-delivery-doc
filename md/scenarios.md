@@ -37,6 +37,7 @@ In case of AWS deployments. The configuration file value should be  ```aws_vars`
 |ec2_security_group_name|Y | |Security group name for the target instances |default|
 |ec2_subnet_ids|Y | |Subnet id for the target instances |subnet-aa14e0cf|
 |ec2_keypair|Y | |Key pair name for the target instances. Linked to ansible_private_key_file. |jenkins_ansible_us-west-2|
+|ec2_discovery_iam_role|N| |Name of the IAM role to attach to EC2 instances to allow Hazelcast EC2 auto-discovery. This is MANDATORY when deploying a Bonita cluster on AWS with BCD.|ClusterBCD|
 |boto_path|N|~/.boto|Path to the Boto file with the AWS credentials.||
 |rds|N|false|Precises if we use RDS for the Bonita BPM databases or if we use a Docker container deployed in an EC2 instance instead (default)|true|
 
@@ -48,6 +49,8 @@ The following figure describes for each tier the important variables.
 |aws_database_instance_type|Y | |Instance type for the database instance |t2.micro|
 |aws_bonita_instance_type|Y | |Instance type for the Bonita instance |t2.micro|
 |aws_load_balancer_instance_type|Y | |Instance type for the load balancer instance |t2.micro|
+|aws_assumed_iam_role|N| |An IAM role can be assumed, so all requests are run as that role. This can be useful for connecting across different accounts, or to limit user access. Set this parameter if you want to assume an IAM role while deploying on AWS. It is useful in an AWS organization with IAM users and multiple AWS accounts. See [AWS Organizations](aws_organizations.md)|arn:aws:iam::123456789012:role/BCD|
+|aws_use_temporary_credentials|N| |Set to `true` when using [AWS temporary security credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) which is the case while using a [SSO](aws_sso.md). Set to `false` when using long-term security credentials such as IAM user credentials.|true|
 
 ## Bonita
 Some parameters should be precised for Bonita. The corresponding Docker tar files should be present in ```docker``` directory.

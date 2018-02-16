@@ -8,7 +8,7 @@ In the sections below we will manipluate configuration into templates and not at
 ## Deactivating dynamic permissions checks
 
 BCD 1.0.x, doesn't manage directly the REST_API_DYN_AUTH_CHECKS environment variable.
-So to dactivate dynamic permissions checks you will need to use the [custom initialization mechanism](https://documentation.bonitasoft.com/bcd/${varVersion}/custom_init) by adding this kind of script `roles/bonita/files/custom-init.d/deactivate-dynamic-permissions-checks.sh`
+So to deactivate dynamic permissions checks you will need to use the [custom initialization mechanism](https://documentation.bonitasoft.com/bcd/${varVersion}/custom_init) by adding this kind of script `roles/bonita/files/custom-init.d/deactivate-dynamic-permissions-checks.sh`
 ```
 #!/bin/bash
 

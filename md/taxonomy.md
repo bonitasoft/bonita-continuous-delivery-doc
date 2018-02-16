@@ -4,6 +4,7 @@
     * [Licensing prerequisites](licensing_prerequisites.md)
     * [Quick start](quickstart.md)
     * [Bonita container custom initialization](custom_init.md)
+        * [How to configure REST API authorization](how_to_configure_rest_api_authorization.md)
 * [Scenario variables reference](scenarios.md)
 * [Known issues](known_issues.md)
 * [BCD Controller Docker image](_docker.md)

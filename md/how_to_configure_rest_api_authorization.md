@@ -62,7 +62,7 @@ ${BONITA_SETUP_SH} push
 touch ${indicator_path}
 ```
 
-For a more complex configuration you can also provide directly a file `roles/bonita/files/custom-init.d/custom-permissions-mapping.properties` and push it with a script like `roles/bonita/files/custom-init.d/add-custom-permissions-file.sh`
+For a more advanced configuration you can also provide directly a file `roles/bonita/files/custom-init.d/custom-permissions-mapping.properties` and push it with a script like `roles/bonita/files/custom-init.d/add-custom-permissions-file.sh`
 
 
 ```

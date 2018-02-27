@@ -62,6 +62,33 @@ ${BONITA_SETUP_SH} push
 touch ${indicator_path}
 ```
 
+For a more complex configuration you can also provide directly a file `roles/bonita/files/custom-init.d/custom-permissions-mapping.properties` and push it with a script like `roles/bonita/files/custom-init.d/add-custom-permissions-file.sh`
+
+
+```
+#!/bin/bash
+
+set -euxo pipefail
+
+indicator_path=/opt/$(basename $BASH_ARGV)-executed
+if [ -f ${indicator_path} ]; then
+  echo "Custom script already executed" && return 0
+fi
+
+BONITA_PATH=${BONITA_PATH:-/opt/bonita}
+BONITA_FILES=${BONITA_FILES:-/opt/files}
+BONITA_SETUP_SH="${BONITA_PATH}/Bonita*Subscription-${BONITA_VERSION}-Tomcat-${TOMCAT_VERSION}/setup/setup.sh"
+
+# define custom permissions
+${BONITA_SETUP_SH} pull
+cp /opt/custom-init.d/custom-permissions-mapping.properties ${BONITA_PATH}/Bonita*Subscription-${BONITA_VERSION}-Tomcat-${TOMCAT_VERSION}/setup/platform_conf/current/tenant_template_portal/
+${BONITA_SETUP_SH} push
+
+# Create indicator file
+touch ${indicator_path}
+```
+
+
 ## Enabling debug mode
 
 If [debug mode](https://documentation.bonitasoft.com/bonita/${varVersion}/rest-api-authorization?hash=debug) is activated, whenever you update a configuration file or a dynamic check script, the changes take effect immediately.

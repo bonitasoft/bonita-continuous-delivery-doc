@@ -64,6 +64,8 @@ Some parameters should be precised for Bonita. The corresponding Docker tar file
 |bonita_db_port|N|5432|Database port |5432|
 |bonita_db_admin_user|N|postgres|Admin user on database instance|root|
 |bonita_db_admin_pass|N|mysecretpassword|Admin password on database instance|password|
+|bonita_http_api|N|false|Activates the Bonita [HTTP API](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization#toc9)|true|
+|bonita_rest_api_dyn_auth_checks|N|true|Activates [dynamic authorization checking](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization#toc2) on REST API|false|
 
 ## Email notification
 An email can be sent automatically with Bonita stack details at the end of the deployment phase. This feature uses [Ansible mail module](http://docs.ansible.com/ansible/latest/mail_module.html).

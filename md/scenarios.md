@@ -37,6 +37,7 @@ In case of AWS deployments. The configuration file value should be  ```aws_vars`
 |ec2_security_group_name|Y | |Security group name for the target instances |default|
 |ec2_subnet_ids|Y | |Subnet id for the target instances |subnet-aa14e0cf|
 |ec2_keypair|Y | |Key pair name for the target instances. Linked to ansible_private_key_file. |jenkins_ansible_us-west-2|
+|ec2_discovery_iam_role|N| |Name of the IAM role to attach to EC2 instances to allow Hazelcast EC2 auto-discovery. This is MANDATORY when deploying a Bonita cluster on AWS with BCD.|ClusterBCD|
 |boto_path|N|~/.boto|Path to the Boto file with the AWS credentials.||
 |rds|N|false|Precises if we use RDS for the Bonita BPM databases or if we use a Docker container deployed in an EC2 instance instead (default)|true|
 

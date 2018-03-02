@@ -211,3 +211,6 @@ touch ${indicator_path}
 </tomcat-users>
 ```
 
+### 5. More examples about REST API authorization
+
+See [how to configure REST API authorization](how_to_configure_rest_api_authorization.md).

@@ -7,29 +7,10 @@ In the sections below we will manipluate configuration into templates and not at
 
 ## Deactivating dynamic permissions checks
 
-BCD 1.0.x, doesn't manage directly the REST_API_DYN_AUTH_CHECKS environment variable.
-So to deactivate dynamic permissions checks you will need to use the [custom initialization mechanism](https://documentation.bonitasoft.com/bcd/${varVersion}/custom_init) by adding this kind of script `roles/bonita/files/custom-init.d/deactivate-dynamic-permissions-checks.sh`
+Since 2.0.x, BCD manages the REST_API_DYN_AUTH_CHECKS environment through the [scenario variable](scenarios.md) `bonita_rest_api_dyn_auth_checks`.
+So to deactivate dynamic permissions checks you will just have to add the following line into your scenario
 ```
-#!/bin/bash
-
-set -euxo pipefail
-
-indicator_path=/opt/$(basename $BASH_ARGV)-executed
-if [ -f ${indicator_path} ]; then
-  echo "Custom script already executed" && return 0
-fi
-
-BONITA_PATH=${BONITA_PATH:-/opt/bonita}
-BONITA_FILES=${BONITA_FILES:-/opt/files}
-BONITA_SETUP_SH="${BONITA_PATH}/Bonita*Subscription-${BONITA_VERSION}-Tomcat-${TOMCAT_VERSION}/setup/setup.sh"
-
-# deactivate dynamic permissions checks
-${BONITA_SETUP_SH} pull
-rm ${BONITA_PATH}/Bonita*Subscription-${BONITA_VERSION}-Tomcat-${TOMCAT_VERSION}/setup/platform_conf/current/tenant_template_portal/dynamic-permissions-checks-custom.properties
-${BONITA_SETUP_SH} push
-
-# Create indicator file
-touch ${indicator_path}
+bonita_rest_api_dyn_auth_checks: false
 ```
 
 ## Adding custom permissions

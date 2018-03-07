@@ -5,6 +5,13 @@
 - On a BCD controller we can manage only one Terraform stack at a time.
 
 
+## What's new in 1.0.3 (2018-03-07)
+
+### Bugfixes
+
+- BCD-204 Hibernate cache is not disabled on cluster deployments
+
+
 ## What's new in 1.0.2 (2018-02-02)
 
 ### Bugfixes

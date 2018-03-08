@@ -11,6 +11,10 @@
 
 - BCD-204 Hibernate cache is not disabled on cluster deployments
 
+### Internal refactoring
+
+- BCD-171 Restructure License request into a class
+- set bcd_cli version to 1.0.2
 
 ## What's new in 1.0.2 (2018-02-02)
 

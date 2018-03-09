@@ -2,7 +2,19 @@
 
 ## Limitations and known issues
 
-- On a BCD controller we can manage only one Terraform stack at a time.
+- The same BCD stack cannot be managed with multiple BCD controller instances due to the use of Terraform "local" backend.
+
+
+## What's new in 1.0.3 (2018-03-08)
+
+### Bugfixes
+
+- BCD-204 Hibernate cache is not disabled on cluster deployments
+
+### Internal refactoring
+
+- BCD-171 Refactor license request script using bonita_license module
+- Set bcd_cli module version to 1.0.2
 
 
 ## What's new in 1.0.2 (2018-02-02)

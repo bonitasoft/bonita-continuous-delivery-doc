@@ -7,8 +7,8 @@ In the sections below we will manipluate configuration into templates and not at
 
 ## Deactivating dynamic permissions checks
 
-Since 2.0.x, BCD manages the REST_API_DYN_AUTH_CHECKS environment through the [scenario variable](scenarios.md) `bonita_rest_api_dyn_auth_checks`.
-So to deactivate dynamic permissions checks you will just have to add the following line into your scenario
+Since 2.0.x, BCD manages the REST_API_DYN_AUTH_CHECKS environment through the [scenario variable](scenarios.md) `bonita_rest_api_dyn_auth_checks`.  
+So to deactivate dynamic permissions checks you will just have to add the following line into your scenario:
 ```
 bonita_rest_api_dyn_auth_checks: false
 ```

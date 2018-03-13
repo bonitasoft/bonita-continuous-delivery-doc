@@ -1,6 +1,6 @@
 # How to enable remote monitoring using JMX
 
-The Java virtual machine (Java VM) has built-in instrumentation that enables you to monitor and manage it using the Java Management Extensions (JMX) technology.
+The Java virtual machine (Java VM) has built-in instrumentation that enables you to monitor and manage it using the [Java Management Extensions (JMX) technology](http://www.oracle.com/technetwork/articles/javase/jmx-138825.html).
 
 To enable and configure the ready-to-use JMX agent so that it can monitor and manage the Java VM of the Bonita container, certain system properties must be set and an additional port must be exposed.
 

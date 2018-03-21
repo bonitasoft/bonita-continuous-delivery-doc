@@ -58,12 +58,12 @@ The BCD CLI is directly available as a `bcd` command when using the BCD Controll
 
 Examples:
 ```shell
-$ bcd -s scenarios/uswest_performance.yml create
-$ bcd -s scenarios/uswest_performance.yml --yes deploy
-$ bcd -s scenarios/uswest_performance.yml destroy --dry-run
-$ bcd -s scenarios/vagrant_cluster.yml deploy
-$ bcd -s scenarios/vagrant_cluster.yml --yes undeploy
-$ bcd -s scenarios/uswest2_cluster.yml -y create deploy
+$ bcd -s scenarios/uswest_performance.yml stack create
+$ bcd -s scenarios/uswest_performance.yml --yes stack deploy
+$ bcd -s scenarios/uswest_performance.yml stack destroy --dry-run
+$ bcd -s scenarios/vagrant_cluster.yml stack deploy
+$ bcd -s scenarios/vagrant_cluster.yml stack --yes undeploy
+$ bcd -s scenarios/uswest2_cluster.yml -y stack create deploy
 ```
 
 ### EC2 instances creation
@@ -74,7 +74,7 @@ Example: Create 3 x `t2.micro` EC2 instances
 
 One `t2.micro` for the database, one for Bonita.
 ```shell
-$ bcd -s scenarios/uswest_performance.yml create
+$ bcd -s scenarios/uswest_performance.yml stack create
 ```
 
 ### Deployment and Test
@@ -83,7 +83,7 @@ $ bcd -s scenarios/uswest_performance.yml create
 
 Once EC2 instances are created, you can continue with deployment as follows:
 ```shell
-$ bcd -s scenarios/uswest_performance.yml deploy
+$ bcd -s scenarios/uswest_performance.yml stack deploy
 ```
 
 This command will read the `scenarios/uswest_performance.yml` configuration file and provision existing EC2 instances accordingly.
@@ -92,7 +92,7 @@ This command will read the `scenarios/uswest_performance.yml` configuration file
 
 Assuming a server is already up and running (eg. `perf-host`), you can use these scripts to deploy a Bonita stack on a static infrastructure.
 ```shell
-$ bcd -s scenarios/perf-host_cluster.yml deploy
+$ bcd -s scenarios/perf-host_cluster.yml stack deploy
 ```
 
 This command will read the `scenarios/perf-host_cluster.yml` configuration file and provision an existing server accordingly.
@@ -107,9 +107,9 @@ We provide 2 sample Vagrant layouts - `1-machine` and `2-machines` - which you c
 
 Examples:
 ```shell
-$ bcd -s scenarios/vagrant_performance.yml deploy
-$ bcd -s scenarios/vagrant_cluster.yml deploy
-$ bcd -s scenarios/vagrant_performance.yml -e "bcd_inventory=inventory/vagrant/2-machines/inventory" deploy
+$ bcd -s scenarios/vagrant_performance.yml stack deploy
+$ bcd -s scenarios/vagrant_cluster.yml stack deploy
+$ bcd -s scenarios/vagrant_performance.yml -e "bcd_inventory=inventory/vagrant/2-machines/inventory" stack deploy
 # The latter syntax allows to override the bcd_inventory variable from the command line.
 ```
 
@@ -117,8 +117,8 @@ $ bcd -s scenarios/vagrant_performance.yml -e "bcd_inventory=inventory/vagrant/2
 
 The `destroy_aws.yml` playbook goal is to delete EC2 instances. When tests have finished, you may delete every related EC2 instances like this:
 ```shell
-$ bcd -s scenarios/uswest_performance.yml destroy --dry-run
-$ bcd -s scenarios/uswest_performance.yml --yes destroy
+$ bcd -s scenarios/uswest_performance.yml stack destroy --dry-run
+$ bcd -s scenarios/uswest_performance.yml --yes stack destroy
 ```
 
 ## Advanced usage

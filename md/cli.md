@@ -22,35 +22,32 @@ The `bcd` command takes a mandatory option called `scenario` through the `-s / -
 
 Then the `bcd` command provides the following subcommands in order to drive Bonita Continuous Delivery module:
 ```
-Usage: bcd [OPTIONS] COMMAND1 [ARGS]... [COMMAND2 [ARGS]...]...
+Usage: bcd [OPTIONS] COMMAND [ARGS]...
 
   Bonita Continuous Delivery CLI.
 
 Options:
-  -s, --scenario PATH    YAML scenario file (required)
-  -y, --yes              Execute action without confirmation prompt
   -v, --verbose          Enable Ansible verbose mode
+  -y, --yes              Execute action without confirmation prompt
   --nocolor              Turn output colorization off
+  -s, --scenario PATH    YAML scenario file
   -e, --extra-vars TEXT  Extra vars for Ansible (multiple) - Variables are
                          passed using the key=value syntax.
   -h, --help             Show this help message
 
 Commands:
-  status    Show the platform status
-  create    Create AWS instances
-  deploy    Deploy Bonita stack
-  undeploy  Undeploy Bonita stack
-  destroy   Destroy AWS machines (EC2 instances)
+  livingapp  Manage Bonita Living Application
+  stack      Manage Bonita stack (infrastructure)
 ```
 
 ### Examples
 
 ```
-$ bcd -s scenarios/uswest2_cluster.yml create
+$ bcd -s scenarios/uswest2_cluster.yml stack create
 
-$ bcd -s scenarios/vagrant_single.yml -e mail_notification=no -y deploy
+$ bcd -s scenarios/vagrant_single.yml -e mail_notification=no -y stack deploy
 
-$ bcd -s scenarios/uswest2_performance.yml destroy --dry-run
+$ bcd -s scenarios/uswest2_performance.yml stack destroy --dry-run
 ```
 
 ### Multi command chaining
@@ -59,5 +56,5 @@ The BCD CLI allows to invoke more than one command in one go. This is useful to 
 
 For example:
 ```
-$ bcd -s scenarios/uswest2_cluster.yml -y create deploy
+$ bcd -s scenarios/uswest2_cluster.yml -y stack create deploy
 ```

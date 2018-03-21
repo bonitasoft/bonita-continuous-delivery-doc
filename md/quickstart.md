@@ -107,23 +107,20 @@ You can call the `bcd` command with the `--help` option to get available options
 bonita@control_machine:~$
 bonita@control_machine:~$ cd bonita-continuous-delivery
 bonita@control_machine:~/bonita-continuous-delivery$ bcd --help
-Usage: bcd [OPTIONS] COMMAND1 [ARGS]... [COMMAND2 [ARGS]...]...
+Usage: bcd [OPTIONS] COMMAND [ARGS]...
 
   Bonita Continuous Delivery CLI.
 
 Options:
-  -s, --scenario PATH    YAML scenario file (required)
-  -y, --yes              Execute action without confirmation prompt
   -v, --verbose          Enable Ansible verbose mode
+  -y, --yes              Execute action without confirmation prompt
   --nocolor              Turn output colorization off
+  -s, --scenario PATH    YAML scenario file
   -e, --extra-vars TEXT  Extra vars for Ansible (multiple) - Variables are
                          passed using the key=value syntax.
   -h, --help             Show this help message
 
 Commands:
-  status    Show the platform status
-  create    Create AWS instances
-  deploy    Deploy Bonita stack
-  undeploy  Undeploy Bonita stack
-  destroy   Destroy AWS machines (EC2 instances)
+  livingapp  Manage Bonita Living Application
+  stack      Manage Bonita stack (infrastructure)
 ```

@@ -80,3 +80,60 @@ An email can be sent automatically with Bonita stack details at the end of the d
 |mail_password|N|-|The SMTP password.|SomePassword|
 |mail_from|N|-|The email-address the mail is sent from. May contain address and phrase.|john.doe<i>@</i>acme.com (John Doe)|
 |mail_to|N|-|The email-address(es) the mail is being sent to. This is a comma-separated list, which may contain address and phrase portions.|John Doe &lt;john.doe<i>@</i>acme.com&gt;, Suzie Something &lt;sue<i>@</i>example.com&gt;|
+
+## Keeping sensitive data
+
+If you want to keep your sensitive data such as passwords or keys in an encrypted way rather than as plain text. 
+You can create a separate YAML file with all your sensitive data.
+
+We propose these parameters but you can add others that you consider sensitive.
+|Name |Mandatory|
+|-|-|
+|mail_username|N|
+|mail_password|N|
+|bonita_db_user|N|
+|bonita_db_pass|N|
+|bonita_biz_db_user|N|
+|bonita_biz_db_pass|N|
+|bonita_platform_login|N|
+|bonita_platform_password|N|
+|bonita_tenant_login|N|
+|bonita_tenant_password|N|
+|bonita_db_admin_user|N|
+|bonita_db_admin_pass|N|
+|lic_ws_login|Y|
+|lic_ws_password|Y|
+|lic_sub_login|Y|
+|lic_sub_password|Y|
+|lic_sub_id|Y|
+
+To encrypt this file, you can you the command line tool `ansible-vaul` as shown in the documentation of 
+[Ansible Vaul](http://docs.ansible.com/ansible/latest/vault.html).
+
+To enable this feature with `bcd` you can send this encrypted file through the option `-e ` with `@` syntax:
+
+```bash
+-e "@/path/to/encrypted_file.yml"
+```
+This option will prompt a password to decrypt the encrypted file sent it.
+
+
+If you want to automate the decryption process, you can create a file with the password and naming it with the prefix 
+`pass_` .
+To use this password file with `bcd`, you have to send this file through the option `-e ` with `@` syntax:
+```bash
+-e "@/path/to/pass_mydev"
+```
+
+### Examples
+#### Prompting password
+```
+$ bcd -s scenarios/uswest2_cluster.yml -e "@encrypte_file" create
+Vault password:
+
+```
+
+#### Sending password file
+```
+$ bcd -s scenarios/uswest2_cluster.yml -e "@encrypte_file" -e "@pass_mydevpass" -y create
+``` 

@@ -1,10 +1,8 @@
 # BCD controller Docker image
 
-This Docker image provides a ready-to-use environment to launch Bonita Continuous Delivery Ansible playbooks.
+This Docker image provides a ready-to-use environment to launch Bonita Continuous Delivery CLI and Ansible playbooks.
 
 ## Install the image
-
-### From pre-built image
 
 A pre-built BCD controller image is provided with BCD deliverable as a `bcd-controller_<version>.tar.gz` archive. It is located in the `bonita-continuous-delivery_<version>/docker` directory.
 
@@ -14,16 +12,6 @@ $ cd bonita-continuous-delivery_<version>/docker
 $ gunzip -c bcd-controller_<version>.tar.gz | docker load
 Loaded image: bonitasoft/bcd-controller:<version>
 Loaded image: bonitasoft/bcd-controller:latest
-```
-
-### From source
-
-You can also build the image from source. Its Dockerfile is provided with BCD deliverable in the `bonita-continuous-delivery_<version>/docker` directory.
-
-Build the image as follows:
-```
-$ cd bonita-continuous-delivery_<version>/docker
-$ docker build -t bonitasoft/bcd-controller .
 ```
 
 ## Use the image

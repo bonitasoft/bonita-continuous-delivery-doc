@@ -10,6 +10,6 @@
 ### Enhancements
 - Handle REST_API_DYN_AUTH_CHECKS environment variable of Bonita docker image
 - Deactivate by default the Bonita [HTTP API](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization#toc9)
-- Add Ggoogle G Suite SSO support
+- Add Google G Suite SSO support
 
 ### Bugfixes

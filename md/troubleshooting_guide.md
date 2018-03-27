@@ -17,6 +17,7 @@ Error launching source instance: InvalidSubnetID.NotFound: The subnet ID 'subnet
 ```
 
 You should check that `ec2_subnet_ids` and `aws_ami` correspond to the region set into `ec2_region`.
+You may also check that rights linked to your AWS credentials (`.boto` or `.aws`) correspond to the actions in your scenario.
 
 ## Accessing Bonita logs
 

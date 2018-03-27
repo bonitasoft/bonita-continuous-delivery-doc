@@ -8,7 +8,8 @@ If you do not have an Amazon Web Services (AWS) account yet, first sign up as de
 ## AWS Setup for BCD
 
 In order to use Amazon EC2 instances, some configuration steps need to be performed as a prerequisite.  
-The following steps are required to set up AWS credentials for Ansible automation.
+The following steps are the basic requirements to set up AWS credentials for Ansible automation.  
+Further configuration instructions for **AWS SIngle Sign-On** can be found [on this page](aws_sso.md).
 
 1. [Create an IAM Policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html) to grant full access to Amazon EC2 on a specific region (eg. us-west-2)
     - **Policy name**: EC2FullAccess_us-west-2

@@ -1,4 +1,24 @@
-# Accessing Bonita logs
+# Troubleshooting guide
+
+If you enconter issues during the usage of BCD due to a bad configuration or a network problem, it's interesting to know that you could be able to simply relaunch your command (create, deploy) after fixing the configuration or the network and it should resume from where it was.
+
+## Common issues
+
+### InvalidAMIID.NotFound and InvalidSubnetID.NotFound
+
+iIf while you launch a `create` command in order to create instances on AWS you get errors like these:
+
+```
+[...]
+InvalidAMIID.NotFound: The image id '[ami-fc4f5e85]' does not exist
+[...]
+Error launching source instance: InvalidSubnetID.NotFound: The subnet ID 'subnet-ab123456' does not exist
+[...]
+```
+
+You should check that `ec2_subnet_ids` and `aws_ami` correspond to the region set into `ec2_region`.
+
+## Accessing Bonita logs
 
 In order to troubleshoot issues you may need to consult Bonita logs.
 

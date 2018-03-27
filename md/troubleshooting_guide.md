@@ -47,7 +47,7 @@ Then you will need to connect on this server (either through the IP or FQDN) usi
 ssh -i ~/.ssh/my_key.pem ubuntu@54.191.90.85
 ```
 
-You can know display the logs using:
+You can now display the logs using:
 ```
 docker logs bonita8081
 ```

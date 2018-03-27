@@ -10,7 +10,6 @@
     * [Troubleshooting guide](_troubleshooting_guide.md)
         * [State management](state_management.md)
         * [Accessing Bonita logs](accessing_bonita_logs.md)
-        * [Debugging Ansible Facts](debugging_facts.md)
         * [Common issues](_common_issues.md)
             * [InvalidAMIID.NotFound and InvalidSubnetID.NotFound](invalid_amiid_subnetid.md)
 * [Scenario variables reference](scenarios.md)

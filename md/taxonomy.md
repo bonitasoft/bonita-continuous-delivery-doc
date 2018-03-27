@@ -8,6 +8,7 @@
         * [Custom initialization overview](custom_init.md)
         * [How to configure REST API authorization](how_to_configure_rest_api_authorization.md)
     * [Troubleshooting guide](troubleshooting_guide.md)
+    * [AWS Single Sign-On](aws_sso.md)
 * [Scenario variables reference](scenarios.md)
 * [BCD Controller Docker image](_docker.md)
     * [Docker image overview](docker.md)

@@ -1,6 +1,6 @@
 # How to configure REST API authorization
 
-The Bonita container is launched with REST_API_DYN_AUTH_CHECKS flag set to true by default.
+The Bonita container is launched with REST_API_DYN_AUTH_CHECKS flag set to true by default.  
 It means that all [dynamic permissions checks](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization#toc2) are activated.
 
 In the sections below we will manipluate configuration into templates and not at a specific tenant. Indeed the default tenant (1) will be created during the first startup of bonita.

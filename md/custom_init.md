@@ -53,7 +53,7 @@ Hence the Bonita Docker image startup sequence can be described as follows:
 ::: info
 **Warning**: all custom scripts are re-executed each time the Bonita Docker container is restarted.
 
-If you want your script to be executed only once, you need to handle the conditional execution in your custom script itself.
+If you want your script to be executed only once, you need to handle the conditional execution in your custom script itself.  
 For example:
 ```bash
 #!/bin/bash
@@ -82,12 +82,12 @@ More precisely scripts are executed in the order returned by this command: `ls -
 
 ### 1. config-workers.sh
 
-The `config-workers.sh` script is provided as part of BCD's core scripts.
+The `config-workers.sh` script is provided as part of BCD's core scripts.  
 In particular it shows how to further configure the server using [Bonita Platform setup tool](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/BonitaBPM_platform_setup).
 
 ### 2. config-cluster.sh.j2
 
-The `config-cluster.sh.j2` script template is provided as part of BCD's core scripts.
+The `config-cluster.sh.j2` script template is provided as part of BCD's core scripts.  
 In particular it shows how to conditionally configure a cluster deployment on AWS using BCD variables and [Jinja2 templating engine](http://docs.ansible.com/ansible/latest/playbooks_templating.html).
 
 ### 3. register-event-handler.sh
@@ -96,8 +96,8 @@ This sample script deploys and registers a Bonita engine Event handler as descri
 
 Assuming the following files:
 
-- `roles/bonita/files/custom-init.d/event-handler-example-1.0.0-SNAPSHOT.jar` (event handler JAR file)
-- `roles/bonita/files/custom-init.d/bonita-tenant-sp-custom.xml` (tenant configuration file where the event handler is registered)
+*   `roles/bonita/files/custom-init.d/event-handler-example-1.0.0-SNAPSHOT.jar` (event handler JAR file)
+*   `roles/bonita/files/custom-init.d/bonita-tenant-sp-custom.xml` (tenant configuration file where the event handler is registered)
 
 Here's a sample `register-event-handler.sh` script:
 
@@ -191,7 +191,7 @@ touch ${indicator_path}
 ```
 
 
-#### tomcat-users.xml.j2 
+#### tomcat-users.xml.j2
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

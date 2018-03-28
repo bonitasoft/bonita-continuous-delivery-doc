@@ -1,6 +1,6 @@
-# AWS Single Sign-On
+# AWS single sign-on
 
-AWS allows to integrate [numerous Third-Party SAML Solution Providers](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml_3rd-party.html).
+AWS allows to integrate [numerous Third-Party SAML Solution Providers](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml_3rd-party.html) to implement single sign-on.
 
 If you implement this kind of authentication, when you start the BCD Controller container it will no longer be necessary to mount the `boto` file.
 
@@ -23,7 +23,7 @@ The BCD Controller already embeds [aws-google-auth](https://github.com/cevoaustr
 
 You will need to know Google's assigned Identity Provider ID (idp-id) and the ID assigned to the SAML service provider (sp-id).  
 `idp-id` can be found on Google Admin `Security > Set up single sign-on (SSO)` page in the SSO url provided. For instance: `https://accounts.google.com/o/saml2/idp?idpid=123456789012`  
-`sp-id` can be found into the URL of your browser when viewing Google Admin `Apps > SAML Apps > Amazon Web Services` page. For instance: `#AppDetails:service=123456789012`  
+`sp-id` can be found into the URL of your browser when viewing Google Admin `Apps > SAML Apps > Amazon Web Services` page. For instance: `#AppDetails:service=123456789012`
 
 After launching the BCD Controller you will have to authenticate yourself as below:
 ```

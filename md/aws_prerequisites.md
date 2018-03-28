@@ -1,15 +1,19 @@
 # AWS prerequisites
 
+This tutorial describes how to configure Amazon Web Services (AWS) for BCD.  
+These configuration steps are required to allow BCD to programmatically manage your AWS instances and to be able to connect to your Bonita stack.
+
+
 ## Sign Up for AWS
 
-If you do not have an Amazon Web Services (AWS) account yet, first sign up as described in this AWS user guide: [Sign Up for AWS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#sign-up-for-aws).
+If you do not have an Amazon Web Services account yet, first sign up as described in this AWS user guide: [Sign Up for AWS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#sign-up-for-aws).
 
 
 ## AWS Setup for BCD
 
 In order to use Amazon EC2 instances, some configuration steps need to be performed as a prerequisite.  
 The following steps are the basic requirements to set up AWS credentials for Ansible automation.  
-Further configuration instructions for **AWS SIngle Sign-On** can be found [on this page](aws_sso.md).
+Further configuration instructions for **AWS single sign-on** can be found [on this page](aws_sso.md).
 
 1. [Create an IAM Policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html) to grant full access to Amazon EC2 on a specific region (eg. us-west-2)
     - **Policy name**: EC2FullAccess_us-west-2
@@ -138,7 +142,7 @@ Therefore a [default VPC and default subnets](http://docs.aws.amazon.com/AmazonV
     - Download the `.pem` private key file
     - Ensure private key file permissions: `$ chmod 400 <keyfile_basename>.pem`
 
-Bonita Provisioning solution uses official Ubuntu cloud images as EC2 AMI (Amazon Machine Images).
+Bonita Provisioning solution uses official Ubuntu cloud images as EC2 AMI (Amazon Machine Images).  
 Use the [Amazon EC2 AMI Locator](https://cloud-images.ubuntu.com/locator/ec2/) tools to identify IDs of such images.
 
 

@@ -29,8 +29,11 @@ This example configures port `9010` as JMX remote port.
 
 ## Exposing additional ports
 
-By default the Bonita container exposes ports `8080` (Tomcat HTTP port) and `5701` (Hazelcast cluster communication port) to the Docker host.  
-BCD enables you to publish additional ports through the `bonita_published_ports_extra` variable. Hence additional port mappings must be added to your YAML scenario as in the following example:
+By default the Bonita container exposes ports **8080** (Tomcat HTTP port) and **5701** (Hazelcast cluster communication port) to the Docker host. Then BCD publish these 2 ports as follows:
+- Port 8080 is always published and mapped to the host port defined by `bonita_port` variable
+- Port 5701 is only mapped to the host port defined by `bonita_hazelcast_port` variable when `bonita_cluster_mode` is enabled
+
+Additionally BCD enables you to publish extra ports through the `bonita_published_ports_extra` variable. Hence additional port mappings must be added to your YAML scenario as in the following example:
 ```yaml
 bonita_published_ports_extra:
   - "9020:9010"

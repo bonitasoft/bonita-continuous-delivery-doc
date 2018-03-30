@@ -80,7 +80,7 @@ These information are provided by Bonitasoft when you purchase the BCD add-on. C
 |lic_sub_login|Subscription Login provided by Bonitasoft. It has an email address format.|john.doe@acme.com|
 |lic_sub_password|Subscription Password provided by Bonitasoft.|SomePassword|
 |lic_sub_id|Subscription ID provided by Bonitasoft. It's a string of 15 characters.|a0bA0000001B2Cd|
-|lic_type|Type of license in [production|development|qualification|trial].|trial|
+|lic_type|Type of license in [`production`\|`development`\|`qualification`\|`trial`].|trial|
 |lic_name|Full name of the licensee. This field can only contain alphanumeric characters, dashes, underscores and spaces.|John Doe|
 |lic_company|Company name.|ACME Inc|
 |lic_email|Email address where the license will be sent.|john.doe@acme.com|

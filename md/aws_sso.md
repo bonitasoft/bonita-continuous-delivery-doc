@@ -13,7 +13,8 @@ $ docker run --rm -t -i --name bcd-controller \
 
 Indeed you will use `~/.aws` directory instead.
 
-## Single Sign-On to AWS Using G Suite
+
+Single Sign-On to AWS Using G Suite <!--{.h2}-->
 
 In this step we will provide you an example using G Suite from Google.
 

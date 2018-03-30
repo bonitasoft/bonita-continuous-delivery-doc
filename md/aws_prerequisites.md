@@ -113,7 +113,9 @@ Further configuration instructions for **AWS single sign-on** can be found [on t
         ]
     }
     ```
-Pay attention that for security reasons, pushing AWS user credentials to EC2 instances, as done with BCD 1.0.x, are no longer supported.
+    ::: warning
+    :fa-exclamation-triangle: Pay attention that for security reasons, pushing AWS user credentials to EC2 instances (as done with BCD 1.0.x) is no longer supported.
+    :::
 1. [Create an IAM Role for an AWS service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html)
     - Select EC2 to "Allows EC2 instances to call AWS services on your behalf."
     - Select the IAM Policy created previously (ClusterBCD_us-west-2)
@@ -142,7 +144,7 @@ Therefore a [default VPC and default subnets](http://docs.aws.amazon.com/AmazonV
     - Download the `.pem` private key file
     - Ensure private key file permissions: `$ chmod 400 <keyfile_basename>.pem`
 
-Bonita Provisioning solution uses official Ubuntu cloud images as EC2 AMI (Amazon Machine Images).  
+BCD is compatible with official Ubuntu cloud images as EC2 AMI (Amazon Machine Images).  
 Use the [Amazon EC2 AMI Locator](https://cloud-images.ubuntu.com/locator/ec2/) tools to identify IDs of such images.
 
 

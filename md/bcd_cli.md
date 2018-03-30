@@ -5,12 +5,12 @@ On this page you will find detailed information about the BCD CLI with usage exa
 
 ## Requirements
 
-* First the `bcd` command requires that the **`BCD_HOME`** environment variable is set.  
+* First, the `bcd` command requires that the **`BCD_HOME`** environment variable is set.  
 By default `BCD_HOME` is set to `/home/bonita/bonita-continuous-delivery` in the controller container.
-* Next the `bcd` command takes a mandatory option called `scenario` through the `-s / --scenario` command line option.  
+* Next, the `bcd` command takes a mandatory option called `scenario` through the `-s / --scenario` command line option.  
 This option expects an existing relative or absolute path to a [BCD YAML scenario](scenarios.md) file.  
 The BCD scenario path can also be specified through the **`BCD_SCENARIO`** environment variable, hence allowing to skip the `-s / --scenario` command line option.
-* Finally the BCD CLI expects to find Bonita version-specific dependencies in the **`$BCD_HOME/dependencies`** directory. This directory must contain:
+* Finally, the BCD CLI expects to find Bonita version-specific dependencies in the **`$BCD_HOME/dependencies`** directory. This directory must contain:
     - `bonita-subscription_*.tar.gz` - (Mandatory) The Bonita Docker image archive
     - `bonita-la-builder-*-exec.jar` - (Mandatory) The Bonita Living Application Builder library
     - `bonita-sp-*-maven-repository.zip` - (Optional) The Bonita Maven repository zip if required by your Living Application workspace.

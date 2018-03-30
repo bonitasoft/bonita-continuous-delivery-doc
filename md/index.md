@@ -10,8 +10,8 @@ The Bonita Continuous Delivery (BCD) add-on provides a solution to use _Continuo
 
 It is composed of two parts:
 
-*   First a solution for **provisioning** of a Bonita stack on cloud or on-premises hosts
-*   Second a framework for **continuous delivery** of Living Applications
+*   First, a solution for **provisioning** of a Bonita stack on cloud or on-premises hosts
+*   Second, a framework for **continuous delivery** of Living Applications
 
 The BCD add-on is compatible with [Amazon AWS cloud platform](https://aws.amazon.com/), on premises servers and local virtual machines via [Vagrant](https://www.vagrantup.com/).  
 It is powered by [Docker containerization solution](https://www.docker.com/) and [Ansible automation framework](https://www.ansible.com/).

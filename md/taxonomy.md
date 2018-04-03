@@ -1,6 +1,6 @@
 * [Quick start](quickstart.md)
 * [Release notes](release_notes.md)
-* [Tutorials](_tutorials.md)
+* [Howtos](_howtos.md)
     * [Configuring Amazon Web Services (AWS) for BCD](aws_prerequisites.md)
     * [Configuring AWS single sign-on](aws_sso.md)
     * [Building a Living Application repository](livingapp_build.md)

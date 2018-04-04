@@ -12,3 +12,4 @@
 * [Controller Docker image](bcd_controller.md)
 * [Command-line interface](bcd_cli.md)
 * [Scenario reference](scenarios.md)
+* [Troubleshooting guide](troubleshooting_guide.md)

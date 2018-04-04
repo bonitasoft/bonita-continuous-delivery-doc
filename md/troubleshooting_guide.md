@@ -24,10 +24,10 @@ You may also check that rights linked to your AWS credentials (`.boto` or `.aws`
 In order to troubleshoot issues you may need to consult Bonita logs.
 
 To do so, first you need to identify the target server where the Bonita container is running.
-It's possible through the `bcd status` command:
+It's possible through the `bcd stack status` command:
 
 ```
-bcd -y -s scenarios/myscenario.yml status
+bcd -y -s scenarios/myscenario.yml stack status
 
 [...]
 [10:44:12.802] TASK [List Docker containers.] **************************************************************************************************
@@ -68,7 +68,7 @@ scp -i ~/.ssh/my_key.pem ubuntu@54.191.90.85:/tmp/logs /tmp/
 Ansible facts are local variables registered in hosts. It is possible to save them in JSON files with the `setup` command.
 ```
 $ cd bonita-continuous-delivery
-$ bcd -y -s scenarios/myscenario.yml create deploy
-$ ansible all -vv -i inventory/ec2/ec2_wrapper.sh -m setup -u ubuntu --private-key=~/.ssh/my_key.pem --tree tmp_facts/
+$ bcd -y -s scenarios/myscenario.yml stack create deploy
+$ ansible all -vv -i ansible/inventory/ec2/ec2_wrapper.sh -m setup -u ubuntu --private-key=~/.ssh/my_key.pem --tree tmp_facts/
 ```
-This command will identify every EC2 instance (depending of `bcd_stack_id` set into ec2.ini by the last `bcd deploy` command) and put its facts into the `tmp_facts` directory.
+This command will identify every EC2 instance (depending of `bcd_stack_id` set into ec2.ini by the last `bcd stack deploy` command) and put its facts into the `tmp_facts` directory.

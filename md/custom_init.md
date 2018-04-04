@@ -1,4 +1,4 @@
-# Bonita Container Custom Initialization
+# How to customize the Bonita container using initialization scripts
 
 The Bonita Docker container deployed by BCD can be further customized thanks to a custom initialization mechanism.
 

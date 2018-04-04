@@ -1,4 +1,4 @@
-# AWS prerequisites
+# How to configure Amazon Web Services (AWS) for BCD
 
 This tutorial describes how to configure Amazon Web Services (AWS) for BCD.  
 These configuration steps are required to allow BCD to programmatically manage your AWS instances and to be able to connect to your Bonita stack.

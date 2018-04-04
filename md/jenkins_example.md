@@ -1,4 +1,4 @@
-# Integrating BCD with Jenkins
+# How to integrate BCD with Jenkins
 
 The BCD controller can not only be run interactively, but also within standard Continuous Delivery servers such as [Jenkins automation server](https://jenkins.io/).
 

@@ -1,4 +1,4 @@
-# AWS single sign-on
+# How to configure AWS single sign-on
 
 AWS allows to integrate [numerous Third-Party SAML Solution Providers](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml_3rd-party.html) to implement single sign-on.
 

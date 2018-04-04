@@ -1,4 +1,4 @@
-# Building a Living Application repository
+# How to build a Living Application repository
 
 This tutorial describes how to build a Bonita Living Application repository from the command line using BCD.
 

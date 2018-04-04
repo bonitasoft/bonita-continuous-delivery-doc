@@ -1,4 +1,4 @@
-# How to enable remote monitoring using JMX
+# How to enable remote monitoring with JMX
 
 The Java virtual machine (Java VM) has built-in instrumentation that enables you to monitor and manage it using the [Java Management Extensions (JMX) technology](http://www.oracle.com/technetwork/articles/javase/jmx-138825.html).
 

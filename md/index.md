@@ -50,12 +50,12 @@ It is highly recommended to have a clear understanding of [Docker essential conc
 
 <div class="col-md-4">
 <div class="panel panel-default">
-<div class="panel-heading">Tutorials</div>
+<div class="panel-heading">Howtos</div>
 <div class="panel-body">
 <div style="padding: 15px; padding-bottom: 0px;">Check out the tutorials for practical guides about using Bonita Continuous Delivery add-on.</div>
 <div class="menu-block-wrapper">
 
-* [:fa-angle-double-right: BCD Tutorials](_tutorials.md)
+* [:fa-angle-double-right: BCD Howtos](_howtos.md)
 <!--{ul:.menu .nav}-->
 </div>
 </div>

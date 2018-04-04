@@ -50,7 +50,7 @@ It is highly recommended to have a clear understanding of [Docker essential conc
 
 <div class="col-md-4">
 <div class="panel panel-default">
-<div class="panel-heading">Tutorials</div>
+<div class="panel-heading">Howtos</div>
 <div class="panel-body">
 <div style="padding: 15px; padding-bottom: 0px;">Check out the tutorials for practical guides about using Bonita Continuous Delivery add-on.</div>
 <div class="menu-block-wrapper">

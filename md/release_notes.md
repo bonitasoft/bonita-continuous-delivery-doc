@@ -9,7 +9,7 @@
 
 ### Bugfixes
 
-- BCD-234 Install python modules doesn't work
+- BCD-234 'Install python modules' task fails due to pip 10
 
 
 ## What's new in 1.0.3 (2018-03-08)

@@ -1,9 +1,18 @@
 TODO: lien vers cette page dans celle du deployer et du builder
 
 # Build and deploy a Bonita living application
-Bonita Continuous Delivery allows you to easily build and deploy a Bonita Living Applications on a running Bonita platform. It uses the [Bonita living application Builder](livingapp_build.md) and the [Bonita living application Deployer](livingapp_deploy.md).
 
+Bonita Continuous Delivery allows you to easily build and deploy a Bonita Living Applications on a running Bonita platform.
+It uses the [Bonita Living Application Builder](livingapp_build.md) and the [Bonita Living Application Deployer](livingapp_deploy.md).
 
+In the following, we present best pratices and various uses cases to let you easily build and deploy your Bonita Living
+Application repository.
+
+All examples assume that
+  * you have clone the demo [Bonita Vacation Management example repository](https://github.com/bonitasoft/bonita-vacation-management-example)
+GitHub repository as described in the [Bonita Living Application Builder](livingapp_build.md) documentation
+  * you have already defined a scenario file called `build_and_deploy.yml` stored in the BCD `scenarios` folder
+  * you already have a Bonita stack up and running, defined by the `build_and_deploy.yml` scenario file
 
 
 ##   Best practices about repositories
@@ -22,17 +31,19 @@ The not recommended alternative would be to _duplicate_ the resource in your rep
 The recommended way is definitively to  keep the latest version of each resources in the working repository, and the history on your Version Control System.
 Since the version 7.7.0, the popular Version Control System _Git_ is integrated in Bonita. It is a fine way to manage properly the versioning of your projects.
 
+
 ##   Build and deploy straight
 
-TODO: fonctionnement de base de BCD, checkout un repo build and deploy
+This is the simplest use case: you want to build a Bonita Living Application repository and deploy all associated resources.
+
+To do so, you only have to pass the repository path to the build command and chain a deploy command without path parameter
+like in the following:
+```
+$ bcd -y -s scenarios/build_and_deploy.yml livingapp build -p bonita-vacation-management-example deploy
+```
 
 
-
- bcd -y -s scenarios/build_and_deploy.yml livingapp build -p bonita-vacation-management-example deploy
-
-
-
-##   Build, remove and add some binairies, deploy
+## Build and select what to deploy
 
 TODO:
 
@@ -102,7 +113,10 @@ cas 3 : ajout de fichier
 
 
 
-##   Create a deploy.json, build and deploy --> more control about how the Application is deployed
+## Build and select how to deploy parts of the Application Archive
+
+Create a deploy.json, build and deploy --> more control about how the Application is deployed
+use policies
 
 TODO: Meme objectif que avant, en gerant les policies. Attention: utilisation avancee, le format du .json peut etre ammene a evoluer dans les futures versions. -> peut etre dire la meme chose dans la page du deployer.
 

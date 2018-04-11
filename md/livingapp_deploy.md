@@ -1,7 +1,16 @@
-# Bonita living application deployer
+# How to deploy a Living Application
 
-## About
-Bonita living applications deployer (called  `Deployer`  in the following) is a tool allowing resources deployment to a running Bonita platform.  
+This tutorial describes how to deploy a Bonita Living Application from the command line using BCD.
+
+
+## Concepts
+
+Prior to go to the `how to deploy` section, please read the following to understand the concepts used by the deployment
+process.
+
+### Introduction
+
+Bonita living applications deployer (called `Deployer` in the following) is a tool allowing resources deployment to a running Bonita platform.
 
 It is able to deploy
 
@@ -16,14 +25,14 @@ It is able to deploy
  - rest APi extensions
  - themes
 
-Its entry point is called an `Application Archive` consisting of all artifacts that need to be deployed and an optional file called `Deployment Descriptor`.  
+Its entry point is called an `Application Archive` consisting of all artifacts that need to be deployed and an optional
+file called `Deployment Descriptor`.
+
 
 ### Important notice
 
- -  As the  `Deployer`uses the REST API to perform the deployment, it  requires authentication and authorization by passing credentials (username/password). To ensure that all operations can be performed, we advise you to use the credentials of the  `Tenant Administrator`. It is mandatory to deploy a Business Data Model.
- -  Prior deploying a Business Data Model, the Deployer put the Tenant in the  `paused`  state. It then restarts it after deployment of the BDM. So a downtime of the related Bonita Tenant occurs in this case.
-
-## Application Archive Description
+Prior deploying a Business Data Model, the Deployer put the Tenant in the  `paused`  state. It then restarts it after
+deployment of the BDM. So a downtime of the related Bonita Tenant occurs in this case.
 
 
 ### Application Archive structure
@@ -40,10 +49,13 @@ following rules:
 * the `Deployer` initializes a `Deployment Descriptor` empty instance in memory
 * the `Application Archive` is a unzipped or copied in a temporary folder
 * the `Deployer` lists all files in the folder
-* for each file, it tries to guess the type of the resource. If it is a supported one, the `Deployer` adds it as a reference in the descriptor and sets it a [default policy](#default-policies)
+* for each file, it tries to guess the type of the resource. If it is a supported one, the `Deployer` adds it as a reference
+in the descriptor and sets it a [default policy](#default-policies)
 * finally, a `Deployment Descriptor` instance is associated to the `Application Archive` and used during subsequent processing
 
-**Note**: if you provide several files related to a resource which is supposed to be single (for instance Business Data Model, Organization), only one of the resources will be referenced. There is no guaranty about which file is kept so please avoid this situation to ensure deployment reproducibility.
+**Note**: if you provide several files related to a resource which is supposed to be single (for instance Business Data Model,
+Organization), only one of the resources will be referenced. There is no guaranty about which file is kept so please avoid
+this situation to ensure deployment reproducibility.
 
 
 Here is an example of the `Application Archive` structure:
@@ -150,16 +162,20 @@ Example of `Deployment Descriptor` file
 
 * Applications:
   * `FAIL_ON_DUPLICATES`: deployment fails if the `Application` or `ApplicationPage` already exists
-  * `REPLACE_DUPLICATES`: if the `Application` or `ApplicationPage` already exists, the deployer deletes the existing one and deploys the new one
+  * `REPLACE_DUPLICATES`: if the `Application` or `ApplicationPage` already exists, the deployer deletes the existing one
+  and deploys the new one
 * Organization:
   * `FAIL_ON_DUPLICATES`: if an item already exists, the deployment fails and is reverted to the previous state
   * `IGNORE_DUPLICATES`: existing items are kept
-  * `MERGE_DUPLICATES`: existing items in the current organization are updated to have the values of the item in the imported organization
+  * `MERGE_DUPLICATES`: existing items in the current organization are updated to have the values of the item in the
+  imported organization
 * Processes:
   * `FAIL_ON_DUPLICATES`: if the process already exists (same `name` and `version`), the deployment fails.
   * `IGNORE_DUPLICATES`: only deploys a process when it does not already exists (same `name` and `version`)
-  * `REPLACE_DUPLICATES`: if the process already exists (same `name` and `version`), the deployer deletes the existing one and deploys the new one
-* Profiles: `REPLACE_DUPLICATES` (In case of conflict on the name, it replaces completely the profile including profile entries and profile mappings)
+  * `REPLACE_DUPLICATES`: if the process already exists (same `name` and `version`), the deployer deletes the existing one
+  and deploys the new one
+* Profiles: `REPLACE_DUPLICATES` (In case of conflict on the name, it replaces completely the profile including profile
+entries and profile mappings)
 
 
 #### Default Policies
@@ -170,9 +186,10 @@ Example of `Deployment Descriptor` file
  * Profiles: `REPLACE_DUPLICATES`
  
  
- #### Implicit Policies:
- The following artifacts are used with **implicit** policies, it means that you do not have to declare those policies in the deployment descriptor file. There is no other policies available for those artifacts.  
- 
+#### Implicit Policies:
+
+The following artifacts are used with **implicit** policies, it means that you do not have to declare those policies in
+the deployment descriptor file. There is no other policies available for those artifacts.
  * Rest API extensions: `REPLACE_DUPLICATES`
  * Pages: `REPLACE_DUPLICATES`
  * Layouts: `REPLACE_DUPLICATES`
@@ -180,12 +197,20 @@ Example of `Deployment Descriptor` file
  * Business Data Model: `REPLACE_DUPLICATES`
  * BDM access control: `REPLACE_DUPLICATES`
 
+
+
 ## Usage
 
-The Bonita Continuous Delivery add-on  allows you to deploy living applications artifacts using the Deployer, using the following command:  
+The Bonita Continuous Delivery add-on allows you to deploy living applications artifacts using the Deployer, using the
+following command:
 ```
-bcd livingapp deploy -p <path>
+bcd -s <scenario> --yes livingapp deploy -p <path>
 ```
-Where _\<path>_ is the file path of the application archive to deploy.  
+Where
+* \<scenario>_ is the path to the scenario to be used. It allows to deploy to the running Bonita Stack using the tenant
+credentials defined in this file
+* _\<path>_ is the file path of the application archive to deploy.
+
+
 You can add a _-\-debug_ extra option to enable the log debug mode.  
 You can refer to the [BCD command line documentation](bcd_cli.md) for a complete list of available options.

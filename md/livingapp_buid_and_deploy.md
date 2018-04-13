@@ -1,6 +1,3 @@
-
-TODO: lien vers cette page dans celle du deployer et du builder
-
 # Build and deploy a Bonita living application
 
 Bonita Continuous Delivery allows you to easily build and deploy a Bonita Living Applications on a running Bonita platform.
@@ -89,17 +86,12 @@ bcd -y -s <path/to/scenario> livingapp deploy -p <path/to/bonita/repository>/tar
 
 This use case is a bit more advanced. Imagine that your Bonita repository is stored on a given Git repository and your custom pages used by your applications in an other Git repository. You will have to build your Bonita repository as described above, then to retrieve your custom pages (Git clone...) and to add them to the application archive to deploy. 
 
+
 ## Build and select how to deploy parts of the Application Archive
 
-Create a deploy.json, build and deploy --> more control about how the Application is deployed
-use policies
-
-TODO: Meme objectif que avant, en gerant les policies. Attention: utilisation avancee, le format du .json peut etre ammene a evoluer dans les futures versions. -> peut etre dire la meme chose dans la page du deployer.
-
-
-
-on conseille de stocker le deploy dans son repo
-
-apres le build, unzip + faire une copie du fichier dans to-deploy
-
-lancer la commande deploy sur le repertoire to-deploy
+As described in the [Bonita Living Application Deployer documentation](livingapp_deploy.md), it is possible to pass to the deployer a _deployment descriptor file_. This file must be called _deploy.json_ and be at the root of the application archive.  
+The deployment descriptor file is used to specify which resources have to be deployed, and with which policy. It is an alternative way to select a sub part of the application archive to deploy.  
+An interesting way to use it is to store some deployment descriptor files in your Bonita repository, one for each 'build and deploy' scenario you want to perform. Between the build and the deploy  phase, just move the fine deployment descriptor at the root of your application archive, as described above.  
+::: warning
+The format of the deployment descriptor file is not friendly to use. It might evolve in further versions.
+:::

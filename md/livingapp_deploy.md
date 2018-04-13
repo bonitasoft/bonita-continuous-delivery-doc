@@ -13,17 +13,16 @@ process.
 Bonita living applications deployer (called `Deployer` in the following) is a tool allowing resources deployment to a running Bonita platform.
 
 It is able to deploy
-
- - applications
- - business data model
- - business data model access controls
- - layouts
- - organizations
- - pages
- - processes
- - profiles
- - rest APi extensions
- - themes
+ * applications
+ * business data model
+ * business data model access controls
+ * layouts
+ * organizations
+ * pages
+ * processes
+ * profiles
+ * rest APi extensions
+ * themes
 
 Its entry point is called an `Application Archive` consisting of all artifacts that need to be deployed and an optional
 file called `Deployment Descriptor`.
@@ -173,7 +172,7 @@ Example of `Deployment Descriptor` file
   * `FAIL_ON_DUPLICATES`: if the process already exists (same `name` and `version`), the deployment fails.
   * `IGNORE_DUPLICATES`: only deploys a process when it does not already exists (same `name` and `version`)
   * `REPLACE_DUPLICATES`: if the process already exists (same `name` and `version`), the deployer deletes the existing one
-  and deploys the new one
+  and deploys the new one. As a reminder, deleting a process means: disable it, delete it and all related cases
 * Profiles: `REPLACE_DUPLICATES` (In case of conflict on the name, it replaces completely the profile including profile
 entries and profile mappings)
 

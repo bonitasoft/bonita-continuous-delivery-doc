@@ -132,10 +132,12 @@ Options:
   -e, --extra-vars TEXT  Extra vars for Ansible (multiple) - Variables are
                          passed using the key=value syntax.
   -h, --help             Show this help message
+  --version              Show the version and exit.
 
 Commands:
   livingapp  Manage Bonita Living Application
   stack      Manage Bonita stack (infrastructure)
+  version    Show BCD version information
 ```
 
 ::: info

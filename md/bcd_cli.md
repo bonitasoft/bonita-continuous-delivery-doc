@@ -40,6 +40,11 @@ $ export BCD_SCENARIO=scenarios/euwest1_performance.yml
 $ bcd livingapp build -p path/to/livingapp-repo -e Qualification
 ```
 
+Running the `version` command which does not require a scenario file:
+```
+$ bcd version
+```
+
 
 ## Multi command chaining
 
@@ -108,6 +113,12 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 <dt id="cmdoption-bcd-h">
 <code class="descname">-h</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--help</code><code class="descclassname"></code></dt>
 <dd><p>Show this help message</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-bcd-version">
+<code class="descname">--version</code><code class="descclassname"></code></dt>
+<dd><p>Show the version and exit.</p>
 </dd></dl>
 
 <div class="section" id="bcd-livingapp">
@@ -277,5 +288,19 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 </dd></dl>
 
 </div>
+</div>
+<div class="section" id="bcd-version">
+<span class="h3">version</span>
+<p>Show BCD version information</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd version <span class="o">[</span>OPTIONS<span class="o">]</span>
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="option">
+<dt id="cmdoption-bcd-version-h">
+<code class="descname">-h</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--help</code><code class="descclassname"></code></dt>
+<dd><p>Show this help message</p>
+</dd></dl>
+
 </div>
 </div>

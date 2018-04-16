@@ -15,5 +15,6 @@
     * [Manage Bonita Living Applications](_manage_living_application.md)
         * [Build a Living App repository](livingapp_build.md)
         * [Deploy Living App artifacts](livingapp_deploy.md)
+        * [Build and deploy (Best Practices)](livingapp_build_and_deploy.md)
     * [Integrate BCD with Jenkins](jenkins_example.md)
 * [Troubleshooting guide](troubleshooting_guide.md)

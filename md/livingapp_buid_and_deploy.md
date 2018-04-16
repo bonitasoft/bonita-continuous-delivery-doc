@@ -28,8 +28,8 @@ During the life-cycle of a project, resources are brought to evolve. You may nee
 Before to perform an important change on a resource, make sure to save the current state of your repository by creating a tag for example if you are using Git. Then you can increase the version of your resource and perform the change, knowing that you can easily do a rollback if needed.  
 The not recommended alternative would be to _duplicate_ the resource in your repository. If you start to manage your versions this way, your repository will getting bigger and bigger, and the time required by the _Bonita living application Builder_ to build your repository will increase. Moreover, it is really painful to work on a repository containing all the history of a project, it can lead to many confusions and errors during the development ( dependency issues ...).  
 
-The recommended way is definitively to  keep the latest version of each resources in the working repository, and the history on your Version Control System.  
-Since the version 7.7.0, the popular Version Control System _Git_ is integrated in Bonita. It is a fine way to manage properly the versioning of your projects.
+The recommended way is definitively to keep the latest version of each resources in the working repository, and the history on your Version Control System.  
+Since the version 7.7.0, the popular Version Control System _Git_ is integrated in Bonita. It is a fine way to manage properly the versioning of your projects. The Bonita documentation provides an example on [how to share a repository on github](share-a-repository-on-github).
 
 
 ##   Build and deploy straight
@@ -41,14 +41,14 @@ like in the following:
 ```
 $ bcd -y -s <path/to/scenario> livingapp build -p <path/to/bonita/repository> deploy
 ```
-This command will first build the Bonita repository. The output of the build is a zip file, located in a folder _target_ created by the builder. This zip file corresponds to the _Application Archive_ used by the deployer. It contains all the resources of the input repository, built. In a second time, the deployer deploys all those resources on the running Bonita platform. 
+This command will first build the Bonita repository. The output of the build is a zip file, located in a folder _target_ created by the builder. This zip file corresponds to the _Application Archive_ used by the deployer. It contains all the resources built from the input repository. In a second time, the deployer deploys all those resources on the running Bonita platform. 
 
 ## Build and select what to deploy
 
-Sometimes, you may need to perform some actions between the build and the deploy . You may want to deploy only a sub part of the repository that has been built, or add some external resources in the application archive to deploy. Here are some hints on how to do it.  
+Sometimes, you may need to perform some actions between the build and the deploy. You may want to deploy only a sub part of the repository that has been built, or add some external resources in the application archive to deploy. Here are some hints on how to do it.  
 The idea is always the same:
 
- - **Build** a Bonita repository with BDC
+ - **Build** a Bonita repository with BCD
  - **Update** the application archive created by the builder
  - **Deploy** the updated application archive
 

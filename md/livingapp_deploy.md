@@ -31,7 +31,8 @@ file called `Deployment Descriptor`.
 ### Important notice
 
 Prior deploying a Business Data Model, the Deployer put the Tenant in the  `paused`  state. It then restarts it after
-deployment of the BDM. So a downtime of the related Bonita Tenant occurs in this case.
+deployment of the BDM. So a downtime of the related Bonita Tenant occurs in this case.  
+Keep in mind that the `Deployer` does not deploy Rest API extensions authorization, you have to do it manually. See the page [how to configure Rest API authorization](how_to_configure_rest_api_authorization).
 
 
 ### Application Archive structure

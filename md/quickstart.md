@@ -20,7 +20,7 @@ If you consider deploying to Amazon Web Services (AWS) platform, first read the 
 
 ### Step-by-step installation
 
-In order to ease your environment setup, we provide a Docker image (_BCD Controller_ image) which contains all required dependencies and tools for the control workstation (ie. the host from which Bonita Continuous Delivery commands are launched).
+In order to ease your environment setup, we provide a Docker image called **[BCD Controller](bcd_controller.md)** image which contains all required dependencies and tools for the control workstation (ie. the host from which Bonita Continuous Delivery commands are launched).
 
 Follow these installation steps on your control workstation.
 
@@ -141,7 +141,7 @@ Commands:
 ```
 
 ::: info
-Read the [BCD Command-line interface](bcd_cli.md) page for further information about the BCD CLI usage.
+Read the **[BCD Command-line interface](bcd_cli.md)** page for further information about the BCD CLI usage.
 :::
 
 ### Scenarios
@@ -151,5 +151,5 @@ BCD requires a YAML configuration file called **Scenario** which describes your 
 An example scenario file named **uswest_performance.yml.EXAMPLE** is provided in the **scenarios** directory. Use this example to customize your scenario and save it with a `.yml` file extension.
 
 ::: info
-Read the [BCD Scenario reference](scenarios.md) page for a comprehensive description of scenario variables.
+Read the **[BCD Scenario reference](scenarios.md)** page for a comprehensive description of scenario variables.
 :::

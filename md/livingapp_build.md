@@ -1,9 +1,9 @@
-# How to build a Living Application repository
+# How to build a Living App repository
 
 This tutorial describes how to build a Bonita Living Application repository from the command line using BCD.
 
 ::: info
-A Bonita repository contains the artifacts developed in Bonita Studio and the UI Designer. Its content is further described in [Bonita's Workspaces and repositories documentation](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/workspaces-and-repositories) page.
+A Living Application repository (or **Living App repository**) contains the artifacts developed in Bonita Studio and the UI Designer. Its content is further described in [Bonita's Workspaces and repositories documentation](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/workspaces-and-repositories) page.
 :::
 
 The repository build process allows to generate Bonita deployable artifacts (for instance process `.bar` files, UI Designer pages `.zip` files, REST API extensions `.zip` files).
@@ -13,9 +13,9 @@ The repository build process allows to generate Bonita deployable artifacts (for
 
 ### 1. Prepare the repository
 
-A Bonita repository can be created using Bonita Studio and it can be [shared with Git or SVN](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/workspaces-and-repositories#toc5).
+A Living App repository can be created using Bonita Studio and it can be [shared with Git or SVN](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/workspaces-and-repositories#toc5).
 
-So first ensure you have your Bonita repository available on your filesystem.  
+So first ensure you have your Living App repository available on your filesystem.  
 For this tutorial, we will use the [Bonita Vacation Management example repository](https://github.com/bonitasoft/bonita-vacation-management-example) publicly available on GitHub.
 
 ```
@@ -23,7 +23,7 @@ $ cd bonita-continuous-delivery
 $ git clone https://github.com/bonitasoft/bonita-vacation-management-example
 ```
 
-This step creates a `bonita-continuous-delivery/bonita-vacation-management-example` directory which is the Living Application repository we are going to build.
+This step creates a `bonita-continuous-delivery/bonita-vacation-management-example` directory which is the Living App repository we are going to build.
 
 
 ### 2. Provide the repository's build dependencies
@@ -49,6 +49,10 @@ $ bcd -s scenarios/euwest1_performance.yml --yes livingapp build -p bonita-vacat
 
 The build process finally generates a zip package located in the repository's `target` repository. The generated archive is named after the repository's root directory name.  
 For instance with the `bonita-vacation-management-example` example, a `bonita-vacation-management-example/target/bonita-vacation-management-example_<timestamp>.zip` file is generated.
+
+::: info
+Refer to the [BCD Command-line reference](bcd_cli.md) for a complete list of available options for the `bcd livingapp build` command.
+:::
 
 
 ## Complete example

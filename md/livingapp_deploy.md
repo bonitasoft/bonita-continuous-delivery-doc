@@ -149,16 +149,15 @@ Each artifact to deploy must be defined with the following attributes:
   * `FAIL_ON_DUPLICATES`: if the process already exists (same `name` and `version`), the deployment fails
   * `IGNORE_DUPLICATES`: only deploys a process when it does not already exist (same `name` and `version`)
   * `REPLACE_DUPLICATES`: **(default)** if the process already exists (same `name` and `version`), the existing one is deleted and the new one is deployed. As a reminder, deleting a process means: disable the process, delete all related cases and delete the process
-* Profiles:
-  * `REPLACE_DUPLICATES`: **(default)** in case of conflict with the profile's name, the existing profile (including profile entries and profile mappings) is completely deleted and the new one is deployed
 
 The following artifacts are used with **implicit policies**. It means that you do not have to declare those policies in the Deployment Descriptor file. There is no other policy available for those artifacts.
- * REST API extensions: `REPLACE_DUPLICATES`
- * Pages: `REPLACE_DUPLICATES`
- * Layouts: `REPLACE_DUPLICATES`
- * Themes: `REPLACE_DUPLICATES`
- * Business Data Model: `REPLACE_DUPLICATES`
- * BDM access control: `REPLACE_DUPLICATES`
+* Business Data Model: `REPLACE_DUPLICATES`
+* BDM access control: `REPLACE_DUPLICATES`
+* Layouts: `REPLACE_DUPLICATES`
+* Pages: `REPLACE_DUPLICATES`
+* Profiles: `REPLACE_DUPLICATES`
+* REST API extensions: `REPLACE_DUPLICATES`
+* Themes: `REPLACE_DUPLICATES`
 
 </div>
 

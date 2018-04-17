@@ -174,8 +174,6 @@ Example of `Deployment Descriptor` file
   * `IGNORE_DUPLICATES`: only deploys a process when it does not already exists (same `name` and `version`)
   * `REPLACE_DUPLICATES`: if the process already exists (same `name` and `version`), the deployer deletes the existing one
   and deploys the new one. As a reminder, deleting a process means: disable it, delete it and all related cases
-* Profiles: `REPLACE_DUPLICATES` (In case of conflict on the name, it replaces completely the profile including profile
-entries and profile mappings)
 
 
 #### Default Policies
@@ -183,13 +181,13 @@ entries and profile mappings)
  * Applications: `REPLACE_DUPLICATES`
  * Organization: `MERGE_DUPLICATES`
  * Processes: `REPLACE_DUPLICATES`
- * Profiles: `REPLACE_DUPLICATES`
  
  
 #### Implicit Policies:
 
 The following artifacts are used with **implicit** policies, it means that you do not have to declare those policies in
 the deployment descriptor file. There is no other policies available for those artifacts.
+ * Profiles: `REPLACE_DUPLICATES`
  * Rest API extensions: `REPLACE_DUPLICATES`
  * Pages: `REPLACE_DUPLICATES`
  * Layouts: `REPLACE_DUPLICATES`

@@ -72,3 +72,21 @@ $ bcd -y -s scenarios/myscenario.yml create deploy
 $ ansible all -vv -i inventory/ec2/ec2_wrapper.sh -m setup -u ubuntu --private-key=~/.ssh/my_key.pem --tree tmp_facts/
 ```
 This command will identify every EC2 instance (depending of `bcd_stack_id` set into ec2.ini by the last `bcd deploy` command) and put its facts into the `tmp_facts` directory.
+
+## Accessing Ansible Logs
+
+In order to troubleshoot issues, you may need to consult Ansible logs.
+
+By default, the path of the log is `/var/log/ansible.log` in your Docker container. You can change this location modifying 
+the variable `log_path` in the Ansible configuration file located in `ansible.cfg`.
+
+If you want to persist the log, you can add a ***volume*** in when you run `docker run` command like 
+
+```
+$ docker run --rm -t -i --name bcd-controller \
+    -v <local_path_to_.boto>:/home/bonita/.boto \
+    -v <local_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
+    -v <local_path_to_ssh_private_key>:/home/bonita/.ssh/<ssh_private_key> \
+    -v <local_path_to_your_ansible_log>:/var/log/ansible.log \
+    bonitasoft/bcd-controller /bin/bash
+```

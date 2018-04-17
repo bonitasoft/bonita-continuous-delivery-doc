@@ -210,11 +210,11 @@ drwxr-xr-x 3 1000 1000 4,0K Mar 29 16:29 ui-designer
 Then artifacts can be deployed using the generated zip file as follows:
 
 ```
-bonita@bcd-controller:~/bonita-continuous-delivery$ bcd -s scenarios/euwest1_performance.yml --yes livingapp deploy -p bonita-vacation-management-example_20180329162901.zip -e Qualification
+bonita@bcd-controller:~/bonita-continuous-delivery$ bcd -s scenarios/euwest1_performance.yml --yes livingapp deploy -p bonita-vacation-management-example/target/bonita-vacation-management-example_20180329162901.zip
 ```
 
 Artifacts can also be deployed providing the Application Archive directory as follows:
 
 ```
-bonita@bcd-controller:~/bonita-continuous-delivery$ bcd -s scenarios/euwest1_performance.yml --yes livingapp deploy -p bonita-vacation-management-example -e Qualification
+bonita@bcd-controller:~/bonita-continuous-delivery$ bcd -s scenarios/euwest1_performance.yml --yes livingapp deploy -p bonita-vacation-management-example/target/bonita-vacation-management-example
 ```

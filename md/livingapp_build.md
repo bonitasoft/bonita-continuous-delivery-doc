@@ -50,6 +50,10 @@ $ bcd -s scenarios/euwest1_performance.yml --yes livingapp build -p bonita-vacat
 The build process finally generates a zip package located in the repository's `target` repository. The generated archive is named after the repository's root directory name.  
 For instance with the `bonita-vacation-management-example` example, a `bonita-vacation-management-example/target/bonita-vacation-management-example_<timestamp>.zip` file is generated.
 
+::: info
+Refer to the [BCD Command-line reference](bcd_cli.md) for a complete list of available options for the `bcd livingapp build` command.
+:::
+
 
 ## Complete example
 

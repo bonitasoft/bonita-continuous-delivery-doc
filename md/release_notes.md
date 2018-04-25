@@ -3,7 +3,7 @@
 ## Limitations and known issues
 
 * On a BCD controller we can manage only one Terraform stack at a time.
-* Due to [ansible issue #35255](https://github.com/ansible/ansible/issues/35255) the warning message "could not match supplied host pattern" is displayed when there is no load balancer required for a non cluster deployment:
+* Due to [ansible issue #35255](https://github.com/ansible/ansible/issues/35255) the warning message "could not match supplied host pattern" is displayed when there is no load balancer required for a noncluster deployment:
 ```
 [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
 ```

@@ -1,6 +1,6 @@
 # Bonita Continuous Delivery Quick Start
 
-The BCD add-on is provided as a `bonita-continuous-delivery_<version>.tar.gz` archive.
+The BCD add-on is provided as a `bonita-continuous-delivery_<version>.zip` archive.
 
 This page describes how to use this archive to quickly start using Bonita Continuous Delivery solution.
 
@@ -26,35 +26,40 @@ Follow these installation steps on your control workstation.
 
 1.  Make sure Docker is installed as described in the [Install Docker](https://docs.docker.com/engine/installation/) documentation.
 
-2.  Extract the `bonita-continuous-delivery_<version>.tar.gz` archive:
+2.  Extract the `bonita-continuous-delivery_<version>.zip` archive:
 
-        $ tar xzf bonita-continuous-delivery_<version>.tar.gz
+        $ unzip bonita-continuous-delivery_<version>.zip
 
     This step creates a `bonita-continuous-delivery_<version>` directory which contains:
 
     *   Bonita Continuous Delivery Ansible playbooks and roles.
-    *   A pre-built Docker image for the control workstation. This Docker image is provided as a `bcd-controller_<version>.tar.gz` archive located in the `bonita-continuous-delivery_<version>/docker` directory.
-3.  Load the `bcd-controller_<version>.tar.gz` Docker image:
+    *   A pre-built Docker image for the control workstation. This Docker image is provided as a `bcd-controller_<version>.tar.zip` archive located in the `bonita-continuous-delivery_<version>/docker` directory.
+3.  Load the `bcd-controller_<version>.tar.zip` Docker image:
 
         $ cd bonita-continuous-delivery_<version>/docker
-        $ gunzip -c bcd-controller_<version>.tar.gz | docker load
+        $ unzip bcd-controller_<version>.tar.zip
+        $ docker load -i bcd-controller_<version>.tar
         Loaded image: bonitasoft/bcd-controller:<version>
         Loaded image: bonitasoft/bcd-controller:latest
 
     The `bonitasoft/bcd-controller` Docker image is now available. To use the image, it is recommended to prepare the following local files which will be shared as Docker volumes in the next step:
 
-    *   **`.boto`** (mounted as `/home/bonita/.boto`) - The [`.boto`](https://boto.readthedocs.io/en/latest/boto_config_tut.html) file contains AWS credentials used to make programmatic calls to AWS. The content of a `.boto` file is as follows:
+    *   **`/local/path/to/bonita-continuous-delivery_<version>`** (mounted as `/home/bonita/bonita-continuous-delivery`) - The provided `bonita-continuous-delivery` directory contains Ansible playbooks for Bonita Continuous Delivery.
+    *   <div class="list-group-item list-group-item-warning">This file is required for <strong>Provisioning</strong>. It is not required for Living App management.</div>
+        **`ssh_private_key`** (mounted as `/home/bonita/.ssh/ssh_private_key`) - The `ssh_private_key` file is the SSH private key used to connect to your target machines. For AWS, this is the private part of your [EC2 key pair](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html). This file should only be accessible from your user (`chmod 600 ~/.ssh/ssh_private_key`).
+    *   <div class="list-group-item list-group-item-warning">This file is required for <strong>Provisioning on AWS</strong>. It is not required for Living App management.</div>
+        **`.boto`** (mounted as `/home/bonita/.boto`) - The [`.boto`](https://boto.readthedocs.io/en/latest/boto_config_tut.html) file contains AWS credentials used to make programmatic calls to AWS. The content of a `.boto` file is as follows:
 
             [Credentials]
             aws_access_key_id = <YOUR_AWS_ACCESS_KEY>
             aws_secret_access_key = <YOUR_AWS_SECRET_ACCESS_KEY>
 
-    *   **`ssh_private_key`** (mounted as `/home/bonita/.ssh/ssh_private_key`) - The `ssh_private_key` file is the SSH private key used to connect to your target machines. For AWS, this is the private part of your [EC2 key pair](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html). This file should only be accessible from your user (`chmod 600 ~/.ssh/ssh_private_key`).
-    *   **`/local/path/to/bonita-continuous-delivery_<version>`** (mounted as `/home/bonita/bonita-continuous-delivery`) - The provided `bonita-continuous-delivery` directory contains Ansible playbooks for Bonita Continuous Delivery.
 4.  Make sure BCD dependencies are present.  
-    BCD expects Bonita version-specific dependencies to be present in the `bonita-continuous-delivery_<version>/dependencies` directory. Basically the following artifacts must be present:
+    BCD expects Bonita version-specific dependencies to be present in the `bonita-continuous-delivery_<version>/dependencies` directory. BCD dependencies are provided separately as a `bonita-continuous-delivery-dependencies_<bonita_version>.zip` archive.  
+    Basically, the following artifacts must be extracted from the `bonita-continuous-delivery-dependencies_<bonita_version>.zip` archive into the `dependencies` directory:
     * `bonita-subscription_<bonita_version>.tar.gz`
     * `bonita-la-builder-<bonita_version>-exec.jar`
+    * `bonita-sp-<bonita_version>-maven-repository.zip`
 5.  Start a BCD Controller Docker container on the control workstation:
 
         $ docker run --rm -ti --hostname bcd-controller --name bcd-controller \
@@ -69,24 +74,27 @@ Here is a complete example of how to install the BCD Controller Docker image.
 
 **Warning**: This example uses _fake_ AWS credentials and SSH private key... :-)
 
-Assuming you have a `bonita-continuous-delivery_2.0.0.tar.gz` archive in your `$HOME` directory:
+Assuming you have a `bonita-continuous-delivery_2.0.0.zip` archive in your `$HOME` directory:
 
     $ cd $HOME
-    $ tar xzf bonita-continuous-delivery_2.0.0.tar.gz
+    $ unzip bonita-continuous-delivery_2.0.0.zip
+    [...]
 
     $ cd bonita-continuous-delivery_2.0.0/docker
 
-    $ gunzip -c bcd-controller_2.0.0.tar.gz | docker load
+    $ unzip bcd-controller_2.0.0.tar.zip
     [...]
+    $ docker load -i bcd-controller_2.0.0.tar
     Loaded image: bonitasoft/bcd-controller:2.0.0
     Loaded image: bonitasoft/bcd-controller:latest
 
-    $ cd $HOME
+Assuming you have a `bonita-continuous-delivery-dependencies_7.7.0.zip` archive in your `$HOME/bonita-continuous-delivery_2.0.0/dependencies` directory:
 
-    $ ls -nh
-    total 418M
-    drwxrwxr-x 12 1000 1000 4,0K juil.  6 11:34 bonita-continuous-delivery_2.0.0
-    -rw-rw-r--  1 1000 1000 418M juil.  6 11:34 bonita-continuous-delivery_2.0.0.tar.gz
+    $ cd $HOME/bonita-continuous-delivery_2.0.0/dependencies
+    $ unzip bonita-continuous-delivery-dependencies_7.7.0.zip
+    [...]
+
+The next steps of this example are required when using BCD to provision a Bonita stack on AWS.
 
     $ cat ~/.boto
     [Credentials]
@@ -96,9 +104,11 @@ Assuming you have a `bonita-continuous-delivery_2.0.0.tar.gz` archive in your `$
     $ ls -n ~/.ssh/bonita_us-west-2.pem
     -rw------- 1 1000 1000 1692 jul. 6 11:36 ~/.ssh/bonita_us-west-2.pem
 
+Finally here is a sample command to start a BCD controller container:
+
     $ docker run --rm -ti --hostname bcd-controller --name bcd-controller \
-            -v ~/.boto:/home/bonita/.boto \
             -v ~/bonita-continuous-delivery_2.0.0:/home/bonita/bonita-continuous-delivery \
+            -v ~/.boto:/home/bonita/.boto \
             -v ~/.ssh/bonita_us-west-2.pem:/home/bonita/.ssh/bonita_us-west-2.pem \
             bonitasoft/bcd-controller /bin/bash
     bonita@bcd-controller:~$

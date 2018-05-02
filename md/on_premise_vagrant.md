@@ -3,11 +3,11 @@
 BCD can not only deploy your Bonita Stack in the cloud. You can also deploy your stack on-premises hosts. 
 On this page you will find usage examples and references about how to deploy your stack with Vagrant.
 
-::: Attention
+::: warning
 It is highly recommended to have a clear understanding of [Vagrant](https://www.vagrantup.com/intro/index.html) prior to reading this documentation.
 :::
 
-::: Notice
+::: info
 This tutorial is adapted only to the Linux and Mac environment.
 :::
 
@@ -24,7 +24,7 @@ information you can read the **[BCD Scenario reference](scenarios.md)**
 ## Step-by-step tutorial
 Here is a complete example using the configuration files provided
 
-::: Attention
+::: warning
 This example uses an insecure private key. See [more](https://www.vagrantup.com/docs/vagrantfile/ssh_settings.html)... 
 :::
 
@@ -65,11 +65,11 @@ You can access to your to your bonita application in http://192.168.10.10:8081/b
 ## Cleaning up your environment
 
 It is recommended to *undeploy* your Bonita application with the BCD controller like in the following:
-```bash
+```bashgit
 $ bcd -y -s <path/to/scenario> undeploy
 ```
 After, you can destroy your virtual machine running `vagrant destroy` command in the same path of your `Vagrantfile`.
 
-::: Info
+::: info
 You can read more about the Vagrant [CLI](https://www.vagrantup.com/docs/cli/) 
 :::

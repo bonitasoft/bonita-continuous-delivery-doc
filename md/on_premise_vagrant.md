@@ -1,28 +1,34 @@
 # How to deploy Bonita with Vagrant
 
-BCD can not only deploy you Bonita Stack in the cloud. You can also deploy your stack on-premises hosts. 
+BCD can not only deploy your Bonita Stack in the cloud. You can also deploy your stack on-premises hosts. 
 On this page you will find usage examples and references about how to deploy your stack with Vagrant.
 
-::: Warning
+::: Attention
 It is highly recommended to have a clear understanding of [Vagrant](https://www.vagrantup.com/intro/index.html) prior to reading this documentation.
 :::
 
+::: Notice
+This tutorial is adapted only to the Linux and Mac environment. Windows has other security policies with Docker and Virtualbox as hypervisor.
+:::
+
 ## Requirements
-* First, [Vagrant](https://www.vagrantup.com/downloads.html) installed in your host.
+* First, [Vagrant](https://www.vagrantup.com/downloads.html) and [Virtualbox](https://www.virtualbox.org/) as a hypervisor,
+ installed on your host.
 * Second, you will need to create and configure your host machine using your [Vagrantfile](https://www.vagrantup.com/docs/vagrantfile/).
 An example of `Vagrantfile` is provided in your `bonita-continuous-delivery_<version>/vagrant/1-machine` directory.
 * Third, you need to define your infrastructure and Bonita stack with a scenario. An example scenario file 
-named **vagrant_single.yml.EXAMPLE** is provided in the **bonita-continuous-delivery_<version>/scenarios**
-
+named **vagrant_single.yml.EXAMPLE** is provided in the **bonita-continuous-delivery_<version>/scenarios**. For more 
+information you can read the **[BCD Scenario reference](scenarios.md)**
+* Finally, the virtual machine that you will create has must be able to access to the Internet because some packages will be updated/installed.
 
 ## Step-by-step tutorial
 Here is a complete example using the configuration files provided
 
-::: Warning
-This example uses an insecure private key... 
+::: Attention
+This example uses an insecure private key. See [more](https://www.vagrantup.com/docs/vagrantfile/ssh_settings.html)... 
 :::
 
-Assuming you have a `bonita-continuous-delivery_2.0.0` directory in your `$HOME` directory and VirtualBox as hypervisor.
+Assuming you have a `bonita-continuous-delivery_2.0.0` directory in your `$HOME` directory.
 
 ### 1. Prepare and start your host
 This step will create and configure a single virtual machine with an IP 192.168.10.10 defined in `Vagrantfile`
@@ -55,3 +61,15 @@ bonita@bcd-controller:~/bonita-continuous-delivery$bcd -s scenario/vagrant_singl
 
 ### 3. Open bonita url
 You can access to your to your bonita application in http://192.168.10.10:8081/bonita
+
+## Cleaning up your environment
+
+It is recommended to *undeploy* your Bonita application with the BCD controller like in the following:
+```bash
+$ bcd -y -s <path/to/scenario> stack undeploy
+```
+After, you can destroy your virtual machine running `vagrant destroy` command in the same path of your `Vagrantfile`.
+
+::: Info
+You can read more about the Vagrant [CLI](https://www.vagrantup.com/docs/cli/) 
+:::

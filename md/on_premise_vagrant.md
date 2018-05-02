@@ -8,7 +8,7 @@ It is highly recommended to have a clear understanding of [Vagrant](https://www.
 :::
 
 ::: Notice
-This tutorial is adapted only to the Linux and Mac environment. Windows has other security policies with Docker and Virtualbox as hypervisor.
+This tutorial is adapted only to the Linux and Mac environment.
 :::
 
 ## Requirements

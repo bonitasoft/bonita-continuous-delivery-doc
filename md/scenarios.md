@@ -42,6 +42,7 @@ The following variables are specific to AWS deployments ie. when `bcd_provider` 
 |aws_database_instance_type|Y|EC2 instance type for the database instance.|t2.micro|
 |aws_bonita_instance_type|Y|EC2 instance type for the Bonita instances.|t2.micro|
 |aws_load_balancer_instance_type|Y|EC2 instance type for the load balancer instance.|t2.micro|
+|aws_assumed_iam_role|N| |An IAM role can be assumed, so all requests are run as that role. This can be useful for connecting across different accounts, or to limit user access. Set this parameter if you want to assume an IAM role while deploying on AWS. It is useful in an AWS organization with IAM users and multiple AWS accounts. See [AWS Organizations](aws_organizations.md)|arn:aws:iam::123456789012:role/BCD|
 
 
 ## Bonita variables

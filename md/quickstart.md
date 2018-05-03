@@ -46,8 +46,10 @@ Follow these installation steps on your control workstation.
 
     *   **`/local/path/to/bonita-continuous-delivery_<version>`** (mounted as `/home/bonita/bonita-continuous-delivery`) - The provided `bonita-continuous-delivery` directory contains Ansible playbooks for Bonita Continuous Delivery.
     *   <div class="list-group-item list-group-item-warning">This file is required for <strong>Provisioning</strong>. It is not required for Living App management.</div>
+        
         **`ssh_private_key`** (mounted as `/home/bonita/.ssh/ssh_private_key`) - The `ssh_private_key` file is the SSH private key used to connect to your target machines. For AWS, this is the private part of your [EC2 key pair](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html). This file should only be accessible from your user (`chmod 600 ~/.ssh/ssh_private_key`).
     *   <div class="list-group-item list-group-item-warning">This file is required for <strong>Provisioning on AWS</strong>. It is not required for Living App management.</div>
+        
         **`.boto`** (mounted as `/home/bonita/.boto`) - The [`.boto`](https://boto.readthedocs.io/en/latest/boto_config_tut.html) file contains AWS credentials used to make programmatic calls to AWS. The content of a `.boto` file is as follows:
 
             [Credentials]

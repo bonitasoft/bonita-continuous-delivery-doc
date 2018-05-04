@@ -51,7 +51,7 @@ This tutorial is adapted only to the Linux and Mac environment.
 An example of `Vagrantfile` is provided in your `bonita-continuous-delivery_<version>/vagrant/` directory. You can find an
 example for one machine or two.
 * Third, you need to define your infrastructure and Bonita stack with a scenario. An example scenario file 
-named **vagrant_single.yml.EXAMPLE** is provided in the **bonita-continuous-delivery_<version>/scenarios**. For more
+named **vagrant_single.yml.EXAMPLE** is provided in the **bonita-continuous-delivery_x.x.x/scenarios**. For more
 information you can read the **[BCD Scenario reference](scenarios.md)**
 * Finally, the virtual machine that you will create must have access to the Internet because some packages will be updated/installed.
 

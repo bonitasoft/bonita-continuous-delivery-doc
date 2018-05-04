@@ -8,6 +8,7 @@
 
 ### Bugfixes
 
+- BCD-200 Database container is not created with provided Vagrant inventories
 - BCD-241 'Install license modules' task fails
 - BCD-243 vagrant failed to download ubuntu box: 404 Not Found
 

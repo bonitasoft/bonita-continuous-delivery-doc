@@ -91,6 +91,9 @@ Further configuration instructions for **AWS single sign-on** can be found [on t
 1. [Create an IAM Group](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_create.html)
     - **Group name**: bonita-provisioning
     - Select the IAM Policies created previously
+
+    *For some usage you may be interested to create a role and attach to it the corresponding policies, see [Configure AWS single sign-on](aws_sso.md) or [Assume IAM role within AWS Organizations](aws_organizations.md).*
+
 1. Create an IAM Policy to allow ec2 instances of a cluster to autodiscover themselves on a specific region (eg. us-west-2).
     - **Policy name**: ClusterBCD_us-west-2
     - **Policy document**:

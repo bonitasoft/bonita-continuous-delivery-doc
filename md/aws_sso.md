@@ -18,7 +18,8 @@ Single Sign-On to AWS Using G Suite <!--{.h2}-->
 
 In this step we will provide you an example using G Suite from Google.
 
-First, set up a Single Sign-On to AWS using G Suite as described in [AWS website](https://aws.amazon.com/es/blogs/security/how-to-set-up-federated-single-sign-on-to-aws-using-google-apps/).
+First, set up a Single Sign-On to AWS using G Suite as described in [AWS website](https://aws.amazon.com/es/blogs/security/how-to-set-up-federated-single-sign-on-to-aws-using-google-apps/).  
+In this previous documentation you have seen how to create an IAM role in your AWS account. It implies that for BCD usage you should have created the corresponding role with proper rights. To do so you just have to follow the [How to configure Amazon Web Services (AWS) for BCD](aws_prerequisites.md) and in `AWS Setup for BCD` section replace the point 5 `Create an IAM Group` by a [creation of the corresponding role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp.html) attached to the IAM Policies created previously.
 
 The BCD Controller already embeds [aws-google-auth](https://github.com/cevoaustralia/aws-google-auth) to manage the authentication.
 

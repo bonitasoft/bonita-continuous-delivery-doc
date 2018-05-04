@@ -4,6 +4,13 @@
 
 - The same BCD stack cannot be managed with multiple BCD controller instances due to the use of Terraform "local" backend.
 
+## What's new in 1.0.5 (2018-05-04)
+
+### Bugfixes
+
+- BCD-241 'Install license modules' task fails
+- BCD-243 vagrant failed to download ubuntu box: 404 Not Found
+
 
 ## What's new in 1.0.4 (2018-04-05)
 

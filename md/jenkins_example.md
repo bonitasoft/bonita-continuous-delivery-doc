@@ -2,7 +2,7 @@
 
 The BCD controller can not only be run interactively, but also within standard Continuous Delivery servers such as [Jenkins automation server](https://jenkins.io/).
 
-The `bonita-continuous-delivery_<version>.tar.gz` archive provides a `jenkins-example` directory which contains a minimal working example of a Continuous Delivery platform with Jenkins and BCD.
+The `bonita-continuous-delivery_<version>.zip` archive provides a `jenkins-example` directory which contains a minimal working example of a Continuous Delivery platform with Jenkins and BCD.
 
 This example will start a pre-configured Jenkins server with a BCD-aware Jenkins slave and ready-to-use Jenkins jobs.  
 It is provided as a [Docker Compose](https://docs.docker.com/compose/) project.

@@ -4,7 +4,7 @@
     * [AWS prerequisites](aws_prerequisites.md)
     * [Licensing prerequisites](licensing_prerequisites.md)
     * [Quick start](quickstart.md)
-    * [Deploy with Vagrant](on_premise_vagrant.md)
+    * [Deploy on-premise](deploy_on_premise.md)
     * [Bonita container custom initialization](_custom_init.md)
         * [Custom initialization overview](custom_init.md)
         * [How to configure REST API authorization](how_to_configure_rest_api_authorization.md)

@@ -31,7 +31,7 @@ This step creates a `bonita-continuous-delivery/bonita-vacation-management-examp
 The next step is to provide all dependencies required to build your repository. Hence the following artifatcs must be present in the `bonita-continuous-delivery/dependencies` directory:
 
 **`bonita-la-builder-<bonita_version>-exec.jar`**  
-The Bonita Living Application Builder library. Its version must correspond to the **`bonita_version`** configured in your BCD scenario. This is the version of the Bonita stack where generated artifacts will be deployed.  
+The Bonita Living Application Builder library. Its version must correspond to the **`bonita_version`** variable defined in your BCD scenario. This is the version of the Bonita stack where generated artifacts will be deployed.  
 For instance the `bonita-la-builder-7.7.0-exec.jar` file must be present to build artifacts meant to be deployed on a Bonita `7.7.0` stack.
 
 **`bonita-sp-*-maven-repository.zip`**  
@@ -53,6 +53,19 @@ For instance with the `bonita-vacation-management-example` example, a `bonita-va
 ::: info
 Refer to the [BCD Command-line reference](bcd_cli.md) for a complete list of available options for the `bcd livingapp build` command.
 :::
+
+
+## Repository vs. Builder version compatibility
+
+The version of your repository **must exactly match** the version of the builder library.
+
+If versions do not match, the `bcd livingapp build` command will exit with such a message:
+```
+[ERROR] Project version (7.7.0) does not match builder version (7.7.1)
+[13:46:34.469] ERROR: Aborting! Command <livingapp-build> returned non-zero exit code <1>
+```
+
+The `bcd livingapp build` command does not allow to migrate your repository to the builder's version. Your repository has to be migrated to the appropriate version using [Bonita Studio](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/workspaces-and-repositories#toc6).
 
 
 ## Complete example

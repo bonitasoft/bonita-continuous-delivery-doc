@@ -8,13 +8,12 @@ Welcome to **Bonita Continuous Delivery** documentation website!
 
 The Bonita Continuous Delivery (BCD) add-on provides a solution to use _Continuous Delivery_ practice for your Bonita Living Application development and deployment.
 
-It is composed of two parts:
+The BCD add-on is powered by [Docker containerization solution](https://www.docker.com/) and [Ansible automation framework](https://www.ansible.com/). It is composed of two parts:
 
-*   First, a solution for **provisioning** of a Bonita stack on cloud or on-premises hosts
-*   Second, a framework for **continuous delivery** of Living Applications
-
-The BCD add-on is compatible with [Amazon AWS cloud platform](https://aws.amazon.com/), on premises servers and local virtual machines via [Vagrant](https://www.vagrantup.com/).  
-It is powered by [Docker containerization solution](https://www.docker.com/) and [Ansible automation framework](https://www.ansible.com/).
+*   First, a solution for **Provisioning** of a Bonita stack on cloud or on-premises hosts.  
+    BCD lets you deploy Bonita on existing servers using [Docker](https://www.docker.com/what-container) containers. Furthermore, when used with [Amazon Web Services (AWS) cloud platform](https://aws.amazon.com/), BCD enables you to create and delete [AWS EC2 instances](https://aws.amazon.com/ec2/) automatically.
+*   Second, a framework for **Continuous Delivery** of Living Applications.  
+    BCD lets you build a Living Application repository and deploy the generated artifacts from the command line.
 
 ::: warning
 It is highly recommended to have a clear understanding of [Docker essential concepts](https://docs.docker.com/engine/docker-overview/) prior to reading this documentation.
@@ -82,8 +81,8 @@ Here is an overview of how BCD drives the provisioning of a Bonita stack.
 
 ![BCD Architecture Overview](images/bonita_platform_stack.png "BCD Architecture Overview")
 
-*   A **Host** can be a AWS EC2 instance or an on-premises server.
+*   A **Host** can be a AWS EC2 instance or an existing server running on-premises or on another cloud provider.
 *   The control workstation bind mounts some essential files with the controller container including:
     *   `~/bonita-continuous-delivery` - used as a working directory for BCD CLI known as the `BCD_HOME` directory
     *   `~/.ssh/private_key` - used to allow SSH access to target hosts
-    *   `~/.boto` - credential to your AWS account (if any)
+    *   `~/.boto` - credential to your AWS account (when applicable)

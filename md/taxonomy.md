@@ -8,7 +8,7 @@
     * [Manage Bonita stacks](_manage_stack.md)
         * [Configure Amazon Web Services (AWS) for BCD](aws_prerequisites.md)
         * [Configure AWS single sign-on](aws_sso.md)
-        * [Deploy on-premise](deploy_on_premise.md)
+        * [Deploy with a static inventory](deploy_with_static_inventory.md)
         * [Customize the Bonita container](_custom_init.md)
             * [Using initialization scripts](custom_init.md)
             * [Configuring REST API authorization](how_to_configure_rest_api_authorization.md)

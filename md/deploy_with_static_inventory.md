@@ -1,6 +1,6 @@
-# How to deploy Bonita on-premise
+# How to deploy Bonita on existing server running
 
-BCD can not only deploy your Bonita Stack in the cloud. You can also deploy your stack on-premises hosts. 
+BCD can not only deploy your Bonita Stack in the cloud. You can also deploy your stack on your existing hosts running.
 On this page, you will find detailed information about the usage of BCD with your existing hosts and finally, 
 you will see an example, creating virtual machines with Vagrant and deploying your Bonita application with BCD.
 
@@ -9,7 +9,7 @@ There is two main files to configure:
 ### Inventory
 This file defines the hosts and groups of hosts upon which BCD will operates. The location of the inventory files is
 `bonita-continuous-delivery_x.x.x/ansible/inventory/`.
-and `on-premise-1-machine.EXAMPLE` in the same directory.
+and `static-inventory-1-machine.EXAMPLE` in the same directory.
 In this file, there are two group names, `database` and `bonita` that must appear and under each one you have to describe
 your machines, and a group with the same name of your bonita stack id grouping the `database` and `bonita` groups.
 Also, you have to specify a group variables for `bonita` group with:
@@ -25,16 +25,16 @@ It is recommended to have a clear understanding on [Ansible Inventories](https:/
 ### Scenario
 The scenarios follows the same rules as described in the [Scenario file reference](scenarios.md). There are five
 parameters that you don't have to forget to set-up: 
-* bcd_provider: Infrastructure provider. It has to be set with `on-premises`
+* bcd_provider: Infrastructure provider. It has to be set with `static-inventory`
 * ansible_ssh_user: The ssh user to use.
 * ansible_ssh_private_key_file: Private key file used by ssh.
-* bcd_inventory: Ansible inventory path required when `bcd_provider` is `on-premises`
+* bcd_inventory: Ansible inventory path required when `bcd_provider` is `static-inventory`
 * configuration: Configuration filename used to group variables for common deployment types.
 
-You can see an example of scenario in `bonita-continuous-delivery_x.x.x/scenarios/on_premise.yml.EXAMPLE`
+You can see an example of scenario in `bonita-continuous-delivery_x.x.x/scenarios/static_inventory.yml.EXAMPLE`
 
-## Deploy on-premise with Vagrant
-You will see a complete example of deploying on-premise with Vagrant.
+## Deploy with Vagrant
+You will see a complete example of deploying on existing virtual machines created with Vagrant.
 
 ::: warning
 For this tutorial it is highly recommended to have a clear understanding of [Vagrant](https://www.vagrantup.com/intro/index.html) prior to reading this documentation.

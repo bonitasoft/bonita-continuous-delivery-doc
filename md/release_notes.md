@@ -1,5 +1,12 @@
 # Release notes
 
+## Breaking changes
+
+* For security reasons, pushing AWS user credentials to EC2 instances (as done with BCD 1.0.x) for cluster autodiscovery is no longer supported and it's replaced by an [IAM role](aws_prerequisites.md) assignement on EC2 instances. See `ec2_discovery_iam_role` into [scenarios documentation](scenarios.md).
+* `bonita_http_api` value is now set to `false` by default.
+* For a better comprehension the value of bcd_provider `on-premises` has been replaced by `static_inventory`, you may have to update your [scenarios](scenarios.md) accordingly.
+* Bonita Docker images have been moved from `roles/bonita/files/docker/` to `dependencies` directories
+
 ## Limitations and known issues
 
 * On a BCD controller we can manage only one Terraform stack at a time.

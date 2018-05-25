@@ -13,6 +13,7 @@
             * [Using initialization scripts](custom_init.md)
             * [Configuring REST API authorization](how_to_configure_rest_api_authorization.md)
             * [Enabling remote monitoring with JMX](how_to_enable_remote_monitoring_jmx.md)
+            * [Run the BCD with a different UID](how_to_run_bcd_different_uid.md)
     * [Manage Bonita Living Applications](_manage_living_application.md)
         * [Build a Living App repository](livingapp_build.md)
         * [Deploy Living App artifacts](livingapp_deploy.md)

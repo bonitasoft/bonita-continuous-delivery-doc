@@ -17,18 +17,14 @@ It is composed of two parts:
 
 ![BCD Overview](images/bcd20_capabilities.png "BCD Overview")
 
-::: warning
-It is highly recommended to have a clear understanding of [Docker essential concepts](https://docs.docker.com/engine/docker-overview/) prior to reading this documentation.
-:::
-
 <div class="col-md-4">
 <div class="panel panel-default">
-<div class="panel-heading">Quick start</div>
+<div class="panel-heading">Highlights</div>
 <div class="panel-body">
-<div style="padding: 15px; padding-bottom: 0px;">Follow this guide with step-by-step instructions to quickly start using Bonita Continuous Delivery solution.</div>
+<div style="padding: 15px; padding-bottom: 0px;">Find out what’s new in Bonita Continuous Delivery add-on! Read the release notes.</div>
 <div class="menu-block-wrapper">
 
-*  [:fa-angle-double-right: Getting started with BCD](quickstart.md)
+* [:fa-angle-double-right: What's new in BCD?](release_notes.md)
 <!--{ul:.menu .nav}-->
 </div>
 </div>
@@ -37,12 +33,12 @@ It is highly recommended to have a clear understanding of [Docker essential conc
 
 <div class="col-md-4">
 <div class="panel panel-default">
-<div class="panel-heading">Release notes</div>
+<div class="panel-heading">Getting started</div>
 <div class="panel-body">
-<div style="padding: 15px; padding-bottom: 0px;">Find out what’s new in Bonita Continuous Delivery add-on! Read the release notes.</div>
+<div style="padding: 15px; padding-bottom: 0px;">Follow this guide with step-by-step instructions to quickly start using Bonita Continuous Delivery solution.</div>
 <div class="menu-block-wrapper">
 
-* [:fa-angle-double-right: What's new in BCD?](release_notes.md)
+*  [:fa-angle-double-right: Getting started with BCD](quickstart.md)
 <!--{ul:.menu .nav}-->
 </div>
 </div>
@@ -77,4 +73,7 @@ A **Bonita stack** is formed by a database service, Bonita Docker containers run
 The BCD CLI is provided within a ready-to-use environment called **BCD Controller**. This environment is packaged as a Docker image.  
 Then a controller container will have to be started interactively on your control workstation from which `bcd` commands will be issued.
 
+::: warning
+It is highly recommended to have a clear understanding of [Docker essential concepts](https://docs.docker.com/engine/docker-overview/) prior to reading this documentation.
+:::
 

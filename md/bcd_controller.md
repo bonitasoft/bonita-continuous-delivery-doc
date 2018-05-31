@@ -5,12 +5,13 @@ The BCD controller image provides a ready-to-use environment to launch Bonita Co
 
 ## Installation
 
-A pre-built BCD controller image is provided with BCD deliverable as a `bcd-controller_<version>.tar.gz` archive. It is located in the `bonita-continuous-delivery_<version>/docker` directory.
+A pre-built BCD controller image is provided with BCD deliverable as a `bcd-controller_<version>.tar.zip` archive. It is located in the `bonita-continuous-delivery_<version>/docker` directory.
 
 Load this image into Docker engine as follows:
 ```
 $ cd bonita-continuous-delivery_<version>/docker
-$ gunzip -c bcd-controller_<version>.tar.gz | docker load
+$ unzip bcd-controller_<version>.tar.zip
+$ docker load -i bcd-controller_<version>.tar
 Loaded image: bonitasoft/bcd-controller:<version>
 Loaded image: bonitasoft/bcd-controller:latest
 ```

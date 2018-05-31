@@ -9,14 +9,14 @@ There is two main files to configure:
 ### Inventory
 This file defines the hosts and groups of hosts upon which BCD will operates. The location of the inventory files is
 `bonita-continuous-delivery_x.x.x/ansible/inventory/`.
-and `static-inventory-1-machine.EXAMPLE` in the same directory.
+and `static-inventory-1-machine.EXAMPLE` in the `static-inventory` directory.
 In this file, there are two group names, `database` and `bonita` that must appear and under each one you have to describe
 your machines, and a group with the same name of your bonita stack id grouping the `database` and `bonita` groups.
 Also, you have to specify a group variables for `bonita` group with:
 * `bonita_address`, that is the IP of Bonita host
 * `bonita_db_host`, that is the IP of your database
 
-You can see an example in `bonita-continuous-delivery_x.x.x/ansible/inventory/` for one or two machines.  
+You can see an example in `bonita-continuous-delivery_x.x.x/ansible/inventory/static-inventory/` for one or two machines.  
 
 ::: info
 It is recommended to have a clear understanding on [Ansible Inventories](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html)

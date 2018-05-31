@@ -4,6 +4,7 @@
     * [AWS prerequisites](aws_prerequisites.md)
     * [Licensing prerequisites](licensing_prerequisites.md)
     * [Quick start](quickstart.md)
+    * [Deploy with a static inventory](deploy_with_static_inventory.md)
     * [Bonita container custom initialization](_custom_init.md)
         * [Custom initialization overview](custom_init.md)
         * [How to configure REST API authorization](how_to_configure_rest_api_authorization.md)

@@ -18,6 +18,18 @@ If you consider deploying to Amazon Web Services (AWS) platform, first read the 
 
 ## Preparing the control workstation
 
+### Architecture overview
+
+Here is an overview of how BCD drives the provisioning of a Bonita stack.
+
+![BCD Architecture Overview](images/bonita_platform_stack.png "BCD Architecture Overview")
+
+*   A **Host** can be a AWS EC2 instance or an existing server running on-premises or on another cloud provider.
+*   The control workstation bind mounts some essential files with the controller container including:
+    *   `~/bonita-continuous-delivery` - used as a working directory for BCD CLI known as the `BCD_HOME` directory
+    *   `~/.ssh/private_key` - used to allow SSH access to target hosts
+    *   `~/.boto` - credential to your AWS account (when applicable)
+
 ### Step-by-step installation
 
 In order to ease your environment setup, we provide a Docker image called **[BCD Controller](bcd_controller.md)** image which contains all required dependencies and tools for the control workstation (ie. the host from which Bonita Continuous Delivery commands are launched).

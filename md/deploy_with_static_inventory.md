@@ -1,4 +1,4 @@
-# How to deploy Bonita on existing server running
+# How to deploy Bonita on existing server
 
 BCD can not only deploy your Bonita Stack in the cloud. You can also deploy your stack on your existing hosts running.
 On this page, you will find detailed information about the usage of BCD with your existing hosts and finally, 

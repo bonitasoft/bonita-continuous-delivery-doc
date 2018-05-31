@@ -1,6 +1,6 @@
 # How to deploy Bonita on existing server
 
-BCD can not only deploy your Bonita Stack in the cloud. You can also deploy your stack on your existing hosts running.
+BCD can not only deploy your Bonita Stack in the cloud. You can also deploy your stack on your existing hosts.
 On this page, you will find detailed information about the usage of BCD with your existing hosts and finally, 
 you will see an example, creating virtual machines with Vagrant and deploying your Bonita application with BCD.
 
@@ -104,7 +104,7 @@ It is recommended to *undeploy* your Bonita application with the BCD controller 
 ```bash
 $ bcd -y -s <path/to/scenario> stack undeploy
 ```
-After, you can destroy your virtual machine running `vagrant destroy` command in the same path of your `Vagrantfile`.
+After, you can destroy your virtual machine `vagrant destroy` command in the same path of your `Vagrantfile`.
 
 ::: info
 You can read more about the Vagrant [CLI](https://www.vagrantup.com/docs/cli/) 

@@ -6,8 +6,8 @@ If you implement this kind of authentication, when you start the BCD Controller 
 
 ```
 $ docker run --rm -t -i --name bcd-controller \
-    -v <local_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
-    -v <local_path_to_ssh_private_key>:/home/bonita/.ssh/<ssh_private_key> \
+    -v <host_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
+    -v <host_path_to_ssh_private_key>:/home/bonita/.ssh/<ssh_private_key> \
     bonitasoft/bcd-controller /bin/bash
 ```
 

@@ -22,9 +22,13 @@ Loaded image: bonitasoft/bcd-controller:latest
 To enter the BCD controller environment, a Docker container has to be started on your control workstation using the BCD controller image.
 
 Besides the following files have to be bind mounted from the control workstation to make them available to the BCD controller container:
-- (Mandatory) **`/local/path/to/bonita-continuous-delivery_<version>`** (mounted as `/home/bonita/bonita-continuous-delivery`) - This directory provides BCD Ansible playbooks and is known as the `BCD_HOME` directory.
-- (Mandatory) **`ssh_private_key`** (mounted as `/home/bonita/.ssh/ssh_private_key`) - The `ssh_private_key` file is the SSH private key used to connect to your target machines. For AWS, this is the private part of your [EC2 key pair](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html). This file should only be accessible from your user (`chmod 600 ~/.ssh/ssh_private_key`).
-- (Optional) **`.boto`** (mounted as `/home/bonita/.boto`) - The [`.boto`](https://boto.readthedocs.io/en/latest/boto_config_tut.html) file contains AWS credentials used to make programmatic calls to AWS. Indeed dynamic Amazon EC2 inventory management for Ansible runs on top of [Boto](https://aws.amazon.com/sdk-for-python/). The content of a `.boto` file is as follows:
+- **`/host/path/to/bonita-continuous-delivery_<version>`** (mounted as `/home/bonita/bonita-continuous-delivery`) - This directory provides BCD Ansible playbooks and is known as the `BCD_HOME` directory.
+- <div class="list-group-item list-group-item-warning">This file is required for <strong>Provisioning</strong>. It is not required for Living App management.</div>
+  
+  **`ssh_private_key`** (mounted as `/home/bonita/.ssh/ssh_private_key`) - The `ssh_private_key` file is the SSH private key used to connect to your target machines. For AWS, this is the private part of your [EC2 key pair](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html). This file should only be accessible from your user (`chmod 600 ~/.ssh/ssh_private_key`).
+- <div class="list-group-item list-group-item-warning">AWS credentials are required for <strong>Provisioning on AWS</strong>. It is not required for Living App management.</div>
+  
+  **`.boto`** (mounted as `/home/bonita/.boto`) - The [`.boto`](https://boto.readthedocs.io/en/latest/boto_config_tut.html) file contains AWS credentials used to make programmatic calls to AWS. Indeed dynamic Amazon EC2 inventory management for Ansible runs on top of [Boto](https://aws.amazon.com/sdk-for-python/). The content of a `.boto` file is as follows:
     ```ini
     [Credentials]
     aws_access_key_id = <YOUR_AWS_ACCESS_KEY>
@@ -45,9 +49,9 @@ The first method to start a BCD Controller Docker container on the control works
 
 ```
 $ docker run --rm -t -i --name bcd-controller \
-    -v <local_path_to_.boto>:/home/bonita/.boto \
-    -v <local_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
-    -v <local_path_to_ssh_private_key>:/home/bonita/.ssh/<ssh_private_key> \
+    -v <host_path_to_.boto>:/home/bonita/.boto \
+    -v <host_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
+    -v <host_path_to_ssh_private_key>:/home/bonita/.ssh/<ssh_private_key> \
     bonitasoft/bcd-controller /bin/bash
 ```
 
@@ -71,10 +75,11 @@ services:
     stdin_open: true
     tty: true
     command: /bin/bash
+    working_dir: /home/bonita/bonita-continuous-delivery
     volumes:
       - .:/home/bonita/bonita-continuous-delivery
-      - <local_path_to_.boto>:/home/bonita/.boto
-      - <local_path_to_ssh_private_key>:/home/bonita/.ssh/<ssh_private_key>
+      - <host_path_to_.boto>:/home/bonita/.boto
+      - <host_path_to_ssh_private_key>:/home/bonita/.ssh/<ssh_private_key>
 ```
 
 Then start the BCD controller container interactively with:

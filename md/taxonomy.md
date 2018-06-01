@@ -1,5 +1,5 @@
 * [Release notes](release_notes.md)
-* [Quick start guide](quickstart.md)
+* [Getting started](getting_started.md)
 * [BCD services and scenarios](_bcd_services_and_scenarios.md)
     * [Controller Docker image](bcd_controller.md)
     * [Command-line interface](bcd_cli.md)

@@ -35,10 +35,10 @@ It is composed of two parts:
 <div class="panel panel-default">
 <div class="panel-heading">Getting started</div>
 <div class="panel-body">
-<div style="padding: 15px; padding-bottom: 0px;">Follow this guide with step-by-step instructions to quickly start using Bonita Continuous Delivery solution.</div>
+<div style="padding: 15px; padding-bottom: 0px;">Follow this guide with step-by-step instructions to start using Bonita Continuous Delivery solution.</div>
 <div class="menu-block-wrapper">
 
-* [:fa-angle-double-right: Getting started with BCD](quickstart.md)
+* [:fa-angle-double-right: Getting started with BCD](getting_started.md)
 <!--{ul:.menu .nav}-->
 </div>
 </div>

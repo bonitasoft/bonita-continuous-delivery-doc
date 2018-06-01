@@ -84,9 +84,9 @@ If you want to persist the log, you can add a ***volume*** in when you run `dock
 
 ```
 $ docker run --rm -t -i --name bcd-controller \
-    -v <local_path_to_.boto>:/home/bonita/.boto \
-    -v <local_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
-    -v <local_path_to_ssh_private_key>:/home/bonita/.ssh/<ssh_private_key> \
-    -v <local_path_to_your_ansible_log>:/var/log/ansible.log \
+    -v <host_path_to_.boto>:/home/bonita/.boto \
+    -v <host_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
+    -v <host_path_to_ssh_private_key>:/home/bonita/.ssh/<ssh_private_key> \
+    -v <host_path_to_your_ansible_log>:/var/log/ansible.log \
     bonitasoft/bcd-controller /bin/bash
 ```

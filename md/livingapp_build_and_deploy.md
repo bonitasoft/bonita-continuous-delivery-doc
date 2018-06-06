@@ -11,7 +11,9 @@ GitHub repository as described in the [Bonita Living Application Builder](living
   * you have already defined a scenario file called `build_and_deploy.yml` stored in the BCD `scenarios` directory
   * you already have a Bonita stack up and running, defined by the `build_and_deploy.yml` scenario file
 
-
+If you want to deploy into a Bonita platform running on an existing machine, you can find an example of a scenario file `bonita-continuous-delivery_2.0.0/scenario/build_and_deploy.yml.EXAMPLE` 
+with its inventory file in `bonita-continuous-delivery_2.0.0/ansible/inventory/static-inventory/livingapp-build-deploy-static-inventory.EXAMPLE`.
+ 
 ## Best practices about repositories
 
 The _Bonita Living Application Builder_ is made to build an entire Bonita repository.  

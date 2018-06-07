@@ -9,13 +9,15 @@
 
 ## Limitations and known issues
 
-* On a BCD controller we can manage only one Terraform stack at a time.
+* The same BCD stack cannot be managed with multiple BCD controller instances due to the use of Terraform "local" backend.
 * Due to [ansible issue #35255](https://github.com/ansible/ansible/issues/35255) the warning message "could not match supplied host pattern" is displayed when there is no load balancer required for a noncluster deployment:
 ```
 [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
 ```
 
-## What's new in 2.0.0
+## What's new in 2.0.0 (2018-06-07)
+
+* This version is compatible with Bonita 7.7.0
 
 ### Enhancements
 
@@ -24,3 +26,4 @@
 * Add Google G Suite SSO support
 
 ### Bugfixes
+* BCD-199	bcd undeploy command fails when docker is not yet installed on target hosts

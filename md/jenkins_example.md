@@ -35,7 +35,7 @@ The following commands are to be executed on the target host where Jenkins is to
     $ docker-compose up -d
     ```
 
-As a result Jenkins is up and running on port `8080` of the target host.  
+As a result Jenkins is up and running on port `9090` of the target host.  
 You can now log-in to Jenkins using one of the pre-configured users:
 
 *   `admin` - User with administration rights. Password has been initialized with `secrets/adminPassword`.

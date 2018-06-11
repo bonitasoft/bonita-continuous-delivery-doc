@@ -7,16 +7,16 @@ You will also find information about BCD and Bonita version compatibility.
 ## System requirements
 
 There are different environments where requirements are to be met for BCD:
-- **Control workstation** - the host where your [BCD controller](bcd_controller.md) will run.
+- **Control host** - the host where your [BCD controller](bcd_controller.md) will run.
 - **Bonita stack hosts** - the target hosts where your Bonita stack will be deployed using BCD.
 - **Jenkins server** - the server where BCD commands are executed by Jenkins Continuous Integration platform.
 
 
-### Control workstation
+### Control host
 
-The **Docker Engine** must be up and running on your control workstation prior to using BCD. BCD is compatible with Docker version 17.04.0 and above.
+The **Docker Engine** must be up and running on your control host prior to using BCD. BCD is compatible with Docker version 17.04.0 and above.
 
-You may have [Docker Community Edition (Docker CE)](https://docs.docker.com/install/) or [Docker Enterprise Edition (Docker EE)](https://docs.docker.com/ee/supported-platforms/) installed on your workstation to start using BCD.
+You may have [Docker Community Edition (Docker CE)](https://docs.docker.com/install/) or [Docker Enterprise Edition (Docker EE)](https://docs.docker.com/ee/supported-platforms/) installed on your host to start using BCD.
 
 ::: info
 The Docker Engine may be installed on Linux, MacOS, Microsoft Windows or Cloud platforms as described in [Docker installation guide](https://docs.docker.com/install/).
@@ -48,7 +48,7 @@ The SSH private key has to be retrieved on your BCD controller and its path conf
 
 ### Jenkins server
 
-BCD commands may be executed by a Jenkins agent (slave) which runs the BCD controller Docker container. Therefore the Jenkins server shall meet the same requirements as the Control workstation.
+BCD commands may be executed by a Jenkins agent (slave) which runs the BCD controller Docker container. Therefore the Jenkins server shall meet the same requirements as the Control host.
 
 
 

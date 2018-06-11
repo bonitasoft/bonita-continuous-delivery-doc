@@ -73,7 +73,7 @@ The `bcd livingapp build` command does not allow to migrate your repository to t
 Here is a complete example of how to build the [Bonita Vacation Management example repository](https://github.com/bonitasoft/bonita-vacation-management-example) for Bonita version 7.7.0.  
 In this example, the REST API extension has a dependency on Bonita 7.6.3.
 
-**On the control workstation**
+**On the control host**
 ```
 $ cd bonita-continuous-delivery_2.0.0
 

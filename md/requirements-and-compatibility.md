@@ -34,7 +34,8 @@ The system requirements for the target hosts are as follows:
 - Supported operating systems: Ubuntu-14.04, Ubuntu-16.04
 
 Besides, the following technical requirements must be met:
-- Target hosts must have **Internet access** in order to communicate with Bonitasoft License webservice. It is also required to pull Docker public images for the database instance when applicable.
+- Target hosts must have **Internet access** in order to communicate with Bonitasoft License webservice.  
+  It is also required to install packages and to pull Docker public images for the database instance when applicable.
 - Target hosts must be accessible from the BCD controller using **SSH public-key authentication**.
 - The user configured to connect to the target hosts must have `sudo` or `root` privileges in order to install the Bonita stack.
 
@@ -48,7 +49,8 @@ The SSH private key has to be retrieved on your BCD controller and its path conf
 
 ### Jenkins server
 
-BCD commands may be executed by a Jenkins agent (slave) which runs the BCD controller Docker container. Therefore the Jenkins server shall meet the same requirements as the Control host.
+BCD commands may be executed by a Jenkins agent (slave) which runs the BCD controller Docker container.  
+Therefore the Jenkins server shall meet the same requirements as the Control host.
 
 
 

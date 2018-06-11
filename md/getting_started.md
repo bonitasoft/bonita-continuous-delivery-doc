@@ -7,7 +7,10 @@ This page describes how to use this archive to start your journey with Bonita Co
 
 ## Installation guide
 
-In order to ease your environment setup, we provide a Docker image called **[BCD Controller](bcd_controller.md)** image which contains all required dependencies and tools for the control host (ie. the host from which Bonita Continuous Delivery commands are launched).
+In order to ease your environment setup, we provide a Docker image called **[BCD Controller image](bcd_controller.md)** which contains all required dependencies and tools for BCD.  
+Then a **BCD Controller container** has to be started on the control host, ie. the host from which Bonita Continuous Delivery commands are launched.
+
+![Bonita Continuous Delivery Controller](images/bcd_controller.png "Bonita Continuous Delivery Controller")
 
 ### Common installation steps
 
@@ -46,6 +49,9 @@ Follow these installation steps on your control host.
 
     This command bind mounts the _bonita-continuous-delivery_ directory on the control host into the BCD controller container.
 
+::: info
+You may also start a BCD Controller container using [Docker Compose](https://docs.docker.com/compose/) as described in the [BCD Controller image](bcd_controller.md) detailed documentation.
+:::
 
 ### Additional steps for Provisioning
 

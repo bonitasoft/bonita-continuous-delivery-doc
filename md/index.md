@@ -15,7 +15,7 @@ It is composed of two parts:
 *   Second, a solution for **Provisioning** of Bonita stacks on cloud or on-premises hosts.  
     BCD lets you deploy Bonita on existing servers using [Docker](https://www.docker.com/what-container) containers. Furthermore, when used with the [Amazon Web Services (AWS) cloud platform](https://aws.amazon.com/), BCD enables you to create and delete [AWS EC2 instances](https://aws.amazon.com/ec2/) automatically.
 
-![BCD Overview](images/bcd_capabilities.png "BCD Overview")
+![Bonita Continuous Delivery Capabilities](images/bcd_capabilities.png "Bonita Continuous Delivery Capabilities")
 
 <div class="col-md-4">
 <div class="panel panel-default">

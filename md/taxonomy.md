@@ -1,4 +1,5 @@
 * [Release notes](release_notes.md)
+* [Requirements and compatibility](requirements-and-compatibility.md)
 * [Getting started](getting_started.md)
 * [BCD services and scenarios](_bcd_services_and_scenarios.md)
     * [Controller Docker image](bcd_controller.md)

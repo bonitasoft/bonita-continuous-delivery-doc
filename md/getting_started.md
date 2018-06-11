@@ -7,11 +7,11 @@ This page describes how to use this archive to start your journey with Bonita Co
 
 ## Installation guide
 
-In order to ease your environment setup, we provide a Docker image called **[BCD Controller](bcd_controller.md)** image which contains all required dependencies and tools for the control workstation (ie. the host from which Bonita Continuous Delivery commands are launched).
+In order to ease your environment setup, we provide a Docker image called **[BCD Controller](bcd_controller.md)** image which contains all required dependencies and tools for the control host (ie. the host from which Bonita Continuous Delivery commands are launched).
 
 ### Common installation steps
 
-Follow these installation steps on your control workstation.
+Follow these installation steps on your control host.
 
 1.  Make sure Docker is installed as described in the [Install Docker](https://docs.docker.com/engine/installation/) documentation.
 
@@ -22,7 +22,7 @@ Follow these installation steps on your control workstation.
     This step creates a `bonita-continuous-delivery_<version>` directory which contains:
 
     *   Bonita Continuous Delivery Ansible playbooks and roles.
-    *   A pre-built Docker image for the control workstation. This Docker image is provided as a `bcd-controller_<version>.tar.zip` archive located in the `bonita-continuous-delivery_<version>/docker` directory.
+    *   A pre-built Docker image for the control host. This Docker image is provided as a `bcd-controller_<version>.tar.zip` archive located in the `bonita-continuous-delivery_<version>/docker` directory.
 3.  Load the `bcd-controller_<version>.tar.zip` Docker image:
 
         $ cd bonita-continuous-delivery_<version>/docker
@@ -31,20 +31,20 @@ Follow these installation steps on your control workstation.
         Loaded image: bonitasoft/bcd-controller:<version>
         Loaded image: bonitasoft/bcd-controller:latest
 
-    The `bonitasoft/bcd-controller` Docker image is now available on the control workstation.
+    The `bonitasoft/bcd-controller` Docker image is now available on the control host.
 4.  Make sure BCD dependencies are present.  
     BCD expects Bonita version-specific dependencies to be present in the `bonita-continuous-delivery_<version>/dependencies` directory. BCD dependencies are provided separately as a `bonita-continuous-delivery-dependencies_<bonita_version>.zip` archive.  
     Basically, the following artifacts must be extracted from the `bonita-continuous-delivery-dependencies_<bonita_version>.zip` archive into the `dependencies` directory:
     * `bonita-subscription_<bonita_version>.tar.gz`
     * `bonita-la-builder-<bonita_version>-exec.jar`
     * `bonita-sp-<bonita_version>-maven-repository.zip`
-5.  Start a BCD Controller Docker container on the control workstation:
+5.  Start a BCD Controller Docker container on the control host:
 
         $ docker run --rm -ti --hostname bcd-controller --name bcd-controller \
             -v <host_path_to_bonita-continuous-delivery_directory>:/home/bonita/bonita-continuous-delivery \
             bonitasoft/bcd-controller /bin/bash
 
-    This command bind mounts the _bonita-continuous-delivery_ directory on the control workstation into the BCD controller container.
+    This command bind mounts the _bonita-continuous-delivery_ directory on the control host into the BCD controller container.
 
 
 ### Additional steps for Provisioning
@@ -69,7 +69,7 @@ BCD can create and delete [AWS EC2 instances](https://aws.amazon.com/ec2/) autom
     aws_access_key_id = <YOUR_AWS_ACCESS_KEY>
     aws_secret_access_key = <YOUR_AWS_SECRET_ACCESS_KEY>
 
-Then the `.boto` file has to be mounted from the control workstation into the BCD controller while starting the container. Add the following option to the `docker run` command:
+Then the `.boto` file has to be mounted from the control host into the BCD controller while starting the container. Add the following option to the `docker run` command:
 
     -v <host_path_to_.boto_file>:/home/bonita/.boto
 
@@ -77,7 +77,7 @@ Then the `.boto` file has to be mounted from the control workstation into the BC
 
 BCD uses SSH to communicate with target machines. Therefore the BCD controller must have access to the related SSH private key file. For AWS, this is the private part of your [EC2 key pair](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html). **This file must only be accessible from your user** (`chmod 600 <host_path_to_ssh_private_key_file>`).
 
-Then the SSH key file has to be mounted from the control workstation into the BCD controller while starting the container. Add the following option to the `docker run` command:
+Then the SSH key file has to be mounted from the control host into the BCD controller while starting the container. Add the following option to the `docker run` command:
 
     -v <host_path_to_ssh_private_key_file>:/home/bonita/.ssh/<ssh_private_key>
 

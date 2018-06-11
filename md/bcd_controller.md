@@ -19,9 +19,9 @@ Loaded image: bonitasoft/bcd-controller:latest
 
 ## Usage
 
-To enter the BCD controller environment, a Docker container has to be started on your control workstation using the BCD controller image.
+To enter the BCD controller environment, a Docker container has to be started on your control host using the BCD controller image.
 
-Besides the following files have to be bind mounted from the control workstation to make them available to the BCD controller container:
+Besides the following files have to be bind mounted from the control host to make them available to the BCD controller container:
 - **`/host/path/to/bonita-continuous-delivery_<version>`** (mounted as `/home/bonita/bonita-continuous-delivery`) - This directory provides BCD Ansible playbooks and is known as the `BCD_HOME` directory.
 - <div class="list-group-item list-group-item-warning">This file is required for <strong>Provisioning</strong>. It is not required for Living App management.</div>
   
@@ -43,7 +43,7 @@ Once the required files are prepared, the BCD controller container can be starte
 
 ### Starting a BCD controller with `docker run`
 
-The first method to start a BCD Controller Docker container on the control workstation is to use the `docker run` command.
+The first method to start a BCD Controller Docker container on the control host is to use the `docker run` command.
 
 **Example**:
 

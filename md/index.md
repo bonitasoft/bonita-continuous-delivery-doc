@@ -69,7 +69,7 @@ This add-on provides a `bcd` command-line interface (BCD CLI) which enables to:
 *  Deploy a full Bonita stack - A **Bonita stack** is formed by a database service, Bonita Docker containers running Tomcat application servers and a HAProxy load balancer when deploying a multi-node Bonita cluster.
 
 The BCD CLI is provided within a ready-to-use environment called **BCD Controller**. This environment is packaged as a Docker image.  
-Then a controller container will have to be started interactively on your control workstation from which `bcd` commands will be issued.
+Then a controller container will have to be started interactively on your control host from which `bcd` commands will be issued.
 
 ::: warning
 It is highly recommended to have a clear understanding of [Docker essential concepts](https://docs.docker.com/engine/docker-overview/) prior to reading this documentation.

@@ -3,17 +3,14 @@
 Bonita Continuous Delivery enables you to easily build and deploy a Bonita Living Applications on a running Bonita platform.
 It uses the [Bonita Living Application Builder](livingapp_build.md) and the [Bonita Living Application Deployer](livingapp_deploy.md).
 
-In the following, we present best practices and various uses cases to let you easily build and deploy your Bonita Living Application repository.
+In the following, we present best practices and various use cases to let you easily build and deploy your Bonita Living Application repository.
 
 All examples assume that:
-  * you have cloned the demo [Bonita Vacation Management example repository](https://github.com/bonitasoft/bonita-vacation-management-example)
-GitHub repository as described in the [Bonita Living Application Builder](livingapp_build.md) documentation
-  * you have already defined a scenario file called `build_and_deploy.yml` stored in the BCD `scenarios` directory
-  * you already have a Bonita stack up and running, defined by the `build_and_deploy.yml` scenario file
+  * you have cloned a Git repository as described in the [Bonita Living Application Builder](livingapp_build.md) documentation
+  * you have already defined a scenario file for Living Application management and stored it in the BCD `scenarios` directory
+  * you already have a Bonita platform up and running
 
-If you want to deploy into a Bonita platform running on an existing machine, you can find an example of a scenario file `bonita-continuous-delivery_2.0.0/scenario/build_and_deploy.yml.EXAMPLE` 
-with its inventory file in `bonita-continuous-delivery_2.0.0/ansible/inventory/static-inventory/livingapp-build-deploy-static-inventory.EXAMPLE`.
- 
+
 ## Best practices about repositories
 
 The _Bonita Living Application Builder_ is made to build an entire Bonita repository.  
@@ -101,7 +98,7 @@ This use case is a bit more advanced. Imagine that your Bonita repository is sto
 
 As described in the [Bonita Living Application Deployer documentation](livingapp_deploy.md), it is possible to pass to the deployer a _deployment descriptor file_. This file must be called _deploy.json_ and be at the root of the application archive.  
 The deployment descriptor file is used to specify which resources have to be deployed, and with which policy. It is an alternative way to select a sub part of the application archive to deploy.  
-An interesting way to use it is to store some deployment descriptor files in your Bonita repository, one for each 'build and deploy' scenario you want to perform. Between the build and the deploy  phase, just move the fine deployment descriptor at the root of your application archive, as described above.  
+An interesting way to use it is to store some deployment descriptor files in your Bonita repository, one for each 'build and deploy' scenario you want to perform. Between the build and the deploy phase, just move the deployment descriptor file at the root of your application archive, as described above.  
 ::: warning
 The format of the deployment descriptor file is not friendly to use. It might evolve in further versions.
 :::

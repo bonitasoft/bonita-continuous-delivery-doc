@@ -172,7 +172,11 @@ Read the **[BCD Command-line interface](bcd_cli.md)** page for further informati
 
 BCD requires a YAML configuration file called **Scenario** which describes your infrastructure and the Bonita stack to deploy.
 
-An example scenario file named **uswest_performance.yml.EXAMPLE** is provided in the **scenarios** directory. Use this example to customize your scenario and save it with a `.yml` file extension.
+Example scenario files are provided in the **scenarios** directory, including:
+- **uswest_performance.yml.EXAMPLE** - a scenario for both stack and living application management with AWS provisioning
+- **build_and_deploy.yml.EXAMPLE** - a scenario for living application management only
+
+Use these examples to customize your scenario and save it with a `.yml` file extension.
 
 ::: info
 Read the **[BCD Scenario reference](scenarios.md)** page for a comprehensive description of scenario variables.

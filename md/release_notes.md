@@ -26,6 +26,7 @@ The following changes introduce incompatibility with BCD 1.0:
 ### New features
 
 * BCD commands for [Living Application Management](_manage_living_application) (`bcd livingapp`)
+* Add [Google G Suite Single Sign-On](aws_sso.md) (SSO) support
 * BCD command to show BCD environment version (`bcd version`)
 * [Jenkins standalone example](jenkins_example.md) with sample BCD pipeline
 * Scenario [encryption capability](how_to_use_bcd_with_data_encrypted.md)
@@ -34,15 +35,14 @@ The following changes introduce incompatibility with BCD 1.0:
 
 * Handle `REST_API_DYN_AUTH_CHECKS` environment variable of Bonita Docker image
 * Deactivate by default [Bonita HTTP API](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization#toc9)
-* Add [Google G Suite Single Sign-On](aws_sso.md) (SSO) support
 * Ports published by the Bonita stack are configurable
 
 ### Technology updates
 
 * Upgrade BCD controller with Terraform v0.11.3
 * Upgrade BCD controller with Ansible 2.5.0
-* Support Provisioning of Ubuntu 16.04 hosts (in addition to Ubuntu 14.04)
+* Support Provisioning of Ubuntu 16.04 hosts in addition to Ubuntu 14.04
 
 ### Bugfixes
 
-* Stack undeploy command fails when Docker is not yet installed on target hosts
+* BCD-199 Stack undeploy command fails when Docker is not yet installed on target hosts

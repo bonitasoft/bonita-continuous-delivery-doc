@@ -63,7 +63,7 @@ This compatibility information is also specified in the [Release notes](release_
 
 | BCD version | Bonita release |
 |-------------|----------------|
-| 2.0.0       | 7.7.0          |
+| 2.0.0       | 7.7.x          |
 
 </div>
 

@@ -21,7 +21,7 @@ The following changes introduce incompatibility with BCD 1.0:
 
 ## What's new in 2.0.0 (2018-06-07)
 
-:fa-info-circle: This version is compatible with Bonita 7.7.0.
+:fa-info-circle: This version is compatible with Bonita 7.7.x.
 
 ### New features
 

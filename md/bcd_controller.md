@@ -86,3 +86,48 @@ Then start the BCD controller container interactively with:
 ```
 $ docker-compose run --rm bcd
 ```
+
+
+## Note for Linux users
+
+This note refers to file permissions while bind mounting host files into the BCD controller container. This may be a concern for Linux users mainly.
+
+The BCD controller container runs with a `bonita` user which has been created with `uid=1000` and `gid=1000`.
+
+If the user who runs the BCD controller on the control host has `uid=1000` and `gid=1000`, then file sharing will work without any further action.  
+Here is how to check user and group IDs on Linux systems:
+```
+$ id
+uid=1000(john) gid=1000(john) [...]
+```
+
+If this is not so, then read the next section to know how to fix file ownership between the control host and the controller container.
+
+### Running BCD controller with user ID different from 1000
+
+Here is one way to remap UID/GID of the controller's `bonita` user with your host user. It consists of extending the `bonitasoft/bcd-controller` Docker image by using the following `Dockerfile`:
+```
+FROM bonitasoft/bcd-controller
+
+ARG BONITA_UID
+ARG BONITA_GID
+
+USER root
+
+RUN apk --no-cache --update add shadow && \
+    groupmod -g ${BONITA_GID} bonita && \
+    usermod -u ${BONITA_UID} -g ${BONITA_GID} bonita && \
+    chown bonita:bonita /var/log/ansible.log && \
+    apk del shadow
+
+USER bonita
+```
+
+Build the _extended_ BCD controller image as follows:
+```
+$ docker build -t bonitasoft/bcd-controller:custom-uid \
+    --build-arg BONITA_UID=$(id -u) --build-arg BONITA_GID=$(id -g) .
+```
+
+This command will produce a `bonitasoft/bcd-controller:custom-uid` Docker image which can be used to run your controller container.  
+The `bonita` user will have the same UID/GID as your host user, hence solving file permission issues while sharing volumes from your host to the container.

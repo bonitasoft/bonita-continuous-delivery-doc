@@ -5,7 +5,12 @@ Scenarios enable you to define your infrastructure and Bonita stack. A scenario 
 The variables described in a scenario have precedence over those defined in the playbooks or the group vars. It is still possible to overload scenario variables with `--extra-vars` declaration in the `bcd` command line. For instance overloading `bonita_version` can be interesting if you want to test multiple versions of Bonita without duplicating scenario files.
 
 ::: info
-An example scenario file named **uswest_performance.yml.EXAMPLE** is provided in the **scenarios** directory. Use this example to customize your scenario and save it with a `.yml` file extension.
+Example scenario files are provided in the **scenarios** directory:
+- **uswest_performance.yml.EXAMPLE** - a scenario for both stack and living application management with AWS provisioning
+- **static_inventory.yml.EXAMPLE** - a scenario for both stack and living application management with static inventory
+- **build_and_deploy.yml.EXAMPLE** - a scenario for living application management only
+
+Use these examples to customize your scenario and save it with a `.yml` file extension.
 :::
 
 ## Core variables

@@ -29,6 +29,10 @@ The Docker Engine may be installed on Linux, MacOS, Microsoft Windows or Cloud p
 These requirements must be fulfilled when using BCD for **Provisioning**. They apply to target hosts where the Bonita stack will be deployed.
 :::
 
+Bonita stack hosts may be running **on-premises** or in **cloud platforms** like [Amazon Web Services (AWS)](https://aws.amazon.com/), [Microsoft Azure](https://azure.microsoft.com/), [Google Cloud](https://cloud.google.com/) or [OpenStack](https://www.openstack.org/).  
+* with the AWS platform, BCD enables you to create and delete EC2 instances of the Bonita stacks automatically. To do so, read the [AWS configuration for BCD tutorial](aws_prerequisites.md).
+* with other platforms, target hosts must be up and running prior to using BCD. Basic setup for target hosts is explained below.
+
 The system requirements for the target hosts are as follows:
 - Minimum hardware requirements: 1 CPU / 1GiB RAM / 8GiB storage (Equivalent to AWS EC2 `t2.micro` instance)
 - Supported operating systems: Ubuntu-14.04, Ubuntu-16.04
@@ -39,12 +43,18 @@ Besides, the following technical requirements must be met:
 - Target hosts must be accessible from the BCD controller using **SSH public-key authentication**.
 - The user configured to connect to the target hosts must have `sudo` or `root` privileges in order to install the Bonita stack.
 
-Basically, here are the steps to manually install a target host for BCD:
+<div class="well">
+
+#### Basic setup for target hosts
+
+Here are the steps to manually install a target host for BCD:
 1. Install one of the supported operating systems.
 2. Create a user and grant `sudo` or `root` privileges.
 3. Generate SSH keys for this user.
 
 The SSH private key has to be retrieved on your BCD controller and its path configured in your BCD scenario.
+
+</div>
 
 
 ### Jenkins server

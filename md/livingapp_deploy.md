@@ -164,6 +164,7 @@ The following artifacts are used with **implicit policies**. It means that you d
 
 ### Caveats
 
+* `FAIL` policy implies that the deployment stops right after the failure meaning that subsequent elements of the deployment are not deployed at all.
 * Prior to deploying a Business Data Model, [the Bonita tenant is paused](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/pause-and-resume-bpm-services). So a downtime of the tenant occurs. The tenant is resumed after the deployment of the BDM.
 * REST API extension authorizations are not configured as part of the deployment process. They have to be configured while provisioning the Bonita platform. See [how to configure REST API authorization](how_to_configure_rest_api_authorization.md) with BCD.
 

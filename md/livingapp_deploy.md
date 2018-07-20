@@ -24,6 +24,9 @@ First, here are the **types of artifacts** that can be deployed:
 
 The deployment entry point is called an **Application Archive**. It consists of all artifacts to be deployed and an optional configuration file called **Deployment Descriptor**. This file describes which **Policy** should be applied while deploying each artifact.
 
+::: warning
+Read carefully the deployment supported policies per artifact before deploying a living application on a final Production environment. Using the default policies may result in a clean of the whole Bonita runtime.
+:::
 
 ### Application Archive structure
 

@@ -18,10 +18,18 @@ The following changes introduce incompatibility with BCD 1.0:
 [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
 ```
 
+## What's new in 2.0.1 (2018-08-02)
+
+### Bugfixes
+
+* BCD-274 Security fix: Disable Docker Remote API.
+
+### Enhancements
+
+* BCD-242 Fix dependencies version of license generation.
+* BCD-270 Support Enterprise Edition Subscription for license generation.
 
 ## What's new in 2.0.0 (2018-06-07)
-
-:fa-info-circle: This version is compatible with Bonita 7.7.x.
 
 ### New features
 

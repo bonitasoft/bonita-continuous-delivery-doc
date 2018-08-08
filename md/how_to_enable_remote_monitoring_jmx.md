@@ -12,8 +12,6 @@ bonita_java_opts: >-
   -Djava.awt.headless=true
   -Xms1024m
   -Xmx1024m
-  -XX:PermSize=128m
-  -XX:MaxPermSize=128m
   -XX:+UseConcMarkSweepGC
   -Dcom.sun.management.jmxremote=true
   -Dcom.sun.management.jmxremote.port=9010

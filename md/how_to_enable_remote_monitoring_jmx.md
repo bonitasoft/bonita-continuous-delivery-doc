@@ -34,7 +34,11 @@ By default the Bonita container exposes ports **8080** (Tomcat HTTP port) and **
 Additionally BCD enables you to publish extra ports through the `bonita_published_ports_extra` variable. Hence additional port mappings must be added to your YAML scenario as in the following example:
 ```yaml
 bonita_published_ports_extra:
-  - "9020:9010"
+  - "9010:9010"
 ```
 
-As a result you can now connect monitoring tools like JConsole or Java VisualVM using the JMX URL `<bonita_docker_host_fqdn_or_ip>:9020`.
+::: warning
+**Important note**: the published port MUST exactly be the same as the internal exposed JMX port (i.e. `"9010:9010"`).
+:::
+
+As a result you can now connect monitoring tools like JConsole or Java VisualVM using the JMX URL `<bonita_docker_host_fqdn_or_ip>:9010`.

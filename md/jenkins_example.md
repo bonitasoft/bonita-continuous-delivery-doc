@@ -2,9 +2,141 @@
 
 The BCD controller can not only be run interactively, but also within standard Continuous Delivery servers such as [Jenkins automation server](https://jenkins.io/).
 
-The `bonita-continuous-delivery_<version>.zip` archive provides a `jenkins-example` directory which contains a minimal working example of a Continuous Delivery platform with Jenkins and BCD.
+This page describes 2 approaches to using BCD with Jenkins:
+- First, a tutorial shows how to set up an **existing Jenkins** platform to start using BCD.
+- Second, a **standalone example** lets you start a pre-configured Jenkins server with a BCD-aware Jenkins slave and ready-to-use Jenkins jobs.
 
-This example will start a pre-configured Jenkins server with a BCD-aware Jenkins slave and ready-to-use Jenkins jobs.  
+
+## Integration tutorial
+
+There are different ways to run BCD jobs with an existing Jenkins server.  
+Here is one recommended setup that requires a Docker host and little changes to your existing Jenkins instance.  
+With this setup, the Jenkins master, thanks to the [Jenkins Docker plugin](https://plugins.jenkins.io/docker-plugin), uses the **Docker host** to dynamically provision build agents. On the other hand, the Docker host needs to have the BCD controller image loaded and the `BCD_HOME` directory mounted.
+
+![Bonita Continuous Delivery with Jenkins](images/bcd_jenkins.png "Bonita Continuous Delivery with Jenkins")
+
+::: warning
+This tutorial assumes you are already running a [Jenkins 2](https://jenkins.io/2.0/) instance and that you are familiar with Jenkins system administration.
+:::
+
+### Install Docker host
+
+These steps are to be completed on the Docker host.
+
+#### 1. Install Docker and enable remote access
+
+The Docker host needs to run the Docker engine (Community or Enterprise Edition) and can be installed on any [supported platforms](https://docs.docker.com/install/#supported-platforms).  
+Besides, the Docker daemon must be accessible remotely on a TCP socket. The [Docker documentation](https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-socket-option) describes how to enable the TCP socket.  
+It is also highly recommended to [protect the Docker daemon socket](https://docs.docker.com/engine/security/https/) by enabling the TLS protocol.
+
+#### 2. Install BCD
+
+BCD must be installed on the Docker host which acts here as a **control host**. The installation procedure is described in the [Getting started](getting_started.md) guide.  
+The Docker host should now have:
+- the `bonitasoft/bcd-controller` Docker image loaded
+- the `bonita-continuous-delivery_<version>` directory present
+- optionally, the security files for BCD provisioning (SSH key files, AWS credentials)
+
+### Configure Jenkins master
+
+These steps are to be completed on the Jenkins master.
+
+#### 1. Install required plugins
+
+The Jenkins master must have the [Docker plugin](https://plugins.jenkins.io/docker-plugin) installed. The Docker plugin is a "Cloud" implementation that lets you add a new Cloud of type "Docker" on Jenkins master.  
+Additionally, it is recommended to use [Pipelines](https://jenkins.io/pipeline/getting-started-pipelines/) while using BCD with Jenkins. You can still use standard Jenkins "freestyle" jobs but pipelines are more designed for continuous delivery. Therefore this requires to install the [Pipeline plugin](https://plugins.jenkins.io/workflow-aggregator) (aka. `workflow-aggregator`).  
+This tutorial also provides an example pipeline which requires the [Pipeline Utility Steps](https://plugins.jenkins.io/pipeline-utility-steps), [Pipeline: GitHub Groovy Libraries](https://plugins.jenkins.io/pipeline-github-lib) and [AnsiColor](https://plugins.jenkins.io/ansicolor) plugins to be installed.
+
+::: info
+The [Jenkins plugins documentation](https://jenkins.io/doc/book/managing/plugins/#installing-a-plugin) describes different methods for installing plugins on master.
+:::
+
+#### 2. Add Docker Host credentials
+
+As recommended previously, the Docker host should have TLS enabled. Therefore, the Docker host credentials must be added to Jenkins master.  
+Follow the [Jenkins credentials documentation](https://jenkins.io/doc/book/using/using-credentials/#adding-new-global-credentials) to add new **Docker Host Certificate Authentication** credentials. These credentials are required to declare a secured Docker cloud in the next step.
+
+::: danger
+If your Docker TCP socket is not secured, then you can skip this step. But bear in mind that exposing the Docker TCP socket without TLS is really **not safe**.
+:::
+
+#### 3. Add a new Cloud
+
+This step instructs Jenkins master to add a new _Cloud_ of type Docker in order to provision build agents for BCD jobs.
+
+Follow these steps to add a Docker cloud:
+* Edit Jenkins system configuration (**Jenkins > Manage > System configuration**) and **Add a new cloud** of type _Docker_.
+* Give it a **Name** and a **Docker Host URI** like `tcp://dockerhost:2376` (where `dockerhost` is the hostname or IP of the Docker host).  
+  _It is conventional to use port `2376` when TLS is enabled, and port `2375` for un-encrypted communication with the Docker daemon._
+* With a secured Docker TCP socket, select the **Server credentials** created previously. Otherwise, select _None_.
+* Click on **Test Connection** to confirm your configuration is correct.
+
+![Jenkins add Docker cloud](images/jenkins-add_cloud.png "Jenkins add Docker cloud")
+
+#### 4. Add Docker template
+
+A Docker template must be added to define how to start Jenkins build agents as BCD controller containers.
+
+Click on **Add Docker template** to add a Docker template in the Docker cloud and filling in the fields as follows:
+* **Labels**: `bcd`
+* **Enabled**: `[checked]`
+* **Name**: `bcd`
+* **Docker Image**: `bonitasoft/bcd-controller:2.0.1` (where 2.0.1 is the version of BCD to use)
+* **Volumes**:
+  ```
+  /home/dockeruser/bonita-continuous-delivery_2.0.1:/home/bonita/bonita-continuous-delivery
+  /home/dockeruser/.ssh:/home/bonita/.ssh
+  ```
+* **Environment**: `ANSIBLE_FORCE_COLOR=true` (this forces colored output in BCD logs)
+* **Remote File System Root**: `/home/bonita`
+* **Connect method**: `Attach Docker container` - **User**: `bonita`
+
+![Jenkins add Docker template](images/jenkins-add_docker_template.png "Jenkins add Docker template")
+
+::: info
+Jenkins is now ready to run BCD Pipelines. An example scripted pipeline is provided in the next section.
+:::
+
+### Create a Pipeline job
+
+Create a **Pipeline** item with a `BCD_SCENARIO` String parameter which sets the BCD scenario path as an environment variable.  
+For instance, the `BCD_SCENARIO` parameter can be set to `scenarios/build_and_deploy.yml`.  
+Then here is an example pipeline script that builds a LivingApp repository and deploys its artifacts on an already runnning Bonita platform:
+```
+@Library('github.com/bonitasoft/bonita-jenkins-library@master') _
+node('bcd') {
+    
+    stage('Git Ckeckout') {
+        git url: 'https://github.com/bonitasoft/bonita-vacation-management-example', branch: 'master'
+    }
+
+    stage('build-bonita-app') {
+        bcd args: "livingapp build -p ${WORKSPACE} -e Qualification"
+    }
+
+    def jobBaseName = "${env.JOB_NAME}".split('/').last()
+    def artifacts_glob = "target/${jobBaseName}_*.zip"
+
+    stage('deploy-bonita-app') {
+        def zip_files = findFiles(glob: artifacts_glob)
+        bcd args: "livingapp deploy -p ${WORKSPACE}/${zip_files[0].path}"
+    }
+    
+    stage('archive-artifacts') {
+        archiveArtifacts artifacts_glob
+    }
+    
+}
+```
+
+This pipeline uses a Jenkins shared library [hosted on GitHub](https://github.com/bonitasoft/bonita-jenkins-library).  
+This scripted pipeline can also be used in a [Jenkinsfile](https://jenkins.io/doc/book/pipeline/jenkinsfile/) and it can be checked into your LivingApp repository.
+
+
+## Standalone example
+
+The `bonita-continuous-delivery_<version>.zip` archive also provides a `jenkins-example` directory which contains a minimal working example of a Continuous Delivery platform with Jenkins and BCD. This example will start a pre-configured Jenkins server with a BCD-aware Jenkins slave and ready-to-use Jenkins jobs.  
+
 It is provided as a [Docker Compose](https://docs.docker.com/compose/) project.
 
 Therefore you should have **Docker and Docker Compose** installed on the target host to run this example.
@@ -16,7 +148,7 @@ In this example, a Jenkins slave is created from a Docker image which extends th
 This allows you to easily re-use parts of this example in your own Jenkins instance.
 :::
 
-## Step-by-step run guide
+### Step-by-step run guide
 
 Here is a step-by-step guide to run this example.  
 The following commands are to be executed on the target host where Jenkins is to be installed.
@@ -45,7 +177,7 @@ You can now log-in to Jenkins using one of the pre-configured users:
 **Important Note**: Prepare your BCD scenario and dependencies as usual before using the pre-configured Jenkins jobs.
 :::
 
-## Pre-configured Jenkins jobs
+### Pre-configured Jenkins jobs
 
 Once authenticated to Jenkins you can now launch pre-configured jobs.  
 This example project provides the following jobs:

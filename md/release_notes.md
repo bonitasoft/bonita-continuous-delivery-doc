@@ -14,9 +14,27 @@ The following changes introduce incompatibility with BCD 1.0:
 
 * The same BCD stack cannot be managed with multiple BCD controller instances due to the use of Terraform "local" backend.
 * Due to [Ansible issue #35255](https://github.com/ansible/ansible/issues/35255) the warning message "could not match supplied host pattern" is displayed when there is no load balancer required for a noncluster deployment:
-```
-[WARNING]: Could not match supplied host pattern, ignoring: load_balancer
-```
+  ```
+  [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
+  ```
+* Single sign-on to AWS using G Suite may be broken due to this error with `aws-google-auth`:
+  ```
+  Captcha Required. Manually Login to remove this.
+  ```
+  This happens when the IP is flagged by Google. Related issue and pending pull request:
+    - [aws-google-auth Issue #83](https://github.com/cevoaustralia/aws-google-auth/issues/83)
+    - [aws-google-auth Pull request #105](https://github.com/cevoaustralia/aws-google-auth/pull/105)
+
+## What's new in 2.0.2 (2018-09-06)
+
+### Bugfixes
+
+* BCD-280 Tomcat maxThreads configuration through 'bonita_max_threads' variable does not work.
+* BCD-282 When overriding bonita_java_opts in a scenario, the Hazelcast cluster nodes discovery fails on AWS.
+
+### Enhancements
+
+* Clean the temporary directory used while deploying the LivingApp archive (`bcd livingapp deploy`).
 
 ## What's new in 2.0.1 (2018-08-02)
 

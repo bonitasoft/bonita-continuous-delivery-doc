@@ -51,4 +51,4 @@ Once authenticated to Jenkins you can now launch pre-configured jobs.
 This example project provides the following jobs:
 
 *   `bcd-pipeline` - this job shows how the BCD CLI can be used to build a Continuous Delivery pipeline for a Bonita Living Application.
-*   `bcd-undeploy` - this job allows to undeploy a Bonita stack (by removing Docker containers) and if needed it can also destroys AWS EC2 machines when using BCD with AWS cloud provider.
+*   `bcd-undeploy` - this job allows to undeploy a Bonita stack (by removing Docker containers) and if needed it can also destroy AWS EC2 machines when using BCD with AWS cloud provider.

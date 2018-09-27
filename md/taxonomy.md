@@ -10,6 +10,7 @@
         * [Configure Amazon Web Services (AWS) for BCD](aws_prerequisites.md)
         * [Configure AWS single sign-on](aws_sso.md)
         * [Assume IAM role within AWS Organizations](aws_organizations.md)
+        * [Configure Microsoft Azure for BCD](azure-prerequisites.md)
         * [Deploy with a static inventory](deploy_with_static_inventory.md)
         * [Customize the Bonita container](_custom_init.md)
             * [Using initialization scripts](custom_init.md)

@@ -85,9 +85,12 @@ If you consider deploying to Microsoft Azure cloud computing platform, first rea
 
 #### SSH key file
 
-BCD uses SSH to communicate with target machines. Therefore the BCD controller must have access to the related SSH private key file. For AWS, this is the private part of your [EC2 key pair](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html). **This file must only be accessible from your user** (`chmod 600 <host_path_to_ssh_private_key_file>`).
+BCD uses SSH to communicate with target machines. Therefore the BCD controller must have access to the related SSH private key file.  
+For AWS, this is the private part of your [EC2 key pair](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) referenced in your AWS Console.  
+With Azure, you will have to create an SSH key pair using [this tutorial on Linux or macOS](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys) or [this tutorial on Windows](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows).  
+**:fa-exclamation-triangle: The SSH private key file must only be accessible from your user** (`chmod 600 <host_path_to_ssh_private_key_file>`).
 
-Then the SSH key file has to be mounted from the control host into the BCD controller while starting the container. Add the following option to the `docker run` command:
+Then the SSH private key file has to be mounted from the control host into the BCD controller while starting the container. Add the following option to the `docker run` command:
 
     -v <host_path_to_ssh_private_key_file>:/home/bonita/.ssh/<ssh_private_key>
 

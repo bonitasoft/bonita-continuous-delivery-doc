@@ -184,6 +184,7 @@ BCD requires a YAML configuration file called **Scenario** which describes your 
 
 Example scenario files are provided in the **scenarios** directory, including:
 - **uswest_performance.yml.EXAMPLE** - a scenario for both stack and living application management with AWS provisioning
+- **azure_northEurope.yml.EXAMPLE** - a scenario for both stack and living application management with Azure provisioning
 - **build_and_deploy.yml.EXAMPLE** - a scenario for living application management only
 
 Use these examples to customize your scenario and save it with a `.yml` file extension.

@@ -35,44 +35,6 @@ Further configuration instructions for **AWS single sign-on** can be found [on t
         ]
     }
     ```
-1. Create an IAM Policy to allow to describe DB instances and list tags (mandatory for dynamic inventory script).
-    - **Policy name**: RDSDescribeDBInstances
-    - **Policy document**:
-    ```json
-    {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Sid": "Stmt1498730873000",
-                "Effect": "Allow",
-                "Action": [
-                    "rds:DescribeDBInstances",
-                    "rds:ListTagsForResource"
-                ],
-                "Resource": [
-                    "*"
-                ]
-            }
-        ]
-    }
-    ```
-1. Create an IAM Policy to grant full access to Amazon RDS on a specific region (eg. us-west-2). In order to do it you will need your account id (eg. 012345678901)
-    - **Policy name**: RDSFullAccess_us-west-2
-    - **Policy document**:
-    ```json
-    {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Action": [
-                    "rds:*"
-                ],
-                "Effect": "Allow",
-                "Resource": "arn:aws:rds:us-west-2:012345678901:*"
-            }
-        ]
-    }
-    ```    
 1. Create an IAM Policy to give [PassRole](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html) permission in order to be able to associate a specific role with the EC2 instances of a cluster.
     - **Policy name**: IAMPassRole
     - **Policy document**:

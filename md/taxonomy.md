@@ -11,6 +11,7 @@
         * [Configure AWS single sign-on](aws_sso.md)
         * [Assume IAM role within AWS Organizations](aws_organizations.md)
         * [Deploy with a static inventory](deploy_with_static_inventory.md)
+        * [Deploy with an existing database](deploy-with-existing-database.md)
         * [Customize the Bonita container](_custom_init.md)
             * [Using initialization scripts](custom_init.md)
             * [Configuring REST API authorization](how_to_configure_rest_api_authorization.md)

@@ -17,6 +17,7 @@
             * [Enabling remote monitoring with JMX](how_to_enable_remote_monitoring_jmx.md)
     * [Manage Bonita Living Applications](_manage_living_application.md)
         * [Build a Living App repository](livingapp_build.md)
+        * [Manage Living App configuration](livingapp_manage_configuration.md)
         * [Deploy Living App artifacts](livingapp_deploy.md)
         * [Build and deploy (Best Practices)](livingapp_build_and_deploy.md)
     * [Use BCD with sensitive data encrypted](how_to_use_bcd_with_data_encrypted.md)

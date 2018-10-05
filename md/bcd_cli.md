@@ -73,7 +73,7 @@ This section describes the comprehensive usage information for the `bcd` command
 You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] --help` - where SUBCOMMAND is in `[livingapp, stack]` - from the command line.
 
 <div class="section" id="bcd">
-<h3>bcd</h3>
+<span class="h3">bcd</span>
 <p>Bonita Continuous Delivery CLI.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>ARGS<span class="o">]</span>...
 </pre></div>

@@ -73,7 +73,7 @@ This section describes the comprehensive usage information for the `bcd` command
 You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] --help` - where SUBCOMMAND is in `[livingapp, stack]` - from the command line.
 
 <div class="section" id="bcd">
-<span class="h2">bcd</span>
+<h3>bcd</h3>
 <p>Bonita Continuous Delivery CLI.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>ARGS<span class="o">]</span>...
 </pre></div>
@@ -122,7 +122,7 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 </dd></dl>
 
 <div class="section" id="bcd-livingapp">
-<span class="h3">livingapp</span>
+<h4>livingapp</h4>
 <p>Manage Bonita Living Application</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd livingapp <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND1 <span class="o">[</span>ARGS<span class="o">]</span>... <span class="o">[</span>COMMAND2 <span class="o">[</span>ARGS<span class="o">]</span>...<span class="o">]</span>...
 </pre></div>
@@ -135,7 +135,7 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 </dd></dl>
 
 <div class="section" id="bcd-livingapp-build">
-<span class="h4">build</span>
+<h5>build</h5>
 <p>Build Bonita Living Application</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd livingapp build <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
@@ -144,7 +144,7 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 <dl class="option">
 <dt id="cmdoption-bcd-livingapp-build-p">
 <code class="descname">-p</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--path</code><code class="descclassname"> &lt;path&gt;</code></dt>
-<dd><p>Bonita Living Application workspace path</p>
+<dd><p>Bonita Living Application repository path</p>
 </dd></dl>
 
 <dl class="option">
@@ -167,7 +167,7 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 
 </div>
 <div class="section" id="bcd-livingapp-deploy">
-<span class="h4">deploy</span>
+<h5>deploy</h5>
 <p>Deploy Bonita Living Application</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd livingapp deploy <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
@@ -176,7 +176,13 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 <dl class="option">
 <dt id="cmdoption-bcd-livingapp-deploy-p">
 <code class="descname">-p</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--path</code><code class="descclassname"> &lt;path&gt;</code></dt>
-<dd><p>Bonita Living Application file path</p>
+<dd><p>Bonita Living Application archive or directory path</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-bcd-livingapp-deploy-c">
+<code class="descname">-c</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--configuration-path</code><code class="descclassname"> &lt;configuration_path&gt;</code></dt>
+<dd><p>Bonita Living Application configuration archive path</p>
 </dd></dl>
 
 <dl class="option">
@@ -192,9 +198,73 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 </dd></dl>
 
 </div>
+<div class="section" id="bcd-livingapp-extract-conf">
+<h5>extract-conf</h5>
+<p>Extract parameters form a Bonita configuration archive</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd livingapp extract-conf <span class="o">[</span>OPTIONS<span class="o">]</span>
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="option">
+<dt id="cmdoption-bcd-livingapp-extract-conf-p">
+<code class="descname">-p</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--path</code><code class="descclassname"> &lt;path&gt;</code></dt>
+<dd><p>bconf path</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-bcd-livingapp-extract-conf-without-value">
+<code class="descname">--without-value</code><code class="descclassname"></code></dt>
+<dd><p>Only extract parameters without value</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-bcd-livingapp-extract-conf-o">
+<code class="descname">-o</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--output</code><code class="descclassname"> &lt;output&gt;</code></dt>
+<dd><p>Output file</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-bcd-livingapp-extract-conf-h">
+<code class="descname">-h</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--help</code><code class="descclassname"></code></dt>
+<dd><p>Show this help message</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bcd-livingapp-merge-conf">
+<h5>merge-conf</h5>
+<p>Merge parameters into a Bonita configuration archive</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd livingapp merge-conf <span class="o">[</span>OPTIONS<span class="o">]</span>
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="option">
+<dt id="cmdoption-bcd-livingapp-merge-conf-p">
+<code class="descname">-p</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--path</code><code class="descclassname"> &lt;path&gt;</code></dt>
+<dd><p>bconf path</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-bcd-livingapp-merge-conf-i">
+<code class="descname">-i</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--input</code><code class="descclassname"> &lt;input&gt;</code></dt>
+<dd><p>Input parameter file</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-bcd-livingapp-merge-conf-o">
+<code class="descname">-o</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--output</code><code class="descclassname"> &lt;output&gt;</code></dt>
+<dd><p>Output file</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-bcd-livingapp-merge-conf-h">
+<code class="descname">-h</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--help</code><code class="descclassname"></code></dt>
+<dd><p>Show this help message</p>
+</dd></dl>
+
+</div>
 </div>
 <div class="section" id="bcd-stack">
-<span class="h3">stack</span>
+<h4>stack</h4>
 <p>Manage Bonita stack (infrastructure)</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd stack <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND1 <span class="o">[</span>ARGS<span class="o">]</span>... <span class="o">[</span>COMMAND2 <span class="o">[</span>ARGS<span class="o">]</span>...<span class="o">]</span>...
 </pre></div>
@@ -207,8 +277,8 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 </dd></dl>
 
 <div class="section" id="bcd-stack-create">
-<span class="h4">create</span>
-<p>Create AWS instances</p>
+<h5>create</h5>
+<p>Create infra machines</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd stack create <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
 </div>
@@ -227,7 +297,7 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 
 </div>
 <div class="section" id="bcd-stack-deploy">
-<span class="h4">deploy</span>
+<h5>deploy</h5>
 <p>Deploy Bonita stack (creates Docker containers)</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd stack deploy <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
@@ -241,8 +311,8 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 
 </div>
 <div class="section" id="bcd-stack-destroy">
-<span class="h4">destroy</span>
-<p>Destroy AWS machines (EC2 instances)</p>
+<h5>destroy</h5>
+<p>Destroy infra machines</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd stack destroy <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
 </div>
@@ -261,7 +331,7 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 
 </div>
 <div class="section" id="bcd-stack-status">
-<span class="h4">status</span>
+<h5>status</h5>
 <p>Show the platform status</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd stack status <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
@@ -275,7 +345,7 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 
 </div>
 <div class="section" id="bcd-stack-undeploy">
-<span class="h4">undeploy</span>
+<h5>undeploy</h5>
 <p>Undeploy Bonita stack (removes Docker containers)</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd stack undeploy <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
@@ -290,7 +360,7 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 </div>
 </div>
 <div class="section" id="bcd-version">
-<span class="h3">version</span>
+<h4>version</h4>
 <p>Show BCD version information</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd version <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>

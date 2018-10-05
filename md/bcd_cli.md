@@ -200,7 +200,7 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 </div>
 <div class="section" id="bcd-livingapp-extract-conf">
 <h5>extract-conf</h5>
-<p>Extract parameters form a Bonita configuration archive</p>
+<p>Extract parameters from a Bonita configuration archive</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd livingapp extract-conf <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
 </div>

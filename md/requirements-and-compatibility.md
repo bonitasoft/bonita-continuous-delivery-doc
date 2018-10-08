@@ -31,6 +31,7 @@ These requirements must be fulfilled when using BCD for **Provisioning**. They a
 
 Bonita stack hosts may be running **on-premises** or in **cloud platforms** like [Amazon Web Services (AWS)](https://aws.amazon.com/), [Microsoft Azure](https://azure.microsoft.com/), [Google Cloud](https://cloud.google.com/) or [OpenStack](https://www.openstack.org/).  
 * with the AWS platform, BCD enables you to create and delete EC2 instances of the Bonita stacks automatically. To do so, read the [AWS configuration for BCD tutorial](aws_prerequisites.md).
+* with the Azure platform, BCD enables you to create and delete Azure resources of the Bonita stacks automatically. To do so, read the [Azure configuration for BCD tutorial](azure-prerequisites.md).
 * with other platforms, target hosts must be up and running prior to using BCD. Basic setup for target hosts is explained below.
 
 The system requirements for the target hosts are as follows:

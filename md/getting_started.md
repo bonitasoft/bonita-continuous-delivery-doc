@@ -79,11 +79,18 @@ Then the `.boto` file has to be mounted from the control host into the BCD contr
 
     -v <host_path_to_.boto_file>:/home/bonita/.boto
 
+#### Azure Prerequisites
+
+If you consider deploying to Microsoft Azure cloud computing platform, first read the [Azure prerequisites tutorial](azure-prerequisites.md) which describes how to configure Azure for BCD.
+
 #### SSH key file
 
-BCD uses SSH to communicate with target machines. Therefore the BCD controller must have access to the related SSH private key file. For AWS, this is the private part of your [EC2 key pair](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html). **This file must only be accessible from your user** (`chmod 600 <host_path_to_ssh_private_key_file>`).
+BCD uses SSH to communicate with target machines. Therefore the BCD controller must have access to the related SSH private key file.  
+For AWS, this is the private part of your [EC2 key pair](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) referenced in your AWS Console.  
+With Azure, you will have to create an SSH key pair using [this tutorial on Linux or macOS](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys) or [this tutorial on Windows](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows).  
+**:fa-exclamation-triangle: The SSH private key file must only be accessible from your user** (`chmod 600 <host_path_to_ssh_private_key_file>`).
 
-Then the SSH key file has to be mounted from the control host into the BCD controller while starting the container. Add the following option to the `docker run` command:
+Then the SSH private key file has to be mounted from the control host into the BCD controller while starting the container. Add the following option to the `docker run` command:
 
     -v <host_path_to_ssh_private_key_file>:/home/bonita/.ssh/<ssh_private_key>
 
@@ -180,6 +187,7 @@ BCD requires a YAML configuration file called **Scenario** which describes your 
 
 Example scenario files are provided in the **scenarios** directory, including:
 - **uswest_performance.yml.EXAMPLE** - a scenario for both stack and living application management with AWS provisioning
+- **azure_northEurope.yml.EXAMPLE** - a scenario for both stack and living application management with Azure provisioning
 - **build_and_deploy.yml.EXAMPLE** - a scenario for living application management only
 
 Use these examples to customize your scenario and save it with a `.yml` file extension.

@@ -4,11 +4,12 @@
 
 The following changes introduce incompatibility with BCD 2.x:
 
-* By default, BCD no longer retrieves its dependenices from the fylesystem but uses a private docker registry. So the following parameters should be added to your scenarios :
+* By default, BCD no longer retrieves its dependencies from the fylesystem but uses a private docker registry. So the following parameters should be added to your scenarios:
 ```
 bcd_registry_user: YOUR_USER_TO_BCD_DOCKER_REGISTRY
 bcd_registry_password: YOUR_PASS_TO_BCD_DOCKER_REGISTRY
 ```
+As a BCD customer, contact your sales representative to get your access to the private registry.
 
 ## Limitations and known issues
 
@@ -22,9 +23,9 @@ bcd_registry_password: YOUR_PASS_TO_BCD_DOCKER_REGISTRY
 
 ### New features
 
-* Manage BCD dependencies through a private docker registry
-* BCD sub commands to [manage Living Apps Configuration](livingapp_manage_configuration.md) (`bcd livingapp [extract-conf,merge-conf]`)
-* Add Azure support to manage bcd stacks
+* Manage Docker dependencies through a private registry
+* Manage [Living Apps Configuration](livingapp_manage_configuration.md) with BCD sub-commands (`bcd livingapp [extract-conf,merge-conf]`)
+* Create and delete Microsoft Azure resources for the Bonita stack automatically (`bcd_provider: azure`)
 
 ### Enhancements
 

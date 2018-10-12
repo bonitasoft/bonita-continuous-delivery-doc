@@ -182,7 +182,7 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 <dl class="option">
 <dt id="cmdoption-bcd-livingapp-deploy-c">
 <code class="descname">-c</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--configuration-path</code><code class="descclassname"> &lt;configuration_path&gt;</code></dt>
-<dd><p>Bonita Living Application configuration archive path</p>
+<dd><p>Bonita configuration (.bconf) archive path</p>
 </dd></dl>
 
 <dl class="option">
@@ -200,7 +200,7 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 </div>
 <div class="section" id="bcd-livingapp-extract-conf">
 <h5>extract-conf</h5>
-<p>Extract parameters from a Bonita configuration archive</p>
+<p>Extract parameters from a Bonita configuration archive (.bconf)</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd livingapp extract-conf <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
 </div>
@@ -208,13 +208,13 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 <dl class="option">
 <dt id="cmdoption-bcd-livingapp-extract-conf-p">
 <code class="descname">-p</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--path</code><code class="descclassname"> &lt;path&gt;</code></dt>
-<dd><p>bconf path</p>
+<dd><p>Bonita configuration (.bconf) archive path</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-bcd-livingapp-extract-conf-without-value">
 <code class="descname">--without-value</code><code class="descclassname"></code></dt>
-<dd><p>Only extract parameters without value</p>
+<dd><p>Only extract parameters which do not have a value</p>
 </dd></dl>
 
 <dl class="option">
@@ -240,7 +240,7 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 <dl class="option">
 <dt id="cmdoption-bcd-livingapp-merge-conf-p">
 <code class="descname">-p</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--path</code><code class="descclassname"> &lt;path&gt;</code></dt>
-<dd><p>bconf path</p>
+<dd><p>Bonita configuration (.bconf) archive path</p>
 </dd></dl>
 
 <dl class="option">

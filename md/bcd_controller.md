@@ -60,27 +60,9 @@ $ docker run --rm -t -i --name bcd-controller \
 
 The BCD controller container can also be created and started using [Docker Compose](https://docs.docker.com/compose/). This method enables to configure bind mount volumes in a `docker-compose.yml` file instead of through command-line options.
 
-**Example:**
+There is an example named `docker-compose.yml.EXAMPLE` in your `BCD_HOME` directory.
 
-Here is a `docker-compose.yml` file example that you can create in your `BCD_HOME` directory.
-
-```yaml
-version: "3.2"
-
-services:
-
-  bcd:
-    image: bonitasoft/bcd-controller
-    hostname: bcd-controller
-    stdin_open: true
-    tty: true
-    command: /bin/bash
-    working_dir: /home/bonita/bonita-continuous-delivery
-    volumes:
-      - .:/home/bonita/bonita-continuous-delivery
-      - <host_path_to_.boto>:/home/bonita/.boto
-      - <host_path_to_ssh_private_key>:/home/bonita/.ssh/<ssh_private_key>
-```
+If you want to use it to launch your BCD controller, you can rename this file without .EXAMPLE and adapt the paths to your environment.
 
 Then start the BCD controller container interactively with:
 ```

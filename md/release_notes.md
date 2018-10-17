@@ -29,7 +29,7 @@ As a BCD customer, contact your sales representative to get your access to the p
 
 ### Enhancements
 
-* Enabling endpoint heuristics to guess endpoints for AWS regions that aren’t built in yet into [boto](http://docs.pythonboto.org). For example, BCD can now manage the AWS region eu-west-3 (Paris) despite the issue [#3783](https://github.com/boto/boto/issues/3783) is still opened.
+* Enabling endpoint heuristics to guess endpoints for AWS regions that aren’t integrated yet into [boto](http://docs.pythonboto.org). For example, BCD can now manage the AWS region eu-west-3 (Paris) despite the issue [#3783](https://github.com/boto/boto/issues/3783) is still opened.
 
 ### Technology updates
 
@@ -37,4 +37,4 @@ As a BCD customer, contact your sales representative to get your access to the p
 
 ### Bugfixes
 
-* 
+*

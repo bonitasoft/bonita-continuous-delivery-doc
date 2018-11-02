@@ -4,7 +4,7 @@
 
 The following changes introduce incompatibility with BCD 2.x:
 
-* By default, BCD no longer retrieves its dependencies from the fylesystem but uses a private docker registry. So the following parameters should be added to your scenarios:
+* By default, BCD no longer retrieves its dependencies from the fylesystem but uses a private Docker registry. So the following variables must be added to your scenarios:
 ```
 bcd_registry_user: YOUR_USER_TO_BCD_DOCKER_REGISTRY
 bcd_registry_password: YOUR_PASS_TO_BCD_DOCKER_REGISTRY

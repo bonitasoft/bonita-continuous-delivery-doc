@@ -121,6 +121,66 @@ You can also see this information by running `bcd --help` and `bcd [SUBCOMMAND] 
 <dd><p>Show the version and exit.</p>
 </dd></dl>
 
+<div class="section" id="bcd-license">
+<h4>license</h4>
+<p>Manage Bonita licenses</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre>bcd license <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND1 <span class="o">[</span>ARGS<span class="o">]</span>... <span class="o">[</span>COMMAND2 <span class="o">[</span>ARGS<span class="o">]</span>...<span class="o">]</span>...
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="option">
+<dt id="cmdoption-bcd-license-h">
+<code class="descname">-h</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--help</code><code class="descclassname"></code></dt>
+<dd><p>Show this help message</p>
+</dd></dl>
+
+<div class="section" id="bcd-license-generate">
+<h5>generate</h5>
+<p>Request a license and get the license file</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre>bcd license generate <span class="o">[</span>OPTIONS<span class="o">]</span>
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="option">
+<dt id="cmdoption-bcd-license-generate-k">
+<code class="descname">-k</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--request-key</code><code class="descclassname"> &lt;request_key&gt;</code></dt>
+<dd><p>Request key to generate the license</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-bcd-license-generate-o">
+<code class="descname">-o</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--output-dir</code><code class="descclassname"> &lt;output_dir&gt;</code></dt>
+<dd><p>Output directory path where the license file will be saved - Default to <cite>/tmp</cite></p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-bcd-license-generate-h">
+<code class="descname">-h</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--help</code><code class="descclassname"></code></dt>
+<dd><p>Show this help message</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bcd-license-revoke">
+<h5>revoke</h5>
+<p>Revoke a license file</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre>bcd license revoke <span class="o">[</span>OPTIONS<span class="o">]</span>
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="option">
+<dt id="cmdoption-bcd-license-revoke-p">
+<code class="descname">-p</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--path</code><code class="descclassname"> &lt;path&gt;</code></dt>
+<dd><p>Path to the license file to revoke</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-bcd-license-revoke-h">
+<code class="descname">-h</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--help</code><code class="descclassname"></code></dt>
+<dd><p>Show this help message</p>
+</dd></dl>
+
+</div></div>
+
 <div class="section" id="bcd-livingapp">
 <h4>livingapp</h4>
 <p>Manage Bonita Living Application</p>

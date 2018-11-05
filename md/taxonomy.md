@@ -25,4 +25,5 @@
         * [Build and deploy (Best Practices)](livingapp_build_and_deploy.md)
     * [Use BCD with sensitive data encrypted](how_to_use_bcd_with_data_encrypted.md)
     * [Integrate BCD with Jenkins](jenkins_example.md)
+    * [Bonita License management](license_management.md)
 * [Troubleshooting guide](troubleshooting_guide.md)

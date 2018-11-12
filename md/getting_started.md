@@ -34,14 +34,13 @@ Follow these installation steps on your control host.
     The `quay.io/bonitasoft/bcd-controller:<version>` Docker image is now available on the control host.
 4.  Make sure BCD dependencies are present.  
     BCD expects Bonita version-specific dependencies to be present in the `bonita-continuous-delivery_<version>/dependencies` directory. BCD dependencies are provided separately as a `quay.io/bonitasoft/bcd-dependencies:<bonita_version>` Docker data image.  
-    Basically, the `/dependencies` volume provided by the `quay.io/bonitasoft/bcd-dependencies` Docker image must be mounted or copied into the `dependencies` directory. For instance, here is how to create a Docker volume with BCD dependencies from the data image:
+    Basically, the `/dependencies` volume provided by the `quay.io/bonitasoft/bcd-dependencies` Docker image must be mounted or copied into the `dependencies` directory. For instance, here is how to create a Docker named volume with BCD dependencies from the data image:
 
-        $ docker volume create bcd-dependencies-<bonita_version>
         $ docker login quay.io
         $ docker run --rm -v bcd-dependencies-<bonita_version>:/dependencies quay.io/bonitasoft/bcd-dependencies:<bonita_version>
         $ docker logout quay.io
 
-    The `bcd-dependencies-<bonita_version>` Docker volume is now available and can be mounted with your BCD Controller.
+    The `bcd-dependencies-<bonita_version>` Docker named volume is now available and can be mounted with your BCD Controller.
 5.  Start a BCD Controller Docker container on the control host:
 
         $ docker run --rm -ti --hostname bcd-controller --name bcd-controller \
@@ -116,7 +115,6 @@ Assuming you have a `bonita-continuous-delivery_3.0.0.zip` archive in your `$HOM
 
     $ cd $HOME/bonita-continuous-delivery_3.0.0/dependencies
 
-    $ docker volume create bcd-dependencies-7.8.0
     $ docker run --rm -v bcd-dependencies-7.8.0:/dependencies quay.io/bonitasoft/bcd-dependencies:7.8.0
     [...]
 

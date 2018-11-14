@@ -18,6 +18,7 @@
             * [Using initialization scripts](custom_init.md)
             * [Configuring REST API authorization](how_to_configure_rest_api_authorization.md)
             * [Enabling remote monitoring with JMX](how_to_enable_remote_monitoring_jmx.md)
+    * [Manage Bonita licenses](manage_bonita_licenses.md)
     * [Manage Bonita Living Applications](_manage_living_application.md)
         * [Build a Living App repository](livingapp_build.md)
         * [Manage Living App configuration](livingapp_manage_configuration.md)
@@ -25,5 +26,4 @@
         * [Build and deploy (Best Practices)](livingapp_build_and_deploy.md)
     * [Use BCD with sensitive data encrypted](how_to_use_bcd_with_data_encrypted.md)
     * [Integrate BCD with Jenkins](jenkins_example.md)
-    * [Bonita License management](license_management.md)
 * [Troubleshooting guide](troubleshooting_guide.md)

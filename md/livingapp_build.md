@@ -32,10 +32,10 @@ The next step is to provide all dependencies required to build your repository. 
 
 **`bonita-la-builder-<bonita_version>-exec.jar`**  
 The Bonita Living Application Builder library. Its version must correspond to the **`bonita_version`** variable defined in your BCD scenario. This is the version of the Bonita stack where generated artifacts will be deployed.  
-For instance the `bonita-la-builder-7.7.0-exec.jar` file must be present to build artifacts meant to be deployed on a Bonita `7.7.0` stack.
+For instance the `bonita-la-builder-7.8.0-exec.jar` file must be present to build artifacts meant to be deployed on a Bonita `7.8.0` stack.
 
 **`bonita-sp-*-maven-repository.zip`**  
-Bonita Maven repository zip files if your repository contains [REST API extensions](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/api-extensions). These zip files can be downloaded with your Bonita Subscription on [Customer Portal](https://customer.bonitasoft.com/). The version of the Maven repository zip must correspond to the `bonita.version` property defined in your REST API extension's `pom.xml`.
+Bonita Maven repository zip files if your repository contains [REST API extensions](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/api-extensions). The version of the Maven repository zip must correspond to the `bonita.version` property defined in your REST API extension's `pom.xml`.
 
 
 ### 3. Build the repository
@@ -61,7 +61,7 @@ The version of your repository **must exactly match** the version of the builder
 
 If versions do not match, the `bcd livingapp build` command will exit with such a message:
 ```
-[ERROR] Project version (7.7.0) does not match builder version (7.7.1)
+[ERROR] Project version (7.8.0) does not match builder version (7.7.4)
 [13:46:34.469] ERROR: Aborting! Command <livingapp-build> returned non-zero exit code <1>
 ```
 
@@ -70,7 +70,7 @@ The `bcd livingapp build` command does not allow to migrate your repository to t
 
 ## Complete example
 
-Here is a complete example of how to build the [Bonita Vacation Management example repository](https://github.com/bonitasoft/bonita-vacation-management-example) for Bonita version 7.7.0.  
+Here is a complete example of how to build the [Bonita Vacation Management example repository](https://github.com/bonitasoft/bonita-vacation-management-example) for Bonita version 7.8.0.  
 In this example, the REST API extension has a dependency on Bonita 7.6.3.
 
 **On the control host**
@@ -100,14 +100,13 @@ $ grep "<bonita.version>" bonita-vacation-management-example/restAPIExtensions/t
         <bonita.version>7.6.3</bonita.version>
 
 $ ls -nh dependencies 
-total 337M
--rw-r--r-- 1 1000 1000  85M Mar 29 12:00 bonita-la-builder-7.7.0-exec.jar
+total 94M
+-rw-r--r-- 1 1000 1000  85M Mar 29 12:00 bonita-la-builder-7.8.0-exec.jar
 -rw-rw-r-- 1 1000 1000 8,7M Mar 29 16:16 bonita-sp-7.6.3-maven-repository.zip
--rw-r--r-- 1 1000 1000 253M Mar 29 12:00 bonita-subscription_7.7.0.tar.gz
 -rw-r--r-- 1 1000 1000  157 Mar 29 11:57 README.md
 
 $ grep "bonita_version" scenarios/euwest1_performance.yml
-bonita_version: 7.7.0
+bonita_version: 7.8.0
 ```
 
 

@@ -28,7 +28,9 @@ This step creates a `bonita-continuous-delivery/bonita-vacation-management-examp
 
 ### 2. Provide the repository's build dependencies
 
-The next step is to provide all dependencies required to build your repository. Hence the following artifatcs must be present in the `bonita-continuous-delivery/dependencies` directory:
+The next step is to provide all dependencies required to build your repository, see [Common Installation Steps](getting_started.md#toc1). 
+
+Hence the following artifacts must be present in the `$BCD_HOME/dependencies/<bonita_version>` directory:
 
 **`bonita-la-builder-<bonita_version>-exec.jar`**  
 The Bonita Living Application Builder library. Its version must correspond to the **`bonita_version`** variable defined in your BCD scenario. This is the version of the Bonita stack where generated artifacts will be deployed.  
@@ -71,11 +73,11 @@ The `bcd livingapp build` command does not allow to migrate your repository to t
 ## Complete example
 
 Here is a complete example of how to build the [Bonita Vacation Management example repository](https://github.com/bonitasoft/bonita-vacation-management-example) for Bonita version 7.8.0.  
-In this example, the REST API extension has a dependency on Bonita 7.6.3.
+In this example, the REST API extension has a dependency on Bonita 7.7.0.
 
 **On the control host**
 ```
-$ cd bonita-continuous-delivery_2.0.0
+$ cd bonita-continuous-delivery_3.0.0
 
 $ git clone https://github.com/bonitasoft/bonita-vacation-management-example
 $ ls -nh bonita-vacation-management-example
@@ -99,11 +101,24 @@ drwxrwxr-x  2 1000 1000 4,0K Mar 29 16:17 xsd
 $ grep "<bonita.version>" bonita-vacation-management-example/restAPIExtensions/tahitiRestApiExtension/pom.xml
         <bonita.version>7.6.3</bonita.version>
 
-$ ls -nh dependencies 
-total 94M
--rw-r--r-- 1 1000 1000  85M Mar 29 12:00 bonita-la-builder-7.8.0-exec.jar
--rw-rw-r-- 1 1000 1000 8,7M Mar 29 16:16 bonita-sp-7.6.3-maven-repository.zip
--rw-r--r-- 1 1000 1000  157 Mar 29 11:57 README.md
+$ ls -nhR dependencies/
+dependencies/:
+total 8
+drwxr-xr-x    2 1000        1000           4.0K Nov 22 16:54 7.7.0
+drwxr-xr-x    2 1000        1000           4.0K Nov 22 16:52 7.8.0
+
+dependencies/7.7.0:
+total 121472
+-rw-r--r--    1 1000        1000            297 Nov 14 11:29 LICENSE
+-rw-r--r--    1 1000        1000          84.5M Nov 14 11:29 bonita-la-builder-7.7.0-exec.jar
+-rw-r--r--    1 1000        1000          34.2M Nov 14 11:29 bonita-sp-7.7.0-maven-repository.zip
+
+dependencies/7.8.0:
+total 106096
+-rw-r--r--    1 1000        1000            297 Nov 13 14:03 LICENSE
+-rw-r--r--    1 1000        1000          84.4M Nov 13 14:03 bonita-la-builder-7.8.0.beta-01-exec.jar
+-rw-r--r--    1 1000        1000          19.2M Nov 13 14:03 bonita-sp-7.8.0.beta-01-maven-repository.zip
+
 
 $ grep "bonita_version" scenarios/euwest1_performance.yml
 bonita_version: 7.8.0

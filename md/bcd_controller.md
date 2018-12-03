@@ -5,14 +5,14 @@ The BCD controller image provides a ready-to-use environment to launch Bonita Co
 
 ## Installation
 
-Since BCD 3.0.0, BCD controller image is provided throw Quay.io Registry.
+Since BCD 3.0.0, the BCD controller image is provided through Quay.io registry.
 
 Get this image as follows:
 ```
-docker login quay.io
+$ docker login quay.io
 Username: myusername
 Password: mypassword
-docker pull quay.io/bonitasoft/bcd-controller
+$ docker pull quay.io/bonitasoft/bcd-controller:<version>
 ```
 
 
@@ -42,7 +42,7 @@ Once the required files are prepared, the BCD controller container can be starte
 
 ### Starting a BCD controller with `docker run`
 
-The first method to start a BCD Controller Docker container on the control host is to use the `docker run` command with BCD dependencies already present in your host, see [Common Installation Steps](getting_started.md#toc1).
+The first method to start a BCD Controller Docker container on the control host is to use the `docker run` command with BCD dependencies already present in your host, see [Common installation steps](getting_started.md#toc1).
 
 **Example**:
 

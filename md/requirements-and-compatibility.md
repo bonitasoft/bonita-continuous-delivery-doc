@@ -75,7 +75,7 @@ This compatibility information is also specified in the [Release notes](release_
 | BCD version | Bonita release |
 |-------------|----------------|
 | 2.0.x       | 7.7.x          |
-| 3.0.x       | < 7.7.x        |
+| 3.0.x       | 7.7.x, 7.8.x   |
 
 </div>
 

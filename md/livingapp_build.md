@@ -108,16 +108,16 @@ drwxr-xr-x    2 1000        1000           4.0K Nov 22 16:54 7.7.0
 drwxr-xr-x    2 1000        1000           4.0K Nov 22 16:52 7.8.0
 
 dependencies/7.7.0:
-total 121472
+total 95368
 -rw-r--r--    1 1000        1000            297 Nov 14 11:29 LICENSE
 -rw-r--r--    1 1000        1000          84.5M Nov 14 11:29 bonita-la-builder-7.7.0-exec.jar
--rw-r--r--    1 1000        1000          34.2M Nov 14 11:29 bonita-sp-7.7.0-maven-repository.zip
+-rw-r--r--    1 1000        1000           8.6M Nov 14 11:29 bonita-sp-7.7.0-maven-repository.zip
 
 dependencies/7.8.0:
 total 106096
 -rw-r--r--    1 1000        1000            297 Nov 13 14:03 LICENSE
--rw-r--r--    1 1000        1000          84.4M Nov 13 14:03 bonita-la-builder-7.8.0.beta-01-exec.jar
--rw-r--r--    1 1000        1000          19.2M Nov 13 14:03 bonita-sp-7.8.0.beta-01-maven-repository.zip
+-rw-r--r--    1 1000        1000          84.4M Nov 13 14:03 bonita-la-builder-7.8.0-exec.jar
+-rw-r--r--    1 1000        1000          19.2M Nov 13 14:03 bonita-sp-7.8.0-maven-repository.zip
 
 
 $ grep "bonita_version" scenarios/euwest1_performance.yml

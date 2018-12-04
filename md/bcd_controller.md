@@ -5,15 +5,14 @@ The BCD controller image provides a ready-to-use environment to launch Bonita Co
 
 ## Installation
 
-A pre-built BCD controller image is provided with BCD deliverable as a `bcd-controller_<version>.tar.zip` archive. It is located in the `bonita-continuous-delivery_<version>/docker` directory.
+Since BCD 3.0.0, the BCD controller image is provided through Quay.io registry.
 
-Load this image into Docker engine as follows:
+Get this image as follows:
 ```
-$ cd bonita-continuous-delivery_<version>/docker
-$ unzip bcd-controller_<version>.tar.zip
-$ docker load -i bcd-controller_<version>.tar
-Loaded image: bonitasoft/bcd-controller:<version>
-Loaded image: bonitasoft/bcd-controller:latest
+$ docker login quay.io
+Username: myusername
+Password: mypassword
+$ docker pull quay.io/bonitasoft/bcd-controller:<version>
 ```
 
 
@@ -43,16 +42,17 @@ Once the required files are prepared, the BCD controller container can be starte
 
 ### Starting a BCD controller with `docker run`
 
-The first method to start a BCD Controller Docker container on the control host is to use the `docker run` command.
+The first method to start a BCD Controller Docker container on the control host is to use the `docker run` command with BCD dependencies already present in your host, see [Common installation steps](getting_started.md#toc1).
 
 **Example**:
 
 ```
 $ docker run --rm -t -i --name bcd-controller \
+    -v bcd-dependencies-<bonita_version>:/home/bonita/bonita-continuous-delivery/dependencies/<bonita_version>  \
     -v <host_path_to_.boto>:/home/bonita/.boto \
     -v <host_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
     -v <host_path_to_ssh_private_key>:/home/bonita/.ssh/<ssh_private_key> \
-    bonitasoft/bcd-controller /bin/bash
+    quay.io/bonitasoft/bcd-controller /bin/bash
 ```
 
 

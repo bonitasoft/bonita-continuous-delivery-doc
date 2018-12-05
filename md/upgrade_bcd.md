@@ -30,7 +30,10 @@ You will first need to copy the files
 ```
 cp bonita-continuous-delivery_2.1.0/scenarios/*.yml bonita-continuous-delivery_${varVersion}.0/scenarios/
 ```
-Then you will have to check `Breaking changes` section into the [release notes](release_notes.md). Indeed you will have to had the new parameters `bcd_registry_user` and  `bcd_registry_password` in order to retrieves the BCD dependencies from a private docker registry.
+Then you will have to check `Breaking changes` section in the [Release Notes](release_notes.md). Indeed you will have to had the new parameters `bcd_registry_user` and  `bcd_registry_password` in order to retrieves the BCD dependencies from a private docker registry.
+
+Besides, the `bonita_edition` variable has been deprecated in BCD 3.0.0 (read [BCD 3.0.0 Release Notes](release_notes.md) for further details).  
+Therefore you may remove this variable from your scenario files as it will be ignored.
 
 #### Terraform
 
@@ -41,7 +44,7 @@ cp -r bonita-continuous-delivery_2.1.0/terraform/your_stack_name bonita-continuo
 
 #### BCD controller
 
-As is described into the "Installation guide" from the [Getting started](getting_started.md) you will need to load the last version of `bcd-controller_<version>.tar.zip Docker image.
+As is described in the "Installation guide" from the [Getting started](getting_started.md) you will need to load the last version of `bcd-controller_<version>.tar.zip Docker image.
 You can also directly use the private Docker registry to retrive the latest image.
 ```
 docker login quay.io

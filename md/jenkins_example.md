@@ -81,10 +81,10 @@ Click on **Add Docker template** to add a Docker template in the Docker cloud an
 * **Labels**: `bcd`
 * **Enabled**: `[checked]`
 * **Name**: `bcd`
-* **Docker Image**: `bonitasoft/bcd-controller:2.0.1` (where 2.0.1 is the version of BCD to use)
+* **Docker Image**: `quay.io/bonitasoft/bcd-controller:3.0.0` (where 3.0.0 is the version of BCD to use)
 * **Volumes**:
   ```
-  /home/dockeruser/bonita-continuous-delivery_2.0.1:/home/bonita/bonita-continuous-delivery
+  /home/dockeruser/bonita-continuous-delivery_3.0.0:/home/bonita/bonita-continuous-delivery
   /home/dockeruser/.ssh:/home/bonita/.ssh
   ```
 * **Environment**: `ANSIBLE_FORCE_COLOR=true` (this forces colored output in BCD logs)

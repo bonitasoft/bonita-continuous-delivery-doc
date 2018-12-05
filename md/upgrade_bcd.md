@@ -32,6 +32,9 @@ $ cp bonita-continuous-delivery_2.1.0/scenarios/*.yml bonita-continuous-delivery
 ```
 Then you will have to check `Breaking changes` section in the [release notes](release_notes.md). Indeed you will have to add the new variables `bcd_registry_user` and  `bcd_registry_password` in order to retrieve BCD dependencies from Bonita secured Docker registry.
 
+Besides, the `bonita_edition` variable has been deprecated in BCD 3.0.0 (read [BCD 3.0.0 Release Notes](release_notes.md) for further details).  
+Therefore you may remove this variable from your scenario files as it will be ignored.
+
 #### Terraform
 
 Copy the directory corresponding to your stack:

@@ -23,7 +23,7 @@ Follow these installation steps on your control host.
         $ unzip bonita-continuous-delivery_<version>.zip
 
     This step creates a `bonita-continuous-delivery_<version>` directory which contains Bonita Continuous Delivery Ansible playbooks and roles.
-3.  Pull the `quay.io/bonitasoft/bcd-controller:<version>` Docker image from Bonita private registry:
+3.  Pull the `quay.io/bonitasoft/bcd-controller:<version>` Docker image from secured registry:
 
         $ docker login quay.io
         $ docker pull quay.io/bonitasoft/bcd-controller:<version>

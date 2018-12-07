@@ -79,7 +79,6 @@ The `bcd livingapp build` command does not allow to migrate your repository to t
 ## Complete example
 
 Here is a complete example of how to build the [Bonita Vacation Management example repository](https://github.com/bonitasoft/bonita-vacation-management-example) for Bonita version 7.8.0.  
-In this example, the REST API extension has a dependency on Bonita 7.7.0.
 
 **On the control host**
 ```
@@ -104,20 +103,10 @@ drwxrwxr-x 11 1000 1000 4,0K Mar 29 16:19 web_page
 drwxr-xr-x 26 1000 1000 4,0K Mar 29 16:19 web_widgets
 drwxrwxr-x  2 1000 1000 4,0K Mar 29 16:17 xsd
 
-$ grep "<bonita.version>" bonita-vacation-management-example/restAPIExtensions/tahitiRestApiExtension/pom.xml
-        <bonita.version>7.7.0</bonita.version>
-
 $ ls -nhR dependencies/
 dependencies/:
 total 8
-drwxr-xr-x    2 1000        1000           4.0K Nov 22 16:54 7.7.0
 drwxr-xr-x    2 1000        1000           4.0K Nov 22 16:52 7.8.0
-
-dependencies/7.7.0:
-total 95368
--rw-r--r--    1 1000        1000            297 Nov 14 11:29 LICENSE
--rw-r--r--    1 1000        1000          84.5M Nov 14 11:29 bonita-la-builder-7.7.0-exec.jar
--rw-r--r--    1 1000        1000           8.6M Nov 14 11:29 bonita-sp-7.7.0-maven-repository.zip
 
 dependencies/7.8.0:
 total 106096

@@ -1,6 +1,6 @@
 # How to build and deploy Living Apps (Best Practices)
 
-Bonita Continuous Delivery enables you to easily build and deploy a Bonita Living Applications on a running Bonita platform.
+Bonita Continuous Delivery enables you to easily build and deploy a Bonita Living Applications on a Bonita runtime.  
 It uses the [Bonita Living Application Builder](livingapp_build.md) and the [Bonita Living Application Deployer](livingapp_deploy.md).
 
 In the following, we present best practices and various use cases to let you easily build and deploy your Bonita Living Application repository.
@@ -8,7 +8,7 @@ In the following, we present best practices and various use cases to let you eas
 All examples assume that:
   * you have cloned a Git repository as described in the [Bonita Living Application Builder](livingapp_build.md) documentation
   * you have already defined a scenario file for Living Application management and stored it in the BCD `scenarios` directory
-  * you already have a Bonita platform up and running
+  * you already have a Bonita runtime up and running
 
 
 ## Best practices about repositories
@@ -42,12 +42,11 @@ This is the simplest use case: you want to build a Bonita repository and deploy 
 To do so, you only have to pass the repository path to the build command and chain a deploy command without path parameter
 like in the following:
 ```
-$ bcd -y -s <path/to/scenario> livingapp build -p <path/to/bonita/repository> deploy
+$ bcd -s <path/to/scenario> -y livingapp build -p <path/to/bonita/repository> -e <environment> deploy
 ```
 
-This command will first build the Bonita repository. The output of the build is a zip file. It is located in the _target_ directory, created by the builder. This zip file corresponds to the _Application Archive_ used by the deployer. It contains all the resources built from the input repository.  
+This command will first build the Bonita repository for the given environment. The output of the build command are located in the _target_ directory, created by the builder. The generated _Application Archive_ and _Configuration Artifact_ are then automatically used by the deploy command.  
 
-In a second time, the deployer deploys all those resources on the running Bonita platform. 
 
 ## Build and select what to deploy
 
@@ -55,12 +54,12 @@ Sometimes, you may need to perform some actions between the build phase and the 
 The idea is always the same:
 
  - **Build** a Bonita repository with BCD
- - **Update** the application archive created by the builder
- - **Deploy** the updated application archive
+ - **Update** the application or configuration artifacts created by the builder
+ - **Deploy** the updated artifacts
 
 First, we build the Bonita repository:
 ```
-bcd -y -s <path/to/scenario> livingapp build -p <path/to/bonita/repository>
+bcd -s <path/to/scenario> -y livingapp build -p <path/to/bonita/repository> -e <environment>
 ```
 The build operation creates a **target** directory in the Bonita repository. Let's move to this directory:
 ```
@@ -68,7 +67,7 @@ cd <path/to/bonita/repository>/target
 ```
 This directory contains built artifacts, including the application archive we want to update. Keep in mind that the deployer can take a zip file or a directory as input. So, we are going to unzip the raw application archive, in a _to-deploy_ directory:
 ```
-unzip -d to-deploy <bonita-repository-name>_<timestamp>.zip
+unzip -d to-deploy <bonita-repository-name>-<environment>-<timestamp>.zip
 ```
 A new directory _to-deploy_ has been createda and it contains all the built artifacts from your Bonita repository.  
 
@@ -78,7 +77,7 @@ You can perform some actions on the content of this directory to customize your 
 
 In this example, we only want to deploy the BDM. The _to-deploy_ directory should contain a subfolder _bdm_. We simply need to tell the deployer to deploy this subfolder as follows:
 ```
-bcd -y -s <path/to/scenario> livingapp deploy -p <path/to/bonita/repository>/target/to-deploy/bdm
+bcd -s <path/to/scenario> -y livingapp deploy -p <path/to/bonita/repository>/target/to-deploy/bdm
 ```
 
 #### Example 2: I only want to deploy all the resources from my Bonita repository except applications
@@ -86,12 +85,12 @@ bcd -y -s <path/to/scenario> livingapp deploy -p <path/to/bonita/repository>/tar
 The _to-deploy_ directory should contain a subfolder _applications_. We simply need to delete this subfolder, then tell the deployer to deploy the _to-deploy_ directory as follows:
 ```
 rm -rf <path/to/bonita/repository>/target/to-deploy/applications/
-bcd -y -s <path/to/scenario> livingapp deploy -p <path/to/bonita/repository>/target/to-deploy
+bcd -s <path/to/scenario> -y livingapp deploy -p <path/to/bonita/repository>/target/to-deploy
 ```
 
 #### Example 3: I want to add some custom pages in the resources to deploy
 
-This use case is a bit more advanced. Imagine that your Bonita repository is stored on a given Git repository and your custom pages used by your applications in an other Git repository. You will have to build your Bonita repository as described above, then to retrieve your custom pages (Git clone...) and to add them to the application archive to deploy. 
+This use case is a bit more advanced. Imagine that your Bonita repository is stored on a given Git repository and your custom pages used by your applications in an other Git repository. You will have to build your Bonita repository as described above, then to retrieve your custom pages (Git clone...) and to add them to the application archive to deploy.
 
 
 ## Build and select how to deploy parts of the Application Archive
@@ -99,6 +98,7 @@ This use case is a bit more advanced. Imagine that your Bonita repository is sto
 As described in the [Bonita Living Application Deployer documentation](livingapp_deploy.md), it is possible to pass to the deployer a _deployment descriptor file_. This file must be called _deploy.json_ and be at the root of the application archive.  
 The deployment descriptor file is used to specify which resources have to be deployed, and with which policy. It is an alternative way to select a sub part of the application archive to deploy.  
 An interesting way to use it is to store some deployment descriptor files in your Bonita repository, one for each 'build and deploy' scenario you want to perform. Between the build and the deploy phase, just move the deployment descriptor file at the root of your application archive, as described above.  
+
 ::: warning
-The format of the deployment descriptor file is not friendly to use. It might evolve in further versions.
+The format of the deployment descriptor file might evolve in future versions to make it more user-friendly.
 :::

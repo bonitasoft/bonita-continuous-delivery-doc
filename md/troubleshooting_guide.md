@@ -27,7 +27,7 @@ To do so, first you need to identify the target server where the Bonita containe
 It's possible through the `bcd stack status` command:
 
 ```
-bcd -y -s scenarios/myscenario.yml stack status
+bcd -s scenarios/myscenario.yml -y stack status
 
 [...]
 [10:44:12.802] TASK [List Docker containers.] **************************************************************************************************
@@ -38,7 +38,7 @@ FQDN: ec2-54-191-90-85.us-west-2.compute.amazonaws.com
 Docker running containers
 --
 CONTAINER ID        IMAGE                                  CREATED             STATUS              NAMES
-5d73a2446245        bonitasoft/bonita-subscription:7.6.2   6 minutes ago       Up 6 minutes        bonita8081
+5d73a2446245        bonitasoft/bonita-subscription:7.8.0   6 minutes ago       Up 6 minutes        bonita8081
 [...]
 ```
 
@@ -55,7 +55,7 @@ docker logs bonita8081
 
 If you want to copy all the logs (bonita, catalina) you can use `docker cp`:
 ```
-docker cp bonita8081:/opt/bonita/BonitaSubscription-7.6.2-Tomcat-8.5.23/server/logs/ /tmp/
+docker cp bonita8081:/opt/bonita/BonitaSubscription-7.8.0-Tomcat-8.5.34/server/logs/ /tmp/
 ```
 
 Then you will be able to retrieve all the files through a `scp`:
@@ -68,7 +68,7 @@ scp -i ~/.ssh/my_key.pem ubuntu@54.191.90.85:/tmp/logs /tmp/
 Ansible facts are local variables registered in hosts. It is possible to save them in JSON files with the `setup` command.
 ```
 $ cd bonita-continuous-delivery
-$ bcd -y -s scenarios/myscenario.yml stack create deploy
+$ bcd -s scenarios/myscenario.yml -y stack create deploy
 $ ansible all -vv -i ansible/inventory/ec2/ec2_wrapper.sh -m setup -u ubuntu --private-key=~/.ssh/my_key.pem --tree tmp_facts/
 ```
 This command will identify every EC2 instance (depending of `bcd_stack_id` set into ec2.ini by the last `bcd stack deploy` command) and put its facts into the `tmp_facts` directory.

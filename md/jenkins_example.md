@@ -111,7 +111,7 @@ node('bcd') {
     }
 
     stage('build-bonita-app') {
-        bcd args: "livingapp build -p ${WORKSPACE} -e Qualification"
+        bcd args: "livingapp build -p ${WORKSPACE} -e Test"
     }
 
     def jobBaseName = "${env.JOB_NAME}".split('/').last()

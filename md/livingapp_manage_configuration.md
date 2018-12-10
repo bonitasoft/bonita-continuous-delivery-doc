@@ -12,8 +12,8 @@ Here is an example of a build result:
 ```
 bonita-vacation-management-example
 ├── target
-   └── bonita-vacation-management-example-Qualification-20181003140237.zip
-   └── bonita-vacation-management-example-Qualification-20181003140237.bconf
+   └── bonita-vacation-management-example-Test-20181003140237.zip
+   └── bonita-vacation-management-example-Test-20181003140237.bconf
 ```
 
 It's possible to extract the configuration to check it and also override (merge) some parameters if needed.
@@ -23,9 +23,9 @@ It's possible to extract the configuration to check it and also override (merge)
 You can extract the configuration if you want to check it or modify it
 
 ```bash
-bcd -y -s scenarios/euwest1_performance.yml livingapp extract-conf \
--p bonita-vacation-management-example/target/bonita-vacation-management-example-Qualification-20181003140237.bconf \
--o scenarios/euwest1_performance_Qualification.yml
+bcd -s scenarios/build_and_deploy.yml -y livingapp extract-conf \
+-p bonita-vacation-management-example/target/bonita-vacation-management-example-Test-20181003140237.bconf \
+-o scenarios/build_and_deploy_Test.yml
 ```
 
 The configuration looks like this :
@@ -46,7 +46,7 @@ processes:
 As it may contain sensitive data, it's recommended to encrypt your configuration using [vault](how_to_use_bcd_with_data_encrypted):
 
 ```
-ansible-vault encrypt scenarios/euwest1_performance_Qualification.yml
+ansible-vault encrypt scenarios/build_and_deploy_Test.yml
 New Vault password:
 Confirm New Vault password:
 Encryption successful
@@ -55,9 +55,9 @@ Encryption successful
 You can also just check if there are parameters that have no value for this environment:
 
 ```bash
-bcd -y -s scenarios/euwest1_performance.yml livingapp extract-conf --without-value \
--p bonita-vacation-management-example/target/bonita-vacation-management-example-Qualification-20181003140237.bconf \
--o scenarios/euwest1_performance_Qualification_missing_parameters.yml
+bcd -s scenarios/build_and_deploy.yml -y livingapp extract-conf --without-value \
+-p bonita-vacation-management-example/target/bonita-vacation-management-example-Test-20181003140237.bconf \
+-o scenarios/build_and_deploy_Test_missing_parameters.yml
 ```
 
 Notes :
@@ -69,10 +69,10 @@ Notes :
 You may want to complete or override some parameter values coming from your Living App repository, to do that you can modify the output file of the __extract-conf__ command and ***merge*** with your ***bconf*** file.
 
 ```bash
-bcd -y -s scenarios/euwest1_performance.yml livingapp merge-conf \
--p bonita-vacation-management-example/target/bonita-vacation-management-example-Qualification-20181003140237.bconf \
--i scenarios/euwest1_performance_Qualification.yml \
--o /tmp/bonita-vacation-management-example-Qualification-20181003140237-modified.bconf
+bcd -s scenarios/build_and_deploy.yml -y livingapp merge-conf \
+-p bonita-vacation-management-example/target/bonita-vacation-management-example-Test-20181003140237.bconf \
+-i scenarios/build_and_deploy_Test.yml \
+-o /tmp/bonita-vacation-management-example-Test-20181003140237-modified.bconf
 ```
 
 Note : the content of bconf file is not encrypted so it's recommended to clean them after usage.

@@ -38,7 +38,7 @@ $ bcd stack destroy --dry-run
 Running the `build` subcommand of the `livingapp` command with `BCD_SCENARIO` environment variable and subcommand `-p` and `-e` options:
 ```
 $ export BCD_SCENARIO=scenarios/euwest1_performance.yml
-$ bcd livingapp build -p path/to/livingapp-repo -e Qualification
+$ bcd livingapp build -p path/to/livingapp-repo -e Test
 ```
 
 Running the `version` command which does not require a scenario file:
@@ -63,7 +63,7 @@ $ bcd -s scenarios/uswest2_cluster.yml -y stack create deploy
 Running `build` then `deploy` subcommands of the `livingapp` command:
 ```
 $ bcd -s scenarios/vagrant_single.yml --yes \
-    livingapp build -p path/to/livingapp-repo -e Qualification deploy
+    livingapp build -p path/to/livingapp-repo -e Test deploy
 ```
 
 

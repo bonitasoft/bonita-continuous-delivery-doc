@@ -20,10 +20,10 @@ For this tutorial, we will use the [Bonita Vacation Management example repositor
 
 ```
 $ cd bonita-continuous-delivery
-$ git clone https://github.com/bonitasoft/bonita-vacation-management-example
+$ git clone -b dev/7.7.0 https://github.com/bonitasoft/bonita-vacation-management-example
 ```
 
-This step creates a `bonita-continuous-delivery/bonita-vacation-management-example` directory which is the Living App repository we are going to build.
+This step creates a `bonita-continuous-delivery/bonita-vacation-management-example` directory which is the Living App repository we are going to build. Besides, the repository checks out the `dev/7.7.0` Git branch where the repository's version is **7.7.0**.
 
 
 ### 2. Provide the repository's build dependencies
@@ -77,7 +77,7 @@ In this example, the REST API extension has a dependency on Bonita 7.6.3.
 ```
 $ cd bonita-continuous-delivery_2.0.0
 
-$ git clone https://github.com/bonitasoft/bonita-vacation-management-example
+$ git clone -b dev/7.7.0 https://github.com/bonitasoft/bonita-vacation-management-example
 $ ls -nh bonita-vacation-management-example
 total 60K
 drwxrwxr-x  2 1000 1000 4,0K Mar 29 16:17 applications

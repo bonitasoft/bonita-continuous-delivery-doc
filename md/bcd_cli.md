@@ -76,7 +76,7 @@ You can also see this information by running `bcd --help` and `bcd [COMMAND] --h
 <div class="section" id="bcd">
 <span class="h3">bcd</span>
 <p>Bonita Continuous Delivery CLI.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>BCD_OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>COMMAND_OPTIONS<span class="o">]</span> SUBCOMMAND <span class="o">[</span>SUBCOMMAND_OPTIONS<span class="o">]</span>...
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>COMMAND_OPTIONS<span class="o">]</span> SUBCOMMAND <span class="o">[</span>SUBCOMMAND_OPTIONS<span class="o">]</span>...
 </pre></div>
 </div>
 <p class="rubric">Options</p>
@@ -125,7 +125,7 @@ You can also see this information by running `bcd --help` and `bcd [COMMAND] --h
 <div class="section" id="bcd-license">
 <h4>license</h4>
 <p>Manage Bonita licenses</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>BCD_OPTIONS<span class="o">]</span> license <span class="o">[</span>LICENSE_OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>COMMAND_OPTIONS<span class="o">]</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>BCD_OPTIONS<span class="o">]</span> license <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>COMMAND_OPTIONS<span class="o">]</span>
 </pre></div>
 </div>
 <p class="rubric">Options</p>
@@ -185,8 +185,8 @@ You can also see this information by running `bcd --help` and `bcd [COMMAND] --h
 <div class="section" id="bcd-livingapp">
 <h4>livingapp</h4>
 <p>Manage Bonita Living Application</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>BCD_OPTIONS<span class="o">]</span> livingapp <span class="o">[</span>LIVINGAPP_OPTIONS<span class="o">]</span> COMMAND1 <span class="o">[</span>COMMAND1_OPTIONS<span class="o">]</span>
-                            <span class="o">[</span>COMMAND2 <span class="o">[</span>COMMAND2_OPTIONS<span class="o">]]</span>...
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>BCD_OPTIONS<span class="o">]</span> livingapp <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND1 <span class="o">[</span>COMMAND1_OPTIONS<span class="o">]</span> <span class="o">[</span>COMMAND2
+                            <span class="o">[</span>COMMAND2_OPTIONS<span class="o">]]</span>...
 </pre></div>
 </div>
 <p class="rubric">Options</p>
@@ -263,7 +263,7 @@ You can also see this information by running `bcd --help` and `bcd [COMMAND] --h
 <div class="section" id="bcd-bcd-options-livingapp-extract-conf">
 <h5>extract-conf</h5>
 <p>Extract parameters from a Bonita configuration archive (.bconf)</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>BCD_OPTIONS<span class="o">]</span> livingapp <span class="o">[</span>LIVINGAPP_OPTIONS<span class="o">]</span> extract-conf
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>BCD_OPTIONS<span class="o">]</span> livingapp <span class="o">[</span>LIVINGAPP_OPTIONS<span class="o">]</span> extract-conf 
     <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
 </div>
@@ -296,7 +296,7 @@ You can also see this information by running `bcd --help` and `bcd [COMMAND] --h
 <div class="section" id="bcd-bcd-options-livingapp-merge-conf">
 <h5>merge-conf</h5>
 <p>Merge parameters into a Bonita configuration archive (.bconf)</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>BCD_OPTIONS<span class="o">]</span> livingapp <span class="o">[</span>LIVINGAPP_OPTIONS<span class="o">]</span> merge-conf
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>BCD_OPTIONS<span class="o">]</span> livingapp <span class="o">[</span>LIVINGAPP_OPTIONS<span class="o">]</span> merge-conf 
     <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
 </div>
@@ -330,7 +330,7 @@ You can also see this information by running `bcd --help` and `bcd [COMMAND] --h
 <div class="section" id="bcd-stack">
 <h4>stack</h4>
 <p>Manage Bonita stack (infrastructure)</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>BCD_OPTIONS<span class="o">]</span> stack <span class="o">[</span>STACK_OPTIONS<span class="o">]</span> COMMAND1 <span class="o">[</span>COMMAND1_OPTIONS<span class="o">]</span> <span class="o">[</span>COMMAND2
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>BCD_OPTIONS<span class="o">]</span> stack <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND1 <span class="o">[</span>COMMAND1_OPTIONS<span class="o">]</span> <span class="o">[</span>COMMAND2
                         <span class="o">[</span>COMMAND2_OPTIONS<span class="o">]]</span>...
 </pre></div>
 </div>

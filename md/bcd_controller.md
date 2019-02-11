@@ -10,11 +10,11 @@ Since BCD 3.0.0, the BCD controller image is provided through Quay.io registry.
 Get this image as follows:
 ```
 $ docker login quay.io
-Username: myusername
-Password: mypassword
+Username: bonitasoft+john_doe_at_acme_com
+Password:
 $ docker pull quay.io/bonitasoft/bcd-controller:<version>
 ```
-The username corresponds to `bcd_registry_user` and the password corresponds to `bcd_registry_password` described into the [Scenario file reference](scenarios.md). Both has been provided by your sales representative.
+The username corresponds to `bcd_registry_user` and the password corresponds to `bcd_registry_password` described in the [Scenario file reference](scenarios.md). Both have been provided by your sales representative.
 
 ## Usage
 

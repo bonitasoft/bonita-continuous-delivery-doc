@@ -23,9 +23,13 @@ Follow these installation steps on your control host.
         $ unzip bonita-continuous-delivery_<version>.zip
 
     This step creates a `bonita-continuous-delivery_<version>` directory which contains Bonita Continuous Delivery Ansible playbooks and roles.
-3.  Pull the `quay.io/bonitasoft/bcd-controller:<version>` Docker image from secured registry:
+3.  Pull the `quay.io/bonitasoft/bcd-controller:<version>` Docker image from secured registry.  
+    The username corresponds to `bcd_registry_user` and the password corresponds to `bcd_registry_password` described into the [Scenario file reference](scenarios.md). Both has been provided by your sales representative.
 
         $ docker login quay.io
+        Username: bonitasoft+john_doe_at_acme_com
+        Password: ***
+        Login Succeeded
         $ docker pull quay.io/bonitasoft/bcd-controller:<version>
         [...]
         Status: Downloaded newer image for quay.io/bonitasoft/bcd-controller:<version>
@@ -37,6 +41,9 @@ Follow these installation steps on your control host.
     Basically, the `/dependencies` volume provided by the `quay.io/bonitasoft/bcd-dependencies` Docker image must be mounted or copied into the `dependencies` directory. For instance, here is how to create a Docker named volume with BCD dependencies from the data image:
 
         $ docker login quay.io
+        Username: bonitasoft+john_doe_at_acme_com
+        Password: ***
+        Login Succeeded
         $ docker run --rm -v bcd-dependencies-<bonita_version>:/dependencies quay.io/bonitasoft/bcd-dependencies:<bonita_version>
         $ docker logout quay.io
 
@@ -109,6 +116,9 @@ Assuming you have a `bonita-continuous-delivery_3.0.0.zip` archive in your `$HOM
     [...]
 
     $ docker login quay.io
+    Username: bonitasoft+john_doe_at_acme_com
+    Password: ***
+    Login Succeeded
     $ docker pull quay.io/bonitasoft/bcd-controller:3.0.0
     [...]
     Status: Downloaded newer image for quay.io/bonitasoft/bcd-controller:3.0.0

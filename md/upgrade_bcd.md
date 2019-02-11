@@ -53,6 +53,8 @@ Password: mypassword
 $ docker pull quay.io/bonitasoft/bcd-controller
 ```
 
+The username corresponds to `bcd_registry_user` and the password corresponds to `bcd_registry_password` described into the [Scenario file reference](scenarios.md). Both has been provided by your sales representative.
+
 #### Vagrant
 
 As the controller access to them over the network it's not necessary to move them on the filesystem.

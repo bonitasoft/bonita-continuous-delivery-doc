@@ -48,10 +48,12 @@ As is described in the "Installation guide" from the [Getting started](getting_s
 You can also directly use the secured Docker registry to retrieve the latest image.
 ```
 $ docker login quay.io
-Username: myusername
-Password: mypassword
+Username: bonitasoft+john_doe_at_acme_com
+Password:
 $ docker pull quay.io/bonitasoft/bcd-controller
 ```
+
+The username corresponds to `bcd_registry_user` and the password corresponds to `bcd_registry_password` described in the [Scenario file reference](scenarios.md). Both have been provided by your sales representative.
 
 #### Vagrant
 

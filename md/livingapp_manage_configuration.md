@@ -6,7 +6,7 @@ This tutorial describes how to configure your Bonita Living Application from the
 
 Since BCD 3.0.0, if you build a living Application you will get separatly:
 - a zip file which contains binaries
-- a bconf file which contains the configuration for the target [environment](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/environments) (Local by default)
+- and for Bonita from 7.8.0 a bconf file which contains the configuration for the target [environment](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/environments) (Local by default)
 
 Here is an example of a build result:
 ```

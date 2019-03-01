@@ -1,10 +1,10 @@
 # How to manage Living Apps Configuration
 
-This tutorial describes how to configure your Bonita Living Application from the command line using BCD.
+<span class="label label-danger">Supported from Bonita 7.8.0 onwards</span> This tutorial describes how to configure your Bonita Living Application from the command line using BCD.
 
 ## How it works
 
-Since BCD 3.0.0, if you build a living Application you will get separatly:
+Since BCD 3.0.0 and with Bonita 7.8.0 onwards, if you build a Living Application you will get separately:
 - a zip file which contains binaries
 - a bconf file which contains the configuration for the target [environment](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/environments) (Local by default)
 

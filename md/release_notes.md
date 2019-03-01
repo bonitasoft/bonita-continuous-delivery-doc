@@ -25,7 +25,7 @@ The following changes introduce incompatibility with BCD 2.x:
 
 * Manage Docker dependencies through a secured public registry
 * [Manage Bonita licenses](manage_bonita_licenses.md) with BCD sub-commands (`bcd license [generate,revoke]`)
-* [Manage Living Apps Configuration](livingapp_manage_configuration.md) with BCD sub-commands (`bcd livingapp [extract-conf,merge-conf]`)
+* <span class="label label-danger">Supported from Bonita 7.8.0 onwards</span> [Manage Living Apps Configuration](livingapp_manage_configuration.md) with BCD sub-commands (`bcd livingapp [extract-conf,merge-conf]`)
 * Create and delete Microsoft Azure resources for the Bonita stack automatically (`bcd_provider: azure`)
 
 ### Enhancements

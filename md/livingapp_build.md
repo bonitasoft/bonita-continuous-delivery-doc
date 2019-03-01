@@ -49,7 +49,7 @@ $ cd bonita-continuous-delivery
 $ bcd -s scenarios/build_and_deploy.yml --yes livingapp build -p bonita-vacation-management-example -e Test
 ```
 
-The build process finally generates a **.zip** package and a **.bconf** artifact located in the repository's `target` repository. The generated artifacts are named after the repository's root directory name and the selected environment name.
+The build process finally generates a **.zip** package and - for Bonita 7.8.0 onwards - a **.bconf** artifact located in the repository's `target` repository. The generated artifacts are named after the repository's root directory name and the selected environment name.
 
 For instance with the `bonita-vacation-management-example` example, the following files will be generated:
 - `bonita-vacation-management-example/target/bonita-vacation-management-example-<environment>-<timestamp>.zip`

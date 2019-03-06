@@ -19,6 +19,12 @@ The following changes introduce incompatibility with BCD 2.x:
   [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
   ```
 
+## What's new in 3.0.1 (2019-03-07)
+
+### Bugfixes
+
+* BCD-323 Licenses are not deactivated with stack undeploy with Bonita 7.8.0
+
 ## What's new in 3.0.0 (2018-12-06)
 
 ### New features

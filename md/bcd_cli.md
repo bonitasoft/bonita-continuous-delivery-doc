@@ -248,6 +248,12 @@ You can also see this information by running `bcd --help` and `bcd [COMMAND] --h
 </dd></dl>
 
 <dl class="option">
+<dt id="cmdoption-bcd-bcd-options-livingapp-deploy-http-timeout">
+<code class="descname">--http-timeout</code><code class="descclassname"> &lt;http_timeout&gt;</code></dt>
+<dd><p>Timeout in seconds for HTTP interactions with Bonita stack  [default: 120]</p>
+</dd></dl>
+
+<dl class="option">
 <dt id="cmdoption-bcd-bcd-options-livingapp-deploy-x">
 <code class="descname">-X</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--debug</code><code class="descclassname"></code></dt>
 <dd><p>Enable debug mode</p>

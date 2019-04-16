@@ -8,8 +8,16 @@
   [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
   ```
 
-## What's new in 3.1.0 (yyyy-mm-dd)
+## What's new in 3.1.0 (2019-04-16)
 
 ### New features
 
 * Configurable HTTP timeout for Living Apps deployment (default to 120 seconds)
+
+### Bugfixes
+
+* BCD-340 DS min and max pool sizes are not configured
+
+### Enhancements
+
+* BCD controller is now using alpine 3.9

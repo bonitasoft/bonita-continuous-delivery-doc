@@ -8,6 +8,20 @@
   [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
   ```
 
+## What's new in 3.1.1 (2019-06-13)
+
+### New features
+
+* Starting with release 3.1.1, BCD is compatible with **Bonita 7.9.x**.  
+<span class="label label-danger">With Bonita 7.9.0 onwards</span> You must use one of these [license types in your scenarios](https://documentation.bonitasoft.com/bcd/${varVersion}/scenarios#toc4): `lic_type` in [`production`\|`qualification`\|`trial`]  
+(starting from Bonita 7.9.0, `development` licenses can only be used with Bonita Studio).
+
+### Bugfixes
+
+* BCD-339 Jenkins example `bcd-pipeline` fails when processes do not have parameters
+* BCD-342 `bcd livingapp build` fails to unzip maven dependencies twice
+
+
 ## What's new in 3.1.0 (2019-04-16)
 
 ### New features

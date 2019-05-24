@@ -41,9 +41,9 @@ The Docker host should now have:
 
 These steps are to be completed on the Jenkins master.
 
-#### 1. Install docker client
+#### 1. Install Docker client
 
-Follow the [docker documentation](https://docs.docker.com/install/). For example [on ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1) you will just need to install `docker-ce-cli` package.
+Follow the [Docker documentation](https://docs.docker.com/install/) to have Docker installed on Jenkins master. Actually only the Docker CLI is required. For example [on Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1) you only need to install the `docker-ce-cli` package.
 
 #### 2. Install required plugins
 
@@ -66,7 +66,7 @@ If your Docker TCP socket is not secured, then you can skip this step. But bear 
 
 ![Add Docker Host Certificate Authentication](images/jenkins_add_docker_client_cert_auth.png "Add Docker Host Certificate Authentication")
 
-In addition you will have to add a new **Username with password** credentials to configure quay.io access.
+In addition, you will have to add a new **Username with password** credentials to grant access to **quay.io** Docker registry.
 
 ![Add Username with password](images/jenkins_add_quay_auth.png "Add Username with password")
 
@@ -144,7 +144,7 @@ node('bcd') {
         stage('deploy-bonita-app') {
             def zip_files = findFiles(glob: "target/${jobBaseName}-*.zip")
             def bconf_files = findFiles(glob: "target/${jobBaseName}-*.bconf")
-            if( bconf_files!= null && bconf_files.length >0 )
+            if (bconf_files != null && bconf_files.length > 0)
                 bcd args: "livingapp deploy -p ${WORKSPACE}/${zip_files[0].path} -c ${WORKSPACE}/${bconf_files[0].path}"
             else
                 bcd args: "livingapp deploy -p ${WORKSPACE}/${zip_files[0].path}"

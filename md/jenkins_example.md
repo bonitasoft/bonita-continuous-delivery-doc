@@ -41,7 +41,11 @@ The Docker host should now have:
 
 These steps are to be completed on the Jenkins master.
 
-#### 1. Install required plugins
+#### 1. Install Docker client
+
+Follow the [Docker documentation](https://docs.docker.com/install/) to have Docker installed on Jenkins master. Actually only the Docker CLI is required. For example [on Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1) you only need to install the `docker-ce-cli` package.
+
+#### 2. Install required plugins
 
 The Jenkins master must have the [Docker plugin](https://plugins.jenkins.io/docker-plugin) installed. The Docker plugin is a "Cloud" implementation that lets you add a new Cloud of type "Docker" on Jenkins master.  
 Additionally, it is recommended to use [Pipelines](https://jenkins.io/pipeline/getting-started-pipelines/) while using BCD with Jenkins. You can still use standard Jenkins "freestyle" jobs but pipelines are more designed for continuous delivery. Therefore this requires to install the [Pipeline plugin](https://plugins.jenkins.io/workflow-aggregator) (aka. `workflow-aggregator`).  
@@ -51,7 +55,7 @@ This tutorial also provides an example pipeline which requires the [Pipeline Uti
 The [Jenkins plugins documentation](https://jenkins.io/doc/book/managing/plugins/#installing-a-plugin) describes different methods for installing plugins on master.
 :::
 
-#### 2. Add Docker Host credentials
+#### 3. Add Docker Host credentials
 
 As recommended previously, the Docker host should have TLS enabled. Therefore, the Docker host credentials must be added to Jenkins master.  
 Follow the [Jenkins credentials documentation](https://jenkins.io/doc/book/using/using-credentials/#adding-new-global-credentials) to add new **Docker Host Certificate Authentication** credentials. These credentials are required to declare a secured Docker cloud in the next step.
@@ -60,12 +64,18 @@ Follow the [Jenkins credentials documentation](https://jenkins.io/doc/book/using
 If your Docker TCP socket is not secured, then you can skip this step. But bear in mind that exposing the Docker TCP socket without TLS is really **not safe**.
 :::
 
-#### 3. Add a new Cloud
+![Add Docker Host Certificate Authentication](images/jenkins_add_docker_client_cert_auth.png "Add Docker Host Certificate Authentication")
+
+In addition, you will have to add a new **Username with password** credentials to grant access to **quay.io** Docker registry.
+
+![Add Username with password](images/jenkins_add_quay_auth.png "Add Username with password")
+
+#### 4. Add a new Cloud
 
 This step instructs Jenkins master to add a new _Cloud_ of type Docker in order to provision build agents for BCD jobs.
 
 Follow these steps to add a Docker cloud:
-* Edit Jenkins system configuration (**Jenkins > Manage > System configuration**) and **Add a new cloud** of type _Docker_.
+* Edit Jenkins system configuration (**Jenkins > Manage Jenkins > Configure System**) and **Add a new cloud** of type _Docker_.
 * Give it a **Name** and a **Docker Host URI** like `tcp://dockerhost:2376` (where `dockerhost` is the hostname or IP of the Docker host).  
   _It is conventional to use port `2376` when TLS is enabled, and port `2375` for un-encrypted communication with the Docker daemon._
 * With a secured Docker TCP socket, select the **Server credentials** created previously. Otherwise, select _None_.
@@ -73,7 +83,7 @@ Follow these steps to add a Docker cloud:
 
 ![Jenkins add Docker cloud](images/jenkins-add_cloud.png "Jenkins add Docker cloud")
 
-#### 4. Add Docker template
+#### 5. Add Docker template
 
 A Docker template must be added to define how to start Jenkins build agents as BCD controller containers.
 
@@ -81,11 +91,12 @@ Click on **Add Docker template** to add a Docker template in the Docker cloud an
 * **Labels**: `bcd`
 * **Enabled**: `[checked]`
 * **Name**: `bcd`
-* **Docker Image**: `quay.io/bonitasoft/bcd-controller:3.0.0` (where 3.0.0 is the version of BCD to use)
+* **Docker Image**: `quay.io/bonitasoft/bcd-controller:3.0.1` (where 3.0.1 is the version of BCD to use)
 * **Volumes**:
   ```
-  /home/dockeruser/bonita-continuous-delivery_3.0.0:/home/bonita/bonita-continuous-delivery
+  /home/dockeruser/bonita-continuous-delivery_3.0.1:/home/bonita/bonita-continuous-delivery
   /home/dockeruser/.ssh:/home/bonita/.ssh
+  bcd-dependencies-7.8.0:/home/bonita/bonita-continuous-delivery/dependencies/7.8.0
   ```
 * **Environment**: `ANSIBLE_FORCE_COLOR=true` (this forces colored output in BCD logs)
 * **Remote File System Root**: `/home/bonita`
@@ -101,31 +112,49 @@ Jenkins is now ready to run BCD Pipelines. An example scripted pipeline is provi
 
 Create a **Pipeline** item with a `BCD_SCENARIO` String parameter which sets the BCD scenario path as an environment variable.  
 For instance, the `BCD_SCENARIO` parameter can be set to `scenarios/build_and_deploy.yml`.  
-Then here is an example pipeline script that builds a LivingApp repository and deploys its artifacts on an already runnning Bonita platform:
+Then here is an example pipeline script that builds a LivingApp repository and deploys its artifacts on an already running Bonita platform:
 ```
-@Library('github.com/bonitasoft/bonita-jenkins-library@master') _
+@Library('github.com/bonitasoft/bonita-jenkins-library@1.0.0') _
+
+node('master') {
+    stage('Retrieve dependencies') {
+        docker.withServer('tcp://dockerhost:2376', 'DOCKER_CLIENT_CERT_AUTH') {
+            docker.withRegistry('https://quay.io', 'QUAY_AUTH') {
+                docker.image('quay.io/bonitasoft/bcd-dependencies:7.8.0').withRun('-v bcd-dependencies-7.8.0:/dependencies') {
+                }
+            }
+        }
+    }
+}
+
 node('bcd') {
-    
-    stage('Git Ckeckout') {
-        git url: 'https://github.com/bonitasoft/bonita-vacation-management-example', branch: 'master'
-    }
+    ansiColor('xterm') {
 
-    stage('build-bonita-app') {
-        bcd args: "livingapp build -p ${WORKSPACE} -e Test"
+        stage('Git Ckeckout') {
+            git url: 'https://github.com/bonitasoft/bonita-vacation-management-example',
+            branch: 'dev/7.8.0'
+        }
+        
+        stage('build-bonita-app') {
+            bcd args: "livingapp build -p ${WORKSPACE} -e Test"
+        }
+        
+        def jobBaseName = "${env.JOB_NAME}".split('/').last()
+        
+        stage('deploy-bonita-app') {
+            def zip_files = findFiles(glob: "target/${jobBaseName}-*.zip")
+            def bconf_files = findFiles(glob: "target/${jobBaseName}-*.bconf")
+            if (bconf_files != null && bconf_files.length > 0)
+                bcd args: "livingapp deploy -p ${WORKSPACE}/${zip_files[0].path} -c ${WORKSPACE}/${bconf_files[0].path}"
+            else
+                bcd args: "livingapp deploy -p ${WORKSPACE}/${zip_files[0].path}"
+        }
+        
+        stage('archive-artifacts') {
+            archiveArtifacts artifacts: "target/${jobBaseName}/**/*.*, target/${jobBaseName}-*.*, .bcd_configurations/*.yml", fingerprint: true
+        }
+     
     }
-
-    def jobBaseName = "${env.JOB_NAME}".split('/').last()
-    def artifacts_glob = "target/${jobBaseName}_*.zip"
-
-    stage('deploy-bonita-app') {
-        def zip_files = findFiles(glob: artifacts_glob)
-        bcd args: "livingapp deploy -p ${WORKSPACE}/${zip_files[0].path}"
-    }
-    
-    stage('archive-artifacts') {
-        archiveArtifacts artifacts_glob
-    }
-    
 }
 ```
 

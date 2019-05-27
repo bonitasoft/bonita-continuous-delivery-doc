@@ -113,12 +113,12 @@ fi
 
 BONITA_PATH=${BONITA_PATH:-/opt/bonita}
 BONITA_FILES=${BONITA_FILES:-/opt/files}
-BONITA_SETUP_SH="${BONITA_PATH}/Bonita*Subscription-${BONITA_VERSION}-Tomcat-${TOMCAT_VERSION}/setup/setup.sh"
+BONITA_SETUP_SH="${BONITA_PATH}/Bonita*Subscription-${BONITA_VERSION}-*omcat*/setup/setup.sh"
 
 EVENT_HANDLER_FILENAME=event-handler-example-1.0.0-SNAPSHOT.jar
 
 
-war_path=$(find "${BONITA_PATH}/Bonita"*"Subscription-${BONITA_VERSION}-Tomcat-${TOMCAT_VERSION}/server/webapps" -name bonita.war)
+war_path=$(find "${BONITA_PATH}/Bonita"*"Subscription-${BONITA_VERSION}-"*"omcat"*"/server/webapps" -name bonita.war)
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 workdir="${BONITA_FILES}/register-event-handler"
 rm -rf ${workdir} && mkdir -p ${workdir}
@@ -135,7 +135,7 @@ zip -r "${war_path}" "WEB-INF/lib/${EVENT_HANDLER_FILENAME}"
 
 # register event handler
 ${BONITA_SETUP_SH} pull
-cp /opt/custom-init.d/bonita-tenant-sp-custom.xml ${BONITA_PATH}/Bonita*Subscription-${BONITA_VERSION}-Tomcat-${TOMCAT_VERSION}/setup/platform_conf/current/tenant_template_engine/
+cp /opt/custom-init.d/bonita-tenant-sp-custom.xml ${BONITA_PATH}/Bonita*Subscription-${BONITA_VERSION}-*omcat*/setup/platform_conf/current/tenant_template_engine/
 ${BONITA_SETUP_SH} push
 
 # Create indicator file
@@ -166,7 +166,7 @@ fi
 BONITA_PATH=${BONITA_PATH:-/opt/bonita}
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-pushd ${BONITA_PATH}/Bonita*Subscription-${BONITA_VERSION}-Tomcat-${TOMCAT_VERSION}
+pushd ${BONITA_PATH}/Bonita*Subscription-${BONITA_VERSION}-*omcat*
 
 # Allow Tomcat Manager from different host
 cp ${script_dir}/manager-context.xml server/conf/Catalina/localhost/manager.xml

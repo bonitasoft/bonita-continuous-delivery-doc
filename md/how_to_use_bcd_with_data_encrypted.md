@@ -19,7 +19,7 @@ In this tutorial, we will explain how to encrypt files with `ansible-vault` and 
     
     **Example**:  
     In your BCD controller, create a `vault_pass` file with a **MyV@ultPa55** password and set the `ANSIBLE_VAULT_PASSWORD_FILE` accordingly:
-    ```
+    ```bash
     bonita@bcd-controller:~/bonita-continuous-delivery$ echo "MyV@ultPa55" > vault_pass
     bonita@bcd-controller:~/bonita-continuous-delivery$ chmod 600 vault_pass
     bonita@bcd-controller:~/bonita-continuous-delivery$ ls -l $(pwd)/vault_pass 
@@ -33,7 +33,7 @@ In this tutorial, we will explain how to encrypt files with `ansible-vault` and 
 
     **Example**:  
     In your BCD controller, encrypt your `scenarios/myscenario.yml` file using the Vault password defined in previous step:
-    ```
+    ```bash
     bonita@bcd-controller:~/bonita-continuous-delivery$ ansible-vault encrypt scenarios/myscenario.yml
     Encryption successful
     ```

@@ -8,7 +8,7 @@ The BCD controller image provides a ready-to-use environment to launch Bonita Co
 Since BCD 3.0.0, the BCD controller image is provided through Quay.io registry.
 
 Get this image as follows:
-```
+```bash
 $ docker login quay.io
 Username: bonitasoft+john_doe_at_acme_com
 Password:
@@ -46,7 +46,7 @@ The first method to start a BCD Controller Docker container on the control host 
 
 **Example**:
 
-```
+```bash
 $ docker run --rm -t -i --name bcd-controller \
     -v bcd-dependencies-<bonita_version>:/home/bonita/bonita-continuous-delivery/dependencies/<bonita_version>  \
     -v <host_path_to_.boto>:/home/bonita/.boto \
@@ -65,7 +65,7 @@ There is an example named `docker-compose.yml.EXAMPLE` in your `BCD_HOME` direct
 If you want to use it to launch your BCD controller, you can rename this file without .EXAMPLE and adapt the paths to your environment.
 
 Then start the BCD controller container interactively with:
-```
+```bash
 $ docker-compose run --rm bcd
 ```
 
@@ -78,7 +78,7 @@ The BCD controller container runs with a `bonita` user which has been created wi
 
 If the user who runs the BCD controller on the control host has `uid=1000` and `gid=1000`, then file sharing will work without any further action.  
 Here is how to check user and group IDs on Linux systems:
-```
+```bash
 $ id
 uid=1000(john) gid=1000(john) [...]
 ```
@@ -88,7 +88,7 @@ If this is not so, then read the next section to know how to fix file ownership 
 ### Running BCD controller with user ID different from 1000
 
 Here is one way to remap UID/GID of the controller's `bonita` user with your host user. It consists of extending the `bonitasoft/bcd-controller` Docker image by using the following `Dockerfile`:
-```
+```dockerfile
 FROM bonitasoft/bcd-controller
 
 ARG BONITA_UID
@@ -106,7 +106,7 @@ USER bonita
 ```
 
 Build the _extended_ BCD controller image as follows:
-```
+```bash
 $ docker build -t bonitasoft/bcd-controller:custom-uid \
     --build-arg BONITA_UID=$(id -u) --build-arg BONITA_GID=$(id -g) .
 ```

@@ -20,29 +20,29 @@ You can read more about in [Common installation steps](getting_started.md#toc1)
 ## Usage examples
 
 Running the `create` subcommand of the `stack` command with scenario command-line option:
-```
+```bash
 $ bcd -s scenarios/uswest2_cluster.yml stack create
 ```
 
 Running the `deploy` subcommand of the `stack` command with scenario command-line option and overridden `mail_notification` variable:
-```
+```bash
 $ bcd -s scenarios/vagrant_single.yml -e mail_notification=no -y stack deploy
 ```
 
 Running the `destroy` subcommand of the `stack` command with `BCD_SCENARIO` environment variable and subcommand `--dry-run` option:
-```
+```bash
 $ export BCD_SCENARIO=scenarios/uswest2_performance.yml
 $ bcd stack destroy --dry-run
 ```
 
 Running the `build` subcommand of the `livingapp` command with `BCD_SCENARIO` environment variable and subcommand `-p` and `-e` options:
-```
+```bash
 $ export BCD_SCENARIO=scenarios/euwest1_performance.yml
 $ bcd livingapp build -p path/to/livingapp-repo -e Test
 ```
 
 Running the `version` command which does not require a scenario file:
-```
+```bash
 $ bcd version
 ```
 
@@ -56,12 +56,12 @@ If one command fails then `bcd` stops executing any subsequent command it may ha
 **Examples**:
 
 Running `create` then `deploy` subcommands of the `stack` command:
-```
+```bash
 $ bcd -s scenarios/uswest2_cluster.yml -y stack create deploy
 ```
 
 Running `build` then `deploy` subcommands of the `livingapp` command:
-```
+```bash
 $ bcd -s scenarios/vagrant_single.yml --yes \
     livingapp build -p path/to/livingapp-repo -e Test deploy
 ```

@@ -27,7 +27,7 @@ Please follow the previous documentation describing the [upgrade from 1.0 toward
 #### Scenarios
 
 First, you will need to copy the files:
-```
+```bash
 $ cp bonita-continuous-delivery_2.1.0/scenarios/*.yml bonita-continuous-delivery_${varVersion}.0/scenarios/
 ```
 Then you will have to check `Breaking changes` section in the [release notes](release_notes.md). Indeed you will have to add the new variables `bcd_registry_user` and  `bcd_registry_password` in order to retrieve BCD dependencies from Bonita secured Docker registry.
@@ -38,7 +38,7 @@ Therefore you may remove this variable from your scenario files as it will be ig
 #### Terraform
 
 Copy the directory corresponding to your stack:
-```
+```bash
 $ cp -r bonita-continuous-delivery_2.1.0/terraform/your_stack_name bonita-continuous-delivery_${varVersion}.0/terraform/
 ```
 
@@ -46,7 +46,7 @@ $ cp -r bonita-continuous-delivery_2.1.0/terraform/your_stack_name bonita-contin
 
 As is described in the "Installation guide" from the [Getting started](getting_started.md) you will need to load the last version of `bcd-controller_<version>.tar.zip Docker image.  
 You can also directly use the secured Docker registry to retrieve the latest image.
-```
+```bash
 $ docker login quay.io
 Username: bonitasoft+john_doe_at_acme_com
 Password:
@@ -60,7 +60,7 @@ The username corresponds to `bcd_registry_user` and the password corresponds to 
 As the controller access to them over the network it's not necessary to move them on the filesystem.
 
 But if you plan to cleanup the old directory you can moved the vagrant data located inside `1-machine` or `2-machines` directories by copying the `.vagrant` subdirectories.
-```
+```bash
 $ cp -r bonita-continuous-delivery_2.1.0/vagrant/1-machine/.vagrant bonita-continuous-delivery_${varVersion}.0/vagrant/1-machine/
 $ cp -r bonita-continuous-delivery_2.1.0/vagrant/2-machines/.vagrant bonita-continuous-delivery_${varVersion}.0/vagrant/2-machines/
 ```
@@ -70,6 +70,6 @@ $ cp -r bonita-continuous-delivery_2.1.0/vagrant/2-machines/.vagrant bonita-cont
 Move the directories where you have cloned your repositories.
 
 For example :
-```
+```bash
 $ cp -r bonita-continuous-delivery_2.1.0/bonita-vacation-management-example bonita-continuous-delivery_${varVersion}.0/bonita-vacation-management-example
 ```

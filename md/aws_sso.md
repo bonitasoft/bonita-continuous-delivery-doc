@@ -4,7 +4,7 @@ AWS allows to integrate [numerous Third-Party SAML Solution Providers](https://d
 
 If you implement this kind of authentication, when you start the BCD Controller container it will no longer be necessary to mount the `boto` file.
 
-```
+```bash
 $ docker run --rm -t -i --name bcd-controller \
     -v <host_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
     -v <host_path_to_ssh_private_key>:/home/bonita/.ssh/<ssh_private_key> \
@@ -28,13 +28,13 @@ You will need to know Google's assigned Identity Provider ID (idp-id) and the ID
 `sp-id` can be found into the URL of your browser when viewing Google Admin `Apps > SAML Apps > Amazon Web Services` page. For instance: `#AppDetails:service=123456789012`
 
 After launching the BCD Controller you will have to authenticate yourself as below:
-```
+```bash
 aws-google-auth --idp-id Abc012345 --sp-id 123456789012 -p default -u john.doe@acme.com
 ```
 `aws-google-auth` will store the credentials into `~/.aws` directory through the `default` AWS profile
 
 If you want to use a different profile, you will have to export the variable accordingly:
-```
+```bash
 aws-google-auth --idp-id Abc012345 --sp-id 123456789012 -p test -u john.doe@acme.com
 export AWS_PROFILE=test
 ```

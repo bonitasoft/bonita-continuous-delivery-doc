@@ -113,7 +113,7 @@ Jenkins is now ready to run BCD Pipelines. An example scripted pipeline is provi
 Create a **Pipeline** item with a `BCD_SCENARIO` String parameter which sets the BCD scenario path as an environment variable.  
 For instance, the `BCD_SCENARIO` parameter can be set to `scenarios/build_and_deploy.yml`.  
 Then here is an example pipeline script that builds a LivingApp repository and deploys its artifacts on an already running Bonita platform:
-```
+```groovy
 @Library('github.com/bonitasoft/bonita-jenkins-library@1.0.0') _
 
 node('master') {
@@ -191,7 +191,7 @@ The following commands are to be executed on the target host where Jenkins is to
     *   Configure each `*Password` file with appropriate credentials.
 3.  Make sure the BCD Controller Docker image is loaded as described in the installation section of the [BCD controller Docker image](bcd_controller.md) page.
 4.  Create and start containers with Docker Compose.
-    ```
+    ```bash
     $ cd jenkins_example
     $ docker-compose up -d
     ```

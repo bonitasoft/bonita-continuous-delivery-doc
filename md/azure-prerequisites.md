@@ -36,7 +36,7 @@ The following steps are the basic requirements to set up your Azure account for 
 
 1. [Create a custom Role using Azure CLI](https://docs.microsoft.com/en-us/azure/role-based-access-control/tutorial-custom-role-cli) (or Azure PowerShell). Both Azure CLI and PowerShell are available through [Azure Cloud Shell](https://azure.microsoft.com/en-us/features/cloud-shell/) directly from your browser.  
    Use the following JSON role definition in a `BCDReadWriteRole.json` file:
-   ```
+   ```json
    {
        "Actions": [
            "Microsoft.Resources/subscriptions/resourcegroups/read",
@@ -105,7 +105,7 @@ In fact, there are 4 different information that you need to gather:
 - <u>Tenant ID</u>: obtained from Portal's **Azure Active Directory > Properties** page as the **Directory ID** field. It can also be obtained with Azure CLI command: `az account list`
 
 Therefore you may use an environment script in order to set these environment variables in a more convenient way. Create a `bcd-azure.env` accessible from your BCD controller with the following content:
-```
+```bash
 set -a
 
 #
@@ -128,7 +128,7 @@ set +a
 ```
 
 Here is a sample `bcd-azure.env` file with dummy credentials:
-```
+```bash
 set -a
 
 AZURE_SUBSCRIPTION_ID=12345abc-123a-456b-789c-123456abcdef

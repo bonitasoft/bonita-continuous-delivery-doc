@@ -41,7 +41,7 @@ This is the simplest use case: you want to build a Bonita repository and deploy 
 
 To do so, you only have to pass the repository path to the build command and chain a deploy command without path parameter
 like in the following:
-```
+```bash
 $ bcd -s <path/to/scenario> -y livingapp build -p <path/to/bonita/repository> -e <environment> deploy
 ```
 
@@ -58,15 +58,15 @@ The idea is always the same:
  - **Deploy** the updated artifacts
 
 First, we build the Bonita repository:
-```
+```bash
 bcd -s <path/to/scenario> -y livingapp build -p <path/to/bonita/repository> -e <environment>
 ```
 The build operation creates a **target** directory in the Bonita repository. Let's move to this directory:
-```
+```bash
 cd <path/to/bonita/repository>/target
 ```
 This directory contains built artifacts, including the application archive we want to update. Keep in mind that the deployer can take a zip file or a directory as input. So, we are going to unzip the raw application archive, in a _to-deploy_ directory:
-```
+```bash
 unzip -d to-deploy <bonita-repository-name>-<environment>-<timestamp>.zip
 ```
 A new directory _to-deploy_ has been createda and it contains all the built artifacts from your Bonita repository.  
@@ -76,14 +76,14 @@ You can perform some actions on the content of this directory to customize your 
 #### Example 1: I only want to deploy the Business Data Model from my Bonita repository
 
 In this example, we only want to deploy the BDM. The _to-deploy_ directory should contain a subfolder _bdm_. We simply need to tell the deployer to deploy this subfolder as follows:
-```
+```bash
 bcd -s <path/to/scenario> -y livingapp deploy -p <path/to/bonita/repository>/target/to-deploy/bdm
 ```
 
 #### Example 2: I only want to deploy all the resources from my Bonita repository except applications
 
 The _to-deploy_ directory should contain a subfolder _applications_. We simply need to delete this subfolder, then tell the deployer to deploy the _to-deploy_ directory as follows:
-```
+```bash
 rm -rf <path/to/bonita/repository>/target/to-deploy/applications/
 bcd -s <path/to/scenario> -y livingapp deploy -p <path/to/bonita/repository>/target/to-deploy
 ```

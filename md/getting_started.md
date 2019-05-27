@@ -164,7 +164,7 @@ From your BCD controller container, you can now run the `bcd` command to manage 
 
 You can call `bcd` with the `--help` option to get available options and commands as follows:
 
-```
+```bash
 bonita@bcd-controller:~/bonita-continuous-delivery$ bcd --help
 Usage: bcd [OPTIONS] COMMAND [ARGS]...
 

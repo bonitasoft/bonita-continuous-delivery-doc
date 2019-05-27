@@ -26,7 +26,7 @@ In order to troubleshoot issues you may need to consult Bonita logs.
 To do so, first you need to identify the target server where the Bonita container is running.
 It's possible through the `bcd stack status` command:
 
-```
+```bash
 bcd -s scenarios/myscenario.yml -y stack status
 
 [...]
@@ -44,29 +44,29 @@ CONTAINER ID        IMAGE                                  CREATED             S
 
 Then you will need to connect on this server (either through the IP or FQDN) using `ssh`.
 
-```
+```bash
 ssh -i ~/.ssh/my_key.pem ubuntu@54.191.90.85
 ```
 
 You can now display the logs using:
-```
+```bash
 docker logs bonita8081
 ```
 
 If you want to copy all the logs (bonita, catalina) you can use `docker cp`:
-```
+```bash
 docker cp bonita8081:/opt/bonita/BonitaSubscription-7.8.0-Tomcat-8.5.34/server/logs/ /tmp/
 ```
 
 Then you will be able to retrieve all the files through a `scp`:
-```
+```bash
 scp -i ~/.ssh/my_key.pem ubuntu@54.191.90.85:/tmp/logs /tmp/
 ```
 
 ## Debugging Ansible Facts
 
 Ansible facts are local variables registered in hosts. It is possible to save them in JSON files with the `setup` command.
-```
+```bash
 $ cd bonita-continuous-delivery
 $ bcd -s scenarios/myscenario.yml -y stack create deploy
 $ ansible all -vv -i ansible/inventory/ec2/ec2_wrapper.sh -m setup -u ubuntu --private-key=~/.ssh/my_key.pem --tree tmp_facts/
@@ -82,7 +82,7 @@ the variable `log_path` in the Ansible configuration file located in `/home/boni
 
 If you want to persist the log, you can add a ***volume*** in when you run `docker run` command like 
 
-```
+```bash
 $ docker run --rm -t -i --name bcd-controller \
     -v <host_path_to_.boto>:/home/bonita/.boto \
     -v <host_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \

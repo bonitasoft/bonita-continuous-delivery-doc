@@ -18,7 +18,7 @@ A Living App repository can be created using Bonita Studio and it can be [shared
 So first ensure you have your Living App repository available on your filesystem.  
 For this tutorial, we will use the [Bonita Vacation Management example repository](https://github.com/bonitasoft/bonita-vacation-management-example) publicly available on GitHub.
 
-```
+```bash
 $ cd bonita-continuous-delivery
 $ git clone -b dev/7.8.0 https://github.com/bonitasoft/bonita-vacation-management-example
 ```
@@ -44,7 +44,7 @@ Bonita Maven repository zip files if your repository contains [REST API extensio
 
 BCD is now ready to build your repository using the `bcd livingapp build` command. From your BCD Controller container, run these commands:
 
-```
+```bash
 $ cd bonita-continuous-delivery
 $ bcd -s scenarios/build_and_deploy.yml --yes livingapp build -p bonita-vacation-management-example -e Test
 ```
@@ -81,7 +81,7 @@ The `bcd livingapp build` command does not allow to migrate your repository to t
 Here is a complete example of how to build the [Bonita Vacation Management example repository](https://github.com/bonitasoft/bonita-vacation-management-example) for Bonita version 7.8.0.  
 
 **On the control host**
-```
+```bash
 $ cd bonita-continuous-delivery_3.0.0
 
 $ git clone -b dev/7.8.0 https://github.com/bonitasoft/bonita-vacation-management-example
@@ -121,7 +121,7 @@ bonita_version: 7.8.0
 
 
 **In the BCD controller container**
-```
+```bash
 bonita@bcd-controller:~$ cd bonita-continuous-delivery
 bonita@bcd-controller:~/bonita-continuous-delivery$ bcd -s scenarios/build_and_deploy.yml --yes livingapp build -p bonita-vacation-management-example -e Test
 

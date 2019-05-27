@@ -9,7 +9,7 @@ In the sections below we will manipluate configuration into templates and not at
 
 Since 2.0.x, BCD manages the REST_API_DYN_AUTH_CHECKS environment through the [scenario variable](scenarios.md) `bonita_rest_api_dyn_auth_checks`.  
 So to deactivate dynamic permissions checks you will just have to add the following line into your scenario:
-```
+```yaml
 bonita_rest_api_dyn_auth_checks: false
 ```
 
@@ -19,7 +19,7 @@ As described in [Bonita documentation](https://documentation.bonitasoft.com/boni
 
 If you want to override the default behavior, you can add rules to this file by adding this kind of script `roles/bonita/files/custom-init.d/add-custom-permissions.sh`
 
-```
+```bash
 #!/bin/bash
 
 set -euxo pipefail
@@ -46,7 +46,7 @@ touch ${indicator_path}
 For a more advanced configuration you can also provide directly a file `roles/bonita/files/custom-init.d/custom-permissions-mapping.properties` and push it with a script like `roles/bonita/files/custom-init.d/add-custom-permissions-file.sh`
 
 
-```
+```bash
 #!/bin/bash
 
 set -euxo pipefail
@@ -76,7 +76,7 @@ If [debug mode](https://documentation.bonitasoft.com/bonita/${varVersion}/rest-a
 
 To activate debug mode you can create a script like `roles/bonita/files/custom-init.d/activate-debug-mode.sh`
 
-```
+```bash
 #!/bin/bash
 
 set -euxo pipefail

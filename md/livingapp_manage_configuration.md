@@ -29,7 +29,7 @@ bcd -s scenarios/build_and_deploy.yml -y livingapp extract-conf \
 ```
 
 The configuration looks like this :
-```yml
+```yaml
 ---
 processes:
 - name: "Modify Pending Vacation Request"
@@ -45,7 +45,7 @@ processes:
 
 As it may contain sensitive data, it's recommended to encrypt your configuration using [vault](how_to_use_bcd_with_data_encrypted):
 
-```
+```bash
 ansible-vault encrypt scenarios/build_and_deploy_Test.yml
 New Vault password:
 Confirm New Vault password:
@@ -80,7 +80,7 @@ Note : the content of bconf file is not encrypted so it's recommended to clean t
 #### Override parameters with the same name
 You may have the same parameter name in more than one processes and you want to override them in all processes, to do that you can create an ***yml*** file as shown:
 
-```yml
+```yaml
 ---
 global_parameters:
   - name: "ParameterNameInAllProcesses"
@@ -96,7 +96,7 @@ A specific parameter setting has priority over a global parameter configuration.
 **Example**:
 Let assume that these processes __P1, P2, P3__ have all these three paremeters: ***calendarApplicationName***, ***emailNotificationSender***, ***emailServerUseSSL***.
 
-```yml
+```yaml
 ---
 processes:
 - name: "P1"

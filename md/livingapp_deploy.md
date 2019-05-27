@@ -178,7 +178,7 @@ The following artifacts are used with **implicit policies**. It means that you d
 ## How to use
 
 Use the `bcd livingapp deploy` command to deploy Living App artifacts:
-```
+```bash
 bcd -s <scenario> livingapp deploy -p <application_path> -c <configuration_path>
 ```
 where:
@@ -205,7 +205,7 @@ Assuming that:
 * a Bonita runtime is up and running as defined in a `scenarios/build_and_deploy.yml` scenario file
 
 _In the BCD controller container_:
-```
+```bash
 bonita@bcd-controller:~$ cd bonita-continuous-delivery
 
 bonita@bcd-controller:~/bonita-continuous-delivery$ ls -nh bonita-vacation-management-example/target 
@@ -221,7 +221,7 @@ drwxr-xr-x 3 1000 1000 4,0K Dec   6 13:58 ui-designer
 
 Then artifacts can be deployed as follows:
 
-```
+```bash
 bonita@bcd-controller:~/bonita-continuous-delivery$ bcd -s scenarios/build_and_deploy.yml --yes livingapp deploy \
     -p bonita-vacation-management-example/target/bonita-vacation-management-example-Test-20181206125838.zip \
     -c bonita-vacation-management-example/target/bonita-vacation-management-example-Test-20181206125838.bconf
@@ -229,7 +229,7 @@ bonita@bcd-controller:~/bonita-continuous-delivery$ bcd -s scenarios/build_and_d
 
 Artifacts can also be deployed providing the Application Archive directory and without configuration as follows:
 
-```
+```bash
 bonita@bcd-controller:~/bonita-continuous-delivery$ bcd -s scenarios/build_and_deploy.yml --yes livingapp deploy \
     -p bonita-vacation-management-example/target/bonita-vacation-management-example
 ```

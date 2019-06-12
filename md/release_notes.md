@@ -15,6 +15,7 @@
 * Starting with release 3.1.1, BCD is compatible with **Bonita 7.9.x**.  
 <span class="label label-danger">With Bonita 7.9.0 onwards</span> You must use one of these [license types in your scenarios](https://documentation.bonitasoft.com/bcd/${varVersion}/scenarios#toc4): `lic_type` in [`production`\|`qualification`\|`trial`]  
 (starting from Bonita 7.9.0, `development` licenses can only be used with Bonita Studio).
+* **Bonita 7.9.x** onwards runs on Ubuntu 18.04 base Docker image with Java 11 when deployed with BCD.
 
 ### Bugfixes
 

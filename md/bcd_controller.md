@@ -89,7 +89,7 @@ If this is not so, then read the next section to know how to fix file ownership 
 
 Here is one way to remap UID/GID of the controller's `bonita` user with your host user. It consists of extending the `bonitasoft/bcd-controller` Docker image by using the following `Dockerfile`:
 ```dockerfile
-FROM bonitasoft/bcd-controller
+FROM quay.io/bonitasoft/bcd-controller:latest
 
 ARG BONITA_UID
 ARG BONITA_GID

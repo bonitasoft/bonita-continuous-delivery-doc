@@ -19,6 +19,15 @@ Error launching source instance: InvalidSubnetID.NotFound: The subnet ID 'subnet
 You should check that `ec2_subnet_ids` and `aws_ami` correspond to the region set into `ec2_region`.
 You may also check that rights linked to your AWS credentials (`.boto` or `.aws`) correspond to the actions in your scenario.
 
+### Access to private maven repository is denied
+
+In order to configure BCD to use a corparate maven repository, define a mirror for maven central, add a regular maven `settings.xml` file in `/home/bonita/.m2` folder:
+
+```
+# .m2 folder may be created before
+docker cp <PATH-TO-SETTINGS.xml> bcd-controller:/home/bonita/.m2/settings.xml
+```
+
 ## Accessing Bonita logs
 
 In order to troubleshoot issues you may need to consult Bonita logs.

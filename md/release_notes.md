@@ -8,6 +8,14 @@
   [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
   ```
 
+## What's new in 3.1.2 (2019-08-01)
+
+### Bugfixes
+
+* BR-144 `livingapp deploy` may fail to deploy against a clustered Bonita runtime due to incorrect Cookie parsing
+* BCD-348 `livingapp deploy` fails when tenant credentials contains ';' special character
+
+
 ## What's new in 3.1.1 (2019-06-13)
 
 ### New features

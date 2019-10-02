@@ -8,6 +8,23 @@
   [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
   ```
 
+## What's new in 3.1.3 (2019-10-03)
+
+### Bugfixes
+
+* BCD-371 Custom theme build fails with BCD controller  
+  This bugfix makes **NodeJS v10.16.3** and **NPM 6.9.0** specific versions available to the BCD controller. Therefore make sure your custom themes reference these versions in their Maven `pom.xml` as follows:
+  ```xml
+  [...]
+  <properties>
+    <node.version>v10.16.3</node.version>
+    <npm.version>6.9.0</npm.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  [...]
+  ```
+  Further information may be found in the [Living App build documentation](https://documentation.bonitasoft.com/bcd/${varVersion}/livingapp_build#toc1).
+
 ## What's new in 3.1.2 (2019-08-01)
 
 ### Bugfixes

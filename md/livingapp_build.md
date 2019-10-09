@@ -27,12 +27,12 @@ This step creates a `bonita-continuous-delivery/bonita-vacation-management-examp
 
 ::: warning
 **Important note regarding custom theme build**:  
-The BCD controller comes _pre-installed_ with **NodeJS v10.16.3** and **NPM 6.9.0** specific versions. Therefore make sure your custom themes reference these versions in their Maven `pom.xml` as follows:
+The BCD controller comes _pre-installed_ with **NodeJS ${nodeVersion}** and **NPM ${npmVersion}** specific versions. Therefore make sure your custom themes reference these versions in their Maven `pom.xml` as follows:
 ```xml
 [...]
 <properties>
-  <node.version>v10.16.3</node.version>
-  <npm.version>6.9.0</npm.version>
+  <node.version>${nodeVersion}</node.version>
+  <npm.version>${npmVersion}</npm.version>
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 </properties>
 [...]

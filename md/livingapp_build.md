@@ -25,6 +25,20 @@ $ git clone -b dev/7.8.0 https://github.com/bonitasoft/bonita-vacation-managemen
 
 This step creates a `bonita-continuous-delivery/bonita-vacation-management-example` directory which is the Living App repository we are going to build. This example checks out the `dev/7.8.0` Git branch.
 
+::: warning
+**Important note regarding custom theme build**:  
+The BCD controller comes _pre-installed_ with **NodeJS ${nodeVersion}** and **NPM ${npmVersion}** specific versions. Therefore make sure your custom themes reference these versions in their Maven `pom.xml` as follows:
+```xml
+[...]
+<properties>
+  <node.version>${nodeVersion}</node.version>
+  <npm.version>${npmVersion}</npm.version>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+</properties>
+[...]
+```
+:::
+
 
 ### 2. Provide the repository's build dependencies
 

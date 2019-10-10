@@ -17,6 +17,8 @@
   bcd -s <scenario> livingapp deploy -p <application_path> -c <configuration_path> --disable-certificate-check
   ```
   This option may be used when a **self-signed certificate** is installed on the target Bonita stack.
+* BCD-377 Generate stack deployment information as a JSON file with status command  
+  With `stack deploy` and `stack status` commands, Bonita stack information (including stack URL) can be generated as a JSON file by setting a file path into the `bcd_stack_json` variable. Refer to the [Scenario reference documentation](https://documentation.bonitasoft.com/bcd/${varVersion}/scenarios#toc0) for further information.
 
 ### Bugfixes
 

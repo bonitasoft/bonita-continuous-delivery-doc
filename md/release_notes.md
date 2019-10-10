@@ -22,6 +22,7 @@
 
 ### Bugfixes
 
+* BCD-370 Living Apps build fails when version range is used in Maven projects
 * BCD-371 Custom theme build fails with BCD controller  
   This bugfix makes **NodeJS ${nodeVersion}** and **NPM ${npmVersion}** specific versions available to the BCD controller. Therefore make sure your custom themes reference these versions in their Maven `pom.xml` as follows:
   ```xml
@@ -34,3 +35,4 @@
   [...]
   ```
   Further information may be found in the [Living App build documentation](https://documentation.bonitasoft.com/bcd/${varVersion}/livingapp_build#toc1).
+* BCD-378 AWS EC2 inventory is not accurate when `bcd_stack_id` is overridden with extra args

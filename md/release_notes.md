@@ -10,6 +10,14 @@
 
 ## What's new in 3.2.0 (2019-10-11)
 
+### New features
+
+* BCD-347 When deploying Living Apps on a Bonita stack over HTTPS, SSL certificate validation may be disabled using the `--disable-certificate-check` option as follows:
+  ```bash
+  bcd -s <scenario> livingapp deploy -p <application_path> -c <configuration_path> --disable-certificate-check
+  ```
+  This option may be used when a **self-signed certificate** is installed on the target Bonita stack.
+
 ### Bugfixes
 
 * BCD-371 Custom theme build fails with BCD controller  

@@ -254,6 +254,12 @@ You can also see this information by running `bcd --help` and `bcd [COMMAND] --h
 </dd></dl>
 
 <dl class="option">
+<dt id="cmdoption-bcd-bcd-options-livingapp-deploy-disable-certificate-check">
+<code class="descname">--disable-certificate-check</code><code class="descclassname"></code></dt>
+<dd><p>Disable all certificate validation when connecting to a Bonita stack over HTTPS. This option may be used when a self-signed certificate is installed on the target Bonita stack</p>
+</dd></dl>
+
+<dl class="option">
 <dt id="cmdoption-bcd-bcd-options-livingapp-deploy-x">
 <code class="descname">-X</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--debug</code><code class="descclassname"></code></dt>
 <dd><p>Enable debug mode</p>

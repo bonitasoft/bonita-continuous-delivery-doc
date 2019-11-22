@@ -23,6 +23,11 @@ Follow these installation steps on your control host.
         $ unzip bonita-continuous-delivery_<version>.zip
 
     This step creates a `bonita-continuous-delivery_<version>` directory which contains Bonita Continuous Delivery Ansible playbooks and roles.
+
+::: info
+    Note: For windows users install in user folder (C:\Users\XXX) (If not, Docker won’t have the right to copy the volumes)
+:::
+
 3.  Pull the `quay.io/bonitasoft/bcd-controller:<version>` Docker image from secured registry.  
     The username corresponds to `bcd_registry_user` and the password corresponds to `bcd_registry_password` described in the [Scenario file reference](scenarios.md). Both have been provided by your sales representative.
 

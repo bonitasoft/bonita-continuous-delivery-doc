@@ -24,7 +24,7 @@ Follow these installation steps on your control host.
 
     This step creates a `bonita-continuous-delivery_<version>` directory which contains Bonita Continuous Delivery Ansible playbooks and roles.
 
-::: info
+::: warning
     Note: For windows users install in user folder (C:\Users\XXX) (If not, Docker won’t have the right to copy the volumes)
 :::
 

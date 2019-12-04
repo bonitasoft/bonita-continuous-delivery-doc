@@ -8,6 +8,18 @@
   [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
   ```
 
+
+## What's new in 3.2.1 (2019-12-05)
+
+### New features
+
+* Starting with release 3.2.1, BCD is compatible with **Bonita 7.10.x**.
+
+### Bugfixes
+
+* BCD-382 Stack deployment may fail with `Unable to locate package python-minimal` error
+
+
 ## What's new in 3.2.0 (2019-10-11)
 
 ### New features

@@ -69,6 +69,22 @@ Then start the BCD controller container interactively with:
 $ docker-compose run --rm bcd
 ```
 
+#### TIP: Persistent command history
+
+If you want to persist your bash command history across container restart, simply add the following volume line in your `docker-compose.yaml` file:
+
+```yaml
+bcd:
+ # lines omitted ...
+  volumes:
+    ## line to persist your command history across bcdc controller restart
+    - .bcd_bash_history:/home/bonita/.bash_history
+```
+
+::: warning
+Make sure `.bcd_bash_history` file exist on your control host in your bcd projet folder before the first start of the BCD controller container !
+(Ortherwise docker daemon will create a folder instead of a file)
+:::
 
 ## Note for Linux users
 

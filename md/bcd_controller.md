@@ -94,9 +94,9 @@ If you want to persist your bash command history across container restart, simpl
 ```yaml
 bcd:
  # lines omitted ...
+ ## Add or uncomment the following lines to persist your command history across bcd controller restart
  environment:
-     ## Add or uncomment the following line to persist your command history across bcd controller restart
-     - HISTFILE=/home/bonita/bonita-continuous-delivery/.bcd_bash_history
+  - HISTFILE=/home/bonita/bonita-continuous-delivery/.bcd_bash_history
 ```
 
 The history of your commands will be persisted to this file wich is located in your project home directory.

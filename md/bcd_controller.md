@@ -24,10 +24,10 @@ To enter the BCD controller environment, a Docker container has to be started on
 Besides the following files have to be bind mounted from the control host to make them available to the BCD controller container:
 - **`/host/path/to/bonita-continuous-delivery_<version>`** (mounted as `/home/bonita/bonita-continuous-delivery`) - This directory provides BCD Ansible playbooks and is known as the `BCD_HOME` directory.
 - <div class="list-group-item list-group-item-warning">This file is required for <strong>Provisioning</strong>. It is not required for Living App management.</div>
-  
+
   **`ssh_private_key`** (mounted as `/home/bonita/.ssh/ssh_private_key`) - The `ssh_private_key` file is the SSH private key used to connect to your target machines. For AWS, this is the private part of your [EC2 key pair](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html). This file should only be accessible from your user (`chmod 600 ~/.ssh/ssh_private_key`).
 - <div class="list-group-item list-group-item-warning">AWS credentials are required for <strong>Provisioning on AWS</strong>. It is not required for Living App management.</div>
-  
+
   **`.boto`** (mounted as `/home/bonita/.boto`) - The [`.boto`](https://boto.readthedocs.io/en/latest/boto_config_tut.html) file contains AWS credentials used to make programmatic calls to AWS. Indeed dynamic Amazon EC2 inventory management for Ansible runs on top of [Boto](https://aws.amazon.com/sdk-for-python/). The content of a `.boto` file is as follows:
     ```ini
     [Credentials]
@@ -86,6 +86,20 @@ Then start the BCD controller container interactively with:
 ```
 $ docker-compose run --rm bcd
 ```
+
+#### TIP: Persistent command history
+
+If you want to persist your bash command history across container restarts, simply add the following environment line in your `docker-compose.yaml` file:
+
+```yaml
+bcd:
+ # lines omitted ...
+ ## Add or uncomment the following lines to persist your command history across bcd controller restart
+ environment:
+  - HISTFILE=/home/bonita/bonita-continuous-delivery/.bcd_bash_history
+```
+
+The history of your commands will be persisted to this file wich is located in your project home directory.
 
 
 ## Note for Linux users

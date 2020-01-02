@@ -89,7 +89,7 @@ $ docker-compose run --rm bcd
 
 #### TIP: Persistent command history
 
-If you want to persist your bash command history across container restart, simply add the following environment line in your `docker-compose.yaml` file:
+If you want to persist your bash command history across container restarts, simply add the following environment line in your `docker-compose.yaml` file:
 
 ```yaml
 bcd:

@@ -39,7 +39,7 @@ cp bonita-continuous-delivery_1.0.5/terraform/your_stack_name.tfstate bonita-con
 
 #### BCD controller
 
-As is described into the "Installation guide" from the [Getting started](getting_started.md) you will need to load the last version of `bcd-controller_<version>.tar.zip Docker image.
+As is described into the "Installation guide" from the [Getting started](getting_started.md) you will need to load the last version of `bcd-controller_<version>.tar.zip` Docker image.
 
 #### Vagrant
 
@@ -66,7 +66,14 @@ cp -r bonita-continuous-delivery_2.0.0/terraform/your_stack_name bonita-continuo
 
 #### BCD controller
 
-As is described into the "Installation guide" from the [Getting started](getting_started.md) you will need to load the last version of `bcd-controller_<version>.tar.zip Docker image.
+As is described into the "Installation guide" from the [Getting started](getting_started.md) you will need to load the last version of `bcd-controller_<version>.tar.zip` Docker image.
+
+If you choosed to persist your docker console history ([see bcd controller](bcd_controller.md)) and want to keep it, then you should copy your `.bcd_bash_history` file from your old folder to your
+new `bonita-continuous-delivery_${varVersion}.0/ folder`
+
+```bash
+$ cp bonita-continuous-delivery_2.0.0/.bcd_bash_history bonita-continuous-delivery_2.0.2/.bcd_bash_history
+```
 
 #### Vagrant
 

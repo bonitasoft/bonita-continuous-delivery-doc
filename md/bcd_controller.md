@@ -69,6 +69,19 @@ Then start the BCD controller container interactively with:
 $ docker-compose run --rm bcd
 ```
 
+#### TIP: Persistent command history
+
+If you want to persist your bash command history across container restarts, simply add the following environment line in your `docker-compose.yaml` file:
+
+```yaml
+bcd:
+ # lines omitted ...
+ ## Add or uncomment the following lines to persist your command history across bcd controller restarts
+ environment:
+  - HISTFILE=/home/bonita/bonita-continuous-delivery/.bcd_bash_history
+```
+
+The history of your commands will be persisted to this file which is located in your project home directory.
 
 ## Note for Linux users
 

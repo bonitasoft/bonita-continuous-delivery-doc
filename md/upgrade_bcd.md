@@ -72,7 +72,7 @@ If you choosed to persist your docker console history ([see bcd controller](bcd_
 new `bonita-continuous-delivery_${varVersion}.0/ folder`
 
 ```bash
-$ cp bonita-continuous-delivery_2.0.0/.bcd_bash_history bonita-continuous-delivery_2.0.2/.bcd_bash_history
+$ cp bonita-continuous-delivery_2.0.0/.bcd_bash_history bonita-continuous-delivery_2.1.0/.bcd_bash_history
 ```
 
 #### Vagrant

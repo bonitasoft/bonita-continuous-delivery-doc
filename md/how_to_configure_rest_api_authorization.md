@@ -91,7 +91,7 @@ touch ${indicator_path}
 
 ## Enabling debug mode
 
-If [debug mode](https://documentation.bonitasoft.com/bonita/${varVersion}/rest-api-authorization?hash=debug) is activated, whenever you update a configuration file or a dynamic check script, the changes take effect immediately.
+If [debug mode](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization?hash=debug) is activated, whenever you update a configuration file or a dynamic check script, the changes take effect immediately.
 
 To activate debug mode you can create a script like `roles/bonita/files/custom-init.d/activate-debug-mode.sh`
 

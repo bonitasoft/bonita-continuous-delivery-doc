@@ -77,10 +77,9 @@ This command will identify every EC2 instance (depending of `bcd_stack_id` set i
 
 In order to troubleshoot issues, you may need to consult Ansible logs.
 
-By default, the path of the log is `/var/log/ansible.log` in your Docker container. You can change this location modifying 
-the variable `log_path` in the Ansible configuration file located in `/home/bonita/bonita-continuous-delivery/ansible/ansible.cfg`.
+By default, the path of the log is `/var/log/ansible.log` in your Docker container. You can change this location modifying the variable `log_path` in the Ansible configuration file located in `/home/bonita/bonita-continuous-delivery/ansible/ansible.cfg`.
 
-If you want to persist the log, you can add a ***volume*** in when you run `docker run` command like 
+If you want to persist the log, you can add a ***volume*** in when you run `docker run` command like
 
 ```
 $ docker run --rm -t -i --name bcd-controller \

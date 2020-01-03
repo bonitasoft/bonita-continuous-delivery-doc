@@ -55,8 +55,7 @@ $ docker pull quay.io/bonitasoft/bcd-controller
 
 The username corresponds to `bcd_registry_user` and the password corresponds to `bcd_registry_password` described in the [Scenario file reference](scenarios.md). Both have been provided by your sales representative.
 
-If you choosed to persist your docker console history ([see bcd controller](bcd_controller.md)) and want to keep it, then you should copy your `.bcd_bash_history` file from your old folder to your
-new `bonita-continuous-delivery_${varVersion}.0/ folder`
+If you choosed to persist your docker console history ([see bcd controller](bcd_controller.md)) and want to keep it, then you should copy your `.bcd_bash_history` file from your old folder to your new `bonita-continuous-delivery_${varVersion}.0/` folder
 
 ```bash
 $ cp bonita-continuous-delivery_2.1.0/.bcd_bash_history bonita-continuous-delivery_${varVersion}.0/.bcd_bash_history

@@ -1,5 +1,15 @@
 # Release notes
 
+## Breaking changes
+The following changes introduce incompatibility with BCD 3.2:
+* BCD livingapp default deployment mode is now production. To maintain the same behavior of the deploy command make sure to add `--development-mode` to your livingapp deploy commands.
+
+Exemple:
+
+```bash
+bcd -s <scenario> livingapp deploy -p <application_path> -c <configuration_path> --development-mode
+```
+
 ## Limitations and known issues
 
 * The same BCD stack cannot be managed with multiple BCD controller instances due to the use of Terraform "local" backend.
@@ -8,10 +18,7 @@
   [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
   ```
 
-
 ## What's new in 3.3.0 (2020-03-01)
-
-### Breaking changes
 
 * With release 3.3.0, BCD introduces deployment modes (_Development_ and _Production_) to manage artifacts deployment policies more easily.
 

@@ -13,7 +13,7 @@
 
 ### New features
 
-* Starting with the release 3.3.0, BCD introduces deployments modes (`development` and `production`) to manage easily artifacts policies.
+* With release 3.3.0, BCD introduces deployment modes (_Development_ and _Production_) to manage artifacts deployment policies more easily.
 ::: warning
 The default deployment policies are changing from the previous BCD versions. More information [here](upgrade_bcd.md)
 :::

@@ -49,7 +49,7 @@ This command will first build the Bonita repository for the given environment. T
 
 ::: warning
 :fa-exclamation-triangle:
-Don't forget to add the `--development-mode` to the arguments if want to apply development policies (ex: replace organization, etc.)
+Make sure to add the `--development-mode` option if you want to deploy using Development policies (eg. replace processes and profiles, merge organization data). Otherwise Production deployment policies will be used (eg. existing processes are left untouched).
 :::
 
 ## Build and select what to deploy

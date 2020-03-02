@@ -27,5 +27,4 @@ The new deployment policies are more conservative:
 |Processes                 |<code class="descclassname">REPLACE_DUPLICATES</code>|<code class="descclassname">IGNORE_DUPLICATES</code>   |
 |Profiles                  |<code class="descclassname">REPLACE_DUPLICATES</code>|<code class="descclassname">IGNORE_IF_ANY_EXISTS</code>|
 
-More information on how to upgrade you BCD [here](upgrade_bcd.md)
 :::

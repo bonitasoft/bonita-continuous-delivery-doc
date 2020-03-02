@@ -14,6 +14,18 @@
 ### Breaking changes
 
 * With release 3.3.0, BCD introduces deployment modes (_Development_ and _Production_) to manage artifacts deployment policies more easily.
+
 ::: warning
-The default deployment policies are changing from the previous BCD versions. More information [here](upgrade_bcd.md)
+The default deployment policies are changing from the previous BCD versions. 
+The new deployment policies are more conservative:
+
+|                          |3.2.1 and previous versions                          |3.3.0 and later versions                                                 |
+|--------------------------|-----------------------------------------------------|-------------------------------------------------------|
+|Default deployment mode   |Development                                          |Production                                             |
+|Applications              |<code class="descclassname">REPLACE_DUPLICATES</code>|<code class="descclassname">REPLACE_DUPLICATES</code>  |
+|Organization              |<code class="descclassname">MERGE_DUPLICATES</code>  |<code class="descclassname">IGNORE_DUPLICATES</code>   |
+|Processes                 |<code class="descclassname">REPLACE_DUPLICATES</code>|<code class="descclassname">IGNORE_DUPLICATES</code>   |
+|Profiles                  |<code class="descclassname">REPLACE_DUPLICATES</code>|<code class="descclassname">IGNORE_IF_ANY_EXISTS</code>|
+
+More information on how to upgrade you BCD [here](upgrade_bcd.md)
 :::

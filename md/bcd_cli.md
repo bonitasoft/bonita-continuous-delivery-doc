@@ -266,6 +266,30 @@ You can also see this information by running `bcd --help` and `bcd [COMMAND] --h
 </dd></dl>
 
 <dl class="option">
+<dt id="cmdoption-bcd-bcd-options-livingapp-deploy-devmode">
+<code class="descname">--development-mode</code></dt>
+<dd>
+<p>Enable deployment in development mode. When this flag is ommited, the default production mode is used.</p>
+<p>
+ <b>Policies applied in `production` mode</b>
+ <ul>
+   <li>Applications: <code class="descclassname">REPLACE_DUPLICATES</code></li>
+   <li>Organization: <code class="descclassname">IGNORE_DUPLICATES</code></li>
+   <li>Processes: <code class="descclassname">IGNORE_DUPLICATES</code></li>
+   <li>Profiles: <code class="descclassname">IGNORE_IF_ANY_EXISTS</code></li>
+ </ul>
+
+ <b>Policies applied in `development` mode</b>
+ <ul>
+   <li>Applications: <code class="descclassname">REPLACE_DUPLICATES</code></li>
+   <li>Organization: <code class="descclassname">MERGE_DUPLICATES</code></li>
+   <li>Processes: <code class="descclassname">REPLACE_DUPLICATES</code></li>
+   <li>Profiles: <code class="descclassname">REPLACE_DUPLICATES</code></li>
+  </ul>
+</p>
+</dd></dl>
+
+<dl class="option">
 <dt id="cmdoption-bcd-bcd-options-livingapp-deploy-h">
 <code class="descname">-h</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--help</code><code class="descclassname"></code></dt>
 <dd><p>Show this help message</p>
@@ -275,7 +299,7 @@ You can also see this information by running `bcd --help` and `bcd [COMMAND] --h
 <div class="section" id="bcd-bcd-options-livingapp-extract-conf">
 <h5>extract-conf</h5>
 <p>Extract parameters from a Bonita configuration archive (.bconf)</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>BCD_OPTIONS<span class="o">]</span> livingapp <span class="o">[</span>LIVINGAPP_OPTIONS<span class="o">]</span> extract-conf 
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>BCD_OPTIONS<span class="o">]</span> livingapp <span class="o">[</span>LIVINGAPP_OPTIONS<span class="o">]</span> extract-conf
     <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
 </div>
@@ -308,7 +332,7 @@ You can also see this information by running `bcd --help` and `bcd [COMMAND] --h
 <div class="section" id="bcd-bcd-options-livingapp-merge-conf">
 <h5>merge-conf</h5>
 <p>Merge parameters into a Bonita configuration archive (.bconf)</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>BCD_OPTIONS<span class="o">]</span> livingapp <span class="o">[</span>LIVINGAPP_OPTIONS<span class="o">]</span> merge-conf 
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>BCD_OPTIONS<span class="o">]</span> livingapp <span class="o">[</span>LIVINGAPP_OPTIONS<span class="o">]</span> merge-conf
     <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
 </div>

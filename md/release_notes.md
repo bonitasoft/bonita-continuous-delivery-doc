@@ -9,6 +9,12 @@
   ```
 
 
+## What's new in 3.3.0 (2020-03-01)
+
+### New features
+
+* Starting with release 3.3.0, BCD offer two deployment mode `development` and `production` and allow for improved policy management.
+
 ## What's new in 3.2.1 (2019-12-05)
 
 ### New features

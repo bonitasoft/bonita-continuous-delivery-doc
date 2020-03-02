@@ -190,7 +190,7 @@ You may deploy an application archive and an application configuration artifact 
 
 You can add a **--debug** option to enable debug mode and increase verbosity.
 
-You can also add a **--development-mode** flag to enable a deployment in development mode. This flag allow for more agressive replacement policy. When this flag is not provided, the default production mode will be used which means more artifacts will be preserved.
+You can also add a **--development-mode** flag to perform the deployment in development mode. This flag allows for a more aggressive replacement policy. When this flag is not provided, the default production mode will be used which means more artifacts will be preserved.
 
 ::: info
 Refer to the [BCD Command-line reference](bcd_cli.md) for a complete list of available options for the `bcd livingapp deploy` command.

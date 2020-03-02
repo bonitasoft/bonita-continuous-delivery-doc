@@ -79,14 +79,3 @@ For example :
 ```bash
 $ cp -r bonita-continuous-delivery_2.1.0/bonita-vacation-management-example bonita-continuous-delivery_${varVersion}.0/bonita-vacation-management-example
 ```
-
-### From a 3.2.x towards a ${varVersion}.y
-
-#### Living Application deployment
-
-Starting from version `3.3.0`, bcd livingapp default deployment mode is production. While this is safer for production target, when using bcd for development, ensure that you add `--development-mode` to the arguments.
-
-Exemple of development mode:
-```bash
-bcd -s <scenario> livingapp deploy -p <application_path> -c <configuration_path> --development-mode
-```

@@ -84,7 +84,7 @@ $ cp -r bonita-continuous-delivery_2.1.0/bonita-vacation-management-example boni
 
 #### Living Application deployment
 
-Starting from version `3.3`, bcd cli default deployment mode is production. While this is safer for production target, when using bcd for development, ensure that you add `--development-mode` to the arguments.
+Starting from version `3.3.0`, bcd livingapp default deployment mode is production. While this is safer for production target, when using bcd for development, ensure that you add `--development-mode` to the arguments.
 
 Exemple of development mode:
 ```bash

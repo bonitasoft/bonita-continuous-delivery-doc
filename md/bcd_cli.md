@@ -262,7 +262,7 @@ You can also see this information by running `bcd --help` and `bcd [COMMAND] --h
 <dl class="option">
 <dt id="cmdoption-bcd-bcd-options-livingapp-deploy-development-mode">
 <code class="descname">--development-mode</code><code class="descclassname"></code></dt>
-<dd><p>Deployment mode, can be either production or test, if –development-mode not specified then production mode will be used</p>
+<dd><p>Deploy for development environments (eg. processes and profiles are replaced if existing, organization data are merged).</p>
 </dd></dl>
 
 <dl class="option">

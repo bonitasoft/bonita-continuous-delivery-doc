@@ -2,9 +2,9 @@
 
 ## Breaking changes
 The following changes introduce incompatibility with BCD 3.2:
-* BCD livingapp default deployment mode is now production. To maintain the same behavior of the deploy command make sure to add `--development-mode` option to your livingapp deploy commands.
+* BCD livingapp default deployment mode is now _Production_. To maintain the behavior of the deploy command prior to BCD 3.3.0 (aka. deployment for _Development_ environments), make sure to add the `--development-mode` option to your `livingapp deploy` commands.
 
-Exemple:
+Example:
 
 ```bash
 bcd -s <scenario> livingapp deploy -p <application_path> -c <configuration_path> --development-mode

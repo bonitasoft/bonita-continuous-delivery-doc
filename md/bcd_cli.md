@@ -74,7 +74,7 @@ This section describes the comprehensive usage information for the `bcd` command
 You can also see this information by running `bcd --help` and `bcd [COMMAND] --help` - where COMMAND is in `[license, livingapp, stack, version]` - from the command line.
 
 <div class="section" id="bcd">
-<span class="h3">bcd</span>
+    <span class="h3">bcd</span>
 <p>Bonita Continuous Delivery CLI.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bcd <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>COMMAND_OPTIONS<span class="o">]</span> SUBCOMMAND <span class="o">[</span>SUBCOMMAND_OPTIONS<span class="o">]</span>...
 </pre></div>
@@ -260,33 +260,15 @@ You can also see this information by running `bcd --help` and `bcd [COMMAND] --h
 </dd></dl>
 
 <dl class="option">
-<dt id="cmdoption-bcd-bcd-options-livingapp-deploy-x">
-<code class="descname">-X</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--debug</code><code class="descclassname"></code></dt>
-<dd><p>Enable debug mode</p>
+<dt id="cmdoption-bcd-bcd-options-livingapp-deploy-development-mode">
+<code class="descname">--development-mode</code><code class="descclassname"></code></dt>
+<dd><p>Deployment mode, can be either production or test, if –development-mode not specified then production mode will be used</p>
 </dd></dl>
 
 <dl class="option">
-<dt id="cmdoption-bcd-bcd-options-livingapp-deploy-devmode">
-<code class="descname">--development-mode</code></dt>
-<dd>
-<p>Enable deployment in development mode. When this flag is ommited, the default production mode is used.</p>
-<p>
- <b>Policies applied in `production` mode</b>
- <ul>
-   <li>Applications: <code class="descclassname">REPLACE_DUPLICATES</code></li>
-   <li>Organization: <code class="descclassname">IGNORE_DUPLICATES</code></li>
-   <li>Processes: <code class="descclassname">IGNORE_DUPLICATES</code></li>
-   <li>Profiles: <code class="descclassname">IGNORE_IF_ANY_EXISTS</code></li>
- </ul>
-
- <b>Policies applied in `development` mode</b>
- <ul>
-   <li>Applications: <code class="descclassname">REPLACE_DUPLICATES</code></li>
-   <li>Organization: <code class="descclassname">MERGE_DUPLICATES</code></li>
-   <li>Processes: <code class="descclassname">REPLACE_DUPLICATES</code></li>
-   <li>Profiles: <code class="descclassname">REPLACE_DUPLICATES</code></li>
-  </ul>
-</p>
+<dt id="cmdoption-bcd-bcd-options-livingapp-deploy-x">
+<code class="descname">-X</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--debug</code><code class="descclassname"></code></dt>
+<dd><p>Enable debug mode</p>
 </dd></dl>
 
 <dl class="option">

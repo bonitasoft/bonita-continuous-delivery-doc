@@ -18,7 +18,7 @@ bcd -s <scenario> livingapp deploy -p <application_path> -c <configuration_path>
   [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
   ```
 
-## What's new in 3.3.0 (2020-03-01)
+## What's new in 3.3.0 (2020-03-09)
 
 * With release 3.3.0, BCD introduces deployment modes (_Development_ and _Production_) to manage artifacts deployment policies more easily.
 

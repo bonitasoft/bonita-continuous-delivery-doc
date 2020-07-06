@@ -134,13 +134,13 @@ node('bcd') {
             git url: 'https://github.com/bonitasoft/bonita-vacation-management-example',
             branch: 'dev/7.8.0'
         }
-        
+
         stage('build-bonita-app') {
             bcd args: "livingapp build -p ${WORKSPACE} -e Test"
         }
-        
+
         def jobBaseName = "${env.JOB_NAME}".split('/').last()
-        
+
         stage('deploy-bonita-app') {
             def zip_files = findFiles(glob: "target/${jobBaseName}-*.zip")
             def bconf_files = findFiles(glob: "target/${jobBaseName}-*.bconf")
@@ -149,11 +149,11 @@ node('bcd') {
             else
                 bcd args: "livingapp deploy -p ${WORKSPACE}/${zip_files[0].path}"
         }
-        
+
         stage('archive-artifacts') {
             archiveArtifacts artifacts: "target/${jobBaseName}/**/*.*, target/${jobBaseName}-*.*, .bcd_configurations/*.yml", fingerprint: true
         }
-     
+
     }
 }
 ```
@@ -195,6 +195,11 @@ The following commands are to be executed on the target host where Jenkins is to
     $ cd jenkins_example
     $ docker-compose up -d
     ```
+
+::: warning
+**Important Note**: Ensure volumes configured are correctly mapped to existing files or folder on the host, otherwise the docker daemon will create empty folders at the configured location (default docker behavior for volumes).
+As an example, if you declare a volume mapping in your `docker-compose.override.yml` file for the file `secrets/bonitaPassword` and you forget to create the corresponding file in the `secrets` folder, you will end up with a folder named `bonitaPassword` after the first docker-compose run.
+:::
 
 As a result Jenkins is up and running on port `9090` of the target host.  
 You can now log-in to Jenkins using one of the pre-configured users:

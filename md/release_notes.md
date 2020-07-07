@@ -2,9 +2,10 @@
 
 ## Breaking changes
 The following changes introduce incompatibility with BCD 3.2:
-* BCD livingapp default deployment mode is now production. To maintain the same behavior of the deploy command make sure to add `--development-mode` option to your livingapp deploy commands.
 
-Exemple:
+* BCD livingapp default deployment mode is now _Production_. To maintain the behavior of the deploy command prior to BCD 3.3.0 (aka. deployment for _Development_ environments), make sure to add the `--development-mode` option to your `livingapp deploy` commands.
+
+Example:
 
 ```bash
 bcd -s <scenario> livingapp deploy -p <application_path> -c <configuration_path> --development-mode
@@ -18,7 +19,7 @@ bcd -s <scenario> livingapp deploy -p <application_path> -c <configuration_path>
   [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
   ```
 
-## What's new in 3.3.0 (2020-03-01)
+## What's new in 3.3.0 (2020-03-09)
 
 * With release 3.3.0, BCD introduces deployment modes (_Development_ and _Production_) to manage artifacts deployment policies more easily.
 

@@ -10,7 +10,7 @@
   ```
   [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
   ```
-
+* Controller image is now `Debian` based (and not Alpine Linux anymore). Any custom controller images will require migration and rebuild.
 
 ## What's new in 3.4.0
 
@@ -24,6 +24,3 @@
 ### Bug fixes
 * BCD-422: Authentication to AWS using G Suite SSO fails in BCD controller
 * BCD-458: Livingapp deploy fails when tenant password contains '$' (dollar sign) character
-
-### Breaking changes
-* Controller image is now `Debian` based (and not Alpine Linux anymore). Any custom controller images will require migration and rebuild.

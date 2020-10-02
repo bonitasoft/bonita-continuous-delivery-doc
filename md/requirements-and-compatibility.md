@@ -79,6 +79,7 @@ This compatibility information is also specified in the [Release notes](release_
 | 3.1.1+, 3.2.0      | 7.7.x, 7.8.x, 7.9.x                |
 | 3.2.1 onwards      | 7.7.x, 7.8.x, 7.9.x, 7.10.x        |
 | 3.3.x              | 7.7.x, 7.8.x, 7.9.x, 7.10.x, 7.11.x|
+| 3.4.x              | 7.7.x, 7.8.x, 7.9.x, 7.10.x, 7.11.x|
 
 </div>
 

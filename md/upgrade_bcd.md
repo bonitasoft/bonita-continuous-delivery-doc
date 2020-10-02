@@ -4,7 +4,7 @@
 
 This page explains how to upgrade your version of BCD.
 
-Each of the versions follow the MAJOR.MINOR.PATCH format.
+Each of the versions follows the MAJOR.MINOR.PATCH format.
 
 We have split this documentation in order to describe the differences between upgrades.
 
@@ -60,6 +60,12 @@ If you choosed to persist your docker console history ([see bcd controller](bcd_
 ```bash
 $ cp bonita-continuous-delivery_2.1.0/.bcd_bash_history bonita-continuous-delivery_${varVersion}.0/.bcd_bash_history
 ```
+::: warn
+**BCD Controller image starting from version 3.4 is now using a `Debian` based distribution (not an Alpine Linux anymore)**
+
+If you have a customized controller in your setup (ie. to manage user id mapping), you'll have to rebuild it and perform changes required from Alpine to Debian. 
+::: 
+
 
 #### Vagrant
 

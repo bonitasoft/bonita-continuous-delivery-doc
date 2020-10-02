@@ -11,5 +11,16 @@
   [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
   ```
 
-## What's new in 4.0.0
 
+## What's new in 3.4.0
+
+### Technology upgrade
+* Upgrade Python to v3
+* Upgrade ansible to v2.2.9
+* Upgrade terraform to 0.12.26
+* New docker image OS to provide
+
+
+### Bug fixes
+* BCD-422: Authentication to AWS using G Suite SSO fails in BCD controller
+* BCD-458: Livingapp deploy fails when tenant password contains '$' (dollar sign) character

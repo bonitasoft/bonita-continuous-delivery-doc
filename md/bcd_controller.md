@@ -102,18 +102,16 @@ If this is not so, then read the next section to know how to fix file ownership 
 
 Here is one way to remap UID/GID of the controller's `bonita` user with your host user. It consists of extending the `bonitasoft/bcd-controller` Docker image by using the following `Dockerfile`:
 ```dockerfile
-FROM bonitasoft/bcd-controller
+FROM quay.io/bonitasoft/bcd-controller
 
 ARG BONITA_UID
 ARG BONITA_GID
 
 USER root
 
-RUN apk --no-cache --update add shadow && \
-    groupmod -g ${BONITA_GID} bonita && \
+RUN groupmod -g ${BONITA_GID} bonita && \
     usermod -u ${BONITA_UID} -g ${BONITA_GID} bonita && \
-    chown bonita:bonita /var/log/ansible.log && \
-    apk del shadow
+    chown bonita:bonita /var/log/ansible.log
 
 USER bonita
 ```

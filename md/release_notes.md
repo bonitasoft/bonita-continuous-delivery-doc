@@ -18,7 +18,7 @@
 * Upgrade Python to v3
 * Upgrade ansible to v2.2.9
 * Upgrade terraform to 0.12.26
-* New docker image OS to provide
+* New docker image OS to provide easier customization and access to the maven cache
 
 
 ### Bug fixes

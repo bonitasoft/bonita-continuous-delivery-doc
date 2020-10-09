@@ -27,16 +27,7 @@ This step creates a `bonita-continuous-delivery/bonita-vacation-management-examp
 
 ::: warning
 **Important note regarding custom theme build**:  
-The BCD controller comes _pre-installed_ with **NodeJS ${nodeVersion}** and **NPM ${npmVersion}** specific versions. Therefore make sure your custom themes reference these versions in their Maven `pom.xml` as follows:
-```xml
-[...]
-<properties>
-  <node.version>${nodeVersion}</node.version>
-  <npm.version>${npmVersion}</npm.version>
-  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-</properties>
-[...]
-```
+The BCD controller is based on Alpine operating system. In order to install node and npm properly the **maven-frontend-plugin** minimum supported version is [**1.10.2**](https://github.com/eirslett/frontend-maven-plugin/blob/master/CHANGELOG.md#1102). You can change it in the `pom.xml` file of your theme project.`
 :::
 
 

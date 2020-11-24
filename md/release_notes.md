@@ -23,3 +23,14 @@
 ### Bug fixes
 * BCD-422: Authentication to AWS using G Suite SSO fails in BCD controller
 * BCD-458: Livingapp deploy fails when tenant password contains '$' (dollar sign) character
+
+::: warning
+
+The use of `latest` (or no tag) tag on `BCD Controller` image is **deprecated** !
+This tag will be removed from the https://quay.io registry in the next release.
+
+By specifying a BCD Controller version in your configuration, you ensure consistency with the configuration files that comes
+with the zip distribution.
+
+From now (and for previous versions), make sure to always specify the BCD version when using `BCD Controller` docker image.
+:::

@@ -15,7 +15,7 @@
 ## What's new in 3.4.1
 
 ### Technology upgrade
-feat(tools): add common tools to base imag
+* Add common tools to base image to simplify the image extension
 feat(deploy): improve BCD status json template
 add ssh host and public dns in addition to bonita url
 

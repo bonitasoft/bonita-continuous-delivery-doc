@@ -18,8 +18,6 @@
 feat(tools): add common tools to base imag
 feat(deploy): improve BCD status json template
 add ssh host and public dns in addition to bonita url
-feat(java): add maven to PATH
-feat(docker): remove latest tag on docker images 
 
 ### Bug fixes
 * Remove node and npm warning from build logs

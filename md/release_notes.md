@@ -16,8 +16,7 @@
 
 ### Technology upgrade
 * Add common tools to base image to simplify the image extension
-feat(deploy): improve BCD status json template
-add ssh host and public dns in addition to bonita url
+* The BCD status commmand now return the ssh host and public dns with bonita url
 
 ### Bug fixes
 * Remove node and npm warning from build logs

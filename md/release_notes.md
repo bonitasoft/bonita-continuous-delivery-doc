@@ -2,6 +2,7 @@
 
 ## Breaking changes
 * Controller image is now `Debian` based (and not Alpine Linux anymore). Any custom controller images will require migration and rebuild.
+* Controller image are published under fix version. The latest tag is not used anymore ! User must set an explicit version when using bcd controller image to avoid desynchronization between the docker image pulled and the configuration files in the zip distribution.
 
 ## Limitations and known issues
 
@@ -10,6 +11,19 @@
   ```
   [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
   ```
+
+## What's new in 3.4.1
+
+### Technology upgrade
+* Add common tools to base image to simplify the image extension
+* The BCD status commmand now return the ssh host and public dns with bonita url
+
+### Bug fixes
+* Remove node and npm warning from build logs
+* Improve java invocation from scripts
+* Fix flag to use private ip for ssh connection that was ignored
+* Fix broken read of encrypted files
+* Samples must not use alpine linux anymore
 
 ## What's new in 3.4.0
 

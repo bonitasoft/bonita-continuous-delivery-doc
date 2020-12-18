@@ -12,8 +12,8 @@ Here is an example of a build result:
 ```
 bonita-vacation-management-example
 ├── target
-   └── bonita-vacation-management-example-Test-20181003140237.zip
-   └── bonita-vacation-management-example-Test-20181003140237.bconf
+   └── bonita-vacation-management-example-Test-20181003140237.zip
+   └── bonita-vacation-management-example-Test-20181003140237.bconf
 ```
 
 It's possible to extract the configuration to check it and also override (merge) some parameters if needed.

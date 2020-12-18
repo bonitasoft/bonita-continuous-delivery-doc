@@ -38,7 +38,7 @@ FQDN: ec2-54-191-90-85.us-west-2.compute.amazonaws.com
 Docker running containers
 --
 CONTAINER ID        IMAGE                                  CREATED             STATUS              NAMES
-5d73a2446245        bonitasoft/bonita-subscription:7.8.0   6 minutes ago       Up 6 minutes        bonita8081
+5d73a2446245        bonitasoft/bonita-subscription:7.11.0   6 minutes ago       Up 6 minutes        bonita8081
 [...]
 ```
 
@@ -55,7 +55,7 @@ docker logs bonita8081
 
 If you want to copy all the logs (bonita, catalina) you can use `docker cp`:
 ```bash
-docker cp bonita8081:/opt/bonita/BonitaSubscription-7.8.0-Tomcat-8.5.34/server/logs/ /tmp/
+docker cp bonita8081:/opt/bonita/BonitaSubscription-7.11.0-Tomcat-8.5.34/server/logs/ /tmp/
 ```
 
 Then you will be able to retrieve all the files through a `scp`:

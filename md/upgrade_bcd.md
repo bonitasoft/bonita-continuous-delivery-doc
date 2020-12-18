@@ -46,6 +46,7 @@ $ cp -r bonita-continuous-delivery_2.1.0/terraform/your_stack_name bonita-contin
 
 As is described in the "Installation guide" from the [Getting started](getting_started.md) you will need to load the last version of `bcd-controller_<version>.tar.zip` Docker image.  
 You can also directly use the secured Docker registry to retrieve the latest image.
+
 ```bash
 $ docker login quay.io
 Username: bonitasoft+john_doe_at_acme_com
@@ -60,12 +61,12 @@ If you choosed to persist your docker console history ([see bcd controller](bcd_
 ```bash
 $ cp bonita-continuous-delivery_2.1.0/.bcd_bash_history bonita-continuous-delivery_${varVersion}.0/.bcd_bash_history
 ```
+
 ::: warn
 **BCD Controller image starting from version 3.4 is now using a `Debian` based distribution (not an Alpine Linux anymore)**
 
 If you have a customized controller in your setup (ie. to manage user id mapping), you'll have to rebuild it and perform changes required from Alpine to Debian. 
-::: 
-
+:::
 
 #### Vagrant
 

@@ -34,7 +34,7 @@ An example scenario is provided with the `scenarios/static_inventory.yml.EXAMPLE
 This section describes a complete example of Bonita stack deployment on existing virtual machines created with Vagrant.
 
 ::: warning
-For this tutorial, it is highly recommended to have a clear understanding of [Vagrant](https://www.vagrantup.com/intro/index.html).
+For this tutorial, it is highly recommended to have a clear understanding of [Vagrant](https://www.vagrantup.com/intro).
 :::
 
 ::: info

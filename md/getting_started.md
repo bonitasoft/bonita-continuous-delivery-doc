@@ -53,7 +53,7 @@ For windows users install in user folder (C:\Users\XXX) (If not, Docker won’t 
         $ docker logout quay.io
 
 ::: warning
-:fa-exclamation-triangle: For linux user make sure your `user id` and `group id` is `1000` or refer to the `Running BCD controller with user ID different from 1000` paragraph in [bcd controller section](https://documentation.bonitasoft.com/bcd/3.4/bcd_controller)
+:fa-exclamation-triangle: For linux user make sure your `user id` and `group id` is `1000` or refer to the `Running BCD controller with user ID different from 1000` paragraph in [BCD Controller image](bcd_controller.md)
 :::
 
     The `bcd-dependencies-<bonita_version>` Docker named volume is now available and can be mounted with your BCD Controller.

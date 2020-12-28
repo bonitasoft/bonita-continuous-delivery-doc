@@ -107,4 +107,4 @@ drwxr-xr-x 2 root   root                 4096 janv. 6  2020 7.11.3 # <= this fol
 ````
 
 To properly map your own user to the user inside the BCD controller image, 
-see the `Running BCD controller with user ID different from 1000` paragraph in [bcd controller section](https://documentation.bonitasoft.com/bcd/3.4/bcd_controller)
+see the `Running BCD controller with user ID different from 1000` paragraph in [BCD Controller image](bcd_controller.md)

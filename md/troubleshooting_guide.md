@@ -36,9 +36,9 @@ If required, you can configure BCD to use proxy settings.
 This has to be done for the docker container, the maven installation.
 If you are using the bcd stack commands, you may need to configure ansible as well.
 
-* Docker proxy settings : https://docs.docker.com/network/proxy
-* Maven proxy settings: [maven proxy configuration][https://maven.apache.org/guides/mini/guide-proxies.html]
-* Ansible proxy settings: https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html#setting-the-environment-and-working-with-proxies
+* Docker proxy settings : [docker network/proxy](https://docs.docker.com/network/proxy)
+* Maven proxy settings: [maven proxy configuration](https://maven.apache.org/guides/mini/guide-proxies.html)
+* Ansible proxy settings: [Ansible environment](https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html#setting-the-environment-and-working-with-proxies)
 
 ::: info
 :fa-lightbulb-o: Starting from BCD 3.4, you can directly bind mount your host maven `~/.m2` folder. 

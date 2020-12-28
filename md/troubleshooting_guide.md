@@ -89,3 +89,22 @@ $ docker run --rm -t -i --name bcd-controller \
     -v <host_path_to_your_ansible_log>:/var/log/ansible.log \
     quay.io/bonitasoft/bcd-controller /bin/bash
 ```
+
+## Files own by another user in the workspace (Linux users only)
+
+BCD is packaged as a docker image, and the user inside the image is mapped to the most common default
+`user id` and `group id` (for the first created user) on linux platform which is `1000`
+
+Since BCD creates files during execution, if your `user id` doesn't match the `user id` inside the docker image, you will end
+with new files under BCD workspace owned by another user than you and won't be able to edit or delete them
+unless having admin privileges.
+
+_Example: the `dependencies` folder:_
+````bash
+ls -la dependencies/
+-rw-r--r-- 1 <my-user-id> <my-group-id>  157 déc.   4  2019 README.md
+drwxr-xr-x 2 root   root                 4096 janv. 6  2020 7.11.3 # <= this folder created by BCD is now read only for <my-user>
+````
+
+To properly map your own user to the user inside the BCD controller image, 
+see the `Running BCD controller with user ID different from 1000` paragraph in [bcd controller section](https://documentation.bonitasoft.com/bcd/3.4/bcd_controller)

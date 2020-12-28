@@ -19,7 +19,10 @@ You may also check that rights linked to your AWS credentials (`.boto` or `.aws`
 
 ## Access to private maven repository is denied
 
-In order to configure BCD to use a corporate maven repository, define a mirror for maven central, add a regular maven `settings.xml` file in `/home/bonita/.m2` folder inside `bcd controller` container:
+In order to configure BCD to use a corporate maven repository, define it as a mirror for maven central
+Add a regular maven `settings.xml` file with the proper [mirror configuration](https://maven.apache.org/guides/mini/guide-mirror-settings.html) in `/home/bonita/.m2` folder inside `bcd controller` container:
+
+If you want to update an already running container without restart, you can run the following, otherwise use docker volume binding.
 
 ```bash
 # .m2 folder may be created before

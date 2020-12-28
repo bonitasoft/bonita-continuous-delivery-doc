@@ -90,7 +90,7 @@ $ docker run --rm -t -i --name bcd-controller \
     quay.io/bonitasoft/bcd-controller /bin/bash
 ```
 
-## Files own by another user in the workspace (Linux users only)
+## Files owned by another user in the workspace (Linux users only)
 
 BCD is packaged as a docker image, and the user inside the image is mapped to the most common default
 `user id` and `group id` (for the first created user) on linux platform which is `1000`

@@ -21,12 +21,28 @@ You may also check that rights linked to your AWS credentials (`.boto` or `.aws`
 
 ### Access to private maven repository is denied
 
-In order to configure BCD to use a corparate maven repository, define a mirror for maven central, add a regular maven `settings.xml` file in `/home/bonita/.m2` folder:
+In order to configure BCD to use a corporate maven repository, define a mirror for maven central, add a regular maven `settings.xml` file in `/home/bonita/.m2` folder inside `bcd controller` container:
 
-```
+```bash
 # .m2 folder may be created before
 docker cp <PATH-TO-SETTINGS.xml> bcd-controller:/home/bonita/.m2/settings.xml
 ```
+
+## Restricted Internet access by an enterprise proxy
+
+If required, you can configure BCD to use proxy settings.
+
+This has to be done for the docker container, the maven installation.
+If you are using the bcd stack commands, you may need to configure ansible as well.
+
+* Docker proxy settings : https://docs.docker.com/network/proxy
+* Maven proxy settings: [maven proxy configuration][https://maven.apache.org/guides/mini/guide-proxies.html]
+* Ansible proxy settings: https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html#setting-the-environment-and-working-with-proxies
+
+::: info
+Starting from BCD 3.4, you can directly bind mount your host maven `.m2/` folder. This will give BCD access to your already configured maven settings (enterprise repository configuration, proxy settings, etc.)
+and you will also benefit from the already cached artifacts present in your `.m2/repository` folder.
+:::
 
 ## Accessing Bonita logs
 

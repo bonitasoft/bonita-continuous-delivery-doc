@@ -4,7 +4,7 @@
 
 This page explains how to upgrade your version of BCD.
 
-Each of the versions follow the MAJOR.MINOR.PATCH format.
+Each of the versions follows the MAJOR.MINOR.PATCH format.
 
 We have split this documentation in order to describe the differences between upgrades.
 
@@ -44,8 +44,9 @@ $ cp -r bonita-continuous-delivery_2.1.0/terraform/your_stack_name bonita-contin
 
 #### BCD controller
 
-As is described in the "Installation guide" from the [Getting started](getting_started.md) you will need to load the last version of `bcd-controller_<version>.tar.zip Docker image.  
+As is described in the "Installation guide" from the [Getting started](getting_started.md) you will need to load the last version of `bcd-controller_<version>.tar.zip` Docker image.  
 You can also directly use the secured Docker registry to retrieve the latest image.
+
 ```bash
 $ docker login quay.io
 Username: bonitasoft+john_doe_at_acme_com
@@ -54,6 +55,18 @@ $ docker pull quay.io/bonitasoft/bcd-controller
 ```
 
 The username corresponds to `bcd_registry_user` and the password corresponds to `bcd_registry_password` described in the [Scenario file reference](scenarios.md). Both have been provided by your sales representative.
+
+If you choosed to persist your docker console history ([see bcd controller](bcd_controller.md)) and want to keep it, then you should copy your `.bcd_bash_history` file from your old folder to your new `bonita-continuous-delivery_${varVersion}.0/` folder
+
+```bash
+$ cp bonita-continuous-delivery_2.1.0/.bcd_bash_history bonita-continuous-delivery_${varVersion}.0/.bcd_bash_history
+```
+
+::: warn
+**BCD Controller image starting from version 3.4 is now using a `Debian` based distribution (not an Alpine Linux anymore)**
+
+If you have a customized controller in your setup (ie. to manage user id mapping), you'll have to rebuild it and perform changes required from Alpine to Debian. 
+:::
 
 #### Vagrant
 

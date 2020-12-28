@@ -23,6 +23,11 @@ Follow these installation steps on your control host.
         $ unzip bonita-continuous-delivery_<version>.zip
 
     This step creates a `bonita-continuous-delivery_<version>` directory which contains Bonita Continuous Delivery Ansible playbooks and roles.
+    
+::: warning
+For windows users install in user folder (C:\Users\XXX) (If not, Docker won’t have the right to copy the volumes)
+:::
+    
 3.  Pull the `quay.io/bonitasoft/bcd-controller:<version>` Docker image from secured registry.  
     The username corresponds to `bcd_registry_user` and the password corresponds to `bcd_registry_password` described in the [Scenario file reference](scenarios.md). Both have been provided by your sales representative.
 
@@ -46,6 +51,10 @@ Follow these installation steps on your control host.
         Login Succeeded
         $ docker run --rm -v bcd-dependencies-<bonita_version>:/dependencies quay.io/bonitasoft/bcd-dependencies:<bonita_version>
         $ docker logout quay.io
+
+::: warning
+:fa-exclamation-triangle: For linux user make sure your `user id` and `group id` is `1000` or refer to the `Running BCD controller with user ID different from 1000` paragraph in [BCD Controller image](bcd_controller.md)
+:::
 
     The `bcd-dependencies-<bonita_version>` Docker named volume is now available and can be mounted with your BCD Controller.
 5.  Start a BCD Controller Docker container on the control host:
@@ -109,23 +118,23 @@ Here is a complete example of how to install the BCD Controller Docker image.
 
 **Warning**: This example uses _fake_ AWS credentials and SSH private key... :-)
 
-Assuming you have a `bonita-continuous-delivery_3.0.0.zip` archive in your `$HOME` directory:
+Assuming you have a `bonita-continuous-delivery_3.4.1.zip` archive in your `$HOME` directory:
 
     $ cd $HOME
-    $ unzip bonita-continuous-delivery_3.0.0.zip
+    $ unzip bonita-continuous-delivery_3.4.1.zip
     [...]
 
     $ docker login quay.io
     Username: bonitasoft+john_doe_at_acme_com
     Password:
     Login Succeeded
-    $ docker pull quay.io/bonitasoft/bcd-controller:3.0.0
+    $ docker pull quay.io/bonitasoft/bcd-controller:3.4.1
     [...]
-    Status: Downloaded newer image for quay.io/bonitasoft/bcd-controller:3.0.0
+    Status: Downloaded newer image for quay.io/bonitasoft/bcd-controller:3.04.1
 
-    $ cd $HOME/bonita-continuous-delivery_3.0.0/dependencies
+    $ cd $HOME/bonita-continuous-delivery_3.4.1/dependencies
 
-    $ docker run --rm -v bcd-dependencies-7.8.0:/dependencies quay.io/bonitasoft/bcd-dependencies:7.8.0
+    $ docker run --rm -v bcd-dependencies-7.11.0:/dependencies quay.io/bonitasoft/bcd-dependencies:7.11.0
     [...]
 
     $ docker logout quay.io
@@ -143,8 +152,8 @@ The next steps of this example are required when using BCD to provision a Bonita
 Finally here is a sample command to start a BCD controller container:
 
     $ docker run --rm -ti --hostname bcd-controller --name bcd-controller \
-            -v ~/bonita-continuous-delivery_3.0.0:/home/bonita/bonita-continuous-delivery \
-            -v bcd-dependencies-7.8.0:/home/bonita/bonita-continuous-delivery/dependencies/7.8.0 \
+            -v ~/bonita-continuous-delivery_3.4.1:/home/bonita/bonita-continuous-delivery \
+            -v bcd-dependencies-7.11.0:/home/bonita/bonita-continuous-delivery/dependencies/7.11.0 \
             -v ~/.boto:/home/bonita/.boto \
             -v ~/.ssh/bonita_us-west-2.pem:/home/bonita/.ssh/bonita_us-west-2.pem \
             bonitasoft/bcd-controller /bin/bash

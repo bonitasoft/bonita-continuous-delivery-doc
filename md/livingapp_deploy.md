@@ -41,22 +41,22 @@ Here is an example of Application Archive structure:
 ```
 bonita-vacation-management-example
 ├── applications
-│   └── Application_Data.xml
+│   └── Application_Data.xml
 ├── bdm
-│   └── bdm.zip
+│   └── bdm.zip
 ├── deploy.json
 ├── extensions
-│   └── tahitiRestApiExtension-1.0.0.zip
+│   └── tahitiRestApiExtension-1.0.0.zip
 ├── organizations
-│   └── ACME.xml
+│   └── ACME.xml
 ├── pages
-│   └── page_ExampleVacationManagement.zip
+│   └── page_ExampleVacationManagement.zip
 ├── processes
-│   ├── Cancel Vacation Request--1.4.1.bar
-│   ├── Initiate Vacation Available--1.4.1.bar
-│   ├── Modify Pending Vacation Request--1.4.1.bar
-│   ├── New Vacation Request--1.4.1.bar
-│   └── Remove All Business Data--1.4.1.bar
+│   ├── Cancel Vacation Request--1.4.1.bar
+│   ├── Initiate Vacation Available--1.4.1.bar
+│   ├── Modify Pending Vacation Request--1.4.1.bar
+│   ├── New Vacation Request--1.4.1.bar
+│   └── Remove All Business Data--1.4.1.bar
 └── profiles
     └── default_profile.xml
 ```
@@ -190,6 +190,8 @@ You may deploy an application archive and an application configuration artifact 
 
 You can add a **--debug** option to enable debug mode and increase verbosity.
 
+You can also add a **--development-mode** flag to perform the deployment in development mode. This flag allows for a more aggressive replacement policy. When this flag is not provided, the default production mode will be used which means more artifacts will be preserved.
+
 ::: info
 Refer to the [BCD Command-line reference](bcd_cli.md) for a complete list of available options for the `bcd livingapp deploy` command.
 :::
@@ -208,7 +210,7 @@ _In the BCD controller container_:
 ```bash
 bonita@bcd-controller:~$ cd bonita-continuous-delivery
 
-bonita@bcd-controller:~/bonita-continuous-delivery$ ls -nh bonita-vacation-management-example/target 
+bonita@bcd-controller:~/bonita-continuous-delivery$ ls -nh bonita-vacation-management-example/target
 total 9,0M
 drwxr-xr-x 9 1000 1000 4,0K Dec   6 13:59 bonita-vacation-management-example
 -rw-r--r-- 1 1000 1000 2,4K Dec   6 13:59 bonita-vacation-management-example-Test-20181206125838.bconf

@@ -47,7 +47,7 @@ FQDN: ec2-54-191-90-85.us-west-2.compute.amazonaws.com
 Docker running containers
 --
 CONTAINER ID        IMAGE                                  CREATED             STATUS              NAMES
-5d73a2446245        bonitasoft/bonita-subscription:7.8.0   6 minutes ago       Up 6 minutes        bonita8081
+5d73a2446245        bonitasoft/bonita-subscription:7.11.0   6 minutes ago       Up 6 minutes        bonita8081
 [...]
 ```
 
@@ -64,7 +64,7 @@ docker logs bonita8081
 
 If you want to copy all the logs (bonita, catalina) you can use `docker cp`:
 ```bash
-docker cp bonita8081:/opt/bonita/BonitaSubscription-7.8.0-Tomcat-8.5.34/server/logs/ /tmp/
+docker cp bonita8081:/opt/bonita/BonitaSubscription-7.11.0-Tomcat-8.5.34/server/logs/ /tmp/
 ```
 
 Then you will be able to retrieve all the files through a `scp`:
@@ -86,10 +86,9 @@ This command will identify every EC2 instance (depending of `bcd_stack_id` set i
 
 In order to troubleshoot issues, you may need to consult Ansible logs.
 
-By default, the path of the log is `/var/log/ansible.log` in your Docker container. You can change this location modifying 
-the variable `log_path` in the Ansible configuration file located in `/home/bonita/bonita-continuous-delivery/ansible/ansible.cfg`.
+By default, the path of the log is `/var/log/ansible.log` in your Docker container. You can change this location modifying the variable `log_path` in the Ansible configuration file located in `/home/bonita/bonita-continuous-delivery/ansible/ansible.cfg`.
 
-If you want to persist the log, you can add a ***volume*** in when you run `docker run` command like 
+If you want to persist the log, you can add a ***volume*** in when you run `docker run` command like
 
 ```bash
 $ docker run --rm -t -i --name bcd-controller \
@@ -99,3 +98,22 @@ $ docker run --rm -t -i --name bcd-controller \
     -v <host_path_to_your_ansible_log>:/var/log/ansible.log \
     quay.io/bonitasoft/bcd-controller /bin/bash
 ```
+
+## Files owned by another user in the workspace (Linux users only)
+
+BCD is packaged as a docker image, and the user inside the image is mapped to the most common default
+`user id` and `group id` (for the first created user) on linux platform which is `1000`
+
+Since BCD creates files during execution, if your `user id` doesn't match the `user id` inside the docker image, you will end
+with new files under BCD workspace owned by another user than you and won't be able to edit or delete them
+unless having admin privileges.
+
+_Example: the `dependencies` folder:_
+````bash
+ls -la dependencies/
+-rw-r--r-- 1 <my-user-id> <my-group-id>  157 déc.   4  2019 README.md
+drwxr-xr-x 2 root   root                 4096 janv. 6  2020 7.11.3 # <= this folder created by BCD is now read only for <my-user>
+````
+
+To properly map your own user to the user inside the BCD controller image, 
+see the `Running BCD controller with user ID different from 1000` paragraph in [BCD Controller image](bcd_controller.md)

@@ -47,6 +47,10 @@ $ bcd -s <path/to/scenario> -y livingapp build -p <path/to/bonita/repository> -e
 
 This command will first build the Bonita repository for the given environment. The output of the build command are located in the _target_ directory, created by the builder. The generated _Application Archive_ and _Configuration Artifact_ are then automatically used by the deploy command.  
 
+::: warning
+:fa-exclamation-triangle:
+Make sure to add the `--development-mode` option if you want to deploy using Development policies (eg. replace processes and profiles, merge organization data). Otherwise Production deployment policies will be used (eg. existing processes are left untouched).
+:::
 
 ## Build and select what to deploy
 

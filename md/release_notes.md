@@ -1,5 +1,9 @@
 # Release notes
 
+## Breaking changes
+* Controller image is now `Debian` based (and not Alpine Linux anymore). Any custom controller images will require migration and rebuild.
+* Controller image are published under fix version. The latest tag is not used anymore ! User must set an explicit version when using bcd controller image to avoid desynchronization between the docker image pulled and the configuration files in the zip distribution.
+
 ## Limitations and known issues
 
 * The same BCD stack cannot be managed with multiple BCD controller instances due to the use of Terraform "local" backend.
@@ -8,31 +12,39 @@
   [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
   ```
 
-## What's new in 3.1.1 (2019-06-13)
+## What's new in 3.4.1
 
-### New features
+### Technology upgrade
+* Add common tools to base image to simplify the image extension
+* The BCD status commmand now return the ssh host and public dns with bonita url
 
-* Starting with release 3.1.1, BCD is compatible with **Bonita 7.9.x**.  
-<span class="label label-danger">With Bonita 7.9.0 onwards</span> You must use one of these [license types in your scenarios](https://documentation.bonitasoft.com/bcd/${varVersion}/scenarios#toc4): `lic_type` in [`production`\|`qualification`\|`trial`]  
-(starting from Bonita 7.9.0, `development` licenses can only be used with Bonita Studio).
-* **Bonita 7.9.x** onwards runs on Ubuntu 18.04 base Docker image with Java 11 when deployed with BCD.
+### Bug fixes
+* Remove node and npm warning from build logs
+* Improve java invocation from scripts
+* Fix flag to use private ip for ssh connection that was ignored
+* Fix broken read of encrypted files
+* Samples must not use alpine linux anymore
 
-### Bugfixes
+## What's new in 3.4.0
 
-* BCD-339 Jenkins example `bcd-pipeline` fails when processes do not have parameters
-* BCD-342 `bcd livingapp build` fails to unzip maven dependencies twice
+### Technology upgrade
+* Upgrade Python to v3
+* Upgrade ansible to v2.2.9
+* Upgrade terraform to 0.12.26
+* New docker image OS to provide easier customization and access to the maven cache
 
 
-## What's new in 3.1.0 (2019-04-16)
+### Bug fixes
+* BCD-422: Authentication to AWS using G Suite SSO fails in BCD controller
+* BCD-458: Livingapp deploy fails when tenant password contains '$' (dollar sign) character
 
-### New features
+::: warning
 
-* Configurable HTTP timeout for Living Apps deployment (default to 120 seconds)
+The use of `latest` (or no tag) tag on `BCD Controller` image is **deprecated** !
+This tag will be removed from the https://quay.io registry in the next release.
 
-### Bugfixes
+By specifying a BCD Controller version in your configuration, you ensure consistency with the configuration files that comes
+with the zip distribution.
 
-* BCD-340 DS min and max pool sizes are not configured
-
-### Enhancements
-
-* BCD controller is now using alpine 3.9
+From now (and for previous versions), make sure to always specify the BCD version when using `BCD Controller` docker image.
+:::

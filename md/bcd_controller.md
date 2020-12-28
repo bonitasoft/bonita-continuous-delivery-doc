@@ -39,6 +39,9 @@ However AWS credentials can be provided in other ways, for instance with [AWS si
 
 Once the required files are prepared, the BCD controller container can be started in different ways described hereafter.
 
+::: warning
+:fa-exclamation-triangle: For linux user make sure your `user id` and `group id` is `1000` or refer to the [Running BCD controller with user ID different from 1000](#toc5) paragraph.
+:::
 
 ### Starting a BCD controller with `docker run`
 
@@ -69,6 +72,19 @@ Then start the BCD controller container interactively with:
 $ docker-compose run --rm bcd
 ```
 
+#### TIP: Persistent command history
+
+If you want to persist your bash command history across container restarts, simply add the following environment line in your `docker-compose.yaml` file:
+
+```yaml
+bcd:
+ # lines omitted ...
+ ## Add or uncomment the following lines to persist your command history across bcd controller restarts
+ environment:
+  - HISTFILE=/home/bonita/bonita-continuous-delivery/.bcd_bash_history
+```
+
+The history of your commands will be persisted to this file which is located in your project home directory.
 
 ## Note for Linux users
 
@@ -89,18 +105,16 @@ If this is not so, then read the next section to know how to fix file ownership 
 
 Here is one way to remap UID/GID of the controller's `bonita` user with your host user. It consists of extending the `bonitasoft/bcd-controller` Docker image by using the following `Dockerfile`:
 ```dockerfile
-FROM bonitasoft/bcd-controller
+FROM quay.io/bonitasoft/bcd-controller
 
 ARG BONITA_UID
 ARG BONITA_GID
 
 USER root
 
-RUN apk --no-cache --update add shadow && \
-    groupmod -g ${BONITA_GID} bonita && \
+RUN groupmod -g ${BONITA_GID} bonita && \
     usermod -u ${BONITA_UID} -g ${BONITA_GID} bonita && \
-    chown bonita:bonita /var/log/ansible.log && \
-    apk del shadow
+    chown bonita:bonita /var/log/ansible.log
 
 USER bonita
 ```

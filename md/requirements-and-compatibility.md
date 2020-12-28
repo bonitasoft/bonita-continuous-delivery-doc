@@ -72,11 +72,14 @@ This compatibility information is also specified in the [Release notes](release_
 
 <div style="min-width: 270px; max-width: 370px;">
 
-| BCD version        | Bonita release        |
-|--------------------|-----------------------|
-| 2.0.x              | 7.7.x                 |
-| 3.0.x, 3.1.0       | 7.7.x, 7.8.x          |
-| 3.1.1 onwards      | 7.7.x, 7.8.x, 7.9.x   |
+| BCD version        | Bonita release                     |
+|--------------------|------------------------------------|
+| 2.0.x              | 7.7.x                              |
+| 3.0.x, 3.1.0       | 7.7.x, 7.8.x                       |
+| 3.1.1+, 3.2.0      | 7.7.x, 7.8.x, 7.9.x                |
+| 3.2.1 onwards      | 7.7.x, 7.8.x, 7.9.x, 7.10.x        |
+| 3.3.x              | 7.7.x, 7.8.x, 7.9.x, 7.10.x, 7.11.x|
+| 3.4.x              | 7.7.x, 7.8.x, 7.9.x, 7.10.x, 7.11.x|
 
 </div>
 

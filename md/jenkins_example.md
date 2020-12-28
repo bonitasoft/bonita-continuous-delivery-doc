@@ -91,12 +91,12 @@ Click on **Add Docker template** to add a Docker template in the Docker cloud an
 * **Labels**: `bcd`
 * **Enabled**: `[checked]`
 * **Name**: `bcd`
-* **Docker Image**: `quay.io/bonitasoft/bcd-controller:3.0.1` (where 3.0.1 is the version of BCD to use)
+* **Docker Image**: `quay.io/bonitasoft/bcd-controller:3.4.1` (where 3.0.1 is the version of BCD to use)
 * **Volumes**:
   ```
   /home/dockeruser/bonita-continuous-delivery_3.0.1:/home/bonita/bonita-continuous-delivery
   /home/dockeruser/.ssh:/home/bonita/.ssh
-  bcd-dependencies-7.8.0:/home/bonita/bonita-continuous-delivery/dependencies/7.8.0
+  bcd-dependencies-7.11.0:/home/bonita/bonita-continuous-delivery/dependencies/7.11.0
   ```
 * **Environment**: `ANSIBLE_FORCE_COLOR=true` (this forces colored output in BCD logs)
 * **Remote File System Root**: `/home/bonita`
@@ -120,7 +120,7 @@ node('master') {
     stage('Retrieve dependencies') {
         docker.withServer('tcp://dockerhost:2376', 'DOCKER_CLIENT_CERT_AUTH') {
             docker.withRegistry('https://quay.io', 'QUAY_AUTH') {
-                docker.image('quay.io/bonitasoft/bcd-dependencies:7.8.0').withRun('-v bcd-dependencies-7.8.0:/dependencies') {
+                docker.image('quay.io/bonitasoft/bcd-dependencies:7.11.0').withRun('-v bcd-dependencies-7.11.0:/dependencies') {
                 }
             }
         }
@@ -132,7 +132,7 @@ node('bcd') {
 
         stage('Git Ckeckout') {
             git url: 'https://github.com/bonitasoft/bonita-vacation-management-example',
-            branch: 'dev/7.8.0'
+            branch: 'dev/7.11.0'
         }
 
         stage('build-bonita-app') {

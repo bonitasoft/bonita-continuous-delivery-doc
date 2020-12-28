@@ -39,6 +39,9 @@ However AWS credentials can be provided in other ways, for instance with [AWS si
 
 Once the required files are prepared, the BCD controller container can be started in different ways described hereafter.
 
+::: warning
+:fa-exclamation-triangle: For linux user make sure your `user id` and `group id` is `1000` or refer to the [Running BCD controller with user ID different from 1000](#toc5) paragraph.
+:::
 
 ### Starting a BCD controller with `docker run`
 

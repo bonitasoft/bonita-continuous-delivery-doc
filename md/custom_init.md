@@ -16,12 +16,12 @@ Here's the directory layout for a `register-event-handler.sh` custom script:
 ```
 roles
 ├── bonita
-│   ├── files
-│   │   ├── custom-init.d
-│   │   │   ├── bonita-tenant-sp-custom.xml
-│   │   │   ├── config-workers.sh
-│   │   │   ├── event-handler-example-1.0.0-SNAPSHOT.jar
-│   │   │   └── register-event-handler.sh
+│   ├── files
+│   │   ├── custom-init.d
+│   │   │   ├── bonita-tenant-sp-custom.xml
+│   │   │   ├── config-workers.sh
+│   │   │   ├── event-handler-example-1.0.0-SNAPSHOT.jar
+│   │   │   └── register-event-handler.sh
 ```
 
 ### Dynamic initialization files
@@ -32,10 +32,10 @@ Here's the directory layout for the provided `config-cluster.sh.j2` initializati
 ```
 roles
 ├── bonita
-│   └── templates
-│       └── custom-init.d
-│           ├── bonita-platform-sp-cluster-custom.properties.j2
-│           ├── config-cluster.sh.j2
+│   └── templates
+│       └── custom-init.d
+│           ├── bonita-platform-sp-cluster-custom.properties.j2
+│           ├── config-cluster.sh.j2
 ```
 
 

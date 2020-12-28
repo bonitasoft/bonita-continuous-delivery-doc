@@ -57,7 +57,7 @@ Here is a complete example using the configuration files provided.
 This example uses an insecure private key. See [more](https://www.vagrantup.com/docs/vagrantfile/ssh_settings.html)...
 :::
 
-Assuming you have a `bonita-continuous-delivery_3.0.0` directory in your `$HOME` directory.
+Assuming you have a `bonita-continuous-delivery_3.4.1` directory in your `$HOME` directory.
 
 #### 1. Prepare and start your target virtual machine
 
@@ -65,7 +65,7 @@ This step will create and configure a single virtual machine with an IP **192.16
 
 On your host machine:
 ```bash
-$ cd $HOME/bonita-continuous-delivery_3.0.0/vagrant/1-machine/
+$ cd $HOME/bonita-continuous-delivery_3.4.1/vagrant/1-machine/
 
 $ vagrant up
 Bringing machine 'bonita-stack' up with 'virtualbox' provider...
@@ -84,7 +84,7 @@ Copy the **vagrant_single.yml.EXAMPLE** to a **scenarios/vagrant_single.yml** fi
 
 ```bash
 $ docker run --rm -ti --hostname bcd-controller --name bcd-controller \
-        -v ~/bonita-continuous-delivery_3.0.0:/home/bonita/bonita-continuous-delivery \
+        -v ~/bonita-continuous-delivery_3.4.1:/home/bonita/bonita-continuous-delivery \
         -v ~/.vagrant.d/insecure_private_key:/home/bonita/.vagrant.d/insecure_private_key \
         quay.io/bonitasoft/bcd-controller /bin/bash
 bonita@bcd-controller:~$ cd bonita-continuous-delivery

@@ -41,22 +41,22 @@ Here is an example of Application Archive structure:
 ```
 bonita-vacation-management-example
 ├── applications
-│   └── Application_Data.xml
+│   └── Application_Data.xml
 ├── bdm
-│   └── bdm.zip
+│   └── bdm.zip
 ├── deploy.json
 ├── extensions
-│   └── tahitiRestApiExtension-1.0.0.zip
+│   └── tahitiRestApiExtension-1.0.0.zip
 ├── organizations
-│   └── ACME.xml
+│   └── ACME.xml
 ├── pages
-│   └── page_ExampleVacationManagement.zip
+│   └── page_ExampleVacationManagement.zip
 ├── processes
-│   ├── Cancel Vacation Request--1.4.1.bar
-│   ├── Initiate Vacation Available--1.4.1.bar
-│   ├── Modify Pending Vacation Request--1.4.1.bar
-│   ├── New Vacation Request--1.4.1.bar
-│   └── Remove All Business Data--1.4.1.bar
+│   ├── Cancel Vacation Request--1.4.1.bar
+│   ├── Initiate Vacation Available--1.4.1.bar
+│   ├── Modify Pending Vacation Request--1.4.1.bar
+│   ├── New Vacation Request--1.4.1.bar
+│   └── Remove All Business Data--1.4.1.bar
 └── profiles
     └── default_profile.xml
 ```

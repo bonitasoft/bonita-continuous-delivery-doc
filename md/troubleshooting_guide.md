@@ -2,9 +2,7 @@
 
 If you encounter issues during the usage of BCD due to a bad configuration or a network problem, it's interesting to know that you could be able to simply relaunch your command (create, deploy) after fixing the configuration or the network and it should resume from where it was.
 
-## Common issues
-
-### InvalidAMIID.NotFound and InvalidSubnetID.NotFound
+## InvalidAMIID.NotFound and InvalidSubnetID.NotFound
 
 If while you launch a `create` command in order to create instances on AWS you get errors like these:
 
@@ -19,7 +17,7 @@ Error launching source instance: InvalidSubnetID.NotFound: The subnet ID 'subnet
 You should check that `ec2_subnet_ids` and `aws_ami` correspond to the region set into `ec2_region`.
 You may also check that rights linked to your AWS credentials (`.boto` or `.aws`) correspond to the actions in your scenario.
 
-### Access to private maven repository is denied
+## Access to private maven repository is denied
 
 In order to configure BCD to use a corporate maven repository, define a mirror for maven central, add a regular maven `settings.xml` file in `/home/bonita/.m2` folder inside `bcd controller` container:
 

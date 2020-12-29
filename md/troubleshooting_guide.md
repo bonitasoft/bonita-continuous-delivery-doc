@@ -2,9 +2,7 @@
 
 If you encounter issues during the usage of BCD due to a bad configuration or a network problem, it's interesting to know that you could be able to simply relaunch your command (create, deploy) after fixing the configuration or the network and it should resume from where it was.
 
-## Common issues
-
-### InvalidAMIID.NotFound and InvalidSubnetID.NotFound
+## InvalidAMIID.NotFound and InvalidSubnetID.NotFound
 
 If while you launch a `create` command in order to create instances on AWS you get errors like these:
 
@@ -18,6 +16,35 @@ Error launching source instance: InvalidSubnetID.NotFound: The subnet ID 'subnet
 
 You should check that `ec2_subnet_ids` and `aws_ami` correspond to the region set into `ec2_region`.
 You may also check that rights linked to your AWS credentials (`.boto` or `.aws`) correspond to the actions in your scenario.
+
+## Access to private maven repository is denied
+
+In order to configure BCD to use a corporate maven repository, define it as a mirror for maven central
+Add a regular maven `settings.xml` file with the proper [mirror configuration](https://maven.apache.org/guides/mini/guide-mirror-settings.html) in `/home/bonita/.m2` folder inside `bcd controller` container:
+
+If you want to update an already running container without restart, you can run the following, otherwise use docker volume binding.
+
+```bash
+# .m2 folder may be created before
+docker cp <PATH-TO-SETTINGS.xml> bcd-controller:/home/bonita/.m2/settings.xml
+```
+
+## Restricted Internet access by an enterprise proxy
+
+If required, you can configure BCD to use proxy settings.
+
+This has to be done for the docker container, the maven installation.
+If you are using the bcd stack commands, you may need to configure ansible as well.
+
+* Docker proxy settings : [https://docs.docker.com/network/proxy](https://docs.docker.com/network/proxy)
+* Maven proxy settings: [https://maven.apache.org/guides/mini/guide-proxies.html](https://maven.apache.org/guides/mini/guide-proxies.html)
+* Ansible proxy settings: [https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html#setting-the-environment-and-working-with-proxies](https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html#setting-the-environment-and-working-with-proxies)
+
+::: info
+:fa-lightbulb-o: Starting from BCD 3.4, you can directly bind mount your host maven `~/.m2` folder. 
+This will give BCD access to your already configured maven settings (enterprise repository configuration, proxy settings, etc.)
+and you will also benefit from the already cached artifacts present in your `~/.m2/repository` folder.
+:::
 
 ## Accessing Bonita logs
 

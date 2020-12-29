@@ -38,6 +38,10 @@ For instance the `bonita-la-builder-7.11.0-exec.jar` file must be present to bui
 **`bonita-sp-*-maven-repository.zip`**  
 Bonita Maven repository zip files if your repository contains [REST API extensions](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/api-extensions). The version of the Maven repository zip must correspond to the `bonita.version` property defined in your REST API extension's `pom.xml`.
 
+::: info
+:fa-lightbulb-o: Starting from BCD 3.4.0, you can directly mount your docker host `~/.m2` folder to the `/home/bonita/.m2` folder in BCD controller container using docker volume !
+You will benefit from your already defined maven configuration from `~/.m2/settings.xml` (like mirrors or proxy configuration), and the already cached maven artifacts in your `~/.m2/repository` folder
+:::
 
 ### 3. Build the repository
 

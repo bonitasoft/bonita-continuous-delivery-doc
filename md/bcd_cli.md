@@ -250,7 +250,7 @@ You can also see this information by running `bcd --help` and `bcd [COMMAND] --h
 <dl class="option">
 <dt id="cmdoption-bcd-bcd-options-livingapp-deploy-http-timeout">
 <code class="descname">--http-timeout</code><code class="descclassname"> &lt;http_timeout&gt;</code></dt>
-<dd><p>Timeout in seconds for HTTP interactions with Bonita stack  [default: 120]</p>
+<dd><p>Timeout in seconds for HTTP interactions with Bonita stack [default: 120]. The transaction timeout of the platform should be increased accordingly.</p>
 </dd></dl>
 
 <dl class="option">

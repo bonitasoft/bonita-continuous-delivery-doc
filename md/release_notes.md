@@ -1,18 +1,31 @@
 # Release notes
 
-## Breaking changes
+## What's new in 3.4.2
+
+Bonita versioning changed but BCD still refers to semantic versions, see [versions matrix](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/product-versioning#toc1) to see what technical version you need to use for a given bonita version (i.e. 20212.1 => 7.12.1)
+
+### Breaking changes
+* Controller image are published under fix version. The latest tag is now removed !
+
+### Technology upgrade
+* Python module `aws-google-auth` upgrade to version 0.37
+
+### Bug fixes
+* The BCD standalone license commmand couldn't read scenario files (fixed)
+
+## What's new in 3.4.1
+
+### Breaking changes
 * Controller image is now `Debian` based (and not Alpine Linux anymore). Any custom controller images will require migration and rebuild.
 * Controller image are published under fix version. The latest tag is not used anymore ! User must set an explicit version when using bcd controller image to avoid desynchronization between the docker image pulled and the configuration files in the zip distribution.
 
-## Limitations and known issues
+### Limitations and known issues
 
 * The same BCD stack cannot be managed with multiple BCD controller instances due to the use of Terraform "local" backend.
 * Due to [Ansible issue #35255](https://github.com/ansible/ansible/issues/35255) the warning message "could not match supplied host pattern" is displayed when there is no load balancer required for a noncluster deployment:
   ```
   [WARNING]: Could not match supplied host pattern, ignoring: load_balancer
   ```
-
-## What's new in 3.4.1
 
 ### Technology upgrade
 * Add common tools to base image to simplify the image extension

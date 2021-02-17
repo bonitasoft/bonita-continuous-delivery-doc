@@ -33,7 +33,7 @@ xref:getting_started.adoc[[.card-title]#Getting started# [.card-body]#pass:q[Che
 
 [.card.card-index]
 --
-xref:_howtos.adoc[[.card-title]#BCD Howtos# [.card-body]#pass:q[Check out the tutorials for practical guides about using Bonita Continuous Delivery add-on.]#]
+xref:aws_prerequisites.adoc[[.card-title]#BCD Howtos# [.card-body]#pass:q[Check out the tutorials for practical guides about using Bonita Continuous Delivery add-on.]#]
 --
 
 == Basic concepts

@@ -13,9 +13,8 @@ This file defines the hosts and groups of hosts upon which BCD will operates. Th
 
 In particular, you will find examples of static inventory files in the `static-inventory` subdirectory.
 
-::: info
-Refer to https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html[Ansible's documentation] for further details about Ansible inventories.
-:::
+NOTE: Refer to https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html[Ansible's documentation] for further details about Ansible inventories.
+
 
 === Scenario
 
@@ -33,13 +32,11 @@ An example scenario is provided with the `scenarios/static_inventory.yml.EXAMPLE
 
 This section describes a complete example of Bonita stack deployment on existing virtual machines created with Vagrant.
 
-::: warning
-For this tutorial, it is highly recommended to have a clear understanding of https://www.vagrantup.com/intro[Vagrant].
-:::
+WARNING: For this tutorial, it is highly recommended to have a clear understanding of https://www.vagrantup.com/intro[Vagrant].
 
-::: info
-This tutorial is adapted to Linux and Mac environments only.
-:::
+
+NOTE: This tutorial is adapted to Linux and Mac environments only.
+
 
 === Requirements
 
@@ -53,9 +50,8 @@ example for one or two machines infrastructure.
 
 Here is a complete example using the configuration files provided.
 
-::: warning
-This example uses an insecure private key. See https://www.vagrantup.com/docs/vagrantfile/ssh_settings.html[more]...
-:::
+WARNING: This example uses an insecure private key. See https://www.vagrantup.com/docs/vagrantfile/ssh_settings.html[more]...
+
 
 Assuming you have a `bonita-continuous-delivery_3.4.1` directory in your `$HOME` directory.
 
@@ -110,6 +106,5 @@ $ bcd -s <path/to/scenario> -y stack undeploy
 
 Then you may destroy your virtual machine with the `vagrant destroy` command.
 
-::: info
-You can read more about the Vagrant CLI on https://www.vagrantup.com/docs/cli/[Vagrant documentation site].
-:::
+NOTE: You can read more about the Vagrant CLI on https://www.vagrantup.com/docs/cli/[Vagrant documentation site].
+

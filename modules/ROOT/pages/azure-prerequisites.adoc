@@ -100,10 +100,10 @@ Azure credentials must be set as environment variables in your BCD controller in
 
 In fact, there are 4 different information that you need to gather:
 
-* +++<u>+++Subscription ID+++</u>+++: obtained from Portal's *Subscriptions* page as the *Subscription ID* field. It can also be obtained with Azure CLI command: `az account list --output table`
-* +++<u>+++Client ID+++</u>+++: obtained from Portal's *Registered app* page as the *Application ID* field. It can also be obtained with Azure CLI command: `az ad app list | jq '.[] | {"displayName": .displayName, "appId": .appId}'` (provided https://stedolan.github.io/jq/[JQ] is available)
-* +++<u>+++Client Secret+++</u>+++: displayed once while creating keys (passwords) for users on the _bcd_ service principal.
-* +++<u>+++Tenant ID+++</u>+++: obtained from Portal's menu:Azure Active Directory[Properties] page as the *Directory ID* field. It can also be obtained with Azure CLI command: `az account list`
+* +++<u>Subscription ID</u>+++: obtained from Portal's *Subscriptions* page as the *Subscription ID* field. It can also be obtained with Azure CLI command: `az account list --output table`
+* +++<u>Client ID</u>+++: obtained from Portal's *Registered app* page as the *Application ID* field. It can also be obtained with Azure CLI command: `az ad app list | jq '.[] | {"displayName": .displayName, "appId": .appId}'` (provided https://stedolan.github.io/jq/[JQ] is available)
+* +++<u>Client Secret</u>+++: displayed once while creating keys (passwords) for users on the _bcd_ service principal.
+* +++<u>Tenant ID</u>+++: obtained from Portal's menu:Azure Active Directory[Properties] page as the *Directory ID* field. It can also be obtained with Azure CLI command: `az account list`
 
 Therefore you may use an environment script in order to set these environment variables in a more convenient way. Create a `bcd-azure.env` accessible from your BCD controller with the following content:
 

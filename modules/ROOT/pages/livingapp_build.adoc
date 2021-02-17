@@ -2,9 +2,8 @@
 
 This tutorial describes how to build a Bonita Living Application repository from the command line using BCD.
 
-::: info
-A Living Application repository (or *Living App repository*) contains the artifacts developed in Bonita Studio and the UI Designer. Its content is further described in https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/workspaces-and-repositories[Bonita's Workspaces and repositories documentation] page.
-:::
+NOTE: A Living Application repository (or *Living App repository*) contains the artifacts developed in Bonita Studio and the UI Designer. Its content is further described in https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/workspaces-and-repositories[Bonita's Workspaces and repositories documentation] page.
+
 
 The repository build process allows to generate Bonita deployable artifacts (for instance process `.bar` files, UI Designer pages `.zip` files, REST API extensions `.zip` files).
 
@@ -27,7 +26,7 @@ This step creates a `bonita-continuous-delivery/bonita-vacation-management-examp
 
 === 2. Provide the repository's build dependencies
 
-The next step is to provide all dependencies required to build your repository, see link:getting_started.md#toc1[Common Installation Steps].
+The next step is to provide all dependencies required to build your repository, see link:getting_started.adoc#_installation_guide[Common Installation Steps].
 
 Hence the following artifacts must be present in the `$BCD_HOME/dependencies` directory or any of its subdirectories:
 
@@ -38,10 +37,9 @@ For instance the `bonita-la-builder-7.11.0-exec.jar` file must be present to bui
 *`bonita-sp-*-maven-repository.zip`* +
 Bonita Maven repository zip files if your repository contains https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/api-extensions[REST API extensions]. The version of the Maven repository zip must correspond to the `bonita.version` property defined in your REST API extension's `pom.xml`.
 
-::: info
-:fa-lightbulb-o: Starting from BCD 3.4.0, you can directly mount your docker host `~/.m2` folder to the `/home/bonita/.m2` folder in BCD controller container using docker volume !
+NOTE: :fa-lightbulb-o: Starting from BCD 3.4.0, you can directly mount your docker host `~/.m2` folder to the `/home/bonita/.m2` folder in BCD controller container using docker volume !
 You will benefit from your already defined maven configuration from `~/.m2/settings.xml` (like mirrors or proxy configuration), and the already cached maven artifacts in your `~/.m2/repository` folder
-:::
+
 
 === 3. Build the repository
 
@@ -60,10 +58,9 @@ For instance with the `bonita-vacation-management-example` example, the followin
 * `bonita-vacation-management-example/target/bonita-vacation-management-example-<environment>-<timestamp>.zip`
 * `bonita-vacation-management-example/target/bonita-vacation-management-example-<environment>-<timestamp>.bconf`
 
-::: info
-Since BCD 3.0.0, process configurations are built into a separate *.bconf* artifact. This configuration artifact allows to separate process configuration (parameters) from application assets. +
+NOTE: Since BCD 3.0.0, process configurations are built into a separate *.bconf* artifact. This configuration artifact allows to separate process configuration (parameters) from application assets. +
 As a result, the same *.zip* package can be deployed on all environments (Development, Test, Staging) whereas a specific *.bconf* artifact may be applied to each environment.
-:::
+
 
 Refer to the xref:bcd_cli.adoc[BCD Command-line reference] for a complete list of available options for the `bcd livingapp build` command.
 

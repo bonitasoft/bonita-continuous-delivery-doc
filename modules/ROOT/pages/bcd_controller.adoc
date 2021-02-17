@@ -43,19 +43,17 @@ AWS credentials are required for *Provisioning on AWS*. It is not required for L
   aws_secret_access_key = <YOUR_AWS_SECRET_ACCESS_KEY>
 ----
 +
-::: info
-However AWS credentials can be provided in other ways, for instance with xref:aws_sso.adoc[AWS single sign-on].
-:::
+NOTE: However AWS credentials can be provided in other ways, for instance with xref:aws_sso.adoc[AWS single sign-on].
+
 
 Once the required files are prepared, the BCD controller container can be started in different ways described hereafter.
 
-::: warning
-:fa-exclamation-triangle: For linux user make sure your `user id` and `group id` is `1000` or refer to the <<toc5,Running BCD controller with user ID different from 1000>> paragraph.
-:::
+WARNING: For linux user make sure your `user id` and `group id` is `1000` or refer to the <<toc5,Running BCD controller with user ID different from 1000>> paragraph.
+
 
 === Starting a BCD controller with `docker run`
 
-The first method to start a BCD Controller Docker container on the control host is to use the `docker run` command with BCD dependencies already present in your host, see link:getting_started.md#toc1[Common installation steps].
+The first method to start a BCD Controller Docker container on the control host is to use the `docker run` command with BCD dependencies already present in your host, see link:getting_started.adoc#_common_installation_steps_[Common installation steps].
 
 *Example*:
 

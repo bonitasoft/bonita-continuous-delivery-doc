@@ -4,8 +4,7 @@ Scenarios enable you to define your infrastructure and Bonita stack. A scenario 
 
 The variables described in a scenario have precedence over those defined in the playbooks or the group vars. It is still possible to overload scenario variables with `--extra-vars` declaration in the `bcd` command line. For instance overloading `bonita_version` can be interesting if you want to test multiple versions of Bonita without duplicating scenario files.
 
-::: info
-Example scenario files are provided in the *scenarios* directory:
+NOTE: Example scenario files are provided in the *scenarios* directory:
 
 * *uswest_performance.yml.EXAMPLE* - a scenario for both stack and living application management with AWS provisioning
 * *azure_northEurope.yml.EXAMPLE* - a scenario for both stack and living application management with Azure provisioning
@@ -13,7 +12,7 @@ Example scenario files are provided in the *scenarios* directory:
 * *build_and_deploy.yml.EXAMPLE* - a scenario for living application management only
 
 Use these examples to customize your scenario and save it with a `.yml` file extension.
-:::
+
 
 == Core variables
 
@@ -319,9 +318,8 @@ The following parameters are specific to the Bonita instances.
 
 In order that BCD retrieves Bonita licenses during the deployment of your platform, you need to set the following variables in your scenario:
 
-::: info
-These information are provided by Bonitasoft when you purchase the BCD add-on. Contact your sales representative for further details.
-:::
+NOTE: These information are provided by Bonitasoft when you purchase the BCD add-on. Contact your sales representative for further details.
+
 
 |===
 | Name | Description | Sample

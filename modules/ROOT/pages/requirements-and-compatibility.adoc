@@ -17,15 +17,13 @@ The *Docker Engine* must be up and running on your control host prior to using B
 
 You may have https://docs.docker.com/install/[Docker Community Edition (Docker CE)] or https://docs.docker.com/ee/supported-platforms/[Docker Enterprise Edition (Docker EE)] installed on your host to start using BCD.
 
-::: info
-The Docker Engine may be installed on Linux, MacOS, Microsoft Windows or Cloud platforms as described in https://docs.docker.com/install/[Docker installation guide].
-:::
+NOTE: The Docker Engine may be installed on Linux, MacOS, Microsoft Windows or Cloud platforms as described in https://docs.docker.com/install/[Docker installation guide].
+
 
 === Bonita stack hosts
 
-::: warning
-These requirements must be fulfilled when using BCD for *Provisioning*. They apply to target hosts where the Bonita stack will be deployed.
-:::
+WARNING: These requirements must be fulfilled when using BCD for *Provisioning*. They apply to target hosts where the Bonita stack will be deployed.
+
 
 Bonita stack hosts may be running *on-premises* or in *cloud platforms* like https://aws.amazon.com/[Amazon Web Services (AWS)], https://azure.microsoft.com/[Microsoft Azure], https://cloud.google.com/[Google Cloud] or https://www.openstack.org/[OpenStack].
 
@@ -59,9 +57,8 @@ This compatibility information is also specified in the xref:release_notes.adoc[
 
 | BCD version | Bonita release | |--------------------|------------------------------------| | 2.0.x | 7.7.x | | 3.0.x, 3.1.0 | 7.7.x, 7.8.x | | 3.1.1+, 3.2.0 | 7.7.x, 7.8.x, 7.9.x | | 3.2.1 onwards | 7.7.x, 7.8.x, 7.9.x, 7.10.x | | 3.3.x | 7.7.x, 7.8.x, 7.9.x, 7.10.x, 7.11.x| | 3.4.x | 7.7.x, 7.8.x, 7.9.x, 7.10.x, 7.11.x|
 
-::: warning
-If a Bonita release is not listed in the previous table, then it is not supported by the BCD Add-On.
-:::
+WARNING: If a Bonita release is not listed in the previous table, then it is not supported by the BCD Add-On.
+
 
 == Databases supported
 

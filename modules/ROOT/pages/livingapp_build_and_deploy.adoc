@@ -48,10 +48,8 @@ $ bcd -s <path/to/scenario> -y livingapp build -p <path/to/bonita/repository> -e
 
 This command will first build the Bonita repository for the given environment. The output of the build command are located in the _target_ directory, created by the builder. The generated _Application Archive_ and _Configuration Artifact_ are then automatically used by the deploy command.
 
-::: warning
-:fa-exclamation-triangle:
-Make sure to add the `--development-mode` option if you want to deploy using Development policies (eg. replace processes and profiles, merge organization data). Otherwise Production deployment policies will be used (eg. existing processes are left untouched).
-:::
+WARNING: Make sure to add the `--development-mode` option if you want to deploy using Development policies (eg. replace processes and profiles, merge organization data). Otherwise Production deployment policies will be used (eg. existing processes are left untouched).
+
 
 == Build and select what to deploy
 
@@ -119,6 +117,5 @@ As described in the xref:livingapp_deploy.adoc[Bonita Living Application Deploye
 The deployment descriptor file is used to specify which resources have to be deployed, and with which policy. It is an alternative way to select a sub part of the application archive to deploy. +
 An interesting way to use it is to store some deployment descriptor files in your Bonita repository, one for each 'build and deploy' scenario you want to perform. Between the build and the deploy phase, just move the deployment descriptor file at the root of your application archive, as described above.
 
-::: warning
-The format of the deployment descriptor file might evolve in future versions to make it more user-friendly.
-:::
+WARNING: The format of the deployment descriptor file might evolve in future versions to make it more user-friendly.
+

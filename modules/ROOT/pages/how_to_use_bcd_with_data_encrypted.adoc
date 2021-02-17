@@ -9,10 +9,9 @@ In this tutorial, we will explain how to encrypt files with `ansible-vault` and 
 +
 A password is required to encrypt/decrypt your sensitive data. BCD requires this password to be stored in a file which path is set in the *`ANSIBLE_VAULT_PASSWORD_FILE`* environment variable.
 +
-::: warning
- :fa-exclamation-triangle: *Password file permissions* +
+WARNING: :fa-exclamation-triangle: *Password file permissions* +
  Ensure permissions on the file are such that no one else can access your password and do not add your password file to source control.
- :::
+ 
 +
 The password should be a string stored as a single line in the file.
 +
@@ -43,19 +42,17 @@ Assuming your BCD scenario file contains sensitive data, we are now going to enc
 +
 As a result, the `scenarios/myscenario.yml` file is Vault-encrypted. It may be safely added to source control as long as the Vault password remains confidential.
 +
-::: info
- :fa-info-circle: *View / Edit / Decrypt* +
+NOTE: *View / Edit / Decrypt* +
  If you need to view or edit the scenario content, you may use the `ansible-vault view` and `ansible-vault edit` commands respectively. +
  You may also decrypt your scenario file using the `ansible-vault decrypt` command. +
  Refer to the https://docs.ansible.com/ansible/latest/user_guide/vault.html[Ansible Vault] documentation for detailed information about this feature.
- :::
+ 
 
 . *Run BCD commands as usual*
 +
 You may now run BCD commands without any change. BCD and Ansible will automatically decrypt your Vault-encrypted data.
 
-Caveats
-// {.h2}
+== Caveats
 
 * You may encrypt several files but the password must be the same for all files you wish to use together at the same time.
 * Although Ansible supports prompting for a password, BCD only supports a password to be provided through a password file defined by the `ANSIBLE_VAULT_PASSWORD_FILE` environment variable.

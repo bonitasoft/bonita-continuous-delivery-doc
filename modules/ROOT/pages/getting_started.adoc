@@ -22,12 +22,11 @@ Follow these installation steps on your control host.
 +
 This step creates a `bonita-continuous-delivery_<version>` directory which contains Bonita Continuous Delivery Ansible playbooks and roles.
 
-::: warning
-For windows users install in user folder (C:\Users\XXX) (If not, Docker won't have the right to copy the volumes)
-:::
+WARNING: For windows users install in user folder (C:\Users\XXX) (If not, Docker won't have the right to copy the volumes)
+
 
 . Pull the `quay.io/bonitasoft/bcd-controller:<version>` Docker image from secured registry. +
-The username corresponds to `bcd_registry_user` and the password corresponds to `bcd_registry_password` described in the xref:scenarios.adoc[Scenario file reference]. Both have been provided by your sales representative.
+The username corresponds to `bcd_registry_user` and the password corresponds to `bcd_registry_password` described in the <xref:scenarios.adoc[Scenario file reference]. Both have been provided by your sales representative.
 
  $ docker login quay.io
  Username: bonitasoft+john_doe_at_acme_com
@@ -51,9 +50,8 @@ Basically, the `/dependencies` volume provided by the `quay.io/bonitasoft/bcd-de
  $ docker run --rm -v bcd-dependencies-<bonita_version>:/dependencies quay.io/bonitasoft/bcd-dependencies:<bonita_version>
  $ docker logout quay.io
 
-::: warning
-:fa-exclamation-triangle: For linux user make sure your `user id` and `group id` is `1000` or refer to the `Running BCD controller with user ID different from 1000` paragraph in xref:bcd_controller.adoc[BCD Controller image]
-:::
+WARNING: :fa-exclamation-triangle: For linux user make sure your `user id` and `group id` is `1000` or refer to the `Running BCD controller with user ID different from 1000` paragraph in xref:bcd_controller.adoc[BCD Controller image]
+
 
 ....
 The `bcd-dependencies-<bonita_version>` Docker named volume is now available and can be mounted with your BCD Controller. 5.  Start a BCD Controller Docker container on the control host:
@@ -66,15 +64,13 @@ The `bcd-dependencies-<bonita_version>` Docker named volume is now available and
 This command bind mounts the _bonita-continuous-delivery_ directory and the _bcd-dependencies-<bonita_version>_ volume on the control host into the BCD controller container.
 ....
 
-::: info
-You may also start a BCD Controller container using https://docs.docker.com/compose/[Docker Compose] as described in the xref:bcd_controller.adoc[BCD Controller image] detailed documentation.
-:::
+NOTE: You may also start a BCD Controller container using https://docs.docker.com/compose/[Docker Compose] as described in the xref:bcd_controller.adoc[BCD Controller image] detailed documentation.
+
 
 === Additional steps for Provisioning
 
-::: info
-The following installation steps are required when using BCD for *Provisioning Bonita stacks*. They are not required for Living Application Management.
-:::
+NOTE: The following installation steps are required when using BCD for *Provisioning Bonita stacks*. They are not required for Living Application Management.
+
 
 ==== Licensing prerequisites
 
@@ -168,9 +164,8 @@ Finally here is a sample command to start a BCD controller container:
 
 == Using Bonita Continuous Delivery add-on
 
-::: warning
-At this stage of the _Getting started_ guide, you should have a BCD controller container up and running.
-:::
+WARNING: At this stage of the _Getting started_ guide, you should have a BCD controller container up and running.
+
 
 === Command Line Interface
 
@@ -202,9 +197,8 @@ Commands:
   version    Show BCD version information
 ----
 
-::: info
-Read the *xref:bcd_cli.adoc[BCD Command-line interface]* page for further information about the BCD CLI usage.
-:::
+NOTE: Read the *xref:bcd_cli.adoc[BCD Command-line interface]* page for further information about the BCD CLI usage.
+
 
 === Scenarios
 
@@ -219,6 +213,5 @@ Example scenario files are provided in the *scenarios* directory, including:
 
 Use these examples to customize your scenario and save it with a `.yml` file extension.
 
-::: info
-Read the *xref:scenarios.adoc[BCD Scenario reference]* page for a comprehensive description of scenario variables.
-:::
+NOTE: Read the *xref:scenarios.adoc[BCD Scenario reference]* page for a comprehensive description of scenario variables.
+

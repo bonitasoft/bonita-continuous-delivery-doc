@@ -54,6 +54,6 @@ Use the `npm run taxonomy` command to do so.
 
 ## Contribute
 
-To help you contributing to Bonita Continuous Delivery documentation, we provide a set of [contribution guidelines](https://github.com/bonitasoft/bonita-doc/blob/7.3/CONTRIBUTING.md).
+To help you contributing to Bonita Continuous Delivery documentation, we provide a set of [contribution guidelines](https://github.com/bonitasoft/bonita-doc/blob/7.12/CONTRIBUTING.md).
 
 Thanks for taking time to contribute!

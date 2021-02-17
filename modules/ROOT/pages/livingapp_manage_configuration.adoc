@@ -99,10 +99,9 @@ global_parameters:
     type: "String"
 ----
 
-::: info
-Important:
+NOTE: Important:
 A specific parameter setting has priority over a global parameter configuration.
-:::
+
 
 *Example*:
 Let assume that these processes *P1, P2, P3* have all these three paremeters: *_calendarApplicationName_*, *_emailNotificationSender_*, *_emailServerUseSSL_*.

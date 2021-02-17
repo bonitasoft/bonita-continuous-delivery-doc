@@ -16,9 +16,8 @@ With this setup, the Jenkins master, thanks to the https://plugins.jenkins.io/do
 
 image::images/bcd_jenkins.png[Bonita Continuous Delivery with Jenkins]
 
-::: warning
-This tutorial assumes you are already running a https://jenkins.io/2.0/[Jenkins 2] instance and that you are familiar with Jenkins system administration.
-:::
+WARNING: This tutorial assumes you are already running a https://jenkins.io/2.0/[Jenkins 2] instance and that you are familiar with Jenkins system administration.
+
 
 === Install Docker host
 
@@ -53,18 +52,17 @@ The Jenkins master must have the https://plugins.jenkins.io/docker-plugin[Docker
 Additionally, it is recommended to use https://jenkins.io/pipeline/getting-started-pipelines/[Pipelines] while using BCD with Jenkins. You can still use standard Jenkins "freestyle" jobs but pipelines are more designed for continuous delivery. Therefore this requires to install the https://plugins.jenkins.io/workflow-aggregator[Pipeline plugin] (aka. `workflow-aggregator`). +
 This tutorial also provides an example pipeline which requires the https://plugins.jenkins.io/pipeline-utility-steps[Pipeline Utility Steps], https://plugins.jenkins.io/pipeline-github-lib[Pipeline: GitHub Groovy Libraries] and https://plugins.jenkins.io/ansicolor[AnsiColor] plugins to be installed.
 
-::: info
-The https://jenkins.io/doc/book/managing/plugins/#installing-a-plugin[Jenkins plugins documentation] describes different methods for installing plugins on master.
-:::
+NOTE: The https://jenkins.io/doc/book/managing/plugins/#installing-a-plugin[Jenkins plugins documentation] describes different methods for installing plugins on master.
+
 
 ==== 3. Add Docker Host credentials
 
 As recommended previously, the Docker host should have TLS enabled. Therefore, the Docker host credentials must be added to Jenkins master. +
 Follow the https://jenkins.io/doc/book/using/using-credentials/#adding-new-global-credentials[Jenkins credentials documentation] to add new *Docker Host Certificate Authentication* credentials. These credentials are required to declare a secured Docker cloud in the next step.
 
-::: danger
+ danger
 If your Docker TCP socket is not secured, then you can skip this step. But bear in mind that exposing the Docker TCP socket without TLS is really *not safe*.
-:::
+
 
 image::images/jenkins_add_docker_client_cert_auth.png[Add Docker Host Certificate Authentication]
 
@@ -110,9 +108,8 @@ bcd-dependencies-7.11.0:/home/bonita/bonita-continuous-delivery/dependencies/7.1
 
 image::images/jenkins-add_docker_template.png[Jenkins add Docker template]
 
-::: info
-Jenkins is now ready to run BCD Pipelines. An example scripted pipeline is provided in the next section.
-:::
+NOTE: Jenkins is now ready to run BCD Pipelines. An example scripted pipeline is provided in the next section.
+
 
 === Create a Pipeline job
 
@@ -179,10 +176,9 @@ Therefore you should have *Docker and Docker Compose* installed on the target ho
 
 This example is provided with Compose file version 3.2 which requires Docker Compose 1.12.0+ and Docker Engine 17.04.0+. Refer to https://docs.docker.com/compose/compose-file/#compose-and-docker-compatibility-matrix[Compose and Docker compatibility matrix] and https://docs.docker.com/release-notes/docker-compose/[Compose release notes] for further details.
 
-::: info
-In this example, a Jenkins slave is created from a Docker image which extends the BCD Controller image. Then an example job is defined as a https://jenkins.io/doc/book/pipeline/[Jenkins Pipeline] job in which `bcd` commands are invoked. +
+NOTE: In this example, a Jenkins slave is created from a Docker image which extends the BCD Controller image. Then an example job is defined as a https://jenkins.io/doc/book/pipeline/[Jenkins Pipeline] job in which `bcd` commands are invoked. +
 This allows you to easily re-use parts of this example in your own Jenkins instance.
-:::
+
 
 === Step-by-step run guide
 
@@ -205,10 +201,9 @@ $ cd jenkins_example
 $ docker-compose up -d
 ----
 
-::: warning
-*Important Note*: Ensure volumes configured are correctly mapped to existing files or folder on the host, otherwise the docker daemon will create empty folders at the configured location (default docker behavior for volumes).
+WARNING: *Important Note*: Ensure volumes configured are correctly mapped to existing files or folder on the host, otherwise the docker daemon will create empty folders at the configured location (default docker behavior for volumes).
 As an example, if you declare a volume mapping in your `docker-compose.override.yml` file for the file `secrets/bonitaPassword` and you forget to create the corresponding file in the `secrets` folder, you will end up with a folder named `bonitaPassword` after the first docker-compose run.
-:::
+
 
 As a result Jenkins is up and running on port `9090` of the target host. +
 You can now log-in to Jenkins using one of the pre-configured users:
@@ -216,9 +211,8 @@ You can now log-in to Jenkins using one of the pre-configured users:
 * `admin` - User with administration rights. Password has been initialized with `secrets/adminPassword`.
 * `bonita` - User with limited rights. Password has been initialized with `secrets/bonitaPassword`.
 
-::: warning
-*Important Note*: Prepare your BCD scenario and dependencies as usual before using the pre-configured Jenkins jobs.
-:::
+WARNING: *Important Note*: Prepare your BCD scenario and dependencies as usual before using the pre-configured Jenkins jobs.
+
 
 === Pre-configured Jenkins jobs
 

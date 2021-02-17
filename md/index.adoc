@@ -1,0 +1,39 @@
+= Bonita Continuous Delivery Add-on
+
+::: info
+Welcome to *Bonita Continuous Delivery* documentation website!
+:::
+
+image::images/bcd_logo.png[Bonita Continuous Delivery Add-on Logo]
+
+The Bonita Continuous Delivery (BCD) add-on provides a solution to use _Continuous Delivery_ practice for your Bonita Living Application development and deployment.
+
+It is composed of two parts:
+
+* First, a framework for *Continuous Integration* of Living Applications. +
+BCD lets you build a Living Application repository and deploy the generated artifacts from the command line. Besides, a pre-configured standalone https://jenkins.io/[Jenkins CI] environment is also provided with BCD.
+* Second, a solution for *Provisioning* of Bonita stacks on cloud or on-premises hosts. +
+BCD lets you deploy Bonita on existing servers using https://www.docker.com/what-container[Docker] containers. Furthermore, when used with the https://aws.amazon.com/[Amazon Web Services (AWS) cloud platform], BCD enables you to create and delete https://aws.amazon.com/ec2/[AWS EC2 instances] automatically.
+
+image::images/bcd_capabilities.png[Bonita Continuous Delivery Capabilities]+++<div class="col-md-4">++++++<div class="panel panel-default">+++Highlights+++<div class="panel-body">+++Find out what's new in Bonita Continuous Delivery add-on! Read the release notes.
+
+* [:fa-angle-double-right: What's new in BCD?](release_notes.md)+++</div>++++++</div>++++++</div>++++++<div class="col-md-4">++++++<div class="panel panel-default">+++Getting started+++<div class="panel-body">+++Follow this guide with step-by-step instructions to start using Bonita Continuous Delivery solution.
+
+* [:fa-angle-double-right: Getting started with BCD](getting_started.md)+++</div>++++++</div>++++++</div>++++++<div class="col-md-4">++++++<div class="panel panel-default">+++Howtos+++<div class="panel-body">+++Check out the tutorials for practical guides about using Bonita Continuous Delivery add-on.
+
+* [:fa-angle-double-right: BCD Howtos](_howtos.md)+++</div>++++++</div>++++++</div>++++++<div class="clearfix">++++++</div>+++
+
+Basic concepts
+// {.h2}
+
+This add-on provides a `bcd` command-line interface (BCD CLI) which enables to:
+
+* Build and deploy Bonita Living Applications
+* Deploy a full Bonita stack - A *Bonita stack* is formed by a database service, Bonita Docker containers running Tomcat application servers and a HAProxy load balancer when deploying a multi-node Bonita cluster.
+
+The BCD CLI is provided within a ready-to-use environment called *BCD Controller*. This environment is packaged as a Docker image. +
+Then a controller container will have to be started interactively on your control host from which `bcd` commands will be issued.
+
+::: warning
+It is highly recommended to have a clear understanding of https://docs.docker.com/engine/docker-overview/[Docker essential concepts] prior to reading this documentation.
+:::

@@ -1,0 +1,17 @@
+= Assume IAM role within AWS Organizations
+
+https://aws.amazon.com/organizations[AWS Organizations] offers policy-based management for multiple AWS accounts.
+If you use an Organization with IAM users (for SSO, see xref:aws_sso.adoc[Single Sign-On to AWS Using G Suite]), you will have to assume a specific role on the target account. To do so you will still put your `aws_access_key_id` and `aws_secret_access_key` into the `.boto` or `.aws/credentials` file.
+Then you will just have to modify the scenario in order to set the corresponding role arn, for example :
+
+[source,yaml]
+----
+aws_assumed_iam_role: arn:aws:iam::123456789012:role/BCD
+----
+
+Note:
+
+* `123456789012` represents here the target account
+* `BCD` represents here the role on this account
+
+It implies that you should have created the corresponding role with proper rights. To do so you just have to follow the xref:aws_prerequisites.adoc[How to configure Amazon Web Services (AWS) for BCD] and in `AWS Setup for BCD` section replace the point 5 `Create an IAM Group` by a https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[creation of the corresponding role] attached to the IAM Policies created previously.

@@ -1,25 +1,28 @@
-# How to configure REST API authorization
+= How to configure REST API authorization
 
-The Bonita container is launched with REST_API_DYN_AUTH_CHECKS flag set to true by default.  
-It means that all [dynamic permissions checks](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization#toc2) are activated.
+The Bonita container is launched with REST_API_DYN_AUTH_CHECKS flag set to true by default. +
+It means that all https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization#toc2[dynamic permissions checks] are activated.
 
 In the sections below we will manipluate configuration into templates and not at a specific tenant. Indeed the default tenant (1) will be created during the first startup of bonita.
 
-## Deactivating dynamic permissions checks
+== Deactivating dynamic permissions checks
 
-Since 2.0.x, BCD manages the REST_API_DYN_AUTH_CHECKS environment through the [scenario variable](scenarios.md) `bonita_rest_api_dyn_auth_checks`.  
+Since 2.0.x, BCD manages the REST_API_DYN_AUTH_CHECKS environment through the xref:scenarios.adoc[scenario variable] `bonita_rest_api_dyn_auth_checks`. +
 So to deactivate dynamic permissions checks you will just have to add the following line into your scenario:
-```yaml
+
+[source,yaml]
+----
 bonita_rest_api_dyn_auth_checks: false
-```
+----
 
-## Adding custom permissions
+== Adding custom permissions
 
-As described in [Bonita documentation](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization?hash=debug#toc1), the custom-permissions-mapping.properties file contains custom rules that supplement the resource permissions and compound permissions. By default, this file is empty, because the compound permissions definitions automatically manage the permissions needed for default and custom profiles, and for default and custom pages.
+As described in https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization?hash=debug#toc1[Bonita documentation], the custom-permissions-mapping.properties file contains custom rules that supplement the resource permissions and compound permissions. By default, this file is empty, because the compound permissions definitions automatically manage the permissions needed for default and custom profiles, and for default and custom pages.
 
 If you want to override the default behavior, you can add rules to this file by adding this kind of script `roles/bonita/files/custom-init.d/add-custom-permissions.sh`
 
-```bash
+[source,bash]
+----
 #!/bin/bash
 
 set -euxo pipefail
@@ -41,12 +44,12 @@ ${BONITA_SETUP_SH} push
 
 # Create indicator file
 touch ${indicator_path}
-```
+----
 
 For a more advanced configuration you can also provide directly a file `roles/bonita/files/custom-init.d/custom-permissions-mapping.properties` and push it with a script like `roles/bonita/files/custom-init.d/add-custom-permissions-file.sh`
 
-
-```bash
+[source,bash]
+----
 #!/bin/bash
 
 set -euxo pipefail
@@ -67,16 +70,16 @@ ${BONITA_SETUP_SH} push
 
 # Create indicator file
 touch ${indicator_path}
-```
+----
 
+== Enabling debug mode
 
-## Enabling debug mode
-
-If [debug mode](https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization?hash=debug) is activated, whenever you update a configuration file or a dynamic check script, the changes take effect immediately.
+If https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization?hash=debug[debug mode] is activated, whenever you update a configuration file or a dynamic check script, the changes take effect immediately.
 
 To activate debug mode you can create a script like `roles/bonita/files/custom-init.d/activate-debug-mode.sh`
 
-```bash
+[source,bash]
+----
 #!/bin/bash
 
 set -euxo pipefail
@@ -97,5 +100,4 @@ ${BONITA_SETUP_SH} push
 
 # Create indicator file
 touch ${indicator_path}
-```
-
+----

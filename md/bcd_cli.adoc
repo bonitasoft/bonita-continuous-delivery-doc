@@ -1,0 +1,238 @@
+= BCD command-line interface
+
+On this page you will find detailed information about the BCD CLI with usage examples and reference.
+
+== Requirements
+
+* First, the `bcd` command requires that the *`BCD_HOME`* environment variable is set.
+By default `BCD_HOME` is set to `/home/bonita/bonita-continuous-delivery` in the controller container.
+* Next, the `bcd` command takes a *_mandatory option_* called `scenario` through the `-s / --scenario` command line option.
+This option expects an existing relative or absolute path to a xref:scenarios.adoc[BCD YAML scenario] file.
+The BCD scenario path can also be specified through the *`BCD_SCENARIO`* environment variable, hence allowing to skip the `-s / --scenario` command line option.
+* Finally, the BCD CLI expects to find Bonita version-specific dependencies in the *`$BCD_HOME/dependencies`* directory or any of its subdirectories. BCD dependencies include:
+ ** `bonita-la-builder-*-exec.jar` - (Mandatory) The Bonita Living Application Builder library
+ ** `bonita-sp-*-maven-repository.zip` - (Optional) The Bonita Maven repository zip if required by your Living Application workspace.
+Since BCD 3.0.0, dependencies can be retrieved as `quay.io/bonitasoft/bcd-dependencies:<bonita_version>` Docker images and they must be mounted as volumes in the `$BCD_HOME/dependencies` directory.
+You can read more about in link:getting_started.md#toc1[Common installation steps]
+
+== Usage examples
+
+Running the `create` subcommand of the `stack` command with scenario command-line option:
+
+[source,bash]
+----
+$ bcd -s scenarios/uswest2_cluster.yml stack create
+----
+
+Running the `deploy` subcommand of the `stack` command with scenario command-line option and overridden `mail_notification` variable:
+
+[source,bash]
+----
+$ bcd -s scenarios/vagrant_single.yml -e mail_notification=no -y stack deploy
+----
+
+Running the `destroy` subcommand of the `stack` command with `BCD_SCENARIO` environment variable and subcommand `--dry-run` option:
+
+[source,bash]
+----
+$ export BCD_SCENARIO=scenarios/uswest2_performance.yml
+$ bcd stack destroy --dry-run
+----
+
+Running the `build` subcommand of the `livingapp` command with `BCD_SCENARIO` environment variable and subcommand `-p` and `-e` options:
+
+[source,bash]
+----
+$ export BCD_SCENARIO=scenarios/euwest1_performance.yml
+$ bcd livingapp build -p path/to/livingapp-repo -e Test
+----
+
+Running the `version` command which does not require a scenario file:
+
+[source,bash]
+----
+$ bcd version
+----
+
+== Multi command chaining
+
+The BCD CLI allows to invoke more than one command in one go. This is useful to chain commands as a pipeline.
+
+If one command fails then `bcd` stops executing any subsequent command it may have.
+
+*Examples*:
+
+Running `create` then `deploy` subcommands of the `stack` command:
+
+[source,bash]
+----
+$ bcd -s scenarios/uswest2_cluster.yml -y stack create deploy
+----
+
+Running `build` then `deploy` subcommands of the `livingapp` command:
+
+[source,bash]
+----
+$ bcd -s scenarios/vagrant_single.yml --yes \
+    livingapp build -p path/to/livingapp-repo -e Test deploy
+----
+
+== Command-line reference
+
+This section describes the comprehensive usage information for the `bcd` command.
+
+You can also see this information by running `bcd --help` and `bcd [COMMAND] --help` - where COMMAND is in `[license, livingapp, stack, version]` - from the command line.+++<div class="section" id="bcd">+++=== bcd
+
+Bonita Continuous Delivery CLI.+++<div class="highlight-shell notranslate">++++++<div class="highlight">+++bcd [OPTIONS] COMMAND [COMMAND_OPTIONS] SUBCOMMAND [SUBCOMMAND_OPTIONS]...+++</div>++++++</div>+++
+
+Options
+
+`-s````, ``--scenario`` <scenario>`:: YAML scenario file path - *MANDATORY OPTION* unless +++<cite>+++BCD_SCENARIO+++</cite>+++ environment variable is defined.
+
+`-y````, ``--yes```:: Execute action without confirmation prompt
+
+`-v````, ``--verbose```:: Enable Ansible verbose mode
+
+`--nocolor```:: Turn output colorization off
+
+`-e````, ``--extra-vars`` <extra_vars>`:: Extra vars for Ansible (multiple) - Variables are passed using the key=value syntax.
+
+`-h````, ``--help```:: Show this help message
+
+`--version```:: Show the version and exit.+++<div class="section" id="bcd-license">+++==== license
+
+Manage Bonita licenses+++<div class="highlight-shell notranslate">++++++<div class="highlight">+++bcd [BCD_OPTIONS] license [OPTIONS] COMMAND [COMMAND_OPTIONS]+++</div>++++++</div>+++
+
+Options
+
+`-h````, ``--help```:: Show this help message+++<div class="section" id="bcd-bcd-options-license-generate">+++===== generate
+
+Request a license and get the license file+++<div class="highlight-shell notranslate">++++++<div class="highlight">+++bcd [BCD_OPTIONS] license [LICENSE_OPTIONS] generate [OPTIONS]+++</div>++++++</div>+++
+
+Options
+
+`-k````, ``--request-key`` <request_key>`:: Request key to generate the license
+
+`-o````, ``--output-dir`` <output_dir>`:: Output directory path where the license file will be saved - Default to +++<cite>+++/tmp+++</cite>+++
+
+`-h````, ``--help```:: Show this help message+++</div>++++++<div class="section" id="bcd-bcd-options-license-revoke">+++===== revoke
+
+Revoke a license file+++<div class="highlight-shell notranslate">++++++<div class="highlight">+++bcd [BCD_OPTIONS] license [LICENSE_OPTIONS] revoke [OPTIONS]+++</div>++++++</div>+++
+
+Options
+
+`-p````, ``--path`` <path>`:: Path to the license file to revoke
+
+`-h````, ``--help```:: Show this help message+++</div>++++++</div>++++++<div class="section" id="bcd-livingapp">+++==== livingapp
+
+Manage Bonita Living Application+++<div class="highlight-shell notranslate">++++++<div class="highlight">+++bcd [BCD_OPTIONS] livingapp [OPTIONS] COMMAND1 [COMMAND1_OPTIONS] [COMMAND2
+                             [COMMAND2_OPTIONS]]...+++</div>++++++</div>+++
+
+Options
+
+`-h````, ``--help```:: Show this help message+++<div class="section" id="bcd-bcd-options-livingapp-build">+++===== build
+
+Build Bonita Living Application+++<div class="highlight-shell notranslate">++++++<div class="highlight">+++bcd [BCD_OPTIONS] livingapp [LIVINGAPP_OPTIONS] build [OPTIONS]+++</div>++++++</div>+++
+
+Options
+
+`-p````, ``--path`` <path>`:: Bonita Living Application repository path
+
+`-e````, ``--environment`` <environment>`:: Name of the process configuration environment as defined in Bonita Studio
+
+`-X````, ``--debug```:: Enable debug mode
+
+`-h````, ``--help```:: Show this help message+++</div>++++++<div class="section" id="bcd-bcd-options-livingapp-deploy">+++===== deploy
+
+Deploy Bonita Living Application+++<div class="highlight-shell notranslate">++++++<div class="highlight">+++bcd [BCD_OPTIONS] livingapp [LIVINGAPP_OPTIONS] deploy [OPTIONS]+++</div>++++++</div>+++
+
+Options
+
+`-p````, ``--path`` <path>`:: Bonita Living Application archive or directory path
+
+`-c````, ``--configuration-path`` <configuration_path>`:: Bonita configuration (.bconf) archive path
+
+`--http-timeout`` <http_timeout>`:: Timeout in seconds for HTTP interactions with Bonita stack. The transaction timeout of the platform should be increased accordingly.
+
+Default;; 120
+
+`--disable-certificate-check```:: Disable all certificate validation when connecting to a Bonita stack over HTTPS. This option may be used when a self-signed certificate is installed on the target Bonita stack
+
+`--development-mode```:: Deploy for development environments (eg. processes and profiles are replaced if existing, organization data are merged).
+
+`-X````, ``--debug```:: Enable debug mode
+
+`-h````, ``--help```:: Show this help message+++</div>++++++<div class="section" id="bcd-bcd-options-livingapp-extract-conf">+++===== extract-conf
+
+Extract parameters from a Bonita configuration archive (.bconf)+++<div class="highlight-shell notranslate">++++++<div class="highlight">+++bcd [BCD_OPTIONS] livingapp [LIVINGAPP_OPTIONS] extract-conf
+     [OPTIONS]+++</div>++++++</div>+++
+
+Options
+
+`-p````, ``--path`` <path>`:: Bonita configuration (.bconf) archive path
+
+`--without-value```:: Only extract parameters which do not have a value
+
+`-o````, ``--output`` <output>`:: Output file
+
+`-h````, ``--help```:: Show this help message+++</div>++++++<div class="section" id="bcd-bcd-options-livingapp-merge-conf">+++===== merge-conf
+
+Merge parameters into a Bonita configuration archive (.bconf)+++<div class="highlight-shell notranslate">++++++<div class="highlight">+++bcd [BCD_OPTIONS] livingapp [LIVINGAPP_OPTIONS] merge-conf
+     [OPTIONS]+++</div>++++++</div>+++
+
+Options
+
+`-p````, ``--path`` <path>`:: Bonita configuration (.bconf) archive path
+
+`-i````, ``--input`` <input>`:: Input parameter file
+
+`-o````, ``--output`` <output>`:: Output file
+
+`-h````, ``--help```:: Show this help message+++</div>++++++</div>++++++<div class="section" id="bcd-stack">+++==== stack
+
+Manage Bonita stack (infrastructure)+++<div class="highlight-shell notranslate">++++++<div class="highlight">+++bcd [BCD_OPTIONS] stack [OPTIONS] COMMAND1 [COMMAND1_OPTIONS] [COMMAND2
+                         [COMMAND2_OPTIONS]]...+++</div>++++++</div>+++
+
+Options
+
+`-h````, ``--help```:: Show this help message+++<div class="section" id="bcd-bcd-options-stack-create">+++===== create
+
+Create infra machines+++<div class="highlight-shell notranslate">++++++<div class="highlight">+++bcd [BCD_OPTIONS] stack [STACK_OPTIONS] create [OPTIONS]+++</div>++++++</div>+++
+
+Options
+
+`-d````, ``--dry-run```:: Show an execution plan only
+
+`-h````, ``--help```:: Show this help message+++</div>++++++<div class="section" id="bcd-bcd-options-stack-deploy">+++===== deploy
+
+Deploy Bonita stack (creates Docker containers)+++<div class="highlight-shell notranslate">++++++<div class="highlight">+++bcd [BCD_OPTIONS] stack [STACK_OPTIONS] deploy [OPTIONS]+++</div>++++++</div>+++
+
+Options
+
+`-h````, ``--help```:: Show this help message+++</div>++++++<div class="section" id="bcd-bcd-options-stack-destroy">+++===== destroy
+
+Destroy infra machines+++<div class="highlight-shell notranslate">++++++<div class="highlight">+++bcd [BCD_OPTIONS] stack [STACK_OPTIONS] destroy [OPTIONS]+++</div>++++++</div>+++
+
+Options
+
+`-d````, ``--dry-run```:: Show an execution plan only
+
+`-h````, ``--help```:: Show this help message+++</div>++++++<div class="section" id="bcd-bcd-options-stack-status">+++===== status
+
+Show the platform status+++<div class="highlight-shell notranslate">++++++<div class="highlight">+++bcd [BCD_OPTIONS] stack [STACK_OPTIONS] status [OPTIONS]+++</div>++++++</div>+++
+
+Options
+
+`-h````, ``--help```:: Show this help message+++</div>++++++<div class="section" id="bcd-bcd-options-stack-undeploy">+++===== undeploy
+
+Undeploy Bonita stack (removes Docker containers)+++<div class="highlight-shell notranslate">++++++<div class="highlight">+++bcd [BCD_OPTIONS] stack [STACK_OPTIONS] undeploy [OPTIONS]+++</div>++++++</div>+++
+
+Options
+
+`-h````, ``--help```:: Show this help message+++</div>++++++</div>++++++<div class="section" id="bcd-version">+++==== version
+
+Show BCD version information+++<div class="highlight-shell notranslate">++++++<div class="highlight">+++bcd version [OPTIONS]+++</div>++++++</div>+++
+
+Options
+
+`-h````, ``--help```:: Show this help message+++</div>++++++</div>+++

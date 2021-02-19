@@ -15,26 +15,19 @@ jobs:
       COMPONENT_NAME: bcd
       # Except if you want to test in progress work that your content depends on, keep it set to master
       DOC_SITE_BRANCH: feat/build_single_component_branch_for_doc_content_pr_preview
+      REPO_NAME: bonita-continuous-delivery-doc
     steps:
-      - name: gh PR type
-        run:
-          echo pr type "${{ toJson(github.event.pull_request) }}"
       - name: Get documentation site source code
-        # TODO optimization do not run when closing PR
+        if: github.event.action != 'closed'
         run: |
-          pwd
           ls -lha
           # Remove existing .git directory
           rm -rf *
-          #TODO --depth 1 to optimize
-          git clone https://github.com/bonitasoft/bonitasoft.github.io.git .
-          git checkout ${DOC_SITE_BRANCH}
+          git clone --depth 1 --single-branch --branch ${DOC_SITE_BRANCH} https://github.com/bonitasoft/bonitasoft.github.io.git .
       - name: Compute environment variables
         run: |
           echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF#refs/heads/})" >> $GITHUB_ENV
           echo "PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')" >> $GITHUB_ENV
-          echo "mini_name=$(echo ${GITHUB_HEAD_REF#refs/heads/})" >> $GITHUB_ENV
-      # TODO pass the site-url argument https://{{repository.owner}}-{{repository.name}}-{{job.name}}-pr-{{pr.number}}.surge.sh.
       - name: Publish preview
         uses: afc163/surge-preview@v1
         with:
@@ -44,5 +37,5 @@ jobs:
           failOnError: true
           teardown: 'true'
           build: |
-            ./build-preview.bash --branch "${{ env.BRANCH_NAME }}" --component "${{ env.COMPONENT_NAME }}" --pr "${{ env.PR_NUMBER }}"
+            ./build-preview.bash --site-url "https://bonitasoft-${{env.REPO_NAME}}-build_preview-pr-${{env.PR_NUMBER}}.surge.sh" --branch "${{ env.BRANCH_NAME }}" --component "${{ env.COMPONENT_NAME }}" --pr "${{ env.PR_NUMBER }}"
             ls -lh build/site

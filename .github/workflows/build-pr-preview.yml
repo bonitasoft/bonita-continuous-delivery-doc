@@ -15,7 +15,7 @@ jobs:
       COMPONENT_NAME: bcd
       # Except if you want to test in progress work that your content depends on, keep it set to master
       DOC_SITE_BRANCH: feat/build_single_component_branch_for_doc_content_pr_preview
-      REPO_NAME: blaireaux
+      REPO_NAME: bonita-continuous-delivery-doc
     steps:
       - name: Get documentation site source code
         if: github.event.action != 'closed'

@@ -14,8 +14,7 @@ Deploying to a production environment (or any sensible environment) requires ext
 == Deploying on a test environment
 
 While testing, it is a good idea to always (or most of the time) start from an empty environment and re-install everything. That is the best way to ensure that what you are deploying is all you need to get to the desired state, that you are not relying on an external dependency without noticing it.
-In the current version of BCD, the deployment default policies are test oriented, meaning that by default existing artifacts will be removed and re-installed. _Note:_ In future versions of BCD we will probably change to be production friendly first. This would avoid some of the caveats you may face if you want to target a production environment for your deployment.
-
+In the current version of BCD, the deployment default policies are test oriented, meaning that by default existing artifacts will be removed and re-installed. _Note:_ In future version of BCD we will probably change to be production friendly first. This would avoid some of the caveats you may face if you want to target a production environment for your deployment.
 == Deploying on a pre-production or production environment
 
 The pre-production and production environments must be as similar as possible to ensure that tests are relevant.

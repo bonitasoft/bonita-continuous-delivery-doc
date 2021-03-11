@@ -16,7 +16,7 @@ image::images/bcd_controller.png[Bonita Continuous Delivery Controller]
 
 Follow these installation steps on your control host.
 ++++
-<asciinema-player src="./bcd/images/${varVersion}/bcd_getting-started.cast" speed="2" poster="data:text/plain,\e[2;3HGetting started with \e[1;34mBonita Continuous Delivery\u001b[0m controller." theme="monokai" title="Getting started with Bonita Continuous Delivery controller" cols="240" rows="32"></asciinema-player>
+<asciinema-player src="_images/images/bcd_getting-started.cast" speed="2" poster="data:text/plain,\e[2;3HGetting started with \e[1;34mBonita Continuous Delivery\u001b[0m controller." theme="monokai" title="Getting started with Bonita Continuous Delivery controller" cols="240" rows="32"></asciinema-player>
 ++++
 
 

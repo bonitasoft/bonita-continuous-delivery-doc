@@ -1,6 +1,6 @@
 = How to manage Living Apps Configuration
 
-WARNING: Supported from Bonita 7.8.0 onwards
+NOTE: Supported starting from Bonita 7.8.0 and onwards !
 
 This tutorial describes how to configure your Bonita Living Application from the command line using BCD.
 

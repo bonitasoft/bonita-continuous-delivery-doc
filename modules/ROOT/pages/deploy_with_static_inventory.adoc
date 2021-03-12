@@ -13,7 +13,7 @@ This file defines the hosts and groups of hosts upon which BCD will operates. Th
 
 In particular, you will find examples of static inventory files in the `static-inventory` subdirectory.
 
-NOTE: Refer to https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html[Ansible's documentation] for further details about Ansible inventories.
+NOTE: Refer to https://docs.ansible.com/ansible/2.9/user_guide/intro_inventory.html[Ansible's documentation] for further details about Ansible inventories.
 
 
 === Scenario

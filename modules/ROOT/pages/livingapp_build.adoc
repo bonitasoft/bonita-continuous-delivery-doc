@@ -30,16 +30,18 @@ The next step is to provide all dependencies required to build your repository, 
 
 Hence the following artifacts must be present in the `$BCD_HOME/dependencies` directory or any of its subdirectories:
 
-*`bonita-la-builder-<bonita_version>-exec.jar`* +
-The Bonita Living Application Builder library. Its version must correspond to the *`bonita_version`* variable defined in your BCD scenario. This is the version of the Bonita stack where generated artifacts will be deployed. +
+==== bonita-la-builder-<bonita_version>-exec.jar
+
+The Bonita Living Application Builder library. Its version must correspond to the *`bonita_version`* variable defined in your BCD scenario. This is the version of the Bonita stack where generated artifacts will be deployed.
+
 For instance the `bonita-la-builder-7.11.0-exec.jar` file must be present to build artifacts meant to be deployed on a Bonita `7.11.0` stack.
 
-*`bonita-sp-*-maven-repository.zip`* +
+==== bonita-sp-<bonita_version>-maven-repository.zip
+
 Bonita Maven repository zip files if your repository contains https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/api-extensions[REST API extensions]. The version of the Maven repository zip must correspond to the `bonita.version` property defined in your REST API extension's `pom.xml`.
 
-NOTE: :fa-lightbulb-o: Starting from BCD 3.4.0, you can directly mount your docker host `~/.m2` folder to the `/home/bonita/.m2` folder in BCD controller container using docker volume !
+NOTE: Starting from BCD 3.4.0, you can directly mount your docker host `~/.m2` folder to the `/home/bonita/.m2` folder in BCD controller container using docker volume !
 You will benefit from your already defined maven configuration from `~/.m2/settings.xml` (like mirrors or proxy configuration), and the already cached maven artifacts in your `~/.m2/repository` folder
-
 
 === 3. Build the repository
 
@@ -70,6 +72,7 @@ The version of your repository *must exactly match* the version of the builder l
 
 If versions do not match, the `bcd livingapp build` command will exit with such a message:
 
+[source, log]
 ----
 [ERROR] Project version (7.11.0) does not match builder version (7.7.4)
 [13:46:34.469] ERROR: Aborting! Command <livingapp-build> returned non-zero exit code <1>

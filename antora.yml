@@ -1,5 +1,8 @@
 name: bcd
 title: Bonita Continuous Delivery
 version: 3.4
+asciidoc:
+  attributes:
+    page-editable: true
 nav:
   - modules/ROOT/taxonomy.adoc

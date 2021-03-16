@@ -1,19 +1,20 @@
-= How to build and deploy "without stack" !
+= How to build and deploy *"without stack management"* !
 
-Bonita Continuous Delivery lets you easily build and deploy a Bonita Living Applications on a Bonita runtime thanks to `Bonita Living Application Builder` and the Bonita `Living Application Deployer` two bonita CLIs wrapped by the `BCD` CLI itself.
+IMPORTANT: This page target teams deploying Bonita Living Applications on Bonita instances managed by themselves and not by `BCD controller` !
 
-IMPORTANT: This chapter target teams deploying Bonita Living Applications on their own infrastructure and Bonita instances managed by themselves !
+Bonita Continuous Delivery lets you easily build and deploy a Bonita Living Applications on a Bonita runtime thanks to the `Bonita Living Application Builder` and the Bonita `Living Application Deployer`, two bonita CLIs wrapped by the `BCD` CLI itself.
 
-In the following, we present how to easily build and deploy your Bonita Living Application repository without the use of the whole BCD tooling required for stack management. (ex. docker,ansible, terraform, python scripts, yaml scenario files, etc.)
+We vill explain how to easily build and deploy your Bonita Living Application repository without the use of the whole BCD tooling required for stack management. (ex. docker,ansible, terraform, python scripts, yaml scenario files, etc.)
 
+"If you have no needs for the stack part, simply don't use it ! (aka. docker, mounted volumes, yaml scenario files, ansible playbooks and inventories, etc.)"
+-- Following the KISS rule
 
 This chapter assumes that:
 
-* you have cloned a Git repository as described in the xref:livingapp_build.adoc[Bonita Living Application Builder] documentation
-* you already have a Bonita runtime up and running
+* you have cloned a Git repository as described in the xref:livingapp_build.adoc[Bonita Living Application Builder] documentation.
+* you already have a Bonita runtime up and running and user credentials for the technical access.
 * you have java (8+) installed on the machine that will perform the build and deploy actions.
 * you have maven (3.3.x) installed on the machine that will perform the build action.
-* the *only* thing you want to achieve is to *build your application and deploy it* to an existing Bonita instance !
 
 == How to build the living application
 
@@ -94,7 +95,8 @@ NOTE: It is recommended to create a dedicated repository for vendor artifacts li
 
 [source,bash]
 ----
-$> java -jar bonita-la-builder-7.12.2-exec.jar -h
+$ java -jar bonita-la-builder-7.12.2-exec.jar -h
+
 Usage: java -jar bonita-la-builder-7.12.2-exec.jar [command] [command options]
   Commands:
     build      Build a Bonita project
@@ -137,7 +139,6 @@ Usage: java -jar bonita-la-builder-7.12.2-exec.jar [command] [command options]
             Input parameter file
           -o
             Output file. By default, the  given configuration file is overwritten.
-
 ----
 
 == How to deploy the living application
@@ -162,6 +163,8 @@ You should now have a jar file named `bonita-la-deployer-7.12.2.jar` in your cur
 === LA Deployer CLI reference
 
 ----
+$ java -jar bonita-la-deployer-7.12.2.jar -h
+
 usage: java -jar bonita-la-deployer-x.y.z.jar [-bc <bonita-configuration>] [-c <config>] [--debug] [--development]
        [--disable-certificate-check] [-f <file>] [-h] [--http-timeout <http-timeout>] [-p <password>] [-t <targetUrl>]
        [-u <username>]

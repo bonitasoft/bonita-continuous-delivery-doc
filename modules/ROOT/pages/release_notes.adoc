@@ -3,7 +3,6 @@
 == What's new in 3.4.3
 
 - Full support of the Bonita 2021.x versions
-- New documentation page on how to build and deploy Living Apps without stack management. see xref:livingapp_build_and_deploy_no_stack.adoc[Build and deploy "without stack"]
 
 === Breaking changes
 

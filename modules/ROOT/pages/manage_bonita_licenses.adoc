@@ -8,7 +8,7 @@ This feature lets you generate licenses programmatically for your Bonita Studio 
 To use this feature, you need to prepare a link:scenarios[scenario file] with the following required information:
 
 * The `bonita_version` variable
-* https://documentation.bonitasoft.com/bcd/${varVersion}/scenarios#toc4[All licensing variables]
+* xref:scenarios.adoc#_licensing_variables[licensing variables in scenarios]
 
 NOTE: An example scenario is provided with the *scenarios/manage_licenses.yml.EXAMPLE* file with required variables to manage
 Bonita licenses with BCD.

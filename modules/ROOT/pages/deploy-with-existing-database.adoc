@@ -17,7 +17,7 @@ Example with Amazon RDS
 
 One typical use case is to deploy your Bonita stack using an https://aws.amazon.com/rds/[Amazon RDS] instance.
 
-. Prior to creating your RDS instance, create and customize a https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html[DB Parameter Group] in order to set database parameters for Bonita. Refer to Bonita documentation to check how to https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/database-configuration[Customize RDBMS to make it work with Bonita].
+. Prior to creating your RDS instance, create and customize a https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html[DB Parameter Group] in order to set database parameters for Bonita. Refer to Bonita documentation to check how to xref:{bonitaDocVersion}@bonita::database-configuration.adoc[Customize RDBMS to make it work with Bonita].
 . Create your RDS instance using the DB parameter group created previously. Make sure the assigned security group allows access to the DB instance. +
 Leave the *Database Name* field empty to not create a database. BCD will create required databases automatically.
 . Report connection information into your BCD scenario:

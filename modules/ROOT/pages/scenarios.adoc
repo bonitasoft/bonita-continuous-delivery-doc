@@ -298,13 +298,13 @@ The following parameters are specific to the Bonita instances.
 | bonita_http_api
 | N
 | false
-| Activates the Bonita https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization#toc9[HTTP API].
+| Activates the Bonita xref:{bonitaDocVersion}@bonita::rest-api-authorization.adoc#_activating_and_deactivating_authorization[HTTP API].
 | true
 
 | bonita_rest_api_dyn_auth_checks
 | N
 | true
-| Activates https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization#toc2[dynamic authorization checking] on REST API.
+| Activates xref:{bonitaDocVersion}@bonita::rest-api-authorization.adoc##dynamic_authorization[dynamic authorization checking] on REST API.
 | false
 
 | bonita_published_ports_extra
@@ -314,6 +314,7 @@ The following parameters are specific to the Bonita instances.
 | [ '9020:9010', '2222:1111' ]
 |===
 
+[#licensing_variables]
 == Licensing variables
 
 In order that BCD retrieves Bonita licenses during the deployment of your platform, you need to set the following variables in your scenario:

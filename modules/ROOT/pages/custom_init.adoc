@@ -42,7 +42,7 @@ roles
 
 == When are custom initialization scripts invoked?
 
-Custom initialization scripts are invoked once the database has been initialized and the Tomcat server has been configured with https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/BonitaBPM_platform_setup[Bonita Platform setup tool].
+Custom initialization scripts are invoked once the database has been initialized and the Tomcat server has been configured with xref:{bonitaDocVersion}@bonita::BonitaBPM_platform_setup.adoc[Bonita Platform setup tool].
 
 Hence the Bonita Docker image startup sequence can be described as follows:
 
@@ -86,7 +86,7 @@ More precisely scripts are executed in the order returned by this command: `ls -
 === 1. config-workers.sh
 
 The `config-workers.sh` script is provided as part of BCD's core scripts. +
-In particular it shows how to further configure the server using https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/BonitaBPM_platform_setup[Bonita Platform setup tool].
+In particular it shows how to further configure the server using xref:{bonitaDocVersion}@bonita::BonitaBPM_platform_setup.adoc[Bonita Platform setup tool].
 
 === 2. config-cluster.sh.j2
 
@@ -95,7 +95,7 @@ In particular it shows how to conditionally configure a cluster deployment on AW
 
 === 3. register-event-handler.sh
 
-This sample script deploys and registers a Bonita engine Event handler as described in https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/event-handlers[Event handlers Documentation].
+This sample script deploys and registers a Bonita engine Event handler as described in xref:{bonitaDocVersion}@bonita::event-handlers.adoc[Event handlers Documentation].
 
 Assuming the following files:
 

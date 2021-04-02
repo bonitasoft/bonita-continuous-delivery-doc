@@ -8,7 +8,7 @@ This feature lets you generate licenses programmatically for your Bonita Studio 
 To use this feature, you need to prepare a link:scenarios[scenario file] with the following required information:
 
 * The `bonita_version` variable
-* xref:scenarios.adoc#_licensing_variables[licensing variables in scenarios]
+* xref:scenarios.adoc#licensing_variables[licensing variables in scenarios]
 
 NOTE: An example scenario is provided with the *scenarios/manage_licenses.yml.EXAMPLE* file with required variables to manage
 Bonita licenses with BCD.
@@ -16,7 +16,7 @@ Bonita licenses with BCD.
 
 == Generating a new license
 
-You can generate a new license providing a *Request Key*. Read more about Bonita licenses and how to generate a request key on this https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/licenses#toc2[documentation page].
+You can generate a new license providing a *Request Key*. Read more about Bonita licenses and how to generate a request key on this xref:{bonitaDocVersion}@bonita::licenses.adoc#_get_a_new_license[documentation page].
 
 NOTE: The request key has to be generated on the host where your Bonita Studio or Bonita Server will be running.
 

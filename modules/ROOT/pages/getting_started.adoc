@@ -12,6 +12,7 @@ Then a *BCD Controller container* has to be started on the control host, ie. the
 
 image::images/bcd_controller.png[Bonita Continuous Delivery Controller]
 
+[#common_installation_steps]
 === Common installation steps
 
 Follow these installation steps on your control host.

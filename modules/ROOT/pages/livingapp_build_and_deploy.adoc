@@ -32,7 +32,7 @@ Before to perform an important change on a resource, make sure to save the curre
 *We do not recommend* to _duplicate_ the resource in your repository. If you start to manage your versions this way, your repository will get bigger and bigger, and the time required by the _Bonita Living Application Builder_ to build your repository will increase. Moreover, it is really painful to work on a repository containing all the history of a project, it can lead to many confusions and errors during the development ( dependency issues ...).
 
 *The recommended way* is definitively to keep the latest version of each resources in the working repository, and the history on your Version Control System. +
-Since the version 7.7.0 of Bonita, the popular Version Control System _Git_ is integrated in Bonita Studio. It is a fine way to manage properly the versioning of your projects. The Bonita documentation provides an example on https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/share-a-repository-on-github[how to share a repository on GitHub].
+Since the version 7.7.0 of Bonita, the popular Version Control System _Git_ is integrated in Bonita Studio. It is a fine way to manage properly the versioning of your projects. The Bonita documentation provides an example on xref:{bonitaDocVersion}@bonita::share-a-repository-on-github.adoc[how to share a repository on GitHub].
 
 == Build and deploy straight
 

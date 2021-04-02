@@ -13,7 +13,7 @@ The BCD scenario path can also be specified through the *`BCD_SCENARIO`* environ
  ** `bonita-la-builder-*-exec.jar` - (Mandatory) The Bonita Living Application Builder library
  ** `bonita-sp-*-maven-repository.zip` - (Optional) The Bonita Maven repository zip if required by your Living Application workspace.
 Since BCD 3.0.0, dependencies can be retrieved as `quay.io/bonitasoft/bcd-dependencies:<bonita_version>` Docker images and they must be mounted as volumes in the `$BCD_HOME/dependencies` directory.
-You can read more about in link:getting_started.adoc#_common_installation_steps[Common installation steps]
+You can read more about in link:getting_started.adoc#common_installation_steps[Common installation steps]
 
 == Usage examples
 

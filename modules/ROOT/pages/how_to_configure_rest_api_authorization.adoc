@@ -1,9 +1,9 @@
 = How to configure REST API authorization
 
 The Bonita container is launched with REST_API_DYN_AUTH_CHECKS flag set to true by default. +
-It means that all https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization#toc2[dynamic permissions checks] are activated.
+It means that all xref:{bonitaDocVersion}@bonita::rest-api-authorization.adoc#dynamic_authorization[dynamic permissions checks] are activated.
 
-In the sections below we will manipluate configuration into templates and not at a specific tenant. Indeed the default tenant (1) will be created during the first startup of bonita.
+In the sections below, we will manipulate configuration into templates and not at a specific tenant. Indeed, the default tenant (1) will be created during the first startup of bonita.
 
 == Deactivating dynamic permissions checks
 
@@ -17,7 +17,7 @@ bonita_rest_api_dyn_auth_checks: false
 
 == Adding custom permissions
 
-As described in https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization?hash=debug#toc1[Bonita documentation], the custom-permissions-mapping.properties file contains custom rules that supplement the resource permissions and compound permissions. By default, this file is empty, because the compound permissions definitions automatically manage the permissions needed for default and custom profiles, and for default and custom pages.
+As described in xref:{bonitaDocVersion}@bonita::rest-api-authorization.adoc#static_authorization[Bonita documentation], the custom-permissions-mapping.properties file contains custom rules that supplement the resource permissions and compound permissions. By default, this file is empty, because the compound permissions definitions automatically manage the permissions needed for default and custom profiles, and for default and custom pages.
 
 If you want to override the default behavior, you can add rules to this file by adding this kind of script `roles/bonita/files/custom-init.d/add-custom-permissions.sh`
 
@@ -74,7 +74,7 @@ touch ${indicator_path}
 
 == Enabling debug mode
 
-If https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/rest-api-authorization?hash=debug[debug mode] is activated, whenever you update a configuration file or a dynamic check script, the changes take effect immediately.
+If xref:{bonitaDocVersion}@bonita::rest-api-authorization.adoc#debug[debug mode] is activated, whenever you update a configuration file, or a dynamic check script, the changes take effect immediately.
 
 To activate debug mode you can create a script like `roles/bonita/files/custom-init.d/activate-debug-mode.sh`
 

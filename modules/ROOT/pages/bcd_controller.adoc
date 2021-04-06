@@ -48,7 +48,7 @@ NOTE: However AWS credentials can be provided in other ways, for instance with x
 
 Once the required files are prepared, the BCD controller container can be started in different ways described hereafter.
 
-WARNING: For linux user make sure your `user id` and `group id` is `1000` or refer to the <<toc5,Running BCD controller with user ID different from 1000>> paragraph.
+WARNING: For linux user make sure your `user id` and `group id` is `1000` or refer to the <<user_id_not_1000,Running BCD controller with user ID different from 1000>> paragraph.
 
 
 === Starting a BCD controller with `docker run`
@@ -114,6 +114,7 @@ uid=1000(john) gid=1000(john) [...]
 
 If this is not so, then read the next section to know how to fix file ownership between the control host and the controller container.
 
+[#user_id_not_1000]
 === Running BCD controller with user ID different from 1000
 
 Here is one way to remap UID/GID of the controller's `bonita` user with your host user. It consists of extending the `bonitasoft/bcd-controller` Docker image by using the following `Dockerfile`:

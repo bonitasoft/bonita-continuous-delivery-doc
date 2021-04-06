@@ -2,7 +2,7 @@
 
 This tutorial describes how to build a Bonita Living Application repository from the command line using BCD.
 
-NOTE: A Living Application repository (or *Living App repository*) contains the artifacts developed in Bonita Studio and the UI Designer. Its content is further described in https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/workspaces-and-repositories[Bonita's Workspaces and repositories documentation] page.
+NOTE: A Living Application repository (or *Living App repository*) contains the artifacts developed in Bonita Studio and the UI Designer. Its content is further described in xref:{bonitaDocVersion}@bonita::workspaces-and-repositories.adoc[Bonita's Workspaces and repositories documentation] page.
 
 
 The repository build process allows to generate Bonita deployable artifacts (for instance process `.bar` files, UI Designer pages `.zip` files, REST API extensions `.zip` files).
@@ -11,7 +11,7 @@ The repository build process allows to generate Bonita deployable artifacts (for
 
 === 1. Prepare the repository
 
-A Living App repository can be created using Bonita Studio and it can be https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/workspaces-and-repositories#toc5[shared with Git or SVN].
+A Living App repository can be created using Bonita Studio and it can be xref:{bonitaDocVersion}@bonita::workspaces-and-repositories.adoc#_use_a_shared_project[shared with Git or SVN].
 
 So first ensure you have your Living App repository available on your filesystem. +
 For this tutorial, we will use the https://github.com/bonitasoft/bonita-vacation-management-example[Bonita Vacation Management example repository] publicly available on GitHub.
@@ -38,7 +38,7 @@ For instance the `bonita-la-builder-7.11.0-exec.jar` file must be present to bui
 
 ==== bonita-sp-<bonita_version>-maven-repository.zip
 
-Bonita Maven repository zip files if your repository contains https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/api-extensions[REST API extensions]. The version of the Maven repository zip must correspond to the `bonita.version` property defined in your REST API extension's `pom.xml`.
+Bonita Maven repository zip files if your repository contains xref:{bonitaDocVersion}@bonita::api-extensions.adoc[REST API extensions]. The version of the Maven repository zip must correspond to the `bonita.version` property defined in your REST API extension's `pom.xml`.
 
 NOTE: Starting from BCD 3.4.0, you can directly mount your docker host `~/.m2` folder to the `/home/bonita/.m2` folder in BCD controller container using docker volume !
 You will benefit from your already defined maven configuration from `~/.m2/settings.xml` (like mirrors or proxy configuration), and the already cached maven artifacts in your `~/.m2/repository` folder
@@ -78,7 +78,7 @@ If versions do not match, the `bcd livingapp build` command will exit with such 
 [13:46:34.469] ERROR: Aborting! Command <livingapp-build> returned non-zero exit code <1>
 ----
 
-The `bcd livingapp build` command does not allow to migrate your repository to the builder's version. Your repository has to be migrated to the appropriate version using https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/workspaces-and-repositories#toc6[Bonita Studio].
+The `bcd livingapp build` command does not allow to migrate your repository to the builder's version. Your repository has to be migrated to the appropriate version using xref:{bonitaDocVersion}@bonita::workspaces-and-repositories.adoc[Bonita Studio].
 
 == Complete example
 

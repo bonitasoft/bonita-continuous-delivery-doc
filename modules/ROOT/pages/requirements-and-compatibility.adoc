@@ -78,6 +78,5 @@ WARNING: If a Bonita release is not listed in the previous table, then it is not
 == Databases supported
 
 The databases supported with BCD are: PostgreSQL, MySQL and Oracle. +
-As BCD manages Bonita in the Tomcat Bundle and there is a https://documentation.bonitasoft.com/bonita/${bonitaDocVersion}/database-configuration#toc5[known issue between Bitronix and the Microsoft SQL Server], SQL Server is not supported. +
 By default, BCD provisions a database Docker container while deploying your Bonita stack. +
 But alternatively, BCD also lets you xref:deploy-with-existing-database.adoc[connect your Bonita stack with an existing database server (on-premise or in the cloud)].

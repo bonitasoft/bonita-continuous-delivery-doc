@@ -25,7 +25,7 @@
 
 == What's new in 3.4.2
 
-Bonita versioning changed but BCD still refers to semantic versions, see xref:{bonitaDocVersion}@bonita::product-versioning.adoc#_technical_id[versions matrix] to see what technical version you need to use for a given bonita version (i.e. 20212.1 \=> 7.12.1)
+Bonita versioning changed but BCD still refers to semantic versions, see xref:{bonitaDocVersion}@bonita::product-versioning.adoc#_technical_id[versions matrix] to see what technical version you need to use for a given bonita version (i.e. 2021.1 \=> 7.12.1)
 
 === Breaking changes
 

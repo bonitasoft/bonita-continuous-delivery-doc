@@ -1,5 +1,28 @@
 = Release notes
 
+== What's new in 3.4.3
+
+- Full support of the Bonita 2021.x versions
+
+=== Breaking changes
+
+- Only the two last BCD Controller images are now available on quay.io, older images will be removed.
+
+=== Technology upgrade
+
+- boto3 => 1.17.30
+- cryptography => 3.4.6
+- Jinja2 => 2.11.3
+- urllib3 => 1.26.4
+
+- sphinx => 3.5.2
+- sphinx-click => 2.6.0
+
+=== Bug fixes
+
+- Support of the new Bonita versioning pattern.
+- Regression in stack command about IPV4 information gathering
+
 == What's new in 3.4.2
 
 Bonita versioning changed but BCD still refers to semantic versions, see xref:{bonitaDocVersion}@bonita::product-versioning.adoc#_technical_id[versions matrix] to see what technical version you need to use for a given bonita version (i.e. 20212.1 \=> 7.12.1)

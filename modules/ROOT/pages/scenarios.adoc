@@ -323,41 +323,50 @@ NOTE: These information are provided by Bonitasoft when you purchase the BCD add
 
 
 |===
-| Name | Description | Sample
+| Name | Mandatory | Description | Sample
 
 | lic_ws_login
+| Y
 | Login to Bonitasoft license webservice.
 | acme
 
 | lic_ws_password
+| Y
 | Password to Bonitasoft license webservice.
 | Secr3t
 
 | lic_sub_login
+| Y
 | Subscription Login provided by Bonitasoft. It has an email address format.
 | john.doe@acme.com
 
 | lic_sub_password
+| Y
 | Subscription Password provided by Bonitasoft.
 | SomePassword
 
 | lic_sub_id
+| Y
 | Subscription ID provided by Bonitasoft. It's a string of 15 characters.
 | a0bA0000001B2Cd
 
 | lic_type
+| Y
 | Type of license in [`production`\|`qualification`\|`trial`].
 | qualification
 
 | lic_name
+| Y
 | Full name of the licensee. This field can only contain alphanumeric characters, dashes, underscores and spaces.
 | John Doe
 
 | lic_company
+| Y
 | Company name.
 | ACME Inc
 
 | lic_email
+| Y
 | Email address where the license will be sent.
 | john.doe@acme.com
 |===

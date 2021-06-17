@@ -11,10 +11,10 @@ If you have managing your stacks with BCD, we recommend using the following tool
 
 [cols="1,1"]
 |===
-|Ansible, Configuration management
-|Terraform, infrastructure automation
-|boto3, to create, configure, and manage AWS services
-|Azure SDK for Python, to create, configure, and manage Azure services
+|Ansible| Configuration management
+|Terraform| Infrastructure automation
+|boto3| To create, configure, and manage AWS services
+|Azure SDK for Python| To create, configure, and manage Azure services
 |===
 
 == What's new in 3.4.3

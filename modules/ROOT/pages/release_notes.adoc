@@ -5,6 +5,8 @@ Stack and license commands are deprecated.  These commands used for infrastructu
 
 We've decided to solely focus on the continuous integration to help you where we can the most impact: Build and deploying easily your automation projects.
 
+BCD Stack and license commands will be removed in the up-coming BCD versions.
+
 
 == What's new in 3.4.3
 

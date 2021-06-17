@@ -1,5 +1,11 @@
 = How to deploy with a static inventory
 
+[WARNING]
+====
+
+The provisioning part of BCD is deprecated and will be removed of BCD. We do not recommend using it.
+====
+
 BCD lets you deploy a Bonita stack on your existing hosts using a *static inventory*. +
 On this page, you will find detailed information about the usage of BCD with your existing hosts. We will also provide an example creating virtual machines with https://www.vagrantup.com/[Vagrant] and deploying a Bonita stack with BCD.
 

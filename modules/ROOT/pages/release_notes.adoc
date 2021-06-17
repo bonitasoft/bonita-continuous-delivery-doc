@@ -1,5 +1,11 @@
 = Release notes
 
+== What's new in 3.4.4
+Stack and license commands are deprecated.  These commands used for infrastructure provision were rarely adapted to the diversity of stacks.
+
+We've decided to solely focus on the continuous integration to help you where we can the most impact: Build and deploying easily your automation projects.
+
+
 == What's new in 3.4.3
 
 - Full support of the Bonita 2021.x versions

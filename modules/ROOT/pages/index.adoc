@@ -10,7 +10,7 @@ It is composed of two parts:
 
 * First, a framework for *Continuous Integration* of Living Applications. +
 BCD lets you build a Living Application repository and deploy the generated artifacts from the command line. Besides, a pre-configured standalone https://jenkins.io/[Jenkins CI] environment is also provided with BCD.
-* Second, a solution for *Provisioning* of Bonita stacks on cloud or on-premises hosts. +
+* Second, a solution for *Provisioning* of Bonita stacks on cloud or on-premises hosts. This part is deprecated in version 3.4.4 +
 BCD lets you deploy Bonita on existing servers using https://www.docker.com/what-container[Docker] containers. Furthermore, when used with the https://aws.amazon.com/[Amazon Web Services (AWS) cloud platform], BCD enables you to create and delete https://aws.amazon.com/ec2/[AWS EC2 instances] automatically.
 
 image::images/bcd_capabilities.png[Bonita Continuous Delivery Capabilities]
@@ -41,7 +41,7 @@ xref:aws_prerequisites.adoc[[.card-title]#BCD Howtos# [.card-body]#pass:q[Check 
 This add-on provides a `bcd` command-line interface (BCD CLI) which enables to:
 
 * Build and deploy Bonita Living Applications
-* Deploy a full Bonita stack - A *Bonita stack* is formed by a database service, Bonita Docker containers running Tomcat application servers and a HAProxy load balancer when deploying a multi-node Bonita cluster.
+* Deploy a full Bonita stack (deprecated) - A *Bonita stack* is formed by a database service, Bonita Docker containers running Tomcat application servers and a HAProxy load balancer when deploying a multi-node Bonita cluster.
 
 The BCD CLI is provided within a ready-to-use environment called *BCD Controller*. This environment is packaged as a Docker image. +
 Then a controller container will have to be started interactively on your control host from which `bcd` commands will be issued.

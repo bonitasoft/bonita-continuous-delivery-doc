@@ -7,6 +7,15 @@ We've decided to solely focus on the continuous integration to help you where we
 
 BCD Stack and license commands will be removed in the up-coming BCD versions.
 
+If you have managing your stacks with BCD, we recommend using the following tools to replace BCD for your provisionning:
+
+[cols="1,1"]
+|===
+|Ansible, Configuration management
+|Terraform, infrastructure automation
+|boto3, to create, configure, and manage AWS services
+|Azure SDK for Python, to create, configure, and manage Azure services
+|===
 
 == What's new in 3.4.3
 

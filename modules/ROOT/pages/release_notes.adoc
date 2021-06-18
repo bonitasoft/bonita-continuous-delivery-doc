@@ -19,7 +19,7 @@ If you are managing your stacks with BCD, we recommend using the following tools
 
 [TIP]
 ====
-If you don't feel like managing infrastructure at all anymore, you may also want to have a look at our hosted offer (which include a ready to use CI solution) : link:https://www.bonitasoft.com/bonita-cloud[image:https://www.bonitasoft.com/system/files/Cloud/bonita_cloud_200.png["Bonita Cloud",30,30] Bonita Cloud]
+If you don't feel like managing infrastructure at all anymore, you may also want to have a look at our hosted offer (which include a ready to use CI solution) : link:https://www.bonitasoft.com/bonita-cloud[image:images/bonita_cloud_200.png["Bonita Cloud",30,30] Bonita Cloud]
 ====
 
 == What's new in 3.4.3

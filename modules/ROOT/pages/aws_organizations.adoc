@@ -2,9 +2,8 @@
 
 [IMPORTANT]
 ====
-The provisioning part of BCD is now **DEPRECATED** and will be **REMOVED** ! We do not recommend using it.
+The provisioning part of BCD is now **deprecated** and will be **removed** ! We do not recommend using it.
 ====
-
 
 https://aws.amazon.com/organizations[AWS Organizations] offers policy-based management for multiple AWS accounts.
 If you use an Organization with IAM users (for SSO, see xref:aws_sso.adoc[Single Sign-On to AWS Using G Suite]), you will have to assume a specific role on the target account. To do so you will still put your `aws_access_key_id` and `aws_secret_access_key` into the `.boto` or `.aws/credentials` file.

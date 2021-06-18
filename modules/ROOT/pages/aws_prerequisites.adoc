@@ -2,7 +2,7 @@
 
 [IMPORTANT]
 ====
-The provisioning part of BCD is now **DEPRECATED** and will be **REMOVED** ! We do not recommend using it.
+The provisioning part of BCD is now **deprecated** and will be **removed** ! We do not recommend using it.
 ====
 
 

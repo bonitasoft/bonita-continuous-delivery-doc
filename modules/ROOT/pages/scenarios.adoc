@@ -2,7 +2,7 @@
 
 [IMPORTANT]
 ====
-The provisioning part of BCD is now **DEPRECATED** and will be **REMOVED** ! We do not recommend using it.
+The provisioning part of BCD is now **deprecated** and will be **removed** ! We do not recommend using it.
 ====
 
 Scenarios enable you to define your infrastructure and Bonita stack. A scenario is a YAML Ansible variable file that BCD injects to the underlying Ansible playbooks. Its syntax basically follows http://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html[Ansible's YAML syntax].

@@ -1,9 +1,8 @@
 = How to configure Amazon Web Services (AWS) for BCD
 
-[WARNING]
+[IMPORTANT]
 ====
-
-The provisioning part of BCD is deprecated and will be removed of BCD. We do not recommend using it.
+The provisioning part of BCD is now **DEPRECATED** and will be **REMOVED** ! We do not recommend using it.
 ====
 
 

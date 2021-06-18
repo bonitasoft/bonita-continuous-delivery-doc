@@ -93,10 +93,9 @@ You may also start a BCD Controller container using https://docs.docker.com/comp
 
 === Additional steps for Provisioning
 
-[WARNING]
+[IMPORTANT]
 ====
-
-The provisioning part of BCD is deprecated and will be removed of BCD. We do not recommend using it.
+The provisioning part of BCD is now **DEPRECATED** and will be **REMOVED** ! We do not recommend using it.
 ====
 
 [NOTE]

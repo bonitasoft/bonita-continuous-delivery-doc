@@ -1,21 +1,26 @@
 = Release notes
 
 == What's new in 3.4.4
-Stack and license commands are deprecated.  These commands used for infrastructure provision were rarely adapted to the diversity of stacks.
 
-We've decided to solely focus on the continuous integration to help you where we can the most impact: Build and deploying easily your automation projects.
+Stack and license commands are now **deprecated**.  These commands used for infrastructure provisioning rarely suited the diversity of our clients infrastructure stacks and specific hosting constraints.
 
-BCD Stack and license commands will be removed in the up-coming BCD versions.
+We've decided to solely focus on the continuous integration to help you where we can make the most impact: Building and deploying easily your automation projects !
 
-If you have managing your stacks with BCD, we recommend using the following tools to replace BCD for your provisionning:
+BCD Stack and license commands will soon be removed in the up-coming BCD versions.
 
-[cols="1,1"]
+If you are managing your stacks with BCD, we recommend using the following tools to replace BCD stack feature for your provisioning:
+
 |===
-|Ansible| Configuration management
-|Terraform| Infrastructure automation
-|boto3| To create, configure, and manage AWS services
+|Ansible             | Configuration management
+|Terraform           | Infrastructure automation
+|boto3, aws cli      | Manage AWS credentials and services
 |Azure SDK for Python| To create, configure, and manage Azure services
 |===
+
+[TIP]
+====
+If you don't feel like managing infrastructure at all anymore, you may also want to have a look on our Cloud hosted offer (which include a ready to use CI solution) : https://www.bonitasoft.com/bonita-cloud image:https://www.bonitasoft.com/system/files/Cloud/bonita_cloud_200.png["Bonita Cloud",30,30]
+====
 
 == What's new in 3.4.3
 

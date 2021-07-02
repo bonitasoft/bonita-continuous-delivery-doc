@@ -53,7 +53,7 @@ WARNING: For linux user make sure your `user id` and `group id` is `1000` or ref
 
 === Starting a BCD controller with `docker run`
 
-The first method to start a BCD Controller Docker container on the control host is to use the `docker run` command with BCD dependencies already present in your host, see link:getting_started.adoc#_common_installation_steps_[Common installation steps].
+The first method to start a BCD Controller Docker container on the control host is to use the `docker run` command with BCD dependencies already present in your host, see xref:getting_started.adoc#common_installation_steps[Common installation steps].
 
 *Example*:
 

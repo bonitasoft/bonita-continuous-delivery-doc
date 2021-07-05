@@ -1,5 +1,10 @@
 = How to configure AWS single sign-on
 
+[IMPORTANT]
+====
+The provisioning part of BCD is now **deprecated** and will be **removed** ! We do not recommend using it.
+====
+
 AWS allows to integrate https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml_3rd-party.html[numerous Third-Party SAML Solution Providers] to implement single sign-on.
 
 If you implement this kind of authentication, when you start the BCD Controller container it will no longer be necessary to mount the `boto` file.

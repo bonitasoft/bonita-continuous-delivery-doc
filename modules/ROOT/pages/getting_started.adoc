@@ -93,6 +93,11 @@ You may also start a BCD Controller container using https://docs.docker.com/comp
 
 === Additional steps for Provisioning
 
+[IMPORTANT]
+====
+The provisioning part of BCD is now **deprecated** and will be **removed** ! We do not recommend using it.
+====
+
 [NOTE]
 ====
 The following installation steps are required when using BCD for *Provisioning Bonita stacks*. They are not required for Living Application Management.

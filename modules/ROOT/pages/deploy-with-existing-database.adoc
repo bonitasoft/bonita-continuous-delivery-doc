@@ -1,5 +1,10 @@
 = How to deploy with an existing database
 
+[IMPORTANT]
+====
+The provisioning part of BCD is now **deprecated** and will be **removed** ! We do not recommend using it.
+====
+
 By default, BCD provisions a database Docker container while deploying your Bonita stack. +
 Alternatively, BCD also lets you connect your Bonita stack with an existing database server. The database vendor and version has to be supported by BCD though.
 

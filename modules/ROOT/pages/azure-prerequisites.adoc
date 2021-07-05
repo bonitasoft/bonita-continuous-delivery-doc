@@ -1,4 +1,10 @@
 = How to configure Microsoft Azure for BCD
+
+[IMPORTANT]
+====
+The provisioning part of BCD is now **deprecated** and will be **removed** ! We do not recommend using it.
+====
+
 :experimental:
 
 This tutorial describes how to configure Microsoft Azure cloud computing service for BCD. +

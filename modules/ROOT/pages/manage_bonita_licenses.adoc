@@ -1,5 +1,10 @@
 = How to manage Bonita licenses
 
+[IMPORTANT]
+====
+The provisioning part of BCD is now **deprecated** and will be **removed** ! We do not recommend using it.
+====
+
 This tutorial describes how to manage Bonita licenses from the command line using BCD. +
 This feature lets you generate licenses programmatically for your Bonita Studio or Bonita Server.
 

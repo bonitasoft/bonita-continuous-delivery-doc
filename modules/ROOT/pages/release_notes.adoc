@@ -1,5 +1,15 @@
 = Release notes
 
+== What's new in 3.4.5
+
+=== Features
+
+* chore(deps): upgrade bonita-license to 1.4.2 for better license generation handling.
+
+=== Fix
+
+* fix(jdk11): fix jdk build failing because of gpg keys
+
 == What's new in 3.4.4
 
 Stack and license commands are now **deprecated**.  These commands used for infrastructure provisioning rarely suited the diversity of our clients infrastructure stacks and specific hosting constraints.

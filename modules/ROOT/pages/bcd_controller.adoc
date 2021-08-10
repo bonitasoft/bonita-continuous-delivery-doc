@@ -1,6 +1,6 @@
 = BCD controller Docker image
 
-The BCD controller image provides a ready-to-use environment to launch Bonita Continuous Delivery CLI and Ansible playbooks.
+The BCD controller image provides a ready-to-use environment to launch Bonita Continuous Delivery CLI.
 
 == Installation
 
@@ -24,27 +24,9 @@ To enter the BCD controller environment, a Docker container has to be started on
 
 Besides the following files have to be bind mounted from the control host to make them available to the BCD controller container:
 
-* *`/host/path/to/bonita-continuous-delivery_<version>`* (mounted as `/home/bonita/bonita-continuous-delivery`) - This directory provides BCD Ansible playbooks and is known as the `BCD_HOME` directory.
+* *`/host/path/to/bonita-continuous-delivery_<version>`* (mounted as `/home/bonita/bonita-continuous-delivery`) - This is known as the `BCD_HOME` directory.
 * {blank}
 +
-This file is required for *Provisioning*. It is not required for Living App management.
-+
-*`ssh_private_key`* (mounted as `/home/bonita/.ssh/ssh_private_key`) - The `ssh_private_key` file is the SSH private key used to connect to your target machines. For AWS, this is the private part of your http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html[EC2 key pair]. This file should only be accessible from your user (`chmod 600 ~/.ssh/ssh_private_key`).
-* {blank}
-+
-AWS credentials are required for *Provisioning on AWS*. It is not required for Living App management.
-+
-*`.boto`* (mounted as `/home/bonita/.boto`) - The https://boto.readthedocs.io/en/latest/boto_config_tut.html[`.boto`] file contains AWS credentials used to make programmatic calls to AWS. Indeed dynamic Amazon EC2 inventory management for Ansible runs on top of https://aws.amazon.com/sdk-for-python/[Boto]. The content of a `.boto` file is as follows:
-+
-[source,ini]
-----
-  [Credentials]
-  aws_access_key_id = <YOUR_AWS_ACCESS_KEY>
-  aws_secret_access_key = <YOUR_AWS_SECRET_ACCESS_KEY>
-----
-+
-NOTE: However AWS credentials can be provided in other ways, for instance with xref:aws_sso.adoc[AWS single sign-on].
-
 
 Once the required files are prepared, the BCD controller container can be started in different ways described hereafter.
 

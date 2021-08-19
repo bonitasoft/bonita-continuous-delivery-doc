@@ -5,7 +5,7 @@ This tutorial describes how to build a Bonita Living Application repository from
 NOTE: A Living Application repository (or *Living App repository*) contains the artifacts developed in Bonita Studio and the UI Designer. Its content is further described in xref:{bonitaDocVersion}@bonita::workspaces-and-repositories.adoc[Bonita's Workspaces and repositories documentation] page.
 
 
-The repository build process allows to generate Bonita deployable artifacts (for instance process `.bar` files, UI Designer pages `.zip` files, REST API extensions `.zip` files).
+The repository build process allows generating Bonita deployable artifacts (for instance process `.bar` files, UI Designer pages `.zip` files, REST API extensions `.zip` files).
 
 == Step-by-step tutorial
 

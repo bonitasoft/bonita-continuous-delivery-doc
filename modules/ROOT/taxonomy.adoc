@@ -7,11 +7,6 @@
  ** xref:bcd_cli.adoc[Command-line interface]
  ** xref:scenarios.adoc[Scenario file reference]
 * Howtos
- ** Manage Bonita stacks
-  *** Customize the Bonita container
-   **** xref:custom_init.adoc[Using initialization scripts]
-   **** xref:how_to_configure_rest_api_authorization.adoc[Configuring REST API authorization]
-   **** xref:how_to_enable_remote_monitoring_jmx.adoc[Enabling remote monitoring with JMX]
  ** Manage Bonita Living Applications
   *** xref:livingapp_build.adoc[Build a Living App repository]
   *** xref:livingapp_manage_configuration.adoc[Manage Living App configuration]

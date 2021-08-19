@@ -6,15 +6,12 @@ image::images/bcd_logo.png[Bonita Continuous Delivery Add-on Logo]
 
 The Bonita Continuous Delivery (BCD) add-on provides a solution to use _Continuous Delivery_ practice for your Bonita Living Application development and deployment.
 
-BCD lets you build a Living Application repository and deploy the generated artifacts from the command line. Besides, a pre-configured standalone https://jenkins.io/[Jenkins CI] environment is also provided with BCD.
+BCD lets you build a Living Application repository and deploy the generated artifacts from the command line. Besides, a pre-configured standalone https://jenkins.io/[Jenkins CI] environment is also provided as an *integration sample* with BCD.
 
 image::images/bcd_capabilities.png[Bonita Continuous Delivery Capabilities]
 
-
-
 [.card-section]
 == Highlight
-
 
 [.card.card-index]
 --
@@ -24,11 +21,6 @@ xref:release_notes.adoc[[.card-title]#What's new in BCD?# [.card-body]#pass:q[Fi
 [.card.card-index]
 --
 xref:getting_started.adoc[[.card-title]#Getting started# [.card-body]#pass:q[Check out the tutorials for practical guides about using Bonita Continuous Delivery add-on.]#]
---
-
-[.card.card-index]
---
-xref:aws_prerequisites.adoc[[.card-title]#BCD Howtos# [.card-body]#pass:q[Check out the tutorials for practical guides about using Bonita Continuous Delivery add-on.]#]
 --
 
 == Basic concepts

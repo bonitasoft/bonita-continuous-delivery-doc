@@ -16,7 +16,7 @@ Password:
 $ docker pull quay.io/bonitasoft/bcd-controller:<version>
 ----
 
-The username corresponds to `bcd_registry_user` and the password corresponds to `bcd_registry_password` described in the xref:scenarios.adoc[Scenario file reference]. Both have been provided by your sales representative.
+The username and the password should have been provided by your sales representative.
 
 == Usage
 
@@ -43,9 +43,7 @@ The first method to start a BCD Controller Docker container on the control host 
 ----
 $ docker run --rm -t -i --name bcd-controller \
     -v bcd-dependencies-<bonita_version>:/home/bonita/bonita-continuous-delivery/dependencies/<bonita_version>  \
-    -v <host_path_to_.boto>:/home/bonita/.boto \
     -v <host_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
-    -v <host_path_to_ssh_private_key>:/home/bonita/.ssh/<ssh_private_key> \
     quay.io/bonitasoft/bcd-controller /bin/bash
 ----
 
@@ -99,7 +97,7 @@ If this is not so, then read the next section to know how to fix file ownership 
 [#user_id_not_1000]
 === Running BCD controller with user ID different from 1000
 
-Here is one way to remap UID/GID of the controller's `bonita` user with your host user. It consists of extending the `bonitasoft/bcd-controller` Docker image by using the following `Dockerfile`:
+Here is one way to remap UID/GID of the controller's `bonita` user with your host user. It consists of extending the `quay.io/bonitasoft/bcd-controller` Docker image by using the following `Dockerfile`:
 
 [source,dockerfile]
 ----
@@ -121,9 +119,9 @@ Build the _extended_ BCD controller image as follows:
 
 [source,bash]
 ----
-$ docker build -t bonitasoft/bcd-controller:custom-uid \
+$ docker build -t my-company/bcd-controller:custom-uid \
     --build-arg BONITA_UID=$(id -u) --build-arg BONITA_GID=$(id -g) .
 ----
 
-This command will produce a `bonitasoft/bcd-controller:custom-uid` Docker image which can be used to run your controller container. +
+This command will produce a `my-company/bcd-controller:custom-uid` Docker image which can be used to run your controller container. +
 The `bonita` user will have the same UID/GID as your host user, hence solving file permission issues while sharing volumes from your host to the container.

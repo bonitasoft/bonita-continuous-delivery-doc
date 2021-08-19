@@ -107,11 +107,11 @@ $ docker login quay.io
 Username: bonitasoft+john_doe_at_acme_com
 Password:
 Login Succeeded
-$ docker pull quay.io/bonitasoft/bcd-controller:3.4.2
+$ docker pull quay.io/bonitasoft/bcd-controller:3.5.0
 [...]
-Status: Downloaded newer image for quay.io/bonitasoft/bcd-controller:3.4.2
+Status: Downloaded newer image for quay.io/bonitasoft/bcd-controller:3.5.0
 
-$ cd $HOME/bonita-continuous-delivery_3.4.2/dependencies
+$ cd $HOME/bonita-continuous-delivery_3.5.0/dependencies
 
 $ docker run --rm -v bcd-dependencies-7.12.2:/dependencies quay.io/bonitasoft/bcd-dependencies:7.12.2
 [...]

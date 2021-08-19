@@ -2,10 +2,10 @@
 
 [IMPORTANT]
 ====
-The provisioning part of BCD is now **deprecated** and will be **removed** ! We do not recommend using it.
+The provisioning part of BCD is now **removed** ! Please clean up your scenario files.
 ====
 
-Scenarios enable you to define your infrastructure and Bonita stack. A scenario is a YAML Ansible variable file that BCD injects to the underlying Ansible playbooks. Its syntax basically follows http://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html[Ansible's YAML syntax].
+Scenarios enable you to define paramter used for deployment on a Bonita instance. A scenario is a YAML Ansible variable file that BCD injects to the underlying Ansible playbooks. Its syntax basically follows http://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html[Ansible's YAML syntax].
 
 The variables described in a scenario have precedence over those defined in the playbooks or the group vars. It is still possible to overload scenario variables with `--extra-vars` declaration in the `bcd` command line. For instance overloading `bonita_version` can be interesting if you want to test multiple versions of Bonita without duplicating scenario files.
 

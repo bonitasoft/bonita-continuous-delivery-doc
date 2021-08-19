@@ -93,7 +93,7 @@ Click on *Add Docker template* to add a Docker template in the Docker cloud and 
 * *Labels*: `bcd`
 * *Enabled*: `[checked]`
 * *Name*: `bcd`
-* *Docker Image*: `quay.io/bonitasoft/bcd-controller:3.4.1` (where 3.0.1 is the version of BCD to use)
+* *Docker Image*: `quay.io/bonitasoft/bcd-controller:3.5.0` (where 3.0.1 is the version of BCD to use)
 * *Volumes*:
 +
 ----

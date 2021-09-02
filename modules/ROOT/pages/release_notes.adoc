@@ -4,7 +4,7 @@
 
 === Breaking changes
 
-* `stack` and `license` commands are now removed from the CLI.
+* As announced in version 3.4.4, `stack` and `license` commands are now removed from the CLI.
 
 === Technology upgrade
 

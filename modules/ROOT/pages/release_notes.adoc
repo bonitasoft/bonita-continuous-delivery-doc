@@ -121,4 +121,3 @@ By specifying a BCD Controller version in your configuration, you ensure consist
 with the zip distribution.
 
 From now (and for previous versions), make sure to always specify the BCD version when using `BCD Controller` docker image.
-

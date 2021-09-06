@@ -1,9 +1,9 @@
 name: bcd
 title: Bonita Continuous Delivery
-version: 3.4
+version: 3.5
 asciidoc:
   attributes:
-    bcdVersion: '3.4.2' # latest available maintenance version
+    bcdVersion: '3.5.0' # latest available maintenance version
     bonitaDocVersion: '2021.1'
     # General site configuration
     page-editable: true

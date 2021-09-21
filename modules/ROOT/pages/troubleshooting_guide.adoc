@@ -156,7 +156,7 @@ java.io.IOException: Maven build failed.
 ----
 
 The REST API Extension involved was created with a lower version of the Bontia product.  
-There are java librarires (`.jar` files) which are not compatible with java 11 used with latest version of BCD (specifically with latest `bonita-la-builder-*-exec.jar` AKA LA Builder).  
+There are java librarires (`.jar` files) which are not compatible with java 11 used with latest version of BCD.  
 
 The Maven's `pom.xml` file needs to be modified. The versions of the dependency and plugins listed below must be updated:
 

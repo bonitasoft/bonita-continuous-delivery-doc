@@ -99,7 +99,7 @@ scp -i ~/.ssh/my_key.pem ubuntu@54.191.90.85:/tmp/logs /tmp/
 ----
 
 
-== A REST API Extension compilation generate errors
+== A REST API Extension compilation generates errors
 
 The `bcd ... livingapp build ...` failed to generate the REST API Extensions with these error messages below: 
 [source,bash]
@@ -165,7 +165,11 @@ The Maven's `pom.xml` file needs to be modified. The versions of the dependency 
 * plugin `groovy-eclipse-compiler`
 * plugin `groovy-eclipse-batch`
 
-In order to find the versions to use, start your Studio current version, and create a new dummy REST API extension: report the versions found in the new `pom.xml` file created into the REST API extensions ` pom.xml` files which failed to be compiled.  
+In order to find the versions to use, apply the procédure below:
+
+* Start the Studio
+* Create a new dummy REST API extension: the new `pom.xml` file created contains the versions to used
+* Update the `pom.xml` file of the REST API Extension which failed to be compiled.  
 
 
 == Debugging Ansible Facts

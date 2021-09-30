@@ -24,7 +24,7 @@ To enter the BCD controller environment, a Docker container has to be started on
 
 Besides the following files have to be bind mounted from the control host to make them available to the BCD controller container:
 
-* *`/host/path/to/bonita-continuous-delivery_<version>`* (mounted as `/home/bonita/bonita-continuous-delivery`) - This directory provides BCD Ansible playbooks and is known as the `BCD_HOME` directory.
+* *`/host/path/to/bonita-continuous-delivery_{bcdVersion}`* (mounted as `/home/bonita/bonita-continuous-delivery`) - This directory provides BCD Ansible playbooks and is known as the `BCD_HOME` directory.
 * {blank}
 +
 This file is required for *Provisioning*. It is not required for Living App management.

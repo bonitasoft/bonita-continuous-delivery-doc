@@ -48,15 +48,15 @@ $ cp -r bonita-continuous-delivery_2.1.0/terraform/your_stack_name bonita-contin
 
 ==== BCD controller
 
-As is described in the "Installation guide" from the xref:getting_started.adoc[Getting started] you will need to load the last version of `bcd-controller_<version>.tar.zip` Docker image. +
+As is described in the "Installation guide" from the xref:getting_started.adoc[Getting started] you will need to load the last version of `bcd-controller_{bcdVersion}.tar.zip` Docker image. +
 You can also directly use the secured Docker registry to retrieve the latest image.
 
-[source,bash,subs="+macros"]
+[source,bash,subs="+macros,attributes"]
 ----
 $ docker login quay.io
 Username: bonitasoft+john_doe_at_acme_com
 Password:
-$ docker pull quay.io/bonitasoft/bcd-controller
+$ docker pull quay.io/bonitasoft/bcd-controller:{bcdVersion}
 ----
 
 The username corresponds to `bcd_registry_user` and the password corresponds to `bcd_registry_password` described in the xref:scenarios.adoc[Scenario file reference]. Both have been provided by your sales representative.

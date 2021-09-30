@@ -1,6 +1,7 @@
 name: bcd
 title: Bonita Continuous Delivery
 version: 3.5
+prerelease: Beta
 asciidoc:
   attributes:
     bcdVersion: '3.5.0' # latest available maintenance version

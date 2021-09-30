@@ -103,7 +103,7 @@ Each artifact to deploy must be defined with the following attributes:
   ],
   "restAPIExtensions": [
     {
-      "file": "extensions/tahitiRestApiExtension-1.0.0.zip",
+      "file": "extensions/tahitiRestApiExtension-1.0.0.zip"
     }
   ],
   "pages": [

@@ -1,6 +1,6 @@
 = BCD controller Docker image
 
-The BCD controller image provides a ready-to-use environment to launch Bonita Continuous Delivery CLI and Ansible playbooks.
+The BCD controller image provides a ready-to-use environment to launch Bonita Continuous Delivery CLI.
 
 == Installation
 
@@ -16,7 +16,7 @@ Password:
 $ docker pull quay.io/bonitasoft/bcd-controller:<version>
 ----
 
-The username corresponds to `bcd_registry_user` and the password corresponds to `bcd_registry_password` described in the xref:scenarios.adoc[Scenario file reference]. Both have been provided by your sales representative.
+The username and the password should have been provided by your sales representative.
 
 == Usage
 
@@ -24,27 +24,9 @@ To enter the BCD controller environment, a Docker container has to be started on
 
 Besides the following files have to be bind mounted from the control host to make them available to the BCD controller container:
 
-* *`/host/path/to/bonita-continuous-delivery_<version>`* (mounted as `/home/bonita/bonita-continuous-delivery`) - This directory provides BCD Ansible playbooks and is known as the `BCD_HOME` directory.
+* *`/host/path/to/bonita-continuous-delivery_<version>`* (mounted as `/home/bonita/bonita-continuous-delivery`) - This is known as the `BCD_HOME` directory.
 * {blank}
 +
-This file is required for *Provisioning*. It is not required for Living App management.
-+
-*`ssh_private_key`* (mounted as `/home/bonita/.ssh/ssh_private_key`) - The `ssh_private_key` file is the SSH private key used to connect to your target machines. For AWS, this is the private part of your http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html[EC2 key pair]. This file should only be accessible from your user (`chmod 600 ~/.ssh/ssh_private_key`).
-* {blank}
-+
-AWS credentials are required for *Provisioning on AWS*. It is not required for Living App management.
-+
-*`.boto`* (mounted as `/home/bonita/.boto`) - The https://boto.readthedocs.io/en/latest/boto_config_tut.html[`.boto`] file contains AWS credentials used to make programmatic calls to AWS. Indeed dynamic Amazon EC2 inventory management for Ansible runs on top of https://aws.amazon.com/sdk-for-python/[Boto]. The content of a `.boto` file is as follows:
-+
-[source,ini]
-----
-  [Credentials]
-  aws_access_key_id = <YOUR_AWS_ACCESS_KEY>
-  aws_secret_access_key = <YOUR_AWS_SECRET_ACCESS_KEY>
-----
-+
-NOTE: However AWS credentials can be provided in other ways, for instance with xref:aws_sso.adoc[AWS single sign-on].
-
 
 Once the required files are prepared, the BCD controller container can be started in different ways described hereafter.
 
@@ -61,9 +43,7 @@ The first method to start a BCD Controller Docker container on the control host 
 ----
 $ docker run --rm -t -i --name bcd-controller \
     -v bcd-dependencies-<bonita_version>:/home/bonita/bonita-continuous-delivery/dependencies/<bonita_version>  \
-    -v <host_path_to_.boto>:/home/bonita/.boto \
     -v <host_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
-    -v <host_path_to_ssh_private_key>:/home/bonita/.ssh/<ssh_private_key> \
     quay.io/bonitasoft/bcd-controller /bin/bash
 ----
 
@@ -117,7 +97,7 @@ If this is not so, then read the next section to know how to fix file ownership 
 [#user_id_not_1000]
 === Running BCD controller with user ID different from 1000
 
-Here is one way to remap UID/GID of the controller's `bonita` user with your host user. It consists of extending the `bonitasoft/bcd-controller` Docker image by using the following `Dockerfile`:
+Here is one way to remap UID/GID of the controller's `bonita` user with your host user. It consists of extending the `quay.io/bonitasoft/bcd-controller` Docker image by using the following `Dockerfile`:
 
 [source,dockerfile]
 ----
@@ -139,9 +119,9 @@ Build the _extended_ BCD controller image as follows:
 
 [source,bash]
 ----
-$ docker build -t bonitasoft/bcd-controller:custom-uid \
+$ docker build -t my-company/bcd-controller:custom-uid \
     --build-arg BONITA_UID=$(id -u) --build-arg BONITA_GID=$(id -g) .
 ----
 
-This command will produce a `bonitasoft/bcd-controller:custom-uid` Docker image which can be used to run your controller container. +
+This command will produce a `my-company/bcd-controller:custom-uid` Docker image which can be used to run your controller container. +
 The `bonita` user will have the same UID/GID as your host user, hence solving file permission issues while sharing volumes from your host to the container.

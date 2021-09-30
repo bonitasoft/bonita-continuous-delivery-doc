@@ -20,7 +20,50 @@ So if you want to be able to manage an existing stack (i.e. a stack already depl
 
 == How it works
 
-=== From a 2.1.x towards {bcdVersion}
+=== From a 3.4.5 towards {bcdVersion}
+
+==== Scenarios
+
+Lots of previous parameter are now obsolete because of `stack` command removal. Please refer to the xref:scenarios.adoc[scenarios reference] page to update your scenario files.
+
+==== Terraform
+
+No more terraform data to manage, simply ignore it.
+
+==== BCD controller
+
+As is described in the "Installation guide" from the xref:getting_started.adoc[Getting started] you will need to load the last version of `bcd-controller_<version>.tar.zip` Docker image. +
+You also need to retrieve the latest image from the secured Docker registry.
+
+[source,bash,subs="+macros"]
+----
+$ docker login quay.io
+Username: bonitasoft+john_doe_at_acme_com
+Password:
+$ docker pull quay.io/bonitasoft/bcd-controller:{bcdVersion}
+----
+
+The username and the password should have been provided by your sales representative.
+
+If you chose to persist your docker console history (xref:bcd_controller.adoc[see bcd controller]) and want to keep it, then you should copy your `.bcd_bash_history` file from your old folder to your new `bonita-continuous-delivery_{bcdVersion}/` folder
+
+[source,bash,subs="+macros"]
+----
+$ cp bonita-continuous-delivery_3.4.5/.bcd_bash_history bonita-continuous-delivery_pass:a[{bcdVersion}]/.bcd_bash_history
+----
+
+==== Living Application repositories
+
+Move the directories where you have cloned your repositories.
+
+For example :
+
+[source,bash,subs="+macros"]
+----
+$ cp -r bonita-continuous-delivery_3.4.5/bonita-vacation-management-example bonita-continuous-delivery_pass:a[{bcdVersion}]/bonita-vacation-management-example
+----
+
+=== From a 2.1.x towards 3.4.5
 
 ==== Scenarios
 
@@ -59,7 +102,7 @@ Password:
 $ docker pull quay.io/bonitasoft/bcd-controller
 ----
 
-The username corresponds to `bcd_registry_user` and the password corresponds to `bcd_registry_password` described in the xref:scenarios.adoc[Scenario file reference]. Both have been provided by your sales representative.
+The username and the password should have been provided by your sales representative.
 
 If you chose to persist your docker console history (xref:bcd_controller.adoc[see bcd controller]) and want to keep it, then you should copy your `.bcd_bash_history` file from your old folder to your new `bonita-continuous-delivery_{bcdVersion}/` folder
 

@@ -1,5 +1,16 @@
 = Release notes
 
+== What's new in 3.5.0
+
+=== Breaking changes
+
+* As announced in version 3.4.4, `stack` and `license` commands are now removed from the CLI.
+
+=== Technology upgrade
+
+- java => 11.0.12+7
+- maven => 3.8.2
+
 == What's new in 3.4.5
 
 === Features

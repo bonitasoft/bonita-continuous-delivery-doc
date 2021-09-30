@@ -85,12 +85,12 @@ $ VBoxManage list runningvms
 
 Copy the *vagrant_single.yml.EXAMPLE* to a *scenarios/vagrant_single.yml* file. Edit your scenario as necessary and start a BCD controller.
 
-[source,bash]
+[source,bash,subs="attributes"]
 ----
 $ docker run --rm -ti --hostname bcd-controller --name bcd-controller \
         -v ~/bonita-continuous-delivery_3.4.1:/home/bonita/bonita-continuous-delivery \
         -v ~/.vagrant.d/insecure_private_key:/home/bonita/.vagrant.d/insecure_private_key \
-        quay.io/bonitasoft/bcd-controller /bin/bash
+        quay.io/bonitasoft/bcd-controller:{bcdVersion} /bin/bash
 bonita@bcd-controller:~$ cd bonita-continuous-delivery
 bonita@bcd-controller:~/bonita-continuous-delivery$
 bonita@bcd-controller:~/bonita-continuous-delivery$bcd -s scenarios/vagrant_single.yml stack deploy

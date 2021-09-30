@@ -193,14 +193,14 @@ By default, the path of the log is `/var/log/ansible.log` in your Docker contain
 
 If you want to persist the log, you can add a *_volume_* in when you run `docker run` command like
 
-[source,bash]
+[source,bash,subs="attributes"]
 ----
 $ docker run --rm -t -i --name bcd-controller \
     -v <host_path_to_.boto>:/home/bonita/.boto \
     -v <host_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
     -v <host_path_to_ssh_private_key>:/home/bonita/.ssh/<ssh_private_key> \
     -v <host_path_to_your_ansible_log>:/var/log/ansible.log \
-    quay.io/bonitasoft/bcd-controller /bin/bash
+    quay.io/bonitasoft/bcd-controller:{bcdVersion} /bin/bash
 ----
 
 == Files owned by another user in the workspace (Linux users only)

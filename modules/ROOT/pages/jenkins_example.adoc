@@ -35,7 +35,7 @@ BCD must be installed on the Docker host which acts here as a *control host*. Th
 The Docker host should now have:
 
 * the `bonitasoft/bcd-controller` Docker image loaded
-* the `bonita-continuous-delivery_<version>` directory present
+* the `bonita-continuous-delivery_{bcdVersion}` directory present
 * optionally, the security files for BCD provisioning (SSH key files, AWS credentials)
 
 === Configure Jenkins master
@@ -93,11 +93,12 @@ Click on *Add Docker template* to add a Docker template in the Docker cloud and 
 * *Labels*: `bcd`
 * *Enabled*: `[checked]`
 * *Name*: `bcd`
-* *Docker Image*: `quay.io/bonitasoft/bcd-controller:3.4.1` (where 3.0.1 is the version of BCD to use)
+* *Docker Image*: `quay.io/bonitasoft/bcd-controller:{bcdVersion}` (where {bcdVersion} is the version of BCD to use)
 * *Volumes*:
 +
+[source,bash,subs="attributes"]
 ----
-/home/dockeruser/bonita-continuous-delivery_3.0.1:/home/bonita/bonita-continuous-delivery
+/home/dockeruser/bonita-continuous-delivery_{bcdVersion}:/home/bonita/bonita-continuous-delivery
 /home/dockeruser/.ssh:/home/bonita/.ssh
 bcd-dependencies-7.11.0:/home/bonita/bonita-continuous-delivery/dependencies/7.11.0
 ----
@@ -168,7 +169,7 @@ This scripted pipeline can also be used in a https://jenkins.io/doc/book/pipelin
 
 == Standalone example
 
-The `bonita-continuous-delivery_<version>.zip` archive also provides a `jenkins-example` directory which contains a minimal working example of a Continuous Delivery platform with Jenkins and BCD. This example will start a pre-configured Jenkins server with a BCD-aware Jenkins slave and ready-to-use Jenkins jobs.
+The `bonita-continuous-delivery_{bcdVersion}.zip` archive also provides a `jenkins-example` directory which contains a minimal working example of a Continuous Delivery platform with Jenkins and BCD. This example will start a pre-configured Jenkins server with a BCD-aware Jenkins slave and ready-to-use Jenkins jobs.
 
 It is provided as a https://docs.docker.com/compose/[Docker Compose] project.
 

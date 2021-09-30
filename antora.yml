@@ -3,7 +3,7 @@ title: Bonita Continuous Delivery
 version: 3.4
 asciidoc:
   attributes:
-    bcdVersion: '3.4.2' # latest available maintenance version
+    bcdVersion: '3.4.5' # latest available maintenance version
     bonitaDocVersion: '2021.1'
     # General site configuration
     page-editable: true

@@ -1,10 +1,11 @@
 name: bcd
 title: Bonita Continuous Delivery
 version: 3.5
+prerelease: Beta
 asciidoc:
   attributes:
     bcdVersion: '3.5.0' # latest available maintenance version
-    bonitaDocVersion: '2021.1'
+    bonitaDocVersion: '2021.2'
     # General site configuration
     page-editable: true
 nav:

@@ -8,12 +8,12 @@ Since BCD 3.0.0, the BCD controller image is provided through Quay.io registry.
 
 Get this image as follows:
 
-[source,bash]
+[source,bash,subs="attributes"]
 ----
 $ docker login quay.io
 Username: bonitasoft+john_doe_at_acme_com
 Password:
-$ docker pull quay.io/bonitasoft/bcd-controller:<version>
+$ docker pull quay.io/bonitasoft/bcd-controller:{bcdVersion}
 ----
 
 The username corresponds to `bcd_registry_user` and the password corresponds to `bcd_registry_password` described in the xref:scenarios.adoc[Scenario file reference]. Both have been provided by your sales representative.
@@ -57,14 +57,14 @@ The first method to start a BCD Controller Docker container on the control host 
 
 *Example*:
 
-[source,bash]
+[source,bash,subs="attributes"]
 ----
 $ docker run --rm -t -i --name bcd-controller \
     -v bcd-dependencies-<bonita_version>:/home/bonita/bonita-continuous-delivery/dependencies/<bonita_version>  \
     -v <host_path_to_.boto>:/home/bonita/.boto \
     -v <host_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
     -v <host_path_to_ssh_private_key>:/home/bonita/.ssh/<ssh_private_key> \
-    quay.io/bonitasoft/bcd-controller:<version> /bin/bash
+    quay.io/bonitasoft/bcd-controller:{bcdVersion} /bin/bash
 ----
 
 === Starting a BCD controller with `docker-compose run`
@@ -119,9 +119,9 @@ If this is not so, then read the next section to know how to fix file ownership 
 
 Here is one way to remap UID/GID of the controller's `bonita` user with your host user. It consists of extending the `bonitasoft/bcd-controller` Docker image by using the following `Dockerfile`:
 
-[source,dockerfile]
+[source,dockerfile,subs="attributes"]
 ----
-FROM quay.io/bonitasoft/bcd-controller
+FROM quay.io/bonitasoft/bcd-controller:{bcdVersion}
 
 ARG BONITA_UID
 ARG BONITA_GID

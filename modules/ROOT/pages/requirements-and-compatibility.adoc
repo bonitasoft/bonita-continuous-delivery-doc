@@ -30,7 +30,7 @@ This compatibility information is also specified in the xref:release_notes.adoc[
 
 |===
 | BCD version | Bonita release
-
+| 3.4.x | 7.9.5, 7.10.x, 7.11.x, 2021.1.x
 | 3.5.x | 7.10.x, 7.11.x, 2021.1.x, 2021.2.x
 |===
 

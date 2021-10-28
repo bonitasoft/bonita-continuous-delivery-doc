@@ -3,6 +3,8 @@
 This page describes which system requirements need to be met in order to use the Bonita Continuous Delivery Add-On. +
 You will also find information about BCD and Bonita version compatibility.
 
+NOTE: You must always upgrade to one of the latest two versions of the BCD Controller image. Check how to xref:upgrade_bcd.adoc[migrate from an earlier version of BCD]. Only the last two images are now available on quay.io, older images will be removed.
+
 == System requirements
 
 There are different environments where requirements are to be met for BCD:

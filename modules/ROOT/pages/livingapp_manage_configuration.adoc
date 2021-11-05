@@ -22,6 +22,8 @@ bonita-vacation-management-example
 
 It's possible to extract the configuration to check it and also override (merge) some parameters if needed.
 
+NOTE: If no parameters are defined on any processes, the `.bconf` file is not created.
+
 === Extract configuration
 
 You can extract the configuration if you want to check it or modify it

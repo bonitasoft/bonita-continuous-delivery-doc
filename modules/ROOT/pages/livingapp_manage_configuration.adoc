@@ -9,7 +9,7 @@ This tutorial describes how to configure your Bonita Living Application from the
 Since BCD 3.0.0 and with Bonita 7.8.0 onwards, if you build a Living Application you will get separately:
 
 * a zip file which contains binaries
-* a bconf file which contains the configuration for the target xref:{bonitaDocVersion}@bonita::environments.adoc[environment] (Local by default)
+* a bconf file which contains the parameters configuration for the target xref:{bonitaDocVersion}@bonita::environments.adoc[environment] (Local by default)
 
 Here is an example of a build result:
 

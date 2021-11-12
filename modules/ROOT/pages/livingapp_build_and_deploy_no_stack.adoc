@@ -1,4 +1,4 @@
-= How to build and deploy the docker image !
+= How to build and deploy with the BCD docker image !
 
 IMPORTANT: This page target teams that do not want to use the BCD docker image
 
@@ -189,4 +189,4 @@ java -jar bonita-la-deployer-x.y.z.jar -f <application_archive_zip_path>
 java -jar bonita-la-deployer-x.y.z.jar -f <application_archive_folder_path> -t http://myhost/bonita
 ----
 
-NOTE: If the targeted Bonita instance uses self-signed certificates, just follow standard instruction to add the certificates to the jvm keystore or use the `--disable-certificate-check` option
+NOTE: If the targeted Bonita instance uses self-signed certificates, just follow standard instructions to add the certificates to the jvm keystore or use the `--disable-certificate-check` option

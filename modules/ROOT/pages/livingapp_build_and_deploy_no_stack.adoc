@@ -1,13 +1,10 @@
-= How to build and deploy *"without stack management"* !
+= How to build and deploy the docker image !
 
-IMPORTANT: This page target teams deploying Bonita Living Applications on Bonita instances managed by themselves and not by `BCD controller` !
+IMPORTANT: This page target teams that do not want to use the BCD docker image
 
 Bonita Continuous Delivery lets you easily build and deploy a Bonita Living Applications on a Bonita runtime thanks to the `Bonita Living Application Builder` and the Bonita `Living Application Deployer`, two bonita CLIs wrapped by the `BCD` CLI itself.
 
-We vill explain how to easily build and deploy your Bonita Living Application repository without the use of the whole BCD tooling required for stack management. (ex. docker,ansible, terraform, python scripts, yaml scenario files, etc.)
-
-"If you have no needs for the stack part, simply don't use it ! (aka. docker, mounted volumes, yaml scenario files, ansible playbooks and inventories, etc.)"
--- Following the KISS rule
+We will explain how to easily build and deploy your Bonita Living Application repository without the use of the whole BCD tooling required for stack management. (ex. docker,ansible, terraform, python scripts, yaml scenario files, etc.)
 
 This chapter assumes that:
 

@@ -34,7 +34,9 @@ The following parameters are specific to the Bonita instances.
 | http://localhost:8080/bonita
 
 | bonita_tenant_login
-| N (only for deploy command)
+a|
+- N: for build command
+- Y: for deploy command
 | install
 | Bonita tenant login
 | install

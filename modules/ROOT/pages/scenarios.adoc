@@ -28,7 +28,9 @@ The following parameters are specific to the Bonita instances.
 | 7.11.0
 
 | bonita_url
-| N (only for deploy command)
+a|
+- N: for build command
+- Y: for deploy command
 | http://localhost:8080/bonita
 | Bonita HTTP rool url.
 | http://localhost:8080/bonita
@@ -42,7 +44,9 @@ a|
 | install
 
 | bonita_tenant_password
-| N (only for deploy command)
+a|
+- N: for build command
+- Y: for deploy command
 | install
 | Bonita tenant password
 | install

@@ -11,7 +11,7 @@ This chapter assumes that:
 * you have cloned a Git repository as described in the xref:livingapp_build.adoc[Bonita Living Application Builder] documentation.
 * you already have a Bonita runtime up and running and user credentials for the technical access.
 * you have java (8+) installed on the machine that will perform the build and deploy actions.
-* you have maven (3.3.x) installed on the machine that will perform the build action.
+* you have maven (3.6.3+) installed on the machine that will perform the build action.
 
 == How to build the living application
 

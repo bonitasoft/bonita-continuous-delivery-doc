@@ -4,7 +4,7 @@
 
 === Breaking changes
 
-* As announced in version 3.4.4, `stack` and `license` commands are now removed from the CLI.
+* As announced in version 3.4.4, `stack` and `license` commands are now removed from the CLI. This means scenarios file have changed, please refer to xref:scenarios.adoc[] for more details.
 
 === Technology upgrade
 

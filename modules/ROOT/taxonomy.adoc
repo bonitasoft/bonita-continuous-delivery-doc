@@ -12,6 +12,7 @@
   *** xref:livingapp_manage_configuration.adoc[Manage Living App configuration]
   *** xref:livingapp_deploy.adoc[Deploy Living App artifacts]
   *** xref:livingapp_build_and_deploy.adoc[Build and deploy (Best Practices)]
+   *** xref:livingapp_build_and_deploy_without_docker.adoc[Build and deploy "without the docker image"]
  ** xref:how_to_use_bcd_with_data_encrypted.adoc[Use BCD with sensitive data encrypted]
  ** xref:jenkins_example.adoc[Integrate BCD with Jenkins]
 * xref:troubleshooting_guide.adoc[Troubleshooting guide]

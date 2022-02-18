@@ -1,6 +1,6 @@
-= How to build and deploy with the BCD docker image !
+= How to build and deploy "without the BCD docker image" !
 
-IMPORTANT: This page target teams that do not want to use the BCD docker image
+IMPORTANT: This page target teams who cannot (or do not want to) use the BCD docker image
 
 Bonita Continuous Delivery lets you easily build and deploy a Bonita Living Applications on a Bonita runtime thanks to the `Bonita Living Application Builder` and the Bonita `Living Application Deployer`, two bonita CLIs wrapped by the `BCD` CLI itself.
 

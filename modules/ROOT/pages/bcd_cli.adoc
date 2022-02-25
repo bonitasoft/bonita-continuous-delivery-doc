@@ -170,7 +170,7 @@ Options
 
 === test
 
-_Since 3.5.1_  +
+_Since 3.6.0_  +
 Test Bonita Living Application.
 
 [source,bash]

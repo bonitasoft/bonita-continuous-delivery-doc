@@ -168,6 +168,31 @@ Options
 
 `-h, --help` Show this help
 
+=== test
+
+_Since 3.5.1_  +
+Test Bonita Living Application.
+
+[source,bash]
+----
+$ bcd [BCD_OPTIONS] livingapp [LIVINGAPP_OPTIONS] test [OPTIONS]
+----
+Options
+
+`-p, --path <path>` Path of the test project. Must be a valid Maven project.
+
+`-g, --maven-goals <goals>` (Default: verify) Maven goals to run.
+
+`--extra-args <extra_args>` Extra arguments to pass to the maven command line.
+
+`--http-timeout <http_timeout>` (Default: 120) Timeout in seconds for HTTP interactions with Bonita Runtime. The transaction timeout of the platform should be increased accordingly.
+
+`--disable-certificate-check` Disable all certificate validation when connecting to a Bonita Runtime over HTTPS. This option may be used when a self-signed certificate is installed on the target Bonita Runtime
+
+`-X, --debug` Enable debug mode
+
+`-h, --help` Show this help message
+
 == version
 
 Show BCD version information

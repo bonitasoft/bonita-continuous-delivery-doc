@@ -1,0 +1,192 @@
+= How to build and deploy "without the BCD docker image" !
+
+IMPORTANT: This page target teams who cannot (or do not want to) use the BCD docker image
+
+Bonita Continuous Delivery lets you easily build and deploy a Bonita Living Applications on a Bonita runtime thanks to the `Bonita Living Application Builder` and the Bonita `Living Application Deployer`, two bonita CLIs wrapped by the `BCD` CLI itself.
+
+We will explain how to easily build and deploy your Bonita Living Application repository without the use of the whole BCD tooling required for stack management. (ex. docker,ansible, terraform, python scripts, yaml scenario files, etc.)
+
+This chapter assumes that:
+
+* you have cloned a Git repository as described in the xref:livingapp_build.adoc[Bonita Living Application Builder] documentation.
+* you already have a Bonita runtime up and running and user credentials for the technical access.
+* you have java version matching your Bonita server requirements installed.
+* you have maven (3.6.3+) installed on the machine that will perform the build action.
+
+== How to build the living application
+
+To build a Living application, you'll need both the `bonita-la-builder-${BONITA_VERSION}-exec.jar` CLI application, and the `bonita-sp-${BONITA_VERSION}-maven-repository.zip` maven dependency package.
+
+=== Extract the LA Builder CLI
+
+[source,bash]
+----
+export BONITA_VERSION="7.12.2"
+
+# Extract Bonita dependencies
+container_id=$(docker create quay.io/bonitasoft/bcd-dependencies:${BONITA_VERSION})
+docker cp "${container_id}":/dependencies .
+docker rm "${container_id}"
+----
+
+you should see now a new folder named `dependencies` in the current directory containing the following files:
+
+----
+dependencies
+├── bonita-la-builder-7.12.2-exec.jar
+├── bonita-sp-7.12.2-maven-repository.zip
+└── LICENSE
+----
+
+=== Publish maven dependencies
+
+Some project artifacts like `REST API Extensions` require some Bonita dependencies to be available for `maven`.
+
+==== Local maven repository
+
+
+The layout of the content of bonita-sp-7.12.2-maven-repository.zip file is following the expected layout for local maven repositories, usually located in `$HOME/.m2/repository` folder.
+You can simply unzip the file and copy its content to this place.
+
+.sample bonita-sp-7.12.2-maven-repository.zip content
+----
+.
+├── com
+│   └── bonitasoft
+│       ├── engine
+│       │   ├── bonita-client-sp
+│       │   │   └── 7.12.2
+│       │   │       ├── bonita-client-sp-7.12.2.jar
+│       │   │       ├── bonita-client-sp-7.12.2.jar.asc
+│       │   │       ├── bonita-client-sp-7.12.2.jar.md5
+│       │   │       ├── bonita-client-sp-7.12.2.jar.sha1
+│       │   │       ├── bonita-client-sp-7.12.2.pom
+│       │   │       ├── bonita-client-sp-7.12.2.pom.asc
+│       │   │       ├── bonita-client-sp-7.12.2.pom.md5
+│       │   │       └── bonita-client-sp-7.12.2.pom.sha1
+│       │   ├── bonita-common-sp
+│       │   │   └── 7.12.2
+│       │   │       ├── bonita-common-sp-7.12.2.jar
+│       │   │       ├── bonita-common-sp-7.12.2.jar.asc
+│       │   │       ├── bonita-common-sp-7.12.2.jar.md5
+│       │   │       ├── bonita-common-sp-7.12.2.jar.sha1
+│       │   │       ├── bonita-common-sp-7.12.2.pom
+│       │   │       ├── bonita-common-sp-7.12.2.pom.asc
+│       │   │       ├── bonita-common-sp-7.12.2.pom.md5
+│       │   │       └── bonita-common-sp-7.12.2.pom.sha1
+...
+----
+
+==== Enterprise remote maven repository
+
+If your enterprise owns a private maven repository manager, you should publish the bonita dependencies to make them available.
+
+You will surely find some sample scripts to do so, like theses for https://help.sonatype.com/repomanager3[Nexus Repository Manager]
+
+- https://github.com/sonatype-nexus-community/nexus-repository-import-scripts
+- https://gist.github.com/rishabh9/183cc0c4c3ada4f8df94d65fcd73a502
+
+NOTE: It is recommended to create a dedicated repository for vendor artifacts like one named *thirdparty*
+
+=== LA Builder CLI reference
+
+[source,bash]
+----
+$ java -jar bonita-la-builder-7.12.2-exec.jar -h
+
+Usage: java -jar bonita-la-builder-7.12.2-exec.jar [command] [command options]
+  Commands:
+    build      Build a Bonita project
+      Usage: build [options] <path/to/bonita/project>
+        Options:
+          -P, --activate-profiles
+            Comma-delimited list of maven profiles to activate
+          -B, --batch-mode
+            Run in non-interactive (batch) mode
+            Default: false
+          -X, --debug
+            Produce execution debug output
+            Default: false
+          --disable-color
+            Disable color output (enabled by default)
+            Default: false
+          -e, --environment
+            Select the target environment configuration
+            Default: Local
+          --ignore-version-conflict
+            Do not check project version and builder version compatibility
+            Default: false
+          -o, --output
+            Output archive file name. Default is <folder-name>-<timestamp>.zip
+
+    extract      Extract parameters form a Bonita configuration archive
+      Usage: extract [options] <path/to/configuration-file.bconf>
+        Options:
+          --without-value
+            Only extract parameters without value
+            Default: false
+          -o
+            Output file
+            Default: parameters.yml
+
+    merge      Merge parameters into a Bonita configuration archive
+      Usage: merge [options] <path/to/configuration-file-to-update.bconf>
+        Options:
+        * -i
+            Input parameter file
+          -o
+            Output file. By default, the  given configuration file is overwritten.
+----
+
+== How to deploy the living application
+
+To deploy a Living application, you'll need the `bonita-la-deployer-${DEPLOYER_VERSION}.jar` CLI application.
+
+=== Extract the LA Deployer CLI
+
+[source,bash]
+----
+export BCD_VERSION="3.4.3"
+export DEPLOYER_VERSION="0.1.35"
+
+# Extract Bonita deployer
+container_id=$(docker create quay.io/bonitasoft/bcd-controller:${BCD_VERSION})
+docker cp "${container_id}":/usr/local/lib/bonita-la-deployer-${DEPLOYER_VERSION}.jar .
+docker rm "${container_id}"
+----
+
+You should now have a jar file named `bonita-la-deployer-7.12.2.jar` in your current folder.
+
+=== LA Deployer CLI reference
+
+----
+$ java -jar bonita-la-deployer-7.12.2.jar -h
+
+usage: java -jar bonita-la-deployer-x.y.z.jar [-bc <bonita-configuration>] [-c <config>] [--debug] [--development]
+       [--disable-certificate-check] [-f <file>] [-h] [--http-timeout <http-timeout>] [-p <password>] [-t <targetUrl>]
+       [-u <username>]
+
+Deploy an Application Archive and/or Application Configuration to a Bonita platform
+ -bc,--bonita-configuration <bonita-configuration>   the Application Configuration to deploy
+ -c,--config <config>                                property file used to override Rest API Extensions prior to
+                                                     deploying them
+    --debug                                          activate debug logs
+    --development                                    Deploy for development environment (Eg. processes / profiles are
+                                                     replaced if existing, ...)
+    --disable-certificate-check                      disable all certificate validation when connecting to a https
+                                                     server. Use this option when a self-signed certificate is used on
+                                                     the target server.
+ -f,--file <file>                                    the Application Archive to deploy
+ -h,--help                                           print this message
+    --http-timeout <http-timeout>                    the timeout (in seconds, default to 120) for http interactions
+                                                     (read and write) with Bonita
+ -p,--password <password>                            password to use to connect to Bonita
+ -t,--targetUrl <targetUrl>                          url of the Bonita platform
+ -u,--username <username>                            username to use to connect to Bonita
+
+Examples:
+java -jar bonita-la-deployer-x.y.z.jar -f <application_archive_zip_path>
+java -jar bonita-la-deployer-x.y.z.jar -f <application_archive_folder_path> -t http://myhost/bonita
+----
+
+NOTE: If the targeted Bonita instance uses self-signed certificates, just follow standard instructions to add the certificates to the jvm keystore or use the `--disable-certificate-check` option

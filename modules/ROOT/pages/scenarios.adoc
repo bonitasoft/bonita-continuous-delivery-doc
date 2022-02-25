@@ -35,7 +35,7 @@ a|
 | Bonita HTTP rool url.
 | http://localhost:8080/bonita
 
-| bonita_tenant_login
+| bonita_technical_username
 a|
 - N: for build command
 - Y: for deploy command
@@ -43,7 +43,7 @@ a|
 | Bonita tenant login
 | install
 
-| bonita_tenant_password
+| bonita_technical_password
 a|
 - N: for build command
 - Y: for deploy command

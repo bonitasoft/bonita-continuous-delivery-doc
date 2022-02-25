@@ -181,7 +181,7 @@ bcd -s <scenario> livingapp deploy -p <application_path> -c <configuration_path>
 
 where:
 
-* *<scenario>* is the path to the BCD scenario which defines the target Bonita stack. Artifacts will be deployed using tenant credentials defined by this scenario (`bonita_tenant_login` and `bonita_tenant_password` variables).
+* *<scenario>* is the path to the BCD scenario which defines the target Bonita stack. Artifacts will be deployed using tenant credentials defined by this scenario (`bonita_technical_username` and `bonita_technical_password` variables).
 * *<application_path>* is the path to the Application Archive to deploy (zip file or directory).
 * *<configuration_path>* is the path to the Application Configuration bconf artifact to deploy. This file can be generated for Bonita 7.8.0 onwards.
 

@@ -1,5 +1,21 @@
 = Release notes
 
+== What's new in 3.6.0
+
+=== Features
+
+- Test feature support in BCD commands
+
+=== Breaking changes
+
+* Some scenario variables have been renamed to a more coherent name  (see xref:scenarios.adoc[])
+** renamed : `bonita_tenant_login` to `bonita_technical_username`
+** renamed : `bonita_tenant_password` to `bonita_technical_password`
+
+=== Updates
+
+-
+
 == What's new in 3.5.0
 
 === Breaking changes

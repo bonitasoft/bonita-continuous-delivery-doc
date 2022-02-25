@@ -14,7 +14,23 @@
 
 === Updates
 
--
+* click: 7.1.2 => 8.0.4
+* click-didyoumean: 0.0.3 => 0.3.0
+* configParser: 5.0.1 => 5.2.0
+* cryptography: 3.4.6 => 36.0.1
+* idna: 2.10 => 3.3
+* Jinja2: 2.11.3 => 3.0.3
+* more-itertools: 8.6.0 => 8.12.0
+* packaging: 20.4 => 21.3
+* progress: 1.5 => 1.6
+* PyYAML: 5.3.2 => 6.0
+* requests: 2.25.0 => 2.27.1
+* tabulate: 0.0.7 => 0.8.9
+* urllib3: 1.26.5 => 1.26.8
+
+=== Fixes
+
+* Remove the `docker-compose.override.yml.EXAMPLE`: we now use a single docker-compose file
 
 == What's new in 3.5.0
 

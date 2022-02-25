@@ -124,8 +124,8 @@ Finally, here is a sample command to start a BCD controller container:
 [source,bash,subs="attributes"]
 ----
 $ docker run --rm -ti --hostname bcd-controller --name bcd-controller \
-        -v ~/bonita-continuous-delivery_3.5.0:/home/bonita/bonita-continuous-delivery \
-        -v bcd-dependencies-7.12.2:/home/bonita/bonita-continuous-delivery/dependencies/7.12.2 \
+        -v ~/bonita-continuous-delivery_3.6.0:/home/bonita/bonita-continuous-delivery \
+        -v bcd-dependencies-7.14.0:/home/bonita/bonita-continuous-delivery/dependencies/7.14.0 \
         bonitasoft/bcd-controller:{bcdVersion} /bin/bash
 bonita@bcd-controller:~$
 bonita@bcd-controller:~$ cd bonita-continuous-delivery

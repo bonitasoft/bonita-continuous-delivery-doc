@@ -88,7 +88,7 @@ Here is a complete example of how to build the https://github.com/bonitasoft/bon
 
 [source,bash]
 ----
-$ cd bonita-continuous-delivery_3.5.0
+$ cd bonita-continuous-delivery_3.6.0
 
 $ git clone -b dev/7.11.0 https://github.com/bonitasoft/bonita-vacation-management-example
 $ ls -nh bonita-vacation-management-example

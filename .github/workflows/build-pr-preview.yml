@@ -39,5 +39,5 @@ jobs:
           failOnError: true
           teardown: 'true'
           build: |
-            ./build-preview.bash --use-multi-repositories --component-with-branches bonita:"${{ env.BONITA_BRANCH }}" "${{ env.COMPONENT_NAME }}":"${{ env.BRANCH_NAME }}" --pr "${{ env.PR_NUMBER }}" --site-url "${{ env.PREVIEW_URL }}"
+            ./build-preview.bash --use-multi-repositories --component-with-branches bonita:"${{ env.BONITA_BRANCH }}","${{ env.COMPONENT_NAME }}":"${{ env.BRANCH_NAME }}" --pr "${{ env.PR_NUMBER }}" --site-url "${{ env.PREVIEW_URL }}"
             ls -lh build/site

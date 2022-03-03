@@ -5,6 +5,7 @@
 === Features
 
 - Added xref:{testToolkitVersion}@est-toolkit::process-testing-overview.adoc[test toolkit] support in BCD commands
+- Added logback config file (`/usr/local/lib/logback.xml`) to offer finer la-deployer log management.
 
 === Breaking changes
 
@@ -14,13 +15,13 @@
 
 === Deprecations
 
-* Ansible Vault integration will be removed in the next release. +
+* `Ansible Vault` integration will be removed in the next release. +
 The tool is still present so you can decrypt your files but it will be removed in the next releases. You should now rely on the secret management offered by your environment (https://docs.github.com/en/actions/security-guides/encrypted-secrets[Github], https://docs.gitlab.com/charts/installation/secrets.html[Gitlab], https://support.atlassian.com/bitbucket-cloud/docs/variables-and-secrets/[BitBucket], https://www.jenkins.io/doc/developer/security/secrets/[Jenkins], etc.)
 
 === Updates
 
 * Docker controller image now based on `maven:3.8-jdk-11-slim`
-
+* Python 3.8 => Python 3.9
 * click: 7.1.2 => 8.0.4
 * click-didyoumean: 0.0.3 => 0.3.0
 * more-itertools: 8.6.0 => 8.12.0

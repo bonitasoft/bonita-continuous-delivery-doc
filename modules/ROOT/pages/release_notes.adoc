@@ -4,7 +4,7 @@
 
 === Features
 
-- Added xref:{testToolkitVersion}@est-toolkit::process-testing-overview.adoc[test toolkit] support in BCD commands
+- Added xref:{testToolkitVersion}@test-toolkit::process-testing-overview.adoc[test toolkit] support in BCD commands
 - Added logback config file (`/usr/local/lib/logback.xml`) to offer finer la-deployer log management.
 
 === Breaking changes

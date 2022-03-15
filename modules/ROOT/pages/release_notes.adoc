@@ -5,7 +5,8 @@
 === Breaking changes
 
 * As announced in version 3.4.4, `stack` and `license` commands are now removed from the CLI. +
- As a result, scenario files must be updated since a lot parameters are now obsolete and a few remains mandatory (see xref:scenarios.adoc[])
+ As a result, scenario files must be updated since a lot parameters are now obsolete and a few remains mandatory (see xref:scenarios.adoc[]) +
+If you were using ansible `inventories/stack ids` to perform deployment (in your CI pipelines), you have to use the `url` of the targeted bonita instance instead. Ansible inventory was related to the `bcd stack` part and is now removed.
 
 === Technology upgrade
 

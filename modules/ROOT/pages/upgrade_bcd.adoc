@@ -20,13 +20,7 @@ So if you want to be able to manage an existing stack (i.e. a stack already depl
 
 == How it works
 
-=== From a 3.5 towards {bcdVersion}
-
-* Some scenario variables have been renamed to a more coherent name  (see xref:scenarios.adoc[])
-** rename `bonita_tenant_login` to `bonita_technical_username`
-** rename `bonita_tenant_password` to `bonita_technical_password`
-
-=== From a 3.4.5 towards 3.5.0
+=== From a 3.4.5 towards {bcdVersion}
 
 ==== Scenarios
 

@@ -5,6 +5,7 @@ asciidoc:
   attributes:
     bcdVersion: '3.6.0' # latest available maintenance version
     bonitaDocVersion: '2022.1'
+    testToolkitVersion: '1.0'
     # General site configuration
     page-editable: true
 nav:

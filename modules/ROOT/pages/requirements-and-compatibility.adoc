@@ -38,7 +38,7 @@ This compatibility information is also specified in the xref:release_notes.adoc[
 
 [TIP]
 ====
-BCD uses the technical Id of the platform. https://documentation.bonitasoft.com/bonita/2021.2/version-update/product-versioning#_technical_id[You will find here the mapping between Bonita release and technical Id]
+BCD uses the technical Id of the platform. xref:{bonitaDocVersion}@bonita:version-update:product-versioning.adoc#_technical_id[You will find here the mapping between Bonita release and technical Id]
 ====
 
 WARNING: If a Bonita release is not listed in the previous table, then it is not supported by the BCD Add-On.

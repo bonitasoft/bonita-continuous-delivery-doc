@@ -4,7 +4,8 @@
 
 === Features
 
-- Test feature support in BCD commands
+- Added xref:{testToolkitVersion}@test-toolkit::process-testing-overview.adoc[test toolkit] support in BCD commands
+- Added logback config file (`/usr/local/lib/logback.xml`) to offer finer la-deployer log management.
 
 === Breaking changes
 
@@ -12,21 +13,32 @@
 ** renamed : `bonita_tenant_login` to `bonita_technical_username`
 ** renamed : `bonita_tenant_password` to `bonita_technical_password`
 
+=== Deprecations
+
+* `Ansible Vault` integration will be removed in the next release. +
+The tool is still present so you can decrypt your files but it will be removed in the next releases. You should now rely on the secret management offered by your environment (https://docs.github.com/en/actions/security-guides/encrypted-secrets[Github], https://docs.gitlab.com/charts/installation/secrets.html[Gitlab], https://support.atlassian.com/bitbucket-cloud/docs/variables-and-secrets/[BitBucket], https://www.jenkins.io/doc/developer/security/secrets/[Jenkins], etc.)
+
 === Updates
 
+* Docker controller image now based on `maven:3.8-jdk-11-slim`
+* Python 3.8 => Python 3.9
 * click: 7.1.2 => 8.0.4
 * click-didyoumean: 0.0.3 => 0.3.0
-* configParser: 5.0.1 => 5.2.0
-* cryptography: 3.4.6 => 36.0.1
-* idna: 2.10 => 3.3
-* Jinja2: 2.11.3 => 3.0.3
 * more-itertools: 8.6.0 => 8.12.0
 * packaging: 20.4 => 21.3
 * progress: 1.5 => 1.6
 * PyYAML: 5.3.2 => 6.0
-* requests: 2.25.0 => 2.27.1
-* tabulate: 0.0.7 => 0.8.9
-* urllib3: 1.26.5 => 1.26.8
+
+=== Removal
+
+* configParser
+* cryptography
+* idna
+* Jinja2
+* pycrypto
+* tabulate
+* requests
+* urllib3
 
 === Fixes
 

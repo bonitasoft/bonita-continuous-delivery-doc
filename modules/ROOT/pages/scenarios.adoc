@@ -32,7 +32,7 @@ a|
 - N: for build command
 - Y: for deploy command
 | http://localhost:8080/bonita
-| Bonita HTTP rool url.
+| Bonita HTTP root url.
 | http://localhost:8080/bonita
 
 | bonita_technical_username

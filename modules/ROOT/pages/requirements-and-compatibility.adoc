@@ -32,8 +32,8 @@ This compatibility information is also specified in the xref:release_notes.adoc[
 
 |===
 | BCD version | Bonita release
-| 3.4.x | 7.9.5, 7.10.x, 7.11.x, 2021.1.x
-| 3.5.x | 7.10.x, 7.11.x, 2021.1.x, 2021.2.x
+| 3.5.x       | 7.10.x, 7.11.x, 2021.1.x, 2021.2.x
+| 3.6.x       | 7.11.x, 2021.1.x, 2021.2.x, 2022.1.x
 |===
 
 [TIP]
@@ -43,4 +43,4 @@ BCD uses the technical Id of the platform. xref:{bonitaDocVersion}@bonita:versio
 
 WARNING: If a Bonita release is not listed in the previous table, then it is not supported by the BCD Add-On.
 
-WARNING: Please that from now on, sources that should be compiled by BCD must be java 11 compliant.
+WARNING: Please note that from now on, sources that are to be compiled by BCD must be java 11 compliant.

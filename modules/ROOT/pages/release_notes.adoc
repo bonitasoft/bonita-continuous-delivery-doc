@@ -31,6 +31,8 @@ The tool is still present so you can decrypt your files but it will be removed i
 
 === Removal
 
+==== Python packages
+
 * configParser
 * cryptography
 * idna
@@ -49,7 +51,19 @@ The tool is still present so you can decrypt your files but it will be removed i
 === Breaking changes
 
 * As announced in version 3.4.4, `stack` and `license` commands are now removed from the CLI. +
- As a result, scenario files must be updated since a lot parameters are now obsolete and a few remains mandatory (see xref:scenarios.adoc[])
+ As a result, scenario files must be updated since a lot of parameters are now obsolete and a few remains mandatory (see xref:scenarios.adoc[])
+* For the same reason, `openssh-client` package was removed from the docker controller image. +
+You can re-add this package if needed by building a custom image of the controller.
+
+.Sample custom BCD Controller with ssh client
+[source,docker]
+----
+FROM quay.io/bonitasoft/bcd-controller:{bcdVersion}
+
+USER root
+RUN apt update && apt install -y openssh-client
+USER bonita
+----
 
 === Technology upgrade
 
@@ -60,6 +74,15 @@ The tool is still present so you can decrypt your files but it will be removed i
 
 * chore(deps): bump urllib3 from 1.26.4 to 1.26.5 in bcd-cli
 * feat(bonita): update support for bonita version 7.13.0
+
+=== Removals
+
+==== System packages
+
+* openssh-client
+* ttf-dejavu
+* gcc
+* g++
 
 == What's new in 3.4.5
 

@@ -73,6 +73,13 @@ Each artifact to deploy must be defined with the following attributes:
 * `file`: (Mandatory) the relative path to the artifact in the Application Archive
 * `policy`: (Optional) the name of the policy to apply in case the same artifact is already present in the target Bonita platform. If omitted, then the <<supported-policies,default policy>> of the artifact's type will be applied.
 
+[NOTE]
+====
+- If a deploy policy is declared in a `deploy.json` file, it overrides the policy specified as a CLI options (like `--development-mode`).
+- If no policy is specified in the `deploy.json` file, the policy specified as a CLI options will be applied.
+- If no policy at all is specified, production mode will be applied.
+====
+
 *Example of Deployment Descriptor file*
 
 [source,json]
@@ -169,6 +176,22 @@ Each artifact to deploy must be defined with the following attributes:
 * `FAIL` policy implies that the deployment stops right after the failure meaning that subsequent elements of the deployment are not deployed at all.
 * Prior to deploying a Business Data Model, xref:{bonitaDocVersion}@bonita::pause-and-resume-bpm-services.adoc[the Bonita tenant is paused]. So a downtime of the tenant occurs. The tenant is resumed after the deployment of the BDM.
 * REST API extension authorizations are not configured as part of the deployment process. They have to be configured while provisioning the Bonita platform.
+
+=== Preconfigured deployment policies
+
+==== Production mode
+
+- Organization: `IGNORE_DUPLICATES`
+- Process: `IGNORE_DUPLICATES`
+- Profile: `IGNORE_IF_ANY_EXISTS`
+- Application: `REPLACE_DUPLICATES`
+
+==== Development mode
+
+- Organization: `MERGE_DUPLICATES`
+- Process: `REPLACE_DUPLICATES`
+- Profile: `REPLACE_DUPLICATES`
+- Application: `REPLACE_DUPLICATES`
 
 == How to use
 

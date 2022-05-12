@@ -75,8 +75,8 @@ Each artifact to deploy must be defined with the following attributes:
 
 [NOTE]
 ====
-- If a deploy policy is declared in a `deploy.json` file, it overrides the policy specified as a CLI options (like `--development-mode`).
-- If no policy is specified in the `deploy.json` file, the policy specified as a CLI options will be applied.
+- If a deploy policy is declared in a `deploy.json` file, it overrides the policy specified as a CLI option (like `--development-mode`).
+- If no policy is specified in the `deploy.json` file, the policy specified as a CLI option will be applied.
 - If no policy at all is specified, production mode will be applied.
 ====
 

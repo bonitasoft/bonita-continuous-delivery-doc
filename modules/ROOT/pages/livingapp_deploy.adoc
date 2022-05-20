@@ -178,7 +178,7 @@ Each artifact to deploy must be defined with the following attributes:
 * Prior to deploying a Business Data Model, xref:{bonitaDocVersion}@bonita::pause-and-resume-bpm-services.adoc[the Bonita tenant is paused]. So a downtime of the tenant occurs. The tenant is resumed after the deployment of the BDM.
 * REST API extension authorizations are not configured as part of the deployment process. They have to be configured while provisioning the Bonita platform.
 
-[#preconfigured_policies]
+[#preconfigured_deployment_policies]
 === Preconfigured deployment policies
 
 ==== Production mode

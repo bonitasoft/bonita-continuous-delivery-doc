@@ -1,5 +1,21 @@
 = Release notes
 
+== What's new in 3.6.1
+
+=== Features
+
+- Bonita LA deployer upgraded to `0.1.39` and including the version `0.0.8` of https://github.com/bonitasoft/bonita-java-client/tree/master[bonita-java-client]
+
+=== Fixes
+
+- CLI arguments validation occurs now after `scenario` (from file) and `extra vars` (from CLI args) merge.
+- Deploy command does not require a configuration path (to a `.bconf` file ) argument.
+
+=== Updates
+
+* click: 8.0.4 => 8.1.2
+* Force pull base image when building controller image.
+
 == What's new in 3.6.0
 
 === Features

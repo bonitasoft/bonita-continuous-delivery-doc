@@ -163,7 +163,10 @@ Each artifact to deploy must be defined with the following attributes:
 * Processes:
 ** `FAIL_ON_DUPLICATES`: if the process already exists (same `name` and `version`), the deployment fails
 ** `IGNORE_DUPLICATES`: only deploys a process when it does not already exist (same `name` and `version`)
-** `REPLACE_DUPLICATES`: **(default)** if the process already exists (same `name` and `version`), the existing one is deleted and the new one is deployed. As a reminder, deleting a process means: disable the process, delete all related cases and delete the process The following artifacts are used with **implicit policies**. It means that you do not have to declare those policies in the Deployment Descriptor file. There is no other policy available for those artifacts.
+** `REPLACE_DUPLICATES`: **(default)** if the process already exists (same `name` and `version`), the existing one is deleted and the new one is deployed. As a reminder, deleting a process means: disable the process, delete all related cases and delete the process 
+
+The following artifacts are used with **implicit policies**. It means that you do not have to declare those policies in the Deployment Descriptor file. There is no other policy available for those artifacts.
+
 * Business Data Model: `REPLACE_DUPLICATES`
 * BDM access control: `REPLACE_DUPLICATES`
 * Layouts: `REPLACE_DUPLICATES`

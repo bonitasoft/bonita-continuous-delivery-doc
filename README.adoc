@@ -1,13 +1,13 @@
 = Bonita Continuous Delivery documentation resources
 
-This repository contains the sources of the https://documentation.bonitasoft.com/bcd[Bonita Continuous Delivery documentation site]. It uses https://docs.asciidoctor.org/asciidoc/latest/[Asciidoc] format for
+This repository contains the sources of the https://documentation.bonitasoft.com/bcd[Bonita Continuous Delivery documentation site]. It uses https://docs.asciidoctor.org/asciidoc/latest/[AsciiDoc] format for
 the documentation content.
 
 
 == Content writing guidelines
 
 See https://github.com/bonitasoft/bonita-documentation-site/blob/master/docs/content/CONTRIBUTING.adoc[Bonita documentation content writing guidelines] for
-recommendations about writing Asciidoc pages the Bonita-way.
+recommendations about writing AsciiDoc pages the Bonita-way.
 
 
 == Providing feedbacks about Bonita product

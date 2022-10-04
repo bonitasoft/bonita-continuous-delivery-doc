@@ -11,7 +11,6 @@ on:
 jobs:
   build_preview:
     runs-on: ubuntu-22.04
-    INVALID
     permissions:
       pull-requests: write # surge-preview write PR comments
     steps:

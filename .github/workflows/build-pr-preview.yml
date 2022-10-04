@@ -18,8 +18,6 @@ jobs:
       BONITA_BRANCH: '2021.2'
       CLOUD_BRANCH: 'master'
       # Needed to build the 'cloud' doc
-      #BCD_BRANCH: '3.6'
-      #BONITA_BRANCH_FOR_CLOUD: '2022.1'
       TOOLKIT_BRANCH: '1.0'
       BONITA_BRANCH_FOR_TOOLKIT: '2022.2'
     steps:

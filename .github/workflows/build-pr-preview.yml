@@ -16,6 +16,7 @@ jobs:
       # Except if you want to test in progress work that your content depends on, keep it set to master
       DOC_SITE_BRANCH: master
       BONITA_BRANCH: '2021.2'
+      # TODO: cloud seems needed
       PR_NUMBER: ${{ github.event.pull_request.number }}
     steps:
       - name: Get documentation site source code

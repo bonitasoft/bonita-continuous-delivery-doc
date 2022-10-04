@@ -1,6 +1,6 @@
 = Bonita Continuous Delivery Add-on
 
-Welcome to *Bonita Continuous Delivery Add-on* documentation website!
+Welcome to *Bonita Continuous Delivery Add-on* documentation website! THIS IS A TEST
 
 image::images/bcd_logo.png[Bonita Continuous Delivery Add-on Logo]
 

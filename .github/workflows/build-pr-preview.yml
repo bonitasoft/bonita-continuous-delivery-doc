@@ -17,6 +17,7 @@ jobs:
       DOC_SITE_BRANCH: master
       BONITA_BRANCH: '2022.1'
       TEST_TOOLKIT_BRANCH: '1.0'
+      BONITA_BRANCH_FOR_TOOLKIT: '2022.2'
       PR_NUMBER: ${{ github.event.pull_request.number }}
     steps:
       - name: Get documentation site source code
@@ -40,5 +41,5 @@ jobs:
           failOnError: true
           teardown: 'true'
           build: |
-            ./build-preview.bash --use-multi-repositories --component-with-branches bonita:"${{ env.BONITA_BRANCH }}" --component-with-branches cloud:"master" --component-with-branches test-toolkit:"${{ env.TEST_TOOLKIT_BRANCH }}"  --component-with-branches "${{ env.COMPONENT_NAME }}":"${{ env.BRANCH_NAME }}" --pr "${{ env.PR_NUMBER }}" --site-url "${{ env.PREVIEW_URL }}"
+            ./build-preview.bash --use-multi-repositories --component-with-branches bonita:"${{ env.BONITA_BRANCH }},${{ env.BONITA_BRANCH_FOR_TOOLKIT }}" --component-with-branches cloud:"master" --component-with-branches test-toolkit:"${{ env.TEST_TOOLKIT_BRANCH }}"  --component-with-branches "${{ env.COMPONENT_NAME }}":"${{ env.BRANCH_NAME }}" --pr "${{ env.PR_NUMBER }}" --site-url "${{ env.PREVIEW_URL }}"
             ls -lh build/site

@@ -25,16 +25,16 @@ NOTE: The Docker Engine may be installed on Linux, MacOS, Microsoft Windows or C
 BCD commands may be executed by a Jenkins agent (slave) which runs the BCD controller Docker container. +
 Therefore the Jenkins server shall meet the same requirements as the Control host.
 
-== Version compatibility
+== Version supported compatibility
 
 The following table shows which BCD versions support specific Bonita releases. +
 This compatibility information is also specified in the xref:release_notes.adoc[Release notes] for each version of BCD.
 
 |===
 | BCD version | Bonita release
-| 3.5.x       | 7.10.x, 7.11.x, 2021.1.x, 2021.2.x
-| 3.6.x       | 7.11.x, 2021.1.x, 2021.2.x, 2022.1.x
+| 3.6.x       | 2021.1.x, 2021.2.x, 2022.1.x, 2022.2.x
 |===
+
 
 [TIP]
 ====

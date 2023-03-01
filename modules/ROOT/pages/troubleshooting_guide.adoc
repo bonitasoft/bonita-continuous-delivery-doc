@@ -113,8 +113,8 @@ If you want to persist the log, you can add a *_volume_* in when you run `docker
 [source,bash,subs="attributes"]
 ----
 $ docker run --rm -t -i --name bcd-controller \
-    -v <host_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
-    -v <host_path_to_your_ansible_log>:/var/log/ansible.log \
+    -v &lt;host_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
+    -v &lt;host_path_to_your_ansible_log>:/var/log/ansible.log \
     quay.io/bonitasoft/bcd-controller:{bcdVersion} /bin/bash
 ----
 

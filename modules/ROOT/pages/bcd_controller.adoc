@@ -42,8 +42,8 @@ The first method to start a BCD Controller Docker container on the control host 
 [source,bash,subs="attributes"]
 ----
 $ docker run --rm -t -i --name bcd-controller \
-    -v bcd-dependencies-<bonita_version>:/home/bonita/bonita-continuous-delivery/dependencies/<bonita_version>  \
-    -v <host_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
+    -v bcd-dependencies-&lt;bonita_version>:/home/bonita/bonita-continuous-delivery/dependencies/&lt;bonita_version>  \
+    -v &lt;host_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
     quay.io/bonitasoft/bcd-controller:{bcdVersion} /bin/bash
 ----
 

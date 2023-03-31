@@ -1,5 +1,12 @@
 = Release notes
 
+== What's new in 3.6.2
+
+=== Features
+
+- Bonita LA deployer upgraded to `0.1.41` and including the version `0.0.10` of https://github.com/bonitasoft/bonita-java-client/tree/master[bonita-java-client]
+- Adds support for Bonita 2023.1 Runtime
+
 == What's new in 3.6.1
 
 === Features

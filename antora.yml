@@ -1,6 +1,7 @@
 name: bcd
 title: Continuous Delivery
 version: 4.0
+prerelease: true
 asciidoc:
   attributes:
     bcdVersion: '4.0.0' # latest available maintenance version

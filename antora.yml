@@ -1,10 +1,10 @@
 name: bcd
 title: Continuous Delivery
-version: 3.6
+version: 4.0
 asciidoc:
   attributes:
-    bcdVersion: '3.6.2' # latest available maintenance version
-    bonitaDocVersion: '2022.2'
+    bcdVersion: '4.0.0' # latest available maintenance version
+    bonitaDocVersion: '2023.1'
     testToolkitVersion: '1.0'
     # General site configuration
     page-editable: true

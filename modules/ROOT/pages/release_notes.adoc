@@ -1,5 +1,30 @@
 = Release notes
 
+== What's new in 4.0
+
+The original BCD controller is now provided as two separated Java CLIs.
+
+=== Breaking changes
+
+- Removal of docker, docker-compose, python, ansible, bash scripts
+- Scenario files have been removed in favor of CLI arguments.
+- deprecation of quay.io : configure your maven installation to download dependencies from xref:{bonitaDocVersion}@bonita::bonita-repository-access.adoc[Bonita Artifact Repository]
+
+See xref:upgrade_bcd.adoc[BCD upgrade] for more details !
+
+=== Builder
+
+- The bonita-la-builder release 8.0.0 is now available.
+
+=== Deployer
+
+- The bonita-la-deployer release 1.0.0 is now available.
+
+==== Updates
+
+- logback = 1.4.6
+- commons-configuration2 : 2.9.0
+
 == What's new in 3.6.2
 
 === Features
@@ -69,52 +94,3 @@ The tool is still present so you can decrypt your files but it will be removed i
 
 * Remove the `docker-compose.override.yml.EXAMPLE`: we now use a single docker-compose file
 
-== What's new in 3.5.0
-
-=== Breaking changes
-
-* As announced in version 3.4.4, `stack` and `license` commands are now removed from the CLI. +
- As a result, scenario files must be updated since a lot of parameters are now obsolete and a few remains mandatory (see xref:scenarios.adoc[])
-* For the same reason, `openssh-client` package was removed from the docker controller image. +
-You can re-add this package if needed by building a custom image of the controller.
-
-.Sample custom BCD Controller with ssh client
-[source,docker]
-----
-FROM quay.io/bonitasoft/bcd-controller:{bcdVersion}
-
-USER root
-RUN apt update && apt install -y openssh-client
-USER bonita
-----
-
-=== Technology upgrade
-
-- java => 11.0.12+7
-- maven => 3.8.2
-
-=== Updates
-
-* chore(deps): bump urllib3 from 1.26.4 to 1.26.5 in bcd-cli
-* feat(bonita): update support for bonita version 7.13.0
-
-=== Removals
-
-==== System packages
-
-* openssh-client
-* ttf-dejavu
-* gcc
-* g++
-
-== What's new in 3.4.5
-
-=== Features
-
-* chore(deps): upgrade bonita-license to 1.4.2 for better license generation handling.
-
-=== Fix
-
-* fix(jdk11): fix jdk build failing because of gpg keys
-
-WARNING: Since BCD 3.4.3, only the two last BCD Controller images are now available on quay.io, older images will be removed.

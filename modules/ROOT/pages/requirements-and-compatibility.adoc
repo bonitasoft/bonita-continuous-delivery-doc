@@ -1,46 +1,49 @@
 = Requirements and compatibility
 
-This page describes which system requirements need to be met in order to use the Bonita Continuous Delivery Add-On. +
-You will also find information about BCD and Bonita version compatibility.
+This page describes which system requirements need to be met in order to use the Bonita Continuous Delivery ClIs. +
+You will also find information about BCD CLIs and Bonita version compatibility.
 
-NOTE: You must always upgrade to one of the latest two versions of the BCD Controller image. Check how to xref:upgrade_bcd.adoc[migrate from an earlier version of BCD]. Only the last two images are now available on quay.io, older images will be removed.
+IMPORTANT: Docker has been removed from the stack, this is a big improvement in usage facility and features remains the same since previous BCD version where delegating work to the java CLIs now directly available.
 
 == System requirements
 
-There are different environments where requirements are to be met for BCD:
+The BCD features (build and deploy) are implemented by two standalone Java CLIs (command line interface).
 
-* *Control host* - the host where your xref:bcd_controller.adoc[BCD controller] will run.
-* *Jenkins server* - the server where BCD commands are executed by Jenkins Continuous Integration platform.
+=== Bonita LA Builder
 
-=== Control host
+The bonita-la-builder program delegate some work to maven during its execution, so requirement are:
 
-The *Docker Engine* must be up and running on your control host prior to using BCD. BCD is compatible with Docker version 17.04.0 and above.
+- Java JDK 11
+- https://maven.apache.org/install.html[Apache Maven]
 
-You may have https://docs.docker.com/install/[Docker Community Edition (Docker CE)] or https://docs.docker.com/ee/supported-platforms/[Docker Enterprise Edition (Docker EE)] installed on your host to start using BCD.
+You also have to ensure that your maven installation is configured to access the xref:{bonitaDocVersion}@bonita::bonita-repository-access.adoc[Bonita Artifact Repository]
 
-NOTE: The Docker Engine may be installed on Linux, MacOS, Microsoft Windows or Cloud platforms as described in https://docs.docker.com/install/[Docker installation guide].
+=== Bonita LA Deployer
 
-=== Jenkins server
+The bonita-la-deployer program is simple java standalone CLI, so the only requirement is:
 
-BCD commands may be executed by a Jenkins agent (slave) which runs the BCD controller Docker container. +
-Therefore the Jenkins server shall meet the same requirements as the Control host.
+- Java JDK 11
 
 == Version supported compatibility
-
-The following table shows which BCD versions support specific Bonita releases. +
-This compatibility information is also specified in the xref:release_notes.adoc[Release notes] for each version of BCD.
-
-|===
-| BCD version | Bonita release
-| 3.6.x       | 2021.1.x, 2021.2.x, 2022.1.x, 2022.2.x
-|===
-
 
 [TIP]
 ====
 BCD uses the technical Id of the platform. xref:{bonitaDocVersion}@bonita:version-update:product-versioning.adoc#_technical_id[You will find here the mapping between Bonita release and technical Id]
 ====
 
-WARNING: If a Bonita release is not listed in the previous table, then it is not supported by the BCD Add-On.
+=== Bonita LA Builder
 
-WARNING: Please note that from now on, sources that are to be compiled by BCD must be java 11 compliant.
+The bonita-la-builder versions follow the Bonita engine versions.
+Example: to build a 2023.1 (8.0.0) bonita project, you have to use the 8.0.0 version of the bonita-la-builder.
+// TODO: complete matrix with patch supported range
+
+=== Bonita LA Deployer
+
+The following table shows which bonita-la-deployer CLI versions support specific Bonita releases. +
+
+|===
+| bonita-la-deployer version | Bonita release
+| 1.0.x       | 2021.2.x, 2022.1.x, 2022.2.x, 2023.1.x
+|===
+
+WARNING: If a Bonita release is not listed in the previous table, then it is not supported by the BCD offer.

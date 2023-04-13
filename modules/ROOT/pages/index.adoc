@@ -2,9 +2,15 @@
 
 The Bonita Continuous Delivery (BCD) offer provides tools to setup _Continuous Delivery_ practice for your Bonita Living Application development and deployment.
 
-BCD lets you build a Living Application repository and deploy the generated artifacts from the command line.
+BCD lets you build a Living Application from source code in a repository and deploy the generated artifacts from the command line.
 
 image::images/bcd_capabilities.png[Bonita Continuous Delivery Capabilities]
+
+== Basic concepts
+
+*BCD* offer has evolved now into *two Java command-line interfaces (CLI)* which allow to `build` and `deploy` Bonita Living Applications. You will be able to download the latest versions of the CLIs from our xref:{bonitaDocVersion}@bonita::bonita-repository-access.adoc[Bonita Artifact Repository] and then integrate the execution in your developer and CI pipelines.
+
+IMPORTANT: BCD features do not require docker anyomore. Usage has been greatly simplified. The only remaining xref:requirements-and-compatibility.adoc[prerequisites] are Java and Maven installed on the host running the CLIs.
 
 [.card-section]
 == Highlight
@@ -16,13 +22,13 @@ xref:release_notes.adoc[[.card-title]#What's new in BCD?# [.card-body]#pass:q[Fi
 
 [.card.card-index]
 --
-xref:getting_started.adoc[[.card-title]#Getting started# [.card-body]#pass:q[Check out the tutorials for practical guides about using Bonita Continuous Delivery.]#]
+xref:builder.adoc[[.card-title]#Start building# [.card-body]#pass:q[Check out how to build a Living App repository.]#]
 --
 
-== Basic concepts
+[.card.card-index]
+--
+xref:deployer.adoc[[.card-title]#Start deploying# [.card-body]#pass:q[Check out how to deploy a Living App.]#]
+--
 
-BCD offer has evolved now into two Java command-line interfaces which allow to *build* and *deploy* Bonita Living Applications. You will be able to download the latest versions of the CLIs from our xref:{bonitaDocVersion}@bonita::bonita-repository-access.adoc[Bonita Artifact Repository] and then integrate the execution in your developer and CI pipelines.
-
-IMPORTANT: BCD features do not require docker anyomore now. Usage has been greatly simplified. The only remaining xref:requirements-and-compatibility.adoc[prerequisites] are Java and Maven installed on the host running the CLIs.
-
-
+TIP: For both CLIs you can use the https://www.mojohaus.org/exec-maven-plugin/[exec-maven-plugin] to include `build` and/or `deploy` step in the bonita project build lifecycle. +
+(starting from version 7.13.x, a bonita project is a maven project)

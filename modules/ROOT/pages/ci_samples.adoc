@@ -1,0 +1,18 @@
+= How to integrate BCD with Jenkins
+:experimental:
+
+The BCD controller can not only be run interactively, but also within standard Continuous Delivery servers such as https://jenkins.io/[Jenkins automation server].
+
+There are many ways to integrate BCD CLIs in a CI pipeline. The proposed sample here explain how to integrate bonita-la-builder in the project maven build lifecycle and the bonita-la-deployer in the CI job.
+
+== Build step as part of maven build
+
+// TODO: write doc
+
+== Deploy step as part of CI job
+
+// TODO: write doc
+
+== Sample with build, deploy and integation test steps
+
+// TODO: write doc

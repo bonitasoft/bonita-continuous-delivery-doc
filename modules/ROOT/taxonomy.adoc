@@ -1,18 +1,8 @@
+* BCD features
+** xref:builder.adoc[Application builder]
+** xref:deployer.adoc[Application deployer]
+** xref:ci_samples.adoc[CI integration sample]
 * xref:release_notes.adoc[Release notes]
 * xref:requirements-and-compatibility.adoc[Requirements and compatibility]
-* xref:getting_started.adoc[Getting started]
 * xref:upgrade_bcd.adoc[Upgrade BCD]
-* BCD services and scenarios
- ** xref:bcd_controller.adoc[Controller Docker image]
- ** xref:bcd_cli.adoc[Command-line interface]
- ** xref:scenarios.adoc[Scenario file reference]
-* Howtos
- ** Manage Bonita Living Applications
-  *** xref:livingapp_build.adoc[Build a Living App repository]
-  *** xref:livingapp_manage_configuration.adoc[Manage Living App configuration]
-  *** xref:livingapp_deploy.adoc[Deploy Living App artifacts]
-  *** xref:livingapp_build_and_deploy.adoc[Build and deploy (Best Practices)]
-   *** xref:livingapp_build_and_deploy_without_docker.adoc[Build and deploy "without the docker image"]
- ** xref:how_to_use_bcd_with_data_encrypted.adoc[Use BCD with sensitive data encrypted]
- ** xref:jenkins_example.adoc[Integrate BCD with Jenkins]
 * xref:troubleshooting_guide.adoc[Troubleshooting guide]

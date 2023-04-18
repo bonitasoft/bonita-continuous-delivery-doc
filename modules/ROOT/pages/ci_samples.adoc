@@ -1,11 +1,11 @@
 = How to integrate BCD features in a CI pipeline
 :experimental:
 
-The BCD controller can not only be run interactively, but also within standard Continuous Delivery servers such as https://jenkins.io/[Jenkins automation server], or https://github.com/features/actions[Github Actions], or https://docs.gitlab.com/ee/ci/[Gitlab CI], etc.
+The BCD controller can not only be run interactively, but also within standard Continuous Delivery servers such as https://jenkins.io/[Jenkins CI], or https://github.com/features/actions[Github Actions], or https://docs.gitlab.com/ee/ci/[Gitlab CI], etc.
 
-There are many ways to integrate BCD CLIs in a CI pipeline. The proposed samples here explain how to integrate bonita-la-builder the bonita-la-deployer in a JenkinsCI pipeline job.
+There are many ways to integrate BCD CLIs in a CI pipeline. The samples proposed here explain how to integrate bonita-la-builder the bonita-la-deployer in a JenkinsCI pipeline job.
 
-== Build
+== Building a Bonita Project
 
 The bonita-la-builder is a standalone java program, so you can choose to either run it as sepcific step in your CI pipeline or try to integrate its execution in the project build lifecycle (as part of the maven build)
 
@@ -23,10 +23,10 @@ node {
         }
 
         stage 'Build App', {
-            // Download bonita-la-builder, maven uses the credentials configured in your settings.xml file
+            // Download bonita-la-builder using maven
             def bonitaRuntimeVersion = sh('mvn org.apache.maven.plugins:maven-help-plugin:3.3.0:evaluate -Dexpression=bonita.runtime.version -q -DforceStdout', true)
             sh "mvn dependency:copy -Dartifact=com.bonitasoft.tools:bonita-la-builder:${bonitaRuntimeVersion}:jar:exec -Dmdep.stripVersion -Dmdep.stripClassifier -DoutputDirectory=./" <1>
-            // execute the builder
+            // Execute the builder using maven
             sh 'mvn --non-recursive exec:exec -Dexec.executable=java -Dexec.args="-jar bonita-la-builder.jar build . -o my-app.zip"' <2>
         }
 
@@ -83,9 +83,9 @@ NOTE: This should already be done by Bonita Studio when editing the project.
 [source, xml]
 ----
 <properties>
-		<!-- Bonita -->
-		<bonita.runtime.version>8.0.0</bonita.runtime.version>
-        <!-- ... -->
+    <!-- Bonita -->
+    <bonita.runtime.version>8.0.0</bonita.runtime.version>
+    <!-- ... -->
 </properties>
 ----
 
@@ -95,13 +95,13 @@ Then in the `app` module pom.xml file, ensure the following is present in the bu
 [source, xml]
 ----
 <build>
-        <plugins>
-          <plugin>
+    <plugins>
+        <plugin>
             <artifactId>maven-jar-plugin</artifactId> <1>
             <configuration>
               <skipIfEmpty>false</skipIfEmpty>
             </configuration>
-          </plugin>
+        </plugin>
 		<plugin>
 			<groupId>org.codehaus.mojo</groupId>
 			<artifactId>exec-maven-plugin</artifactId>
@@ -180,43 +180,43 @@ Then in the `app` module pom.xml file, ensure the following is present in the bu
                 </execution>
             </executions>
         </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>add-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>src-connectors</source>
-                <source>src-filters</source>
-                <source>src-groovy</source>
-                <source>src-providedGroovy</source>
-              </sources>
-            </configuration>
-          </execution>
-			<execution>
-				<id>attach-artifacts</id> <6>
-				<phase>package</phase>
-				<goals>
-					<goal>attach-artifact</goal>
-				</goals>
-				<configuration>
-					<artifacts>
-						<artifact>
-							<file>${project.parent.build.directory}/${project.artifactId}-${project.version}.zip</file>
-							<type>zip</type>
-						</artifact>
-					</artifacts>
-				</configuration>
-			</execution>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>add-source</goal>
+                </goals>
+                <configuration>
+                  <sources>
+                    <source>src-connectors</source>
+                    <source>src-filters</source>
+                    <source>src-groovy</source>
+                    <source>src-providedGroovy</source>
+                  </sources>
+                </configuration>
+              </execution>
+              <execution>
+                <id>attach-artifacts</id> <6>
+                <phase>package</phase>
+                <goals>
+                    <goal>attach-artifact</goal>
+                </goals>
+                <configuration>
+                    <artifacts>
+                        <artifact>
+                            <file>${project.parent.build.directory}/${project.artifactId}-${project.version}.zip</file>
+                            <type>zip</type>
+                        </artifact>
+                    </artifacts>
+                </configuration>
+            </execution>
         </executions>
-      </plugin>
-    </plugins>
-  </build>
+    </plugin>
+  </plugins>
+</build>
 ----
 <1> Tell maven not to fail because our project does not generate a `jar` file.
 <2> Do a backup of default_profile.xml file

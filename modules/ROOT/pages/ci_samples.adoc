@@ -1,18 +1,319 @@
-= How to integrate BCD with Jenkins
+= How to integrate BCD features in a CI pipeline
 :experimental:
 
-The BCD controller can not only be run interactively, but also within standard Continuous Delivery servers such as https://jenkins.io/[Jenkins automation server].
+The BCD controller can not only be run interactively, but also within standard Continuous Delivery servers such as https://jenkins.io/[Jenkins automation server], or https://github.com/features/actions[Github Actions], or https://docs.gitlab.com/ee/ci/[Gitlab CI], etc.
 
-There are many ways to integrate BCD CLIs in a CI pipeline. The proposed sample here explain how to integrate bonita-la-builder in the project maven build lifecycle and the bonita-la-deployer in the CI job.
+There are many ways to integrate BCD CLIs in a CI pipeline. The proposed samples here explain how to integrate bonita-la-builder the bonita-la-deployer in a JenkinsCI pipeline job.
 
-== Build step as part of maven build
+== Build
 
-// TODO: write doc
+The bonita-la-builder is a standalone java program, so you can choose to either run it as sepcific step in your CI pipeline or try to integrate its execution in the project build lifecycle (as part of the maven build)
+
+=== Build step as a CI stage
+
+https://www.jenkins.io/doc/book/pipeline/[JenkinsCI pipeline] are made of steps (stage). Here is a way to use the bonita-la-builder as a step in a JenkinsCI pipeline.
+
+.Sample build step in a Jenkinsfile
+[source, groovy]
+----
+node {
+
+        stage 'Checkout', {
+            // Checkout your project source code
+        }
+
+        stage 'Build App', {
+            // Download bonita-la-builder, maven uses the credentials configured in your settings.xml file
+            def bonitaRuntimeVersion = sh('mvn org.apache.maven.plugins:maven-help-plugin:3.3.0:evaluate -Dexpression=bonita.runtime.version -q -DforceStdout', true)
+            sh "mvn dependency:copy -Dartifact=com.bonitasoft.tools:bonita-la-builder:${bonitaRuntimeVersion}:jar:exec -Dmdep.stripVersion -Dmdep.stripClassifier -DoutputDirectory=./" <1>
+            // execute the builder
+            sh 'mvn --non-recursive exec:exec -Dexec.executable=java -Dexec.args="-jar bonita-la-builder.jar build . -o my-app.zip"' <2>
+        }
+
+        // other steps omitted ...
+}
+----
+<1> Download the bonita-la-builder using maven in order to use the already configured credentials to access Bonita Artifact Repository.
+<2> Execute the bonita-la-builder CLI via a maven command in order to use the same Java version as the one used to build the project.
+
+=== Build step as part of maven build
+
+Starting from Bonita 7.13, Bonita project *ARE* a https://maven.apache.org/[maven project]. A maven project is defined by by a maven _project object model_ (POM) file in xml format (`pom.xml`). A maven project has a root pom.xml and each sub-module has also a pom.xml file.
+
+.Sample bonita project layout
+[source, text, subs="normal"]
+----
+. [ <- *root maven project*]
+├── pom.xml
+├── Jenkinsfile
+├── mvnw
+├── mvnw.cmd
+├── app [ <- *maven module*]
+│   ├── pom.xml
+│   ├── applications
+│   ├── diagrams
+│   ├── documentation
+│   ├── environements
+│   ├── MIGRATION_NOTES.adoc
+│   ├── organizations
+│   ├── profiles
+│   ├── README.adoc
+│   ├── target
+│   ├── web_fragments
+│   ├── web_page
+│   └── web_widgets
+│   └── target
+├── bdm [<- *maven module*]
+│   ├── pom.xml
+│   ├── bom.xml
+│   ├── dao-client [<- *maven module*]
+│   │   ├── pom.xml
+│   └─── model [<- *maven module*]
+│       ├── pom.xml
+└── README.adoc
+----
+
+If you want your maven build to produce a bonita archive for the app module, you need to perform some customization in the project's pom.xml files.
+
+In the `root` pom.xml file, ensure that the bonita version https://maven.apache.org/pom.html#Properties[maven property] is defined with the desired value (here, 8.0.0 in the source sample).
+
+NOTE: This should already be done by Bonita Studio when editing the project.
+
+.Extract from the root pom.xml file
+[source, xml]
+----
+<properties>
+		<!-- Bonita -->
+		<bonita.runtime.version>8.0.0</bonita.runtime.version>
+        <!-- ... -->
+</properties>
+----
+
+Then in the `app` module pom.xml file, ensure the following is present in the build section. (You must set the plugin versions, see https://maven.apache.org/pom.html#plugin-management[maven plugin management] for best practices)
+
+.Sample build configuration part from `app` module pom.xml file
+[source, xml]
+----
+<build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-jar-plugin</artifactId> <1>
+            <configuration>
+              <skipIfEmpty>false</skipIfEmpty>
+            </configuration>
+          </plugin>
+		<plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>exec-maven-plugin</artifactId>
+			<executions>
+				<execution>
+					<!-- Download LA Builder for the targeted bonita runtime version -->
+					<id>2-download-la-builder</id> <3>
+					<phase>package</phase>
+					<goals>
+						<goal>exec</goal>
+					</goals>
+					<configuration>
+						<executable>mvn</executable>
+						<commandlineArgs>-ntp dependency:copy -Dartifact=com.bonitasoft.tools:bonita-la-builder:${bonita.runtime.version}:jar:exec -DoutputDirectory=${project.parent.basedir}</commandlineArgs>
+					</configuration>
+				</execution>
+				<execution>
+					<!-- Run LA Builder to build bonita project with maven -->
+					<id>3-build-bonita-project</id> <4>
+					<phase>package</phase>
+					<goals>
+						<goal>exec</goal>
+					</goals>
+					<configuration>
+						<executable>java</executable>
+						<commandlineArgs>-jar ${project.parent.basedir}/bonita-la-builder-${bonita.runtime.version}-exec.jar build ${project.parent.basedir} -o ${project.parent.build.directory}/${project.artifactId}-${project.version}.zip -e Development --ignore-version-conflict</commandlineArgs>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+		<plugin>
+            <groupId>org.codehaus.gmaven</groupId>
+            <artifactId>groovy-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>1-rename-default-profiles</id> <2>
+                    <phase>prepare-package</phase>
+                    <configuration>
+                        <defaults>
+                            <basedir>${project.basedir}</basedir>
+                        </defaults>
+                        <source>
+                            def baseDir = properties['basedir']
+                            def profiles = new File(baseDir, 'profiles')
+                            def defaultProfiles = new File(profiles, 'default_profile.xml')
+                            if (defaultProfiles.exists()){
+                                defaultProfiles.renameTo new File(profiles, 'default_profile.xml.back')
+                                println "Rename $defaultProfiles before building...."
+                            }
+                        </source>
+                    </configuration>
+                    <goals>
+                        <goal>execute</goal>
+                    </goals>
+                </execution>
+                <execution>
+                    <id>4-restore-default-profiles</id> <5>
+                    <phase>package</phase>
+                    <configuration>
+                        <defaults>
+                            <basedir>${project.basedir}</basedir>
+                        </defaults>
+                        <source>
+                            def baseDir = properties['basedir']
+                            def profiles = new File(baseDir, 'profiles')
+                            def defaultProfiles = new File(profiles, 'default_profile.xml.back')
+                            if (defaultProfiles.exists()){
+                                defaultProfiles.renameTo new File(profiles, 'default_profile.xml')
+                                println "Restoring $defaultProfiles after building...."
+                            }
+                        </source>
+                    </configuration>
+                    <goals>
+                        <goal>execute</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>src-connectors</source>
+                <source>src-filters</source>
+                <source>src-groovy</source>
+                <source>src-providedGroovy</source>
+              </sources>
+            </configuration>
+          </execution>
+			<execution>
+				<id>attach-artifacts</id> <6>
+				<phase>package</phase>
+				<goals>
+					<goal>attach-artifact</goal>
+				</goals>
+				<configuration>
+					<artifacts>
+						<artifact>
+							<file>${project.parent.build.directory}/${project.artifactId}-${project.version}.zip</file>
+							<type>zip</type>
+						</artifact>
+					</artifacts>
+				</configuration>
+			</execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+----
+<1> Tell maven not to fail because our project does not generate a `jar` file.
+<2> Do a backup of default_profile.xml file
+<3> Download the bonita-la-builder for the target bonita runtime version
+<4> Build the bonita project with the bonita-la-builder
+<5> Restore the default_profile.xml file
+<6> Tell maven to attach the zip artifact produced as the result of the build (so it can be used for maven publication in enterprise repositories)
+
+
+Now you should be able to perform a standard `mvn package` command from the project root and find the project zip in `app/target` folder. For more detail on maven plugins configuration, please refer to their official documentation.
+
+In a JenkinsCI, this could be written as a simple shell step.
+
+[source, groovy]
+----
+stage 'Build App', {
+    sh "mvn package"
+}
+
+----
+
+NOTE: Work is still ongoing on Bonita side to reach a standard maven build without any more customizations like the ones explained here. Stay tuned !
 
 == Deploy step as part of CI job
 
-// TODO: write doc
+Just like the builder, the deployer is a standalone java program. The simplest way to use it, is to download it, and execute it with the desired arguments.
 
-== Sample with build, deploy and integation test steps
+.Sample deploy step in a Jenkinsfile
+[source, groovy]
+----
+node {
+        stage 'Checkout', {
+            checkout([
+                    $class                           : 'GitSCM',
+                    branches                         : scm.branches,
+                    doGenerateSubmoduleConfigurations: scm.doGenerateSubmoduleConfigurations,
+                    extensions                       : scm.extensions + [[$class: 'CloneOption', noTags: true, shallow: true, depth: 0, timeout: 20]],
+                    userRemoteConfigs                : scm.userRemoteConfigs
+            ])
+        }
 
-// TODO: write doc
+        stage 'Build App', {
+             // Step that produce a "my-app.zip" zip file (direct builder invocation or maven integration)
+        }
+
+      withCredentials([usernamePassword(credentialsId: 'bonitaTechUser', passwordVariable: 'BONITA_TECH_PASSWD', usernameVariable: 'BONITA_TECH_LOGIN')]) { <1>
+        stage 'Deploy App', {
+            sh "mvn dependency:copy -Dartifact=com.bonitasoft.deployer:bonita-la-deployer:1.0.0:jar -Dmdep.stripVersion -DoutputDirectory=./" <2>
+            sh 'mvn --non-recursive exec:exec -Dexec.args="-jar bonita-la-deployer.jar -f target/my-app.zip -t http://my-server:8080/bonita -u \$BONITA_TECH_LOGIN -p \$BONITA_TECH_PASSWD"' <3>
+        }
+      }
+}
+----
+<1> See https://plugins.jenkins.io/credentials[Jenkins Credentials plugin]
+<2> Download the bonita-la-deployer (using maven credentials configured in your https://maven.apache.org/settings.html#servers[settings.xml] file)
+<3> run the deployer on the target server (here `http://my-server:8080/bonita`)
+
+
+== Sample with build, deploy and integration test steps
+
+If you think quality is important, you have probably already added an integration-tests maven module based on our xref:{testToolkitVersion}@test-toolkit::index.adoc[test-toolkit]. If so, you can have a complete pipeline like the following
+including `checkout`, `build`, `deploy` and `test` steps.
+
+.Sample pipeline in a Jenkinsfile
+[source, groovy]
+----
+node {
+
+        stage 'Checkout', {
+            checkout([
+                    $class                           : 'GitSCM',
+                    branches                         : scm.branches,
+                    doGenerateSubmoduleConfigurations: scm.doGenerateSubmoduleConfigurations,
+                    extensions                       : scm.extensions + [[$class: 'CloneOption', noTags: true, shallow: true, depth: 0, timeout: 20]],
+                    userRemoteConfigs                : scm.userRemoteConfigs
+            ])
+        }
+
+        stage 'Build App', {
+            def bonitaRuntimeVersion = sh('mvn org.apache.maven.plugins:maven-help-plugin:3.3.0:evaluate -Dexpression=bonita.runtime.version -q -DforceStdout', true)
+            sh "mvn dependency:copy -Dartifact=com.bonitasoft.tools:bonita-la-builder:${bonitaRuntimeVersion}:jar:exec -Dmdep.stripVersion -Dmdep.stripClassifier -DoutputDirectory=./"
+            sh 'mvn --non-recursive exec:exec -Dexec.executable=java -Dexec.args="-jar bonita-la-builder.jar build . -o my-app.zip"'
+        }
+
+        withCredentials([usernamePassword(credentialsId: 'bonitaTechUser', passwordVariable: 'BONITA_TECH_PASSWD', usernameVariable: 'BONITA_TECH_LOGIN')]) {
+            stage 'Deploy App', {
+                sh "mvn dependency:copy -Dartifact=com.bonitasoft.deployer:bonita-la-deployer:1.0.0:jar -Dmdep.stripVersion -DoutputDirectory=./"
+                sh 'mvn --non-recursive exec:exec -Dexec.args="-jar bonita-la-deployer.jar -f target/my-app.zip -t http://my-server:8080/bonita -u \$BONITA_TECH_LOGIN -p \$BONITA_TECH_PASSWD"'
+            }
+
+            stage 'Integration tests', {
+                try {
+                    sh 'mvn -f integration-tests/pom.xml verify -Dbonita.url=http://my-server:8080/bonita -Dbonita.tech.user=$BONITA_TECH_LOGIN -Dbonita.tech.password=$BONITA_TECH_PASSWD'
+                } finally {
+                    junit 'tests/target/*-reports/*.xml'
+                }
+            }
+        }
+}
+----

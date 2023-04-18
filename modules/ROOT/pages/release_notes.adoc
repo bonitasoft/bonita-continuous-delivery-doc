@@ -11,6 +11,37 @@ The original BCD controller is now provided as two separated Java CLIs.
 - Scenario files have been removed in favor of CLI arguments.
 - deprecation of quay.io : configure your maven installation to download dependencies from xref:{bonitaDocVersion}@bonita::bonita-repository-access.adoc[Bonita Artifact Repository]
 
+==== Quay.io deprecation
+
+Quay.io is now deprecated in favor of our Bonita Artifact Repository. Support delay is based on 2023.1-GA release date.
+
+[cols="1,1,1"]
+|===
+| | Quay.io | Bonita Artifact Repository
+
+| *BCD 3.X* docker images
+| kept for 18 months icon:check[role=blue]
+| not available icon:cross[role=red]
+
+| *BCD 3.X dependencies* docker image for *Bonita < 2023.1*
+| kept for 18 months icon:check[role=blue]
+| not available icon:cross[role=red]
+
+| *BCD 3.X dependencies* docker image for *Bonita >= 2023.1*
+| not available icon:cross[role=red]
+| not available icon:cross[role=red]
+
+| *BCD 4 dependencies* for *Bonita < 2023.1* (maven dep)
+| not available icon:cross[role=red]
+| unsupported: not available icon:cross[role=red]+
+still supported: available icon:check[role=green]
+
+| *BCD 4 dependencies* for *Bonita >= 2023.1* (maven dep)
+| not available icon:cross[role=red]
+| available icon:check[role=green]
+|===
+
+
 === Builder
 
 - The bonita-la-builder release 8.0.0 is now available.

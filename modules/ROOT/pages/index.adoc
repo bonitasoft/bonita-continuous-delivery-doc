@@ -1,4 +1,5 @@
 = Bonita Continuous Delivery
+:description: Bonita tools for continuous delivery
 
 The Bonita Continuous Delivery (BCD) offer provides tools to setup _Continuous Delivery_ practice for your Bonita Living Application development and deployment.
 

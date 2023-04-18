@@ -1,4 +1,5 @@
 = Migrate from an earlier version of BCD
+:description: How to upgrade BCD tools
 
 == Overview
 

@@ -1,4 +1,5 @@
 = How to integrate BCD features in a CI pipeline
+:description: BCD features integration in a CI pipelines
 :experimental:
 
 The BCD controller can not only be run interactively, but also within standard Continuous Delivery servers such as https://jenkins.io/[Jenkins CI], or https://github.com/features/actions[Github Actions], or https://docs.gitlab.com/ee/ci/[Gitlab CI], etc.
@@ -41,7 +42,7 @@ node {
 Starting from Bonita 7.13, Bonita project *ARE* a https://maven.apache.org/[maven project]. A maven project is defined by by a maven _project object model_ (POM) file in xml format (`pom.xml`). A maven project has a root pom.xml and each sub-module has also a pom.xml file.
 
 .Sample bonita project layout
-[source, text, subs="normal"]
+[source, text, subs="+macros"]
 ----
 . [ <- *root maven project*]
 ├── pom.xml
@@ -277,7 +278,7 @@ node {
 
 == Sample with build, deploy and integration test steps
 
-If you think quality is important, you have probably already added an integration-tests maven module based on our xref:{testToolkitVersion}@test-toolkit::index.adoc[test-toolkit]. If so, you can have a complete pipeline like the following
+If you think quality is important, you have probably already added an integration-tests maven module based on our xref:{testToolkitVersion}@test-toolkit::index.adoc[test toolkit]. If so, you can have a complete pipeline like the following
 including `checkout`, `build`, `deploy` and `test` steps.
 
 .Sample pipeline in a Jenkinsfile

@@ -76,7 +76,7 @@ Usage: java -jar bonita-la-builder-<bonita.runtime.version>-exec.jar [command] [
 [#build]
 == Build command
 
-An App repository can be created using Bonita Studio and it can be xref:{bonitaDocVersion}@bonita::workspaces-and-repositories.adoc#_use_a_shared_project[shared with Git], so first ensure you have your App repository available on your filesystem.
+An App repository can be created using Bonita Studio, and it can be xref:{bonitaDocVersion}@bonita::workspaces-and-repositories.adoc#_use_a_shared_project[shared with Git], so first ensure you have your App repository available on your filesystem.
 
 The Bonita Application Builder CLI version must correspond to the *bonita version* of the runtime. For instance the `bonita-la-builder.jar` in version `8.0.0` must be used to build artifacts meant to be deployed on a Bonita `8.0.0` runtime.
 

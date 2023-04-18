@@ -1,4 +1,5 @@
 = Requirements and compatibility
+:description: BCD requirements and compatibility matrix
 
 This page describes which system requirements need to be met in order to use the Bonita Continuous Delivery CLIs. +
 You will also find information about BCD CLIs and Bonita version compatibility.

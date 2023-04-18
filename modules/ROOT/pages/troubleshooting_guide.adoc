@@ -1,4 +1,5 @@
 = Troubleshooting guide
+:description: BCD Troubleshooting
 
 == Access to bonita maven repository is denied (bonita artifacts not found)
 

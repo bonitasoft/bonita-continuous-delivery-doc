@@ -9,7 +9,7 @@ The original BCD controller is now provided as two separated Java CLIs.
 
 - Removal of docker, docker-compose, python, ansible and bash scripts
 - Scenario files have been removed in favor of CLI arguments.
-- deprecation of quay.io : configure your maven installation to download dependencies from xref:{bonitaDocVersion}@bonita::bonita-repository-access.adoc[Bonita Artifact Repository]
+- deprecation of quay.io : configure your maven installation to download dependencies from xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository]
 
 ==== Quay.io deprecation
 

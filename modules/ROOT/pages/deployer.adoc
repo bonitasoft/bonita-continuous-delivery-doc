@@ -3,7 +3,7 @@
 
 This page describes how to deploy Bonita Living Application artifacts from the command line.
 
-IMPORTANT: First make sure your maven installation is configured to access xref:{bonitaDocVersion}@bonita::bonita-repository-access.adoc[Bonita Artifact Repository] !
+IMPORTANT: First make sure your maven installation is configured to access xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository] !
 
 [#install]
 == Deployer installation guide

@@ -11,7 +11,7 @@ Each of the versions follows the MAJOR.MINOR.PATCH format.
 
 === From a 3.6.x towards {bcdVersion}
 
-. Remove all BCD docker images since they are useless now.
-. Configure your access to xref:{bonitaDocVersion}@bonita::bonita-repository-access.adoc[Bonita Artifact Repository]
+. Remove all BCD docker images.
+. Configure your access to xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository]
 . Follow the CLIs (xref:builder.adoc[Builder] and xref:deployer.adoc[Deployer]) documentations
 . Delete useless scenario files (pass parameters as arguments to the CLI)

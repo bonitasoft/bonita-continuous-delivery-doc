@@ -3,7 +3,7 @@
 
 == Access to bonita maven repository is denied (bonita artifacts not found)
 
-Please refer to the xref:{bonitaDocVersion}@bonita::bonita-repository-access.adoc[Bonita Artifact Repository] documentation.
+Please refer to the xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository] documentation.
 
 == Restricted Internet access by an enterprise proxy
 

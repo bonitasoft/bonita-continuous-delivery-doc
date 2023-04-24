@@ -3,7 +3,7 @@
 
 This page describes how to build Bonita Application projects from the command line.
 
-IMPORTANT: First make sure your maven installation is configured to access xref:{bonitaDocVersion}@bonita::bonita-repository-access.adoc[Bonita Artifact Repository] !
+IMPORTANT: First make sure your maven installation is configured to access xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository] !
 
 [#install]
 == Builder installation guide
@@ -91,15 +91,17 @@ The build process finally generates a *.zip* package and - from Bonita 7.8.0 onw
 The bconf file contains the parameters configuration for the target xref:{bonitaDocVersion}@bonita::environments.adoc[environment] (Local by default)
 It's possible to extract the configuration to check it and also override (merge) some parameters if needed (see link:#extract[extract] and link:#merge[merge] commands).
 
-NOTE: If no parameters are defined on any processes, the `.bconf` file is not created.
-
 For instance, with a project in a directory named `bonita-vacation-management-example`, the following files will be generated:
 
 * `bonita-vacation-management-example/target/bonita-vacation-management-example-<environment>-<timestamp>.zip`
 * `bonita-vacation-management-example/target/bonita-vacation-management-example-<environment>-<timestamp>.bconf`
 
-NOTE: Since BCD 3.0.0, process configurations are built into a separate *.bconf* artifact. This configuration artifact allows to separate process configuration (parameters) from application assets. +
-As a result, the same *.zip* package can be deployed on all environments (Development, Test, Staging) whereas a specific *.bconf* artifact may be applied to each environment.
+[NOTE]
+====
+- If no parameters are defined on any processes, the `.bconf` file is not created.
+- Since BCD 3.0.0, process configurations are built into a separate *.bconf* artifact. +
+This configuration artifact allows to separate process configuration (parameters) from application assets. As a result, the same *.zip* package can be deployed on all environments (Development, Test, Staging) whereas a specific *.bconf* artifact may be applied to each environment.
+====
 
 IMPORTANT: The `bonita-la-builder` does not allow to migrate your repository to the builder's version. Your repository has to be migrated to the appropriate version using xref:{bonitaDocVersion}@bonita::workspaces-and-repositories.adoc[Bonita Studio].
 

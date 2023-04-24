@@ -9,9 +9,9 @@ image::images/bcd_capabilities.png[Bonita Continuous Delivery Capabilities]
 
 == Basic concepts
 
-*BCD* offer has evolved now into *two Java command-line interfaces (CLI)* which allow to `build` and `deploy` Bonita Living Applications. You will be able to download the latest versions of the CLIs from our xref:{bonitaDocVersion}@bonita::bonita-repository-access.adoc[Bonita Artifact Repository] and then integrate the execution in your developer and CI pipelines.
+*BCD* offer has evolved now into *two Java command-line interfaces (CLI)* which allow to `build` and `deploy` Bonita Living Applications. You will be able to download the latest versions of the CLIs from our xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository] and then integrate the execution in your developer and CI pipelines.
 
-IMPORTANT: BCD features do not require docker anyomore. Usage has been greatly simplified. The only remaining xref:requirements-and-compatibility.adoc[prerequisites] are Java and Maven installed on the host running the CLIs.
+IMPORTANT: BCD features do not require docker anymore. Usage has been greatly simplified. The only remaining xref:requirements-and-compatibility.adoc[prerequisites] are Java and Maven installed on the host running the CLIs.
 
 [.card-section]
 == Highlight

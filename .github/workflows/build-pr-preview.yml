@@ -15,12 +15,12 @@ jobs:
       COMPONENT_BRANCH_NAME: ${{ github.head_ref }}
       COMPONENT_VERSION: ${{ github.base_ref }} # The base_ref or target branch of the pull request in a workflow run.
       # Required to pass xref validation
-      BONITA_BRANCH: '2022.1'
-      BONITA_BRANCH_FOR_BONITA: '2021.1'
+      BONITA_BRANCH: '2023.1'
+      BONITA_BRANCH_FOR_BONITA: '2023.1'
       CLOUD_BRANCH: 'master'
       # Needed to build the 'cloud' doc
       TOOLKIT_BRANCH: '1.0'
-      BONITA_BRANCH_FOR_TOOLKIT: '2022.2'
+      BONITA_BRANCH_FOR_TOOLKIT: '2023.1'
     steps:
       - name: Build PR preview
         uses: bonitasoft/bonita-documentation-site/.github/actions/build-pr-site/@master

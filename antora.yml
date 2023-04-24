@@ -4,7 +4,7 @@ version: 4.0
 asciidoc:
   attributes:
     bcdVersion: '4.0.0' # latest available maintenance version
-    bonitaDocVersion: '2022.2' # change to '2023.1' when PR ready !
+    bonitaDocVersion: '2023.1'
     testToolkitVersion: '1.0'
     # General site configuration
     page-editable: true

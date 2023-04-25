@@ -10,7 +10,7 @@ The BCD features (build and deploy) are implemented by two standalone Java CLIs 
 
 === Bonita LA Builder
 
-The bonita-la-builder program delegate some work to maven during its execution, so requirement are:
+The bonita-la-builder program delegate some work to `maven` during its execution, so requirement are:
 
 - https://adoptium.net/temurin/releases/?version=11[Java JDK 11]
 - https://maven.apache.org/install.html[Apache Maven]
@@ -35,7 +35,6 @@ BCD uses the technical Id of the platform. xref:{bonitaDocVersion}@bonita:versio
 The bonita-la-builder versions follow the Bonita engine versions.
 
 Example: to build a 2023.1 (8.0.0) bonita project, you have to use the 8.0.0 version of the bonita-la-builder.
-// TODO: complete matrix with patch supported range
 
 === Bonita LA Deployer
 

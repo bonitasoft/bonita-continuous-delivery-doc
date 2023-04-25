@@ -15,7 +15,7 @@ The original BCD controller is now provided as two separated Java CLIs.
 
 Quay.io is now deprecated in favor of our Bonita Artifact Repository. Support delay is based on 2023.1-GA release date.
 
-[cols="1,1,1"]
+[cols="2,1,1"]
 |===
 | | Quay.io | Bonita Artifact Repository
 

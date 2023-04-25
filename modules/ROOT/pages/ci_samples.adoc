@@ -8,9 +8,7 @@ There are many ways to integrate BCD CLIs in a CI pipeline. The samples proposed
 
 == Building a Bonita Project
 
-The bonita-la-builder is a standalone java program, so you can choose to either run it as sepcific step in your CI pipeline or try to integrate its execution in the project build lifecycle (as part of the maven build)
-
-=== Build step as a CI stage
+The bonita-la-builder is a standalone java program, so you run it as sepcific step in your CI pipeline.
 
 https://www.jenkins.io/doc/book/pipeline/[JenkinsCI pipeline] are made of steps (stage). Here is a way to use the bonita-la-builder as a step in a JenkinsCI pipeline.
 
@@ -37,158 +35,7 @@ node {
 <1> Download the bonita-la-builder using maven in order to use the already configured credentials to access Bonita Artifact Repository.
 <2> Execute the bonita-la-builder CLI via a maven command in order to use the same Java version as the one used to build the project.
 
-=== Build step as part of maven build
-
-Starting from Bonita 7.13, Bonita project *ARE* a https://maven.apache.org/[maven project]. A maven project is defined by by a maven _project object model_ (POM) file in xml format (`pom.xml`). A maven project has a root pom.xml and each sub-module has also a pom.xml file.
-
-.Sample bonita project layout
-[source, text, subs="+macros"]
-----
-. [ <- *root maven project*]
-├── pom.xml
-├── Jenkinsfile
-├── mvnw
-├── mvnw.cmd
-├── app [ <- *maven module*]
-│   ├── pom.xml
-│   ├── applications
-│   ├── diagrams
-│   ├── documentation
-│   ├── environements
-│   ├── MIGRATION_NOTES.adoc
-│   ├── organizations
-│   ├── profiles
-│   ├── README.adoc
-│   ├── target
-│   ├── web_fragments
-│   ├── web_page
-│   └── web_widgets
-│   └── target
-├── bdm [<- *maven module*]
-│   ├── pom.xml
-│   ├── bom.xml
-│   ├── dao-client [<- *maven module*]
-│   │   ├── pom.xml
-│   └─── model [<- *maven module*]
-│       ├── pom.xml
-└── README.adoc
-----
-
-If you want your maven build to produce a bonita archive for the app module, you need to perform some customization in the project's pom.xml files.
-
-In the `root` pom.xml file, ensure that the bonita version https://maven.apache.org/pom.html#Properties[maven property] is defined with the desired value (here, 8.0.0 in the source sample).
-
-NOTE: This should already be done by Bonita Studio when editing the project.
-
-.Extract from the root pom.xml file
-[source, xml]
-----
-<properties>
-    <!-- Bonita -->
-    <bonita.runtime.version>8.0.0</bonita.runtime.version>
-    <!-- ... -->
-</properties>
-----
-
-Then in the `app` module pom.xml file, ensure the following is present in the build section. (You must set the plugin versions, see https://maven.apache.org/pom.html#plugin-management[maven plugin management] for best practices)
-
-.Sample build configuration part from `app` module pom.xml file
-[source, xml]
-----
-<build>
-    <plugins>
-        <plugin>
-            <artifactId>maven-jar-plugin</artifactId> <1>
-            <configuration>
-              <skipIfEmpty>false</skipIfEmpty>
-            </configuration>
-        </plugin>
-		<plugin>
-			<groupId>org.codehaus.mojo</groupId>
-			<artifactId>exec-maven-plugin</artifactId>
-			<executions>
-				<execution>
-					<!-- Download LA Builder for the targeted bonita runtime version -->
-					<id>2-download-la-builder</id> <2>
-					<phase>package</phase>
-					<goals>
-						<goal>exec</goal>
-					</goals>
-					<configuration>
-						<executable>mvn</executable>
-						<commandlineArgs>-ntp dependency:copy -Dartifact=com.bonitasoft.tools:bonita-la-builder:${bonita.runtime.version}:jar:exec -DoutputDirectory=${project.parent.basedir}</commandlineArgs>
-					</configuration>
-				</execution>
-				<execution>
-					<!-- Run LA Builder to build bonita project with maven -->
-					<id>3-build-bonita-project</id> <3>
-					<phase>package</phase>
-					<goals>
-						<goal>exec</goal>
-					</goals>
-					<configuration>
-						<executable>java</executable>
-						<commandlineArgs>-jar ${project.parent.basedir}/bonita-la-builder-${bonita.runtime.version}-exec.jar build ${project.parent.basedir} -o ${project.parent.build.directory}/${project.artifactId}-${project.version}.zip -e Development --ignore-version-conflict</commandlineArgs>
-					</configuration>
-				</execution>
-			</executions>
-		</plugin>
-        <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>build-helper-maven-plugin</artifactId>
-            <executions>
-              <execution>
-                <phase>generate-sources</phase>
-                <goals>
-                  <goal>add-source</goal>
-                </goals>
-                <configuration>
-                  <sources>
-                    <source>src-connectors</source>
-                    <source>src-filters</source>
-                    <source>src-groovy</source>
-                    <source>src-providedGroovy</source>
-                  </sources>
-                </configuration>
-              </execution>
-              <execution>
-                <id>attach-artifacts</id> <4>
-                <phase>package</phase>
-                <goals>
-                    <goal>attach-artifact</goal>
-                </goals>
-                <configuration>
-                    <artifacts>
-                        <artifact>
-                            <file>${project.parent.build.directory}/${project.artifactId}-${project.version}.zip</file>
-                            <type>zip</type>
-                        </artifact>
-                    </artifacts>
-                </configuration>
-            </execution>
-        </executions>
-    </plugin>
-  </plugins>
-</build>
-----
-<1> Tell maven not to fail because our project does not generate a `jar` file.
-<2> Download the bonita-la-builder for the target bonita runtime version
-<3> Build the bonita project with the bonita-la-builder
-<4> Tell maven to attach the zip artifact produced as the result of the build (so it can be used for maven publication in enterprise repositories)
-
-Now you should be able to perform a standard `mvn package` command from the project root and find the project zip in `app/target` folder. For more detail on maven plugins configuration, please refer to their official documentation.
-
-In a JenkinsCI, this could be written as a simple shell step.
-
-[source, groovy]
-----
-stage 'Build App', {
-    sh "mvn package"
-}
-
-----
-
-NOTE: Work is still ongoing on Bonita side to reach a standard maven build without any more customizations like the ones explained here. Stay tuned !
+IMPORTANT: Default maven executable (mvn command) has to be configured to use the settings.xml file with access to "Bonita artifact repository". Use the default `.m2/settings.xml` location or use the `.mvn/maven.config` file https://maven.apache.org/configure.html#mvn-maven-config-file[option] to specify the settings.xml path.
 
 == Deploy step as part of CI job
 
@@ -209,7 +56,7 @@ node {
         }
 
         stage 'Build App', {
-             // Step that produce a "my-app.zip" zip file (direct builder invocation or maven integration)
+             // Step that produce a "my-app.zip" zip file
         }
 
       withCredentials([usernamePassword(credentialsId: 'bonitaTechUser', passwordVariable: 'BONITA_TECH_PASSWD', usernameVariable: 'BONITA_TECH_LOGIN')]) { <1>

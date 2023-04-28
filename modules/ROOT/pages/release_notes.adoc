@@ -1,6 +1,8 @@
 = Release notes
 :description: BCD release notes
 
+:page-aliases: scenarios.adoc, how_to_use_bcd_with_data_encrypted.adoc
+
 == What's new in 4.0
 
 The original BCD controller is now provided as two separated Java CLIs.
@@ -8,8 +10,8 @@ The original BCD controller is now provided as two separated Java CLIs.
 === Breaking changes
 
 - Removal of docker, docker-compose, python, ansible and bash scripts
-- Scenario files have been removed in favor of CLI arguments.
-- deprecation of quay.io : configure your maven installation to download dependencies from xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository]
+- Removal of scenario files in favor of CLI arguments.
+- Deprecation of quay.io : configure your maven installation to download dependencies from xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository]
 
 ==== Quay.io deprecation
 

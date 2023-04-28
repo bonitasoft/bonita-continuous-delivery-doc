@@ -1,6 +1,8 @@
 = How to integrate BCD features in a CI pipeline
 :description: BCD features integration in a CI pipelines
-:experimental:
+
+:page-aliases: jenkins_example.adoc
+
 
 The BCD controller can not only be run interactively, but also within standard Continuous Delivery servers such as https://jenkins.io/[Jenkins CI], or https://github.com/features/actions[Github Actions], or https://docs.gitlab.com/ee/ci/[Gitlab CI], etc.
 

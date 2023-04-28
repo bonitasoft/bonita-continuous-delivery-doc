@@ -1,6 +1,8 @@
 = How to deploy Living App artifacts
 :description: Deploy a Bonita application archive
 
+:page-aliases: livingapp_build_and_deploy_without_docker.adoc
+
 This page describes how to deploy Bonita Living Application artifacts from the command line.
 
 IMPORTANT: First make sure your maven installation is configured to access xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository] !

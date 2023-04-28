@@ -1,6 +1,9 @@
 = Bonita Continuous Delivery
 :description: Bonita tools for continuous delivery
 
+:page-aliases: bcd_cli.adoc, bcd_controller.adoc, getting_started.adoc
+
+
 The Bonita Continuous Delivery (BCD) offer provides tools to setup _Continuous Delivery_ practice for your Bonita Living Application development and deployment.
 
 BCD lets you build a Living Application from source code in a repository and deploy the generated artifacts from the command line.

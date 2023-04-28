@@ -1,6 +1,8 @@
 = How to build a App repository
 :description: Build an App repository into a ready to deploy archive
 
+:page-aliases: livingapp_build.adoc, livingapp_manage_configuration.adoc
+
 This page describes how to build Bonita Application projects from the command line.
 
 IMPORTANT: First make sure your maven installation is configured to access xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository] !

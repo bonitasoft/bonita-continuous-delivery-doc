@@ -36,7 +36,7 @@ Quay.io is now deprecated in favor of our Bonita Artifact Repository. Support de
 
 | *BCD 4 dependencies* for *Bonita < 2023.1*
 | not available icon:cross[role=red]
-| unsupported: not available icon:cross[role=red]+
+| unsupported: not available icon:cross[role=red] +
 still supported: available icon:check[role=green]
 
 | *BCD 4 dependencies* for *Bonita >= 2023.1*

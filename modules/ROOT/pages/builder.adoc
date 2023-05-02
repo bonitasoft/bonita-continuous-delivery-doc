@@ -85,7 +85,7 @@ The Bonita Application Builder CLI version must correspond to the *bonita versio
 [source, bash]
 ----
 cd <project parent dir>
-java -jar bonita-la-builder.jar build -p <project dir> [options ...]
+java -jar bonita-la-builder.jar build <project dir> [options ...]
 ----
 
 The build process finally generates a *.zip* package and - from Bonita 7.8.0 onwards - a *.bconf* artifact located in the repository's `target` repository. The generated artifacts are named after the repository's root directory name and the selected environment name.

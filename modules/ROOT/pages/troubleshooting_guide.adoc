@@ -1,9 +1,9 @@
 = Troubleshooting guide
 :description: BCD Troubleshooting
 
-== Access to bonita maven repository is denied (bonita artifacts not found)
+== Access to Bonita Artifact Repository is denied
 
-Please refer to the xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository] documentation.
+If you encounter some error while fetching Bonita java dependencies, please refer to the xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository] documentation.
 
 == Restricted Internet access by an enterprise proxy
 

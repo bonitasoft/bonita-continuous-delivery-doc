@@ -11,34 +11,35 @@ The original BCD controller is now provided as two separated Java CLIs.
 
 - Removal of docker, docker-compose, python, ansible and bash scripts
 - Removal of scenario files in favor of CLI arguments.
+- Ansible Vault removal as announced in version 3.6.0
 - Deprecation of quay.io : configure your maven installation to download dependencies from xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository]
 
 ==== Quay.io deprecation
 
-Quay.io is now deprecated in favor of our Bonita Artifact Repository. Support delay is based on 2023.1-GA release date.
+Quay.io is now deprecated in favor of our Bonita Artifact Repository. Support delay is based on 2023.1-GA release date (May 2023).
 
 [cols="2,1,1"]
 |===
-| | Quay.io | Bonita Artifact Repository
+| Docker image | Quay.io | Bonita Artifact Repository
 
-| *BCD 3.X* docker images
+| *BCD 3.X* Controller
 | kept for 18 months icon:check[role=blue]
 | not available icon:cross[role=red]
 
-| *BCD 3.X dependencies* docker image for *Bonita < 2023.1*
+| *BCD 3.X dependencies* for *Bonita < 2023.1*
 | kept for 18 months icon:check[role=blue]
 | not available icon:cross[role=red]
 
-| *BCD 3.X dependencies* docker image for *Bonita >= 2023.1*
+| *BCD 3.X dependencies* for *Bonita >= 2023.1*
 | not available icon:cross[role=red]
 | not available icon:cross[role=red]
 
-| *BCD 4 dependencies* for *Bonita < 2023.1* (maven dep)
+| *BCD 4 dependencies* for *Bonita < 2023.1*
 | not available icon:cross[role=red]
 | unsupported: not available icon:cross[role=red]+
 still supported: available icon:check[role=green]
 
-| *BCD 4 dependencies* for *Bonita >= 2023.1* (maven dep)
+| *BCD 4 dependencies* for *Bonita >= 2023.1*
 | not available icon:cross[role=red]
 | available icon:check[role=green]
 |===

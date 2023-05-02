@@ -1,37 +1,17 @@
 = Troubleshooting guide
+:description: BCD Troubleshooting
 
-If you encounter issues during the usage of BCD due to a bad configuration or a network problem, it's interesting to know that you could be able to simply relaunch your command (create, deploy) after fixing the configuration or the network and it should resume from where it was.
+== Access to Bonita Artifact Repository is denied
 
-== Access to private maven repository is denied
-
-In order to configure BCD to use a corporate maven repository, define it as a mirror for maven central
-Add a regular maven `settings.xml` file with the proper https://maven.apache.org/guides/mini/guide-mirror-settings.html[mirror configuration] in `/home/bonita/.m2` folder inside `bcd controller` container:
-
-If you want to update an already running container without restart, you can run the following, otherwise use docker volume binding.
-
-[source,bash]
-----
-# .m2 folder may be created before
-docker cp <PATH-TO-SETTINGS.xml> bcd-controller:/home/bonita/.m2/settings.xml
-----
+If you encounter some error while fetching Bonita java dependencies, please refer to the xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository] documentation.
 
 == Restricted Internet access by an enterprise proxy
 
-If required, you can configure BCD to use proxy settings.
-
-This has to be done for the docker container, the maven installation.
-If you are using the bcd stack commands, you may need to configure ansible as well.
-
-* Docker proxy settings : https://docs.docker.com/network/proxy
-* Maven proxy settings: https://maven.apache.org/guides/mini/guide-proxies.html
-
-NOTE: Starting from BCD 3.4, you can directly bind mount your host maven `~/.m2` folder.
-This will give BCD access to your already configured maven settings (enterprise repository configuration, proxy settings, etc.)
-and you will also benefit from the already cached artifacts present in your `~/.m2/repository` folder.
+If required, you can configure maven to use proxy settings : https://maven.apache.org/guides/mini/guide-proxies.html
 
 == A REST API Extension compilation generates errors
 
-The `bcd ... livingapp build ...` failed to generate the REST API Extensions with these error messages below:
+The `build` command failed to generate the REST API Extensions with these error messages below:
 [source,bash]
 ----
 ...
@@ -100,43 +80,4 @@ In order to find the versions to use, apply the procédure below:
 * Start the Studio
 * Create a new dummy REST API extension: the new `pom.xml` file created contains the versions to used
 * Update the `pom.xml` file of the REST API Extension which failed to be compiled.
-
-
-== Accessing Ansible Logs
-
-In order to troubleshoot issues, you may need to consult Ansible logs.
-
-By default, the path of the log is `/var/log/ansible.log` in your Docker container. You can change this location modifying the variable `log_path` in the Ansible configuration file located in `/home/bonita/bonita-continuous-delivery/ansible/ansible.cfg`.
-
-If you want to persist the log, you can add a *_volume_* in when you run `docker run` command like
-
-[source,bash,subs="attributes"]
-----
-$ docker run --rm -t -i --name bcd-controller \
-    -v &lt;host_path_to_bonita-continuous-delivery_folder>:/home/bonita/bonita-continuous-delivery \
-    -v &lt;host_path_to_your_ansible_log>:/var/log/ansible.log \
-    quay.io/bonitasoft/bcd-controller:{bcdVersion} /bin/bash
-----
-
-== Files owned by another user in the workspace (Linux users only)
-
-BCD is packaged as a docker image, and the user inside the image is mapped to the most common default
-`user id` and `group id` (for the first created user) on linux platform which is `1000`
-
-Since BCD creates files during execution, if your `user id` doesn't match the `user id` inside the docker image, you will end
-with new files under BCD workspace owned by another user than you and won't be able to edit or delete them
-unless having admin privileges.
-
-_Example: the `dependencies` folder:_
-
-[source,bash]
-----
-ls -la dependencies/
--rw-r--r-- 1 <my-user-id> <my-group-id>  157 déc.   4  2019 README.md
-drwxr-xr-x 2 root   root                 4096 janv. 6  2020 7.11.3 # <= this folder created by BCD is now read only for <my-user>
-----
-
-To properly map your own user to the user inside the BCD controller image,
-see the `Running BCD controller with user ID different from 1000` paragraph in xref:bcd_controller.adoc[BCD Controller image]
-
 

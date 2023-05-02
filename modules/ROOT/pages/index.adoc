@@ -1,34 +1,38 @@
-= Bonita Continuous Delivery Add-on
+= Bonita Continuous Delivery
+:description: Bonita tools for continuous delivery
 
-Welcome to *Bonita Continuous Delivery Add-on* documentation website!
+:page-aliases: bcd_cli.adoc, bcd_controller.adoc, getting_started.adoc
 
-image::images/bcd_logo.png[Bonita Continuous Delivery Add-on Logo]
 
-The Bonita Continuous Delivery (BCD) add-on provides a solution to use _Continuous Delivery_ practice for your Bonita Living Application development and deployment.
+The Bonita Continuous Delivery (BCD) offer provides tools to setup _Continuous Delivery_ practice for your Bonita Living Application development and deployment.
 
-BCD lets you build a Living Application repository and deploy the generated artifacts from the command line. Besides, a pre-configured standalone https://jenkins.io/[Jenkins CI] environment is also provided as an *integration sample* with BCD.
+BCD lets you build a Living Application from source code in a repository and deploy the generated artifacts, all from the command line.
 
 image::images/bcd_capabilities.png[Bonita Continuous Delivery Capabilities]
+
+== Basic concepts
+
+*BCD* offer has evolved now into *two Java command-line interfaces (CLI)* which allow to `build` and `deploy` Bonita Living Applications. You will be able to download the latest versions of the CLIs from our xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository] and then integrate the execution in your developer and CI pipelines.
+
+IMPORTANT: *BCD features do not require docker anymore*. Usage is therefore greatly simplified. The only remaining xref:requirements-and-compatibility.adoc[prerequisites] are Java and Maven installed on the host running the CLIs.
 
 [.card-section]
 == Highlight
 
 [.card.card-index]
 --
-xref:release_notes.adoc[[.card-title]#What's new in BCD?# [.card-body]#pass:q[Find out what’s new in Bonita Continuous Delivery add-on! Read the release notes.]#]
+xref:release_notes.adoc[[.card-title]#What's new in BCD?# [.card-body]#pass:q[Find out what’s new in Bonita Continuous Delivery !]#]
 --
 
 [.card.card-index]
 --
-xref:getting_started.adoc[[.card-title]#Getting started# [.card-body]#pass:q[Check out the tutorials for practical guides about using Bonita Continuous Delivery add-on.]#]
+xref:builder.adoc[[.card-title]#Start building# [.card-body]#pass:q[Check out how to build a Living App repository.]#]
 --
 
-== Basic concepts
+[.card.card-index]
+--
+xref:deployer.adoc[[.card-title]#Start deploying# [.card-body]#pass:q[Check out how to deploy a Living App.]#]
+--
 
-This add-on provides a `bcd` command-line interface (BCD CLI) which enables to build and deploy Bonita Living Applications
-
-The BCD CLI is provided within a ready-to-use environment called *BCD Controller*. This environment is packaged as a Docker image. +
-Then a controller container will have to be started interactively on your control host from which `bcd` commands will be issued.
-
-WARNING: It is highly recommended to have a clear understanding of https://docs.docker.com/engine/docker-overview/[Docker essential concepts] prior to reading this documentation.
-
+TIP: For both CLIs you can have a look at the https://www.mojohaus.org/exec-maven-plugin/[exec-maven-plugin] to include `build` and/or `deploy` step in the bonita project build lifecycle. (starting from version 7.13.x, a bonita project is a maven project) +
+Currently you should consider the maven aspect as a black box, because the studio perform some instrumentation of the project's pom.xml file, but advanced users can still take advantage of the maven aspect of the project.

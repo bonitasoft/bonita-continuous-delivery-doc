@@ -1,4 +1,68 @@
 = Release notes
+:description: BCD release notes
+
+:page-aliases: scenarios.adoc, how_to_use_bcd_with_data_encrypted.adoc
+
+== What's new in 4.0
+
+The original BCD controller is now provided as two separated Java CLIs.
+
+=== Breaking changes
+
+- Removal of docker, docker-compose, python, ansible and bash scripts
+- Removal of scenario files in favor of CLI arguments.
+- Ansible Vault removal as announced in version 3.6.0
+- Deprecation of quay.io : configure your maven installation to download dependencies from xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository]
+
+==== Quay.io deprecation
+
+Quay.io is now deprecated in favor of our Bonita Artifact Repository. Support delay is based on 2023.1-GA release date (May 2023).
+
+[cols="2,1,1"]
+|===
+| Docker image | Quay.io | Bonita Artifact Repository
+
+| *BCD 3.X* Controller
+| icon:circle-check[role=blue] kept for 18 months
+| icon:circle-xmark[role=red] not available
+
+| *BCD 3.X dependencies* for *Bonita < 2023.1*
+| icon:circle-check[role=blue] kept for 18 months
+| icon:circle-xmark[role=red] not available
+
+| *BCD 3.X dependencies* for *Bonita >= 2023.1*
+| icon:circle-xmark[role=red] not available
+| icon:circle-xmark[role=red] not available
+
+| *BCD 4 dependencies* for *Bonita < 2023.1*
+| icon:circle-xmark[role=red] not available
+| icon:circle-xmark[role=red] versions unsupported => not available +
+icon:circle-check[role=green] versions still supported => available
+
+| *BCD 4 dependencies* for *Bonita >= 2023.1*
+| icon:circle-xmark[role=red] not available
+| icon:circle-check[role=green] available
+|===
+
+
+=== Builder
+
+- The bonita-la-builder release 8.0.0 is now available.
+
+=== Deployer
+
+The bonita-la-deployer release 1.0.0 is now available.
+
+Reminder:
+
+- the bonita-la-deployer requires authentication and authorization on the Rest API by passing credentials (username/password). To ensure that all operations can be performed, we advise you to use the credentials of the Tenant Administrator. It is mandatory to deploy a Business Data Model.
+- you can only log to the default tenant (id 1). Multi-tenant is removed from Bonita Platform 2023.1 (8.0).
+- Prior to deploying a Business Data Model, the bonita-la-deployer put the Tenant in the paused state. It then restarts it after deployment of the BDM. So a downtime of the related Bonita Tenant occurs in this case
+
+==== Updates
+
+- logback = 1.4.6
+- commons-configuration2 : 2.9.0
 
 == What's new in 3.6.2
 
@@ -32,7 +96,7 @@
 
 === Breaking changes
 
-* Some scenario variables have been renamed to a more coherent name  (see xref:scenarios.adoc[])
+* Some scenario variables have been renamed to a more coherent name
 ** renamed : `bonita_tenant_login` to `bonita_technical_username`
 ** renamed : `bonita_tenant_password` to `bonita_technical_password`
 
@@ -69,52 +133,3 @@ The tool is still present so you can decrypt your files but it will be removed i
 
 * Remove the `docker-compose.override.yml.EXAMPLE`: we now use a single docker-compose file
 
-== What's new in 3.5.0
-
-=== Breaking changes
-
-* As announced in version 3.4.4, `stack` and `license` commands are now removed from the CLI. +
- As a result, scenario files must be updated since a lot of parameters are now obsolete and a few remains mandatory (see xref:scenarios.adoc[])
-* For the same reason, `openssh-client` package was removed from the docker controller image. +
-You can re-add this package if needed by building a custom image of the controller.
-
-.Sample custom BCD Controller with ssh client
-[source,docker]
-----
-FROM quay.io/bonitasoft/bcd-controller:{bcdVersion}
-
-USER root
-RUN apt update && apt install -y openssh-client
-USER bonita
-----
-
-=== Technology upgrade
-
-- java => 11.0.12+7
-- maven => 3.8.2
-
-=== Updates
-
-* chore(deps): bump urllib3 from 1.26.4 to 1.26.5 in bcd-cli
-* feat(bonita): update support for bonita version 7.13.0
-
-=== Removals
-
-==== System packages
-
-* openssh-client
-* ttf-dejavu
-* gcc
-* g++
-
-== What's new in 3.4.5
-
-=== Features
-
-* chore(deps): upgrade bonita-license to 1.4.2 for better license generation handling.
-
-=== Fix
-
-* fix(jdk11): fix jdk build failing because of gpg keys
-
-WARNING: Since BCD 3.4.3, only the two last BCD Controller images are now available on quay.io, older images will be removed.

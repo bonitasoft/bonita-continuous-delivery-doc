@@ -23,7 +23,7 @@ Then just use the CLI jar once downloaded :
 .Execution sample
 [source, bash]
 ----
-java -jar bonita-la-builder.jar build -e production <path to the bonita project>
+java -jar bonita-la-builder.jar build <path to the bonita project> -e production
 ----
 
 You can call `bonita-la-builder` with the `--help` (or `-h`) option to get available options and commands as follows:

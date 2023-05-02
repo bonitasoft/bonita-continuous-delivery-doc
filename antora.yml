@@ -1,6 +1,6 @@
 name: bcd
 title: Continuous Delivery
-version: 4.0
+version: '4.0'
 prerelease: -draft
 asciidoc:
   attributes:

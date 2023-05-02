@@ -23,25 +23,25 @@ Quay.io is now deprecated in favor of our Bonita Artifact Repository. Support de
 | Docker image | Quay.io | Bonita Artifact Repository
 
 | *BCD 3.X* Controller
-| kept for 18 months icon:check[role=blue]
-| not available icon:cross[role=red]
+| icon:circle-check[role=blue] kept for 18 months
+| icon:circle-xmark[role=red] not available
 
 | *BCD 3.X dependencies* for *Bonita < 2023.1*
-| kept for 18 months icon:check[role=blue]
-| not available icon:cross[role=red]
+| icon:circle-check[role=blue] kept for 18 months
+| icon:circle-xmark[role=red] not available
 
 | *BCD 3.X dependencies* for *Bonita >= 2023.1*
-| not available icon:cross[role=red]
-| not available icon:cross[role=red]
+| icon:circle-xmark[role=red] not available
+| icon:circle-xmark[role=red] not available
 
 | *BCD 4 dependencies* for *Bonita < 2023.1*
-| not available icon:cross[role=red]
-| unsupported: not available icon:cross[role=red] +
-still supported: available icon:check[role=green]
+| icon:circle-xmark[role=red] not available
+| icon:circle-xmark[role=red] versions unsupported => not available +
+icon:circle-check[role=green] versions still supported => available
 
 | *BCD 4 dependencies* for *Bonita >= 2023.1*
-| not available icon:cross[role=red]
-| available icon:check[role=green]
+| icon:circle-xmark[role=red] not available
+| icon:circle-check[role=green] available
 |===
 
 

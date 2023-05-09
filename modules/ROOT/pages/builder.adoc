@@ -30,7 +30,7 @@ You can call `bonita-la-builder` with the `--help` (or `-h`) option to get avail
 
 [source,bash]
 ----
-bonita@bcd-controller:~/bonita-continuous-delivery$ java -jar bonita-la-builder -h
+java -jar bonita-la-builder.jar -h
 Usage: java -jar bonita-la-builder-<bonita.runtime.version>-exec.jar [command] [command options]
   Commands:
     build      Build a Bonita project

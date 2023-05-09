@@ -8,14 +8,14 @@ You will also find information about BCD CLIs and Bonita version compatibility.
 
 The BCD features (build and deploy) are implemented by two standalone Java CLIs (command line interface).
 
+IMPORTANT: You have to ensure that your maven installation is configured to access the xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository]
+
 === Bonita LA Builder
 
 The bonita-la-builder program delegate some work to `maven` during its execution, so requirement are:
 
 - https://adoptium.net/temurin/releases/?version=11[Java JDK 11]
 - https://maven.apache.org/install.html[Apache Maven]
-
-IMPORTANT: You also have to ensure that your maven installation is configured to access the xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository]
 
 === Bonita LA Deployer
 

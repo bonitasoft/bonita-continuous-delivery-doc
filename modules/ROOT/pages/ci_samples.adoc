@@ -4,7 +4,7 @@
 :page-aliases: jenkins_example.adoc
 
 
-The BCD controller can not only be run interactively, but also within standard Continuous Delivery servers such as https://jenkins.io/[Jenkins CI], or https://github.com/features/actions[Github Actions], or https://docs.gitlab.com/ee/ci/[Gitlab CI], etc.
+The BCD CLIs can not only be run interactively, but also within standard Continuous Delivery servers such as https://jenkins.io/[Jenkins CI], or https://github.com/features/actions[Github Actions], or https://docs.gitlab.com/ee/ci/[Gitlab CI], etc.
 
 There are many ways to integrate BCD CLIs in a CI pipeline. The samples proposed here explain how to integrate bonita-la-builder the bonita-la-deployer in a JenkinsCI pipeline job.
 
@@ -21,11 +21,12 @@ node {
 
         stage 'Checkout', {
             // Checkout your project source code
+            checkout scm
         }
 
         stage 'Build App', {
             // Download bonita-la-builder using maven
-            def bonitaRuntimeVersion = sh('mvn org.apache.maven.plugins:maven-help-plugin:3.3.0:evaluate -Dexpression=bonita.runtime.version -q -DforceStdout', true)
+            def bonitaRuntimeVersion = sh('mvn help:evaluate -Dexpression=bonita.runtime.version -q -DforceStdout', true)
             sh "mvn dependency:copy -Dartifact=com.bonitasoft.tools:bonita-la-builder:${bonitaRuntimeVersion}:jar:exec -Dmdep.stripVersion -Dmdep.stripClassifier -DoutputDirectory=./" <1>
             // Execute the builder using maven
             sh 'mvn --non-recursive exec:exec -Dexec.executable=java -Dexec.args="-jar bonita-la-builder.jar build . -o my-app.zip"' <2>
@@ -63,8 +64,9 @@ node {
 
       withCredentials([usernamePassword(credentialsId: 'bonitaTechUser', passwordVariable: 'BONITA_TECH_PASSWD', usernameVariable: 'BONITA_TECH_LOGIN')]) { <1>
         stage 'Deploy App', {
-            sh "mvn dependency:copy -Dartifact=com.bonitasoft.deployer:bonita-la-deployer:1.0.0:jar -Dmdep.stripVersion -DoutputDirectory=./" <2>
-            sh 'mvn --non-recursive exec:exec -Dexec.args="-jar bonita-la-deployer.jar -f target/my-app.zip -t http://my-server:8080/bonita -u \$BONITA_TECH_LOGIN -p \$BONITA_TECH_PASSWD"' <3>
+            // Here the la-builder version is hardcoded but you may use an environment variable to store the version.
+            sh 'mvn dependency:copy -Dartifact=com.bonitasoft.deployer:bonita-la-deployer:1.0.0:jar -Dmdep.stripVersion -DoutputDirectory=./' <2>
+            sh 'mvn --non-recursive exec:exec -Dexec.args="-jar bonita-la-deployer.jar -f target/my-app.zip -t http://my-server:8080/bonita --username $BONITA_TECH_LOGIN --password $BONITA_TECH_PASSWD"' <3>
         }
       }
 }
@@ -102,8 +104,8 @@ node {
 
         withCredentials([usernamePassword(credentialsId: 'bonitaTechUser', passwordVariable: 'BONITA_TECH_PASSWD', usernameVariable: 'BONITA_TECH_LOGIN')]) {
             stage 'Deploy App', {
-                sh "mvn dependency:copy -Dartifact=com.bonitasoft.deployer:bonita-la-deployer:1.0.0:jar -Dmdep.stripVersion -DoutputDirectory=./"
-                sh 'mvn --non-recursive exec:exec -Dexec.args="-jar bonita-la-deployer.jar -f target/my-app.zip -t http://my-server:8080/bonita -u \$BONITA_TECH_LOGIN -p \$BONITA_TECH_PASSWD"'
+                sh 'mvn dependency:copy -Dartifact=com.bonitasoft.deployer:bonita-la-deployer:1.0.0:jar -Dmdep.stripVersion -DoutputDirectory=./'
+                sh 'mvn --non-recursive exec:exec -Dexec.args="-jar bonita-la-deployer.jar -f target/my-app.zip -t http://my-server:8080/bonita --username $BONITA_TECH_LOGIN --password $BONITA_TECH_PASSWD"'
             }
 
             stage 'Integration tests', {

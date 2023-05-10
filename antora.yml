@@ -1,7 +1,6 @@
 name: bcd
 title: Continuous Delivery
 version: '4.0'
-prerelease: -draft
 asciidoc:
   attributes:
     bcdVersion: '4.0.0' # latest available maintenance version
@@ -9,6 +8,5 @@ asciidoc:
     testToolkitVersion: '1.0'
     # General site configuration
     page-editable: true
-    page-custom-message: "This content is dedicated to the incoming Bonita Continuous Delivery which will be delivered with the 2023.1 Bonita release (for enterprise editions)."
 nav:
   - modules/ROOT/taxonomy.adoc

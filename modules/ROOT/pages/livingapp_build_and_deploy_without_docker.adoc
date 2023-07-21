@@ -15,7 +15,7 @@ This chapter assumes that:
 
 == How to build the living application
 
-To build a Living application, you'll need both the `bonita-la-builder-${BONITA_VERSION}-exec.jar` CLI application, and the `bonita-sp-${BONITA_VERSION}-maven-repository.zip` maven dependency package.
+To build a Living application, you'll need both the `+bonita-la-builder-${BONITA_VERSION}-exec.jar+` CLI application, and the `+bonita-sp-${BONITA_VERSION}-maven-repository.zip+` maven dependency package.
 
 === Extract the LA Builder CLI
 
@@ -140,7 +140,7 @@ Usage: java -jar bonita-la-builder-7.12.2-exec.jar [command] [command options]
 
 == How to deploy the living application
 
-To deploy a Living application, you'll need the `bonita-la-deployer-${DEPLOYER_VERSION}.jar` CLI application.
+To deploy a Living application, you'll need the `+bonita-la-deployer-${DEPLOYER_VERSION}.jar+` CLI application.
 
 === Extract the LA Deployer CLI
 

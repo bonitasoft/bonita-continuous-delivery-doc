@@ -108,8 +108,8 @@ ARG BONITA_GID
 
 USER root
 
-RUN groupmod -g ${BONITA_GID} bonita && \
-    usermod -u ${BONITA_UID} -g ${BONITA_GID} bonita && \
+RUN groupmod -g $\{BONITA_GID} bonita && \
+    usermod -u $\{BONITA_UID} -g $\{BONITA_GID} bonita && \
     chown bonita:bonita /var/log/ansible.log
 
 USER bonita

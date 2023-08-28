@@ -1,7 +1,10 @@
 = Troubleshooting guide
 :description: BCD Troubleshooting
 
-[.troublehooting-section]
+[.troubleshooting-title]
+== Troubleshooting
+
+[.troubleshooting-section]
 --
 [.symptom]
 Access to Bonita Artifact Repository is denied

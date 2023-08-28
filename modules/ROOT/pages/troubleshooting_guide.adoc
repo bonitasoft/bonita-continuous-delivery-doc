@@ -6,16 +6,17 @@
 [.symptom]
 Access to Bonita Artifact Repository is denied
 
-[.solution]#Possible solution#
+[.solution]#Solution#
 If you encounter some error while fetching Bonita java dependencies, please refer to the xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository] documentation.
 --
+
 
 [.troubleshooting-section]
 --
 [.symptom]
 Restricted Internet access by an enterprise proxy
 
-[.solution]#Possible solution#
+[.solution]#Solution#
 If required, you can configure maven to use proxy settings : https://maven.apache.org/guides/mini/guide-proxies.html
 --
 
@@ -25,7 +26,6 @@ If required, you can configure maven to use proxy settings : https://maven.apach
 [.symptom]
 A REST API Extension compilation generates errors
 
-[.solution]#Possible solution#
 The `build` command failed to generate the REST API Extensions with these error messages below:
 [source,bash]
 ----
@@ -80,9 +80,11 @@ java.io.IOException: Maven build failed.
 	at com.bonitasoft.la.builder.BuilderCLI.main(BuilderCLI.java:82)
 ----
 
+[.cause]#Cause#
 The REST API Extension involved was created with a lower version of the Bontia product.
 There are java librarires (`.jar` files) which are not compatible with java 11 used with latest version of BCD.
 
+[.solution]#Solution#
 The Maven's `pom.xml` file needs to be modified. The versions of the dependency and plugins listed below must be updated:
 
 * dependency `groovy-all`

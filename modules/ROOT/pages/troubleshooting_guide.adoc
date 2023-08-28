@@ -111,7 +111,7 @@ Application pages and forms aren't displaying special characters correctly in Wi
 If there is a special character like `&euro;` in my page or form, the character does not appear properly after the page or form is deployed.
 
 [.cause]#Cause#
-When using Windows, the characters are encoded into `Windows-1250`, instead of `UTF-8` on Linux
+When using Windows, the characters are encoded into `Windows-1250`, instead of `UTF-8`
 
 [.solution]#Solution#
 There are two possible solution for this:

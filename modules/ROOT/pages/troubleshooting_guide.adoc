@@ -1,16 +1,31 @@
 = Troubleshooting guide
 :description: BCD Troubleshooting
 
-== Access to Bonita Artifact Repository is denied
+[.troublehooting-section]
+--
+[.symptom]
+Access to Bonita Artifact Repository is denied
 
+[.solution]#Possible solution#
 If you encounter some error while fetching Bonita java dependencies, please refer to the xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository] documentation.
+--
 
-== Restricted Internet access by an enterprise proxy
+[.troubleshooting-section]
+--
+[.symptom]
+Restricted Internet access by an enterprise proxy
 
+[.solution]#Possible solution#
 If required, you can configure maven to use proxy settings : https://maven.apache.org/guides/mini/guide-proxies.html
+--
 
-== A REST API Extension compilation generates errors
 
+[.troubleshooting-section]
+--
+[.symptom]
+A REST API Extension compilation generates errors
+
+[.solution]#Possible solution#
 The `build` command failed to generate the REST API Extensions with these error messages below:
 [source,bash]
 ----
@@ -80,4 +95,4 @@ In order to find the versions to use, apply the procédure below:
 * Start the Studio
 * Create a new dummy REST API extension: the new `pom.xml` file created contains the versions to used
 * Update the `pom.xml` file of the REST API Extension which failed to be compiled.
-
+--

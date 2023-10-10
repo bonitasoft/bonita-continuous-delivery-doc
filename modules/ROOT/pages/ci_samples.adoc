@@ -26,7 +26,8 @@ node {
 
         stage 'Build App', {
             // Download bonita-la-builder using maven
-            def bonitaRuntimeVersion = sh('mvn help:evaluate -Dexpression=bonita.runtime.version -q -DforceStdout', true)
+            def bonitaRuntimeVersion = sh returnStdout: true, script: 'mvn help:evaluate -Dexpression=bonita.runtime.version -q -DforceStdout'
+
             sh "mvn dependency:copy -Dartifact=com.bonitasoft.tools:bonita-la-builder:${bonitaRuntimeVersion}:jar:exec -Dmdep.stripVersion -Dmdep.stripClassifier -DoutputDirectory=./" <1>
             // Execute the builder using maven
             sh 'mvn --non-recursive exec:exec -Dexec.executable=java -Dexec.args="-jar bonita-la-builder.jar build . -o my-app.zip"' <2>

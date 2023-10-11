@@ -4,6 +4,10 @@
 :page-aliases: bcd_cli.adoc, bcd_controller.adoc, getting_started.adoc
 
 
+IMPORTANT: *BCD deployer is now deprecated*. As of september 2023 BCD deployer is deprecated.
+The deployer supports Bonita 9.0, but support for future versions is not guaranteed.
+Bonita artifacts deployment & update is now made at startup, through the self-contained application feature.
+
 The Bonita Continuous Delivery (BCD) offer provides tools to setup _Continuous Delivery_ practice for your Bonita Living Application development and deployment.
 
 BCD lets you build a Living Application from source code in a repository and deploy the generated artifacts, all from the command line.

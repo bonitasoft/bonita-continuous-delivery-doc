@@ -5,6 +5,10 @@
 
 This page describes how to deploy Bonita Living Application artifacts from the command line.
 
+IMPORTANT: *BCD deployer is now deprecated*. As of september 2023 BCD deployer is deprecated.
+The deployer supports Bonita 2023.2, but support for future versions is not guaranteed.
+Bonita artifacts deployment & update is now made at startup, through the self-contained application feature.
+
 IMPORTANT: First make sure your maven installation is configured to access xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository] !
 
 [#install]

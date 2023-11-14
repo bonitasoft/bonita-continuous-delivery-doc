@@ -3,9 +3,13 @@
 
 :page-aliases: livingapp_build.adoc, livingapp_manage_configuration.adoc
 
+IMPORTANT: *Builder is not supported for Bonita project designed with Bonita Studio 2023.2 and above*. In those versions, a Bonita project can be built xref:{bonitaDocVersion}@bonita:build-run:build-application.adoc[using Maven].
+
 This page describes how to build Bonita Application projects from the command line.
 
-IMPORTANT: First make sure your maven installation is configured to access xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository] !
+== Prerequisites
+
+First make sure your maven installation is configured to access xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository] !
 
 [#install]
 == Builder installation guide

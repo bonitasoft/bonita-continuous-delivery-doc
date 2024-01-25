@@ -4,7 +4,7 @@
 :page-aliases: bcd_cli.adoc, bcd_controller.adoc, getting_started.adoc
 
 
-CAUTION: *As of september 2023 BCD deployer is deprecated. The deployer will continue to work for Bonita version supporting the platform mode like 2023.2 and 2024.1, but it will not evolve anymore, and support for future versions is not guaranteed. 
+CAUTION: As of september 2023 BCD deployer is deprecated. The deployer will continue to work for Bonita version supporting the platform mode like 2023.2 and 2024.1, but it will not evolve anymore, and support for future versions is not guaranteed. 
 The Continous Deployment process is still part of Bonita's offering. It is now made at startup, through the self-contained application feature.   
 For any information about the self-contained application feature, please contact your customer success representative.
 

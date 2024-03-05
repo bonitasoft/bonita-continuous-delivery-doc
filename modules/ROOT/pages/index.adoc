@@ -4,10 +4,6 @@
 :page-aliases: bcd_cli.adoc, bcd_controller.adoc, getting_started.adoc
 
 
-CAUTION: As of september 2023 BCD deployer is deprecated. The deployer will continue to work for Bonita version supporting the platform mode like 2023.2 and 2024.1, but it will not evolve anymore, and support for future versions is not guaranteed. 
-The Continous Deployment process is still part of Bonita's offering. It is now made at startup, through the self-contained application feature.   
-For any information about the self-contained application feature, please contact your customer success representative.
-
 BCD lets you build a Living Application from source code in a repository and deploy the generated artifacts, all from the command line.
 
 image::images/bcd_capabilities.png[Bonita Continuous Delivery Capabilities]
@@ -38,3 +34,6 @@ xref:deployer.adoc[[.card-title]#Start deploying# [.card-body]#pass:q[Check out 
 
 TIP: For both CLIs you can have a look at the https://www.mojohaus.org/exec-maven-plugin/[exec-maven-plugin] to include `build` and/or `deploy` step in the bonita project build lifecycle. (starting from version 7.13.x, a bonita project is a maven project) +
 Currently you should consider the maven aspect as a black box, because the studio perform some instrumentation of the project's pom.xml file, but advanced users can still take advantage of the maven aspect of the project.
+
+CAUTION: Deprecation notice +
+With the adoption of SCA mode, there is no longer need to use the LA deployer. As long as the client remains in plateform mode, the deployed application remains the recommended way to do its continuous integration

@@ -4,8 +4,8 @@ version: '4.0'
 asciidoc:
   attributes:
     bcdVersion: '4.0.0' # latest available maintenance version
-    bonitaDocVersion: '2023.2'
-    testToolkitVersion: '1.0'
+    bonitaDocVersion: '2024.1'
+    testToolkitVersion: '2.0'
     # General site configuration
     page-editable: true
 nav:

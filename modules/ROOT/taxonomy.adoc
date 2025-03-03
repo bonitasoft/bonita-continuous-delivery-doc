@@ -1,5 +1,4 @@
 * BCD features
-** xref:builder.adoc[Application builder]
 ** xref:deployer.adoc[Application deployer]
 ** xref:ci_samples.adoc[CI integration sample]
 * xref:release_notes.adoc[Release notes]

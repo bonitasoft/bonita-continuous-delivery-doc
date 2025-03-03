@@ -6,22 +6,24 @@ You will also find information about BCD CLIs and Bonita version compatibility.
 
 == System requirements
 
-The BCD features (build and deploy) are implemented by two standalone Java CLIs (command line interface).
+The BCD features (build and deploy) are implemented by two standalone Java utilities, a maven plugin and a CLI.
 
 IMPORTANT: You have to ensure that your maven installation is configured to access the xref:{bonitaDocVersion}@bonita:software-extensibility:bonita-repository-access.adoc[Bonita Artifact Repository]
 
-=== Bonita LA Builder
+=== Bonita project build
 
-The bonita-la-builder program delegate some work to `maven` during its execution, so requirement are:
+In versions 2023.2 and above, a Bonita project can be built xref:{bonitaDocVersion}@bonita:build-run:build-application.adoc[using Maven].
 
-- https://adoptium.net/temurin/releases/?version=11[Java JDK 11]
+Building a bonita project requires: 
+
+- https://adoptium.net/temurin/releases/?version=11[Java JDK 17]
 - https://maven.apache.org/install.html[Apache Maven]
 
 === Bonita LA Deployer
 
 The bonita-la-deployer program is simple java standalone CLI, so the only requirement is:
 
-- https://adoptium.net/temurin/releases/?version=11[Java JDK 11]
+- https://adoptium.net/temurin/releases/?version=11[Java JDK 17]
 
 == Version supported compatibility
 
@@ -29,14 +31,6 @@ The bonita-la-deployer program is simple java standalone CLI, so the only requir
 ====
 BCD uses the technical Id of the platform. xref:{bonitaDocVersion}@bonita:version-update:product-versioning.adoc#_technical_id[You will find here the mapping between Bonita release and technical Id]
 ====
-
-=== Bonita LA Builder
-
-The bonita-la-builder versions follow the Bonita engine versions.
-
-Example: to build a 2023.1 (8.0.0) bonita project, you have to use the 8.0.0 version of the bonita-la-builder.
-
-IMPORTANT: *Builder is not supported for Bonita project designed with Bonita Studio 2023.2 and above*. In those versions, a Bonita project can be built xref:{bonitaDocVersion}@bonita:build-run:build-application.adoc[using Maven].
 
 === Bonita LA Deployer
 

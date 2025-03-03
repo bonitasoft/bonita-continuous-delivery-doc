@@ -2,13 +2,13 @@
 :description: Best Practices when building and deploying Bonita Apps
 
 Bonita Continuous Delivery enables you to easily build and deploy a Bonita Applications on a Bonita runtime. +
-It uses the xref:builder.adoc[Bonita Application Builder] and the xref:deployer.adoc[Bonita Application Deployer].
+It uses the xref:{bonitaDocVersion}@bonita:build-run:build-application.adoc[Bonita Application maven build] and the xref:deployer.adoc[Bonita Application Deployer].
 
 In the following, we present best practices and various use cases to let you easily build and deploy your Bonita Application repository.
 
 All examples assume that:
 
-* you have cloned a Git repository as described in the xref:builder.adoc[Bonita Application Builder] documentation
+* you have cloned a Git repository and are ready to build the project as described in the xref:{bonitaDocVersion}@bonita:build-run:build-application.adoc[Bonita Maven Build] documentation
 * you already have a Bonita runtime up and running
 
 == Best practices about repositories

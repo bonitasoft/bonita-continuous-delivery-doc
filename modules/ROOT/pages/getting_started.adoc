@@ -17,7 +17,7 @@ image::images/bcd_controller.png[Bonita Continuous Delivery Controller]
 
 Follow these installation steps on your control host.
 
-[asciinema,rows=32,autoPlay=true]
+[asciinema,rows=32]
 ----
 include::image$images/bcd_getting-started.cast
 ----

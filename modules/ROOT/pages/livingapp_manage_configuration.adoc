@@ -52,7 +52,7 @@ processes:
     type: "String"
 ----
 
-As it may contain sensitive data, it's recommended to encrypt your configuration using link:how_to_use_bcd_with_data_encrypted[vault]:
+As it may contain sensitive data, it's recommended to encrypt your configuration using xref:how_to_use_bcd_with_data_encrypted.adoc[vault]:
 
 [source,bash]
 ----

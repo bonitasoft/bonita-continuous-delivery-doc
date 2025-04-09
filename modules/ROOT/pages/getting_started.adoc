@@ -5,6 +5,7 @@ The BCD add-on is provided as a `bonita-continuous-delivery_{bcdVersion}.zip` ar
 
 This page describes how to use this archive to start your journey with Bonita Continuous Delivery.
 
+[#installation-guide]
 == Installation guide
 
 In order to ease your environment setup, we provide a Docker image called *xref:bcd_controller.adoc[BCD Controller image]* which contains all required dependencies and tools for BCD. +

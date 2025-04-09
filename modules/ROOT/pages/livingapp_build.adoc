@@ -26,7 +26,7 @@ This step creates a `bonita-continuous-delivery/bonita-vacation-management-examp
 
 === 2. Provide the repository's build dependencies
 
-The next step is to provide all dependencies required to build your repository, see link:getting_started.adoc#_installation_guide[Common Installation Steps].
+The next step is to provide all dependencies required to build your repository, see xref:getting_started.adoc#installation-guide[Common Installation Steps].
 
 Hence the following artifacts must be present in the `$BCD_HOME/dependencies` directory or any of its subdirectories:
 

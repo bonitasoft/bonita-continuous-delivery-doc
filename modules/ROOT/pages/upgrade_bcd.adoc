@@ -11,7 +11,7 @@ We have split this documentation in order to describe the differences between up
 We will focus on :
 
 * scenarios : indeed you may want to keep your existing scenarios. It will allow you to recreate the same kind of stack or manipulate an existing one (deploy, undeploy, destroy).
-* Terraform metadata : "Terraform must store state about your managed infrastructure and configuration. This state is used by Terraform to map real world resources to your configuration, keep track of metadata, and to improve performance for large infrastructures." https://www.terraform.io/docs/state/.
+* Terraform metadata : "Terraform must store state about your managed infrastructure and configuration. This state is used by Terraform to map real world resources to your configuration, keep track of metadata, and to improve performance for large infrastructures." For more details, see the https://developer.hashicorp.com/terraform/language/state[Terraform documentation on "state"].
 +
 So if you want to be able to manage an existing stack (i.e. a stack already deployed from a previous version of BCD), you will need to copy and paste this state.
 * bcd controller

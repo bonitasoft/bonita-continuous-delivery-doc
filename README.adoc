@@ -1,6 +1,6 @@
-= Bonita Continuous Delivery documentation resources
+= Bonita Continuous Delivery documentation
 
-This repository contains the sources of the https://documentation.bonitasoft.com/bcd[Bonita Continuous Delivery documentation site]. It uses https://docs.asciidoctor.org/asciidoc/latest/[AsciiDoc] format for
+This repository contains the sources of the https://documentation.ofelia.com/bcd[Bonita Continuous Delivery documentation site]. It uses the https://docs.asciidoctor.org/asciidoc/latest/[AsciiDoc] format for
 the documentation content.
 
 
@@ -10,9 +10,9 @@ See https://github.com/bonitasoft/bonita-documentation-site/blob/master/docs/con
 recommendations about writing AsciiDoc pages the Bonita-way.
 
 
-== Providing feedbacks about Bonita product
+== Providing feedback about Bonita product
 
-For any questions or feedbacks about the *product itself*, please use the following resources:
+For any questions or feedback about the *product itself*, please use the following resources:
 
-* http://community.bonitasoft.com/[Community website]
+* https://community.ofelia.com/[Community website]
 * https://bonita.atlassian.net/projects/BBPMC/[Community Bug tracker (Jira)]
